@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.4 (17249) - http://www.bohemiancoding.com/sketch -->
+    <title>pencil</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="pencil" sketch:type="MSArtboardGroup" fill="#000000">
+            <path d="M10.2984599,3.20952783 L11.3074522,2.20536403 C11.5840164,1.93012336 12.0324147,1.93197841 12.310128,2.2083627 L13.8191453,3.71015858 C14.0988263,3.98850117 14.0982076,4.4333078 13.8221584,4.70803597 L12.813166,5.71219978 L10.2984599,3.20952783 L10.2984599,3.20952783 Z M3.00235634,10.4683453 L2,14 L5.51706251,12.9710172 L12.0587542,6.46300136 L9.544048,3.96032942 L3.00235634,10.4683453 Z" id="icon" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
+</svg>

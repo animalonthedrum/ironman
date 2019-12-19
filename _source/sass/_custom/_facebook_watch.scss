@@ -1,0 +1,105 @@
+.facebook-watch-container {
+    margin-top: 0!important;
+    margin-bottom: 35px!important;
+    padding-left: 0;
+    padding-right: 0;
+    display: flex;
+    flex-wrap: wrap;
+    .column-1 {
+        padding-left: 0;
+        padding-right: 0;
+        @include tablet {
+            display: flex;
+            flex-direction:column;
+            align-items: center;
+            background-color: $color-white;
+        }
+        .pageElement {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    }
+    .column-2 {
+        .user_mode & {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: $color-white;
+        }
+        
+    }
+
+.external-link {
+    .linkElement {
+        h4 {
+            display: flex;
+            justify-content: center;
+        }
+        a {
+            @include global-link-icon-character($character:"\f08e");
+            display: inline-flex;
+        }
+    }
+ 
+   
+}
+.event-list {
+    .pageElement {
+        .text {
+            ul {
+                font-family: $font-primary;
+                font-weight: 400;
+                list-style: none;
+                list-style-image: none;
+                margin-block-start: 0;
+                margin-block-end: 0;
+                margin-inline-start: 0px;
+                margin-inline-end: 0px;
+                padding-inline-start:0;
+                margin-left: 0;
+                li {
+                    list-style-image: none;
+                    padding-left: 0;
+                    font-family: $font-primary;
+                    font-weight: 400;
+                    strong {
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+    }
+}
+.inline-link {
+    .pageElement {
+        .text {
+            p {
+                a {
+                    color: $color-secondary!important;
+                    transition: color $transition-standard;
+                    position: relative;
+                    &:hover {
+                        color: $color-hover-primary!important;
+                        cursor: pointer;
+                        &:after {
+                            color: $color-hover-primary;
+                            margin-left: 20px;
+                        }
+                    }
+                    &:after {
+                        content:'\f0da';
+                        font-family: 'fontawesome';
+                        font-size: inherit;
+                        color: inherit;
+                        display: inline;
+                        margin-left: 15px;
+                        position: absolute;
+                        transition: color $transition-linear, margin-left $transition-linear;
+                    }
+                }
+            }
+        }
+    }
+}
+}

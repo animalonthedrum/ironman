@@ -1,0 +1,73 @@
+.left-rail-layout {
+
+    #panelTwo {
+        max-width: $content-area-width;
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: auto;
+        margin-right: auto;
+        justify-content: center;
+
+        .leftRail {
+            width: 100%;
+            max-width: 310px;
+            margin-right: 35px;
+            height: auto;
+            @include touch-device {
+                margin-right: 0;
+                max-width: 100%;
+                width: 100%;
+                padding-left: $mobile-padding;
+                padding-right: $mobile-padding;
+            }
+            .left-sub-nav {
+                width: 100%;
+                .column {
+                    @include touch-device {
+                        display: none;
+                    }
+                }
+            }
+            .layoutContainer, .column {
+                padding-left:0;
+                padding-right:0;
+            }
+        }
+    }
+    #errorNotice {
+        display: none;
+    }
+    .left-rail-device-container {
+        width: 100%;
+    }
+    .left-rail-device-container {
+        display: none;
+        @include touch-device {
+            display: block;
+            text-align: center;
+            h3 {
+                text-align: center!important;
+            }
+        }
+    }
+    .yieldPageContent {
+        width: 100%;
+    }
+}
+.has-main-nav {
+    .user_mode.left-rail-layout {
+        .yieldPageContent {
+                max-width: calc(100% - 375px);
+                flex: 1 1 auto;
+        }
+    }
+}
+.has-mobile-nav {
+    .user_mode.left-rail-layout {
+        .yieldPageContent {
+                width: 100%;
+                flex: 1 1 auto;
+        }
+    }
+}
+

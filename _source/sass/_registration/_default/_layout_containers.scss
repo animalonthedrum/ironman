@@ -1,0 +1,157 @@
+/* Layout Containers
+---------------------------------------------------------------------------------------------------- */
+
+.layoutContainer {
+  .column1,
+  .column2,
+  .column3,
+  .column4 {
+    float: left;
+    min-height: 1px;
+  }
+}
+
+#layoutsBin .layoutContainer {
+  padding-left: 0;
+}
+
+.layoutContainer .layoutContainer {
+  padding-bottom: 15px;
+}
+
+/* Container Widths
+---------------------------------------------------------------------------------------------------- */
+
+.oneColumn .column1,
+.layoutContainer .oneColumn .column1 {
+  width: 100%;
+}
+
+.twoColumn2575 .column2,
+.twoColumn7525 .column1 {
+  width: 75%;
+}
+
+.twoColumn6633 .column1,
+.twoColumn3366 .column2,
+.layoutContainer .twoColumn6633 .column1,
+.layoutContainer .twoColumn3366 .column2 {
+  width: 66.6%;
+}
+
+.twoColumn5050 .column1,
+.twoColumn5050 .column2,
+.threeColumn502525 .column1,
+.threeColumn255025 .column2,
+.threeColumn252550 .column3,
+.layoutContainer .twoColumn5050 .column1,
+.layoutContainer .twoColumn5050 .column2,
+.layoutContainer .threeColumn502525 .column1,
+.layoutContainer .threeColumn255025 .column2,
+.layoutContainer .threeColumn252550 .column3 {
+  width: 50%;
+}
+
+.threeColumn333333 .column1,
+.twoColumn6633 .column2,
+.twoColumn3366 .column1,
+.threeColumn333333 .column2,
+.threeColumn333333 .column3,
+.layoutContainer .threeColumn333333 .column1,
+.layoutContainer .twoColumn6633 .column2,
+.layoutContainer .twoColumn3366 .column1,
+.layoutContainer .threeColumn333333 .column2,
+.layoutContainer .threeColumn333333 .column3 {
+  width: 33.3%;
+}
+
+.twoColumn2575 .column1,
+.twoColumn7525 .column2,
+.threeColumn502525 .column2,
+.threeColumn502525 .column3,
+.threeColumn255025 .column1,
+.threeColumn255025 .column3,
+.threeColumn252550 .column1,
+.threeColumn252550 .column2,
+.fourColumn25252525 .column1,
+.fourColumn25252525 .column2,
+.fourColumn25252525 .column3,
+.fourColumn25252525 .column4,
+.layoutContainer .threeColumn502525 .column2,
+.layoutContainer .threeColumn502525 .column3,
+.layoutContainer .threeColumn255025 .column1,
+.layoutContainer .threeColumn255025 .column3,
+.layoutContainer .threeColumn252550 .column1,
+.layoutContainer .threeColumn252550 .column2,
+.layoutContainer .fourColumn25252525 .column1,
+.layoutContainer .fourColumn25252525 .column2,
+.layoutContainer .fourColumn25252525 .column1,
+.layoutContainer .fourColumn25252525 .column2 {
+  width: 25%;
+}
+
+/* Fluid Layout Exceptions
+---------------------------------------------------------------------------------------------------- */
+
+
+.oneColumn .condensedView,
+.twoColumn6633 .column1 .condensedView,
+.twoColumn3366 .column2 .condensedView {
+  display: none;
+}
+
+.oneColumn .twoColumn6633 .column2 .condensedView,
+.oneColumn .twoColumn3366 .column1 .condensedView,
+.oneColumn .twoColumn5050 .condensedView,
+.oneColumn .threeColumn333333 .condensedView,
+.oneColumn .threeColumn502525 .condensedView,
+.oneColumn .threeColumn255025 .condensedView,
+.oneColumn .threeColumn252550 .condensedView {
+  display: block;
+}
+
+.oneColumn .twoColumn6633 .column2 .condensedView,
+.oneColumn .twoColumn3366 .column1 .condensedView,
+.oneColumn .twoColumn5050 .condensedView,
+.oneColumn .threeColumn333333 .condensedView,
+.oneColumn .threeColumn502525 .condensedView,
+.oneColumn .threeColumn255025 .condensedView,
+.oneColumn .threeColumn252550 .condensedView {
+  display: block;
+}
+
+.oneColumn .twoColumn6633 .column2 tr .condensedView,
+.oneColumn .twoColumn3366 .column1 tr .condensedView,
+.oneColumn .twoColumn5050 tr .condensedView,
+.oneColumn .threeColumn333333 tr .condensedView,
+.oneColumn .threeColumn502525 tr .condensedView,
+.oneColumn .threeColumn255025 tr .condensedView,
+.oneColumn .threeColumn252550 tr .condensedView {
+  display: table-cell;
+}
+
+
+/*.twoColumn5050 .layoutContainer, .twoColumn6633 .layoutContainer, .twoColumn3366 .layoutContainer, .threeColumn502525 .layoutContainer, .threeColumn255025 .layoutContainer, .threeColumn252550 .layoutContainer{
+  display: none;
+}
+*/
+.layoutContainer{
+  .column1,
+  .column2,
+  .column3{
+    .newsItemColumn{
+      display: block;
+    }
+  }
+}
+
+/* Antonyms
+---------------------------------------------------------------------------------------------------- */
+.pe25  .noIn25,
+.pe33  .noIn33,
+.pe50  .noIn50,
+.pe66  .noIn66,
+.pe75  .noIn75,
+.pe100 .noIn100 {
+  display: none;
+}

@@ -1,0 +1,21 @@
+$pl-spinner-size: 64px;
+
+.pl-spinner {
+  fill: $color-content-xxlight;
+  height: $pl-spinner-size;
+  left: 0;
+  margin-top: -$pl-spinner-size / 2;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+}
+
+.pl-spinner--inline {
+  display: inline-block;
+  fill: currentColor;
+  height: 1.4em;
+  margin: -.5em 0;
+  opacity: .7;
+  vertical-align: middle;
+  width: 1.4em;
+}

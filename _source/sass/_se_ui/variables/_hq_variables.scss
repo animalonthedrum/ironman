@@ -1,0 +1,117 @@
+// No, I'm not sure about these names yet. I'm open to suggesstions.
+
+// colors get progressively lighter
+$dk0: #111315; // found this on the edge shadow of the main navigation
+$dk1: #23272B; // Used as default text color, dark blue
+$dk2: #393D41; // Medium Gray Blue
+$dk3: #4F5255; // Lightest Gray Blue
+$dk4: #6F7479; // Ligherest Gray Blue
+
+$med0: #999; // Darker Mid Gray
+$med1: #abadb0; // Warm Mid Gray
+
+$lt0: #626568; // found this on the section tab text
+$lt1: #cccccc; // Medium/Dark Gray
+$lt2: #dddddd; // Medium to Light gray
+$lt3: #ebebeb; // Lightest Gray
+
+$lt1a: rgba(0,0,0,.25); // transparent, maps to $lt1
+$lt3a: rgba(0,0,0,0.05); // transparent, maps to $lt3
+
+$disabled: #BFBFBF; // Gray that matches disabled inputs
+
+$notify: #028ab7;
+$checked: #006699;
+
+// Headings
+$masthead-heading: $dk1;
+$masthead-subheading: #7f7f7f;
+
+// Links
+$link-hover: #1892B4;
+$link: #13759B;
+
+$highlight: #d9f0f7; //Light Blue hover color
+$text-highlight: #04699b; //Darker Blue Text Color
+
+// Notifications
+$success:       #13A937;
+$success-alt:   lighten($success, 5%);
+$success-bg:    lighten($success, 55%);
+$success-text:  #13A937;
+
+$error:       #E9312F;
+$error-alt:   lighten($error, 10%);
+$error-bg:    lighten($error, 40%);
+$error-text:  #E9312F;
+
+$info:      #D0E3EB;
+$info-alt:  lighten($info, 10%);
+$info-text: #13759B;
+$info-bg:   #D0E3EB;
+
+$warning:       #E9A52F;
+$warning-alt:   lighten($warning, 10%);
+$warning-text:  #630;
+$warning-icon:  #3c0;
+$warning-bg:    lighten($warning, 30%);
+$warning-border: #E9A52F;
+
+// Filters
+$filter-bg: #373b40;
+$filter-alt: lighten($filter-bg, 10%);
+$filter-border: #26282c;
+$filter-text: #73767a;
+
+$disabled-bg: #e9e9eb; // Med Light gray for showing disabled states
+$disabled-border: #aeb0b5; // darker gray used for borders on disabled states
+$disabled-text: #767677; //text color for disabled items
+
+// Headings
+$tab-heading: #3F454C;
+$tab-subheading: #6F7479;
+
+// Tables
+$tr-hover-outer: #1896CD;
+$tr-hover-inner: #E2EEF4;
+$tr-selected-outer: #0E5875;
+$tr-selected-inner: #13759B;
+$tr-selected-icon: #C5DDE6;
+$tr-selected-text: #FFF;
+$tr-selected-subtext: #D0E3EB;
+$tr-disabled: #e9e9eb;
+$tr-disabled-border: #aeb0b5;
+$tr-disabled-text: #666666;
+$tr-dragging-inner: #0E5875;
+$tr-dragging-outer: #13759B;
+
+//Draggable
+$dropzone-hover: $link;
+
+$font-family: "proxima-nova", "Helvetica Neue", Verdana, sans-serif;
+$font-family-print: "proxima-nova-print", $font-family;
+
+$pad: 4px;
+
+//Font Weights
+$light: 300;
+$normal: 400;
+$semibold: 600;
+$bold: 700;
+$black: 800;
+
+//Box-shadows
+$page-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.15);
+$element-shadow: 0 0 3px 1px rgba($dk1, 0.25);
+$subtle-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+$subtle-inset-shadow: inset 0 0 4px rgba(0,0,0,0.25);
+$dark-inset-shadow: inset 0 0 6px rgba(0,0,0,0.25);
+$drow-shadow: inset 0 -8px 8px -8px rgba(0, 0, 0, 0.25), inset 0 8px 8px -8px rgba(0,0,0,0.25);
+$input-shadow: inset 0 2px 2px -1px rgba(0, 0, 0, 0.15);
+$focus-shadow: 0 0 5px rgba($notify, 0.75);
+$save-shadow: 0 0 5px $link;
+$error-shadow: 0 0 5px rgba($error, 0.75);
+$select-shadow: inset  0 -2px 2px -2px #fff, 0 1px 1px -1px rgba(0, 0, 0, 0.25);
+$tooltip-shadow: 0 2px 3px rgba($dk1, 0.5);
+$zero-offset-shadow: 0 0 3px 0 rgba($dk1, 0.25);
+$zero-offset-large: 0 0 8px 0 rgba($dk1, 0.25);

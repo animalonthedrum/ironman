@@ -1,0 +1,301 @@
+// # Forms
+// Default, generic styles for form elements
+
+
+// ## Variables
+$input-border-radius: 2px;
+$input-vertical-padding: .2857em;
+$input-horizontal-padding: .75rem; // 4px / 14px
+
+
+// ## Field
+// Single-line text inputs
+%pl-field {
+  border: 1px solid $color-content-xlight;
+  border-radius: $input-border-radius;
+  color: $color-content;
+  font-family: $font-default;
+  font-weight: $font-regular;
+  padding: $input-vertical-padding $input-horizontal-padding;
+
+  &:hover {
+    border-color: $color-content-light;
+  }
+  &:focus {
+    border-color: $color-highlight;
+    box-shadow: 0 0 0 1px $color-highlight;
+    outline: none;
+  }
+  &::placeholder {
+    color: $color-content-xlight;
+  }
+  &::-ms-clear {
+    display: none;
+  }
+  &.pl-has-error {
+    border-color: $color-alert;
+
+    &:focus {
+      box-shadow: 0 0 0 1px $color-alert;
+    }
+  }
+}
+@mixin pl-field() {
+  @extend %pl-field;
+  @include font-small;
+}
+@mixin pl-field--full() {
+  @extend %pl-field;
+  @include font-small;
+  width: 100%;
+}
+@mixin pl-field--large() {
+  @extend %pl-field;
+  @include font-large;
+}
+// ## Select
+$select-arrow: url('#{$shared-image-path}/chevron-down.svg');
+%select {
+  appearance: none;
+  background-image: $select-arrow, linear-gradient(#fff, $gray-xlight);
+  background-position: right .5em top 50%;
+  background-repeat: no-repeat, repeat-x;
+  border: solid 1px $color-content-xlight;
+  border-radius: $input-border-radius;
+  cursor: pointer;
+  outline: none;
+  padding: $input-vertical-padding calc(1em + 10px) $input-vertical-padding .5em;
+  font:normal 1em/1.5em $fontOne;
+
+  &:focus:not(:active):not([disabled]) {
+    border-color: $color-highlight;
+    box-shadow: 0 0 0 1px $color-highlight;
+  }
+  &:hover:not([disabled]) {
+    background-image: $select-arrow, linear-gradient($gray-xlight, #fff);
+    border-color: $color-content-light;
+  }
+  &[disabled] {
+    background-color: #fff;
+    background-image: $select-arrow;
+    border-color: $color-content-xxlight;
+    color: $color-content-xxlight;
+    cursor: default;
+  }
+  // Removes blue highlight on focused selects in IE 10 & 11
+  &:focus::-ms-value {
+    background-color: transparent;
+    color: black;
+  }
+  // Hides default select arrow in IE 10 & 11
+  &::-ms-expand {
+    display: none;
+  }
+}
+%field__label {
+  color: $color-content-light;
+  display: block;
+  padding-bottom: .2857em; // 4px / 14px
+}
+
+// ## Field containers
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+// Textarea
+textarea {
+  background: white;
+  //box-shadow: $input-shadow, 0 1px 1px #fff;
+  border-radius: $pad/2;
+  border: 1px solid darken($lt1, 5%);
+  padding: $pad $pad*2;
+  margin: 0 0 $pad/2;
+  -webkit-appearance: none;
+  font-size: 12px;
+  resize: none;
+
+  &.error, .field_with_errors & {
+    border: 1px solid $error;
+    box-shadow: $error-shadow;
+    outline: none;
+
+    & ~ .error-message { display: block; color: $error; }
+  }
+
+  ~ .error-message { display: none; }
+
+  &:focus, &:focus.error, .field_with_errors:focus & {
+    border: 1px solid $notify;
+    box-shadow:$focus-shadow;
+    outline: none;
+  }
+
+  & ~ label {
+    display: block;
+    color: $dk4;
+    font-size:12px;
+    font-style: italic;
+    font-weight: $light;
+    margin: 0;
+  }
+
+  &[disabled], &.disabled {
+    box-shadow: none;
+    opacity: 0.5;
+  }
+
+}
+%appearance{
+  -webkit-appearance: none;
+  -moz-appearance:none;
+  appearance:none;
+  border: 0px;
+  box-shadow: none;
+  background: transparent;
+  color: #fff;
+}
+#survey_steps{
+  .siteContainer{
+    .formElement{
+      padding: 10px 0px;
+      .choiceLabel{
+        padding-bottom: 20px;
+        padding-left: 10px;
+        line-height: 1.5em;
+
+      }
+    }
+    input[type="checkbox"] {
+      width: auto !important;
+      border: 0px;
+      top:10px;
+      position: relative;
+      &:hover {
+        border-color: transparent;
+      }
+      &:focus {
+        border-color: transparent;
+        box-shadow: none;
+        outline: none;
+      }
+
+    }
+    input[type="radio"] {
+      position: relative;
+      @extend %appearance;
+      width: 1rem;
+      height: 1rem;
+      margin: auto;
+      margin-right: 10px;
+      top:6px;
+      &:checked, &:focus,&:active{
+        @extend %appearance;
+      }
+      &:checked{
+        @extend %appearance;
+        &:before{
+          background-position: center;
+          background-repeat: no-repeat;
+          border-color: #13769c;
+          background-image: url(data:image/svg+xml,%3Csvg%20width%3D%228%22%20height%3D%228%22%20viewBox%3D%220%200%208%208%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Ccircle%20cx%3D%224%22%20cy%3D%224%22%20r%3D%224%22%20fill%3D%22%2313769C%22%2F%3E%3C%2Fsvg%3E);
+        }
+      }
+      &:disabled{
+         &:before{
+          border-color: #ddd;
+        }
+      }
+      &:before{
+        content: '';
+        display: inline-block;
+        background-color: #fff;
+        border: 1px solid #505c63;
+        -webkit-flex-shrink: 0;
+        -ms-flex-negative: 0;
+        flex-shrink: 0;
+        height: 1rem;
+        margin-right: .5714rem;
+        vertical-align: -12%;
+        width: 1rem;
+        position: absolute;
+        z-index: 2;
+        border-radius: 50%;
+        left: 0px;
+        top: 0px;
+      }
+    }
+    label, input, textarea{
+      width: 50%;
+    }
+    select{
+      @extend %select;
+      margin-bottom: 10px;
+    }
+    label{
+      @extend %field__label;
+    }
+    input, textarea{
+      @include pl-field();
+    }
+    form{
+      margin: auto;
+      clear: both;
+      br{
+        display: none;
+      }
+      label{
+        @extend %field__label;
+      }
+      input{
+        @include pl-field();
+      }
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  #survey_steps{
+    .siteContainer{
+      label, input, textarea{
+        width: 100%;
+      }
+    }
+  }
+}
+@mixin appearance-reset($app){
+  -webkit-appearance:$app !important;
+  -moz-appearance:$app !important;
+  appearance:$app !important;
+}
+@mixin appearance-radio-reset($app){
+  input[type="#{$app}"] {
+    @include appearance-reset($app);
+    &:checked, &:focus,&:active{
+      @include appearance-reset($app);
+    }
+  }
+}
+/* IE & Edge Form Support */
+#survey_steps{
+  /* JS Browser Check & Add Class Support for All Edge Versions */
+  &.sn-edge{
+    .siteContainer{
+      @include appearance-radio-reset(radio);
+    }
+  }
+  .siteContainer{
+    /* IE10+ CSS styles go here */
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      @include appearance-radio-reset(radio);
+    }
+    /* Edge 13+ CSS styles go here */
+    @supports (-ms-accelerator:true) {
+      @include appearance-radio-reset(radio);
+    }
+  }
+}
+input:not([type="button"]).number, input:not([type="button"]).mini, input:not([type="button"]).tiny{
+  width: 100%;
+  max-width: 80px;
+}

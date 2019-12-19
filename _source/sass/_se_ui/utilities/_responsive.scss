@@ -1,0 +1,25 @@
+// # Responsive
+// Reusable media queries
+
+
+// ## Variables
+$media-small: 480px;
+
+
+// ## Media query mixins
+@mixin media-small {
+  // Adjust width if side nav is present
+  .pl-has-side-nav & {
+    @media (min-width: $media-small + $side-nav-width) {
+      @content;
+    }
+  }
+  // Use standard width if no side nav is present
+  // or content is within an overlay.
+  html:not(.pl-has-side-nav) &,
+  .pl-has-side-nav .pl-overlay & {
+    @media (min-width: $media-small) {
+      @content;
+    }
+  }
+}

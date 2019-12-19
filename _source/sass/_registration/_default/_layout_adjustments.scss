@@ -1,0 +1,10 @@
+body#survey_steps { padding: 0; }
+
+html {
+
+  &.page-manager-visible {
+    body { padding-left: $page-manager-width; }
+    #topNav { margin-left: $page-manager-width; }
+  }
+
+}

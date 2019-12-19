@@ -1,0 +1,69 @@
+#postList div.postElement {
+  @include line-pattern-border($pos:bottom);
+  padding-left: 100px;
+  &:last-of-type {
+    border: none;
+  }
+  .postUser {
+    img {
+      border: 2px solid #ddd;
+      height: 60px;
+      margin-left: -80px;
+      width: auto;
+      &:not(:first-of-type) {
+        display: none;
+      }
+    }
+    .name {
+      display: block;
+      font-family: $font-primary;
+      line-height: 1.3em;
+    }
+    .date {
+      color: $bodyCopyColorTwo;
+      display: block;
+      font-size: em(10);
+      margin: .25em 0 1.5em;
+      text-transform: uppercase;
+    }
+  }
+  .button-content {
+    background: transparent;
+    border: none;
+    &:hover {
+      background: transparent;
+    }
+  }
+  .button-image-right {
+    display: none;
+    ~ .button-content {
+      padding: 0;
+    }
+  }
+
+  @media (max-width: 414px) {
+    padding-left: 10px;
+    padding-right: 10px;
+    .postUser {
+      padding-left: 80px;
+    }
+    .postContent {
+      clear: left;
+      padding-top: 10px;
+    }
+  }
+
+}
+
+.toolsLightbox {
+  #postContent {
+    padding: 15px 15px 0;
+    .postElement {
+      margin-bottom: 0;
+    }
+  }
+  #postComments {
+    margin-top: 0;
+    padding: 0 15px 15px;
+  }
+}

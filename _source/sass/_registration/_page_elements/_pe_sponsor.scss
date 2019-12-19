@@ -1,0 +1,50 @@
+//Sponsor Page Element
+.pageElementAdmin .sponsorElement{
+  padding-bottom: 10px;
+}
+.sponsorElement {
+  border-top: none;
+  .description {
+    > h3{
+      text-transform: none;
+    }
+    .goToLink {
+      font-size: .75em;
+      font-weight: 600;
+      background-color: #eee;
+      border: 1px solid #ddd;
+      padding: 5px 10px 5px 20px;
+      display: inline-block;
+      background-position-y: -460px;
+      margin: .5em 0;
+    }
+  }
+  .imageLink{
+    float: left;
+    text-align: center;
+    margin: 5px 10px 10px 0;
+    display: block;
+    img{display: block;}
+  }
+  &.hasImage{
+    .description{
+      padding-left: 110px;
+    }
+    @media only screen and (min-width: 1000px){
+      .col-md-3 &{
+        .imageLink{float:none;}
+        .description{padding:0;}
+      }
+    }
+    @media only screen and (min-width: 769px){
+      .col-md-4 &{
+        .imageLink{float:none;}
+        .description{padding:0;}
+      }      
+    }
+    @media only screen and (max-width: 350px){
+      .imageLink{float:none;}
+      .description{padding:0;}      
+    }
+  }
+}

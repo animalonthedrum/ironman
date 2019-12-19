@@ -1,0 +1,72 @@
+// # Tables
+// Styling for table elements
+
+
+// ## Constants
+$table-horizontal-spacing: 2em;
+
+
+// ## Data Table
+.pl-data-table__container {
+  overflow: auto;
+}
+
+%pl-data-table {
+  width: 100%;
+
+  th {
+    background-color: $gray-light;
+    color: $color-content-light;
+    font-size: $font-xsmall;
+    text-align: left;
+    text-transform: uppercase;
+  }
+  tr:nth-child(even) td {
+    background-color: $color-content-xxxlight;
+  }
+}
+
+.pl-data-table {
+  @extend %pl-data-table;
+
+  th,
+  td {
+    padding: .2857em .8571em .2857em 0; // 4px/14px, 12px/14px, 4px/14px, 0
+    padding-right: .8571em;
+
+    &:first-child {
+      padding-left: .8571em; // 12px/14px
+    }
+  }
+}
+
+
+// ## Plain table
+// Has no borders and a minimal amount of styling
+.pl-plain-table {
+  th,
+  td {
+    padding: 0 0 .25em;
+    vertical-align: top;
+  }
+  th + th,
+  td + td {
+    padding-left: $table-horizontal-spacing;
+  }
+  th {
+    text-align: left;
+  }
+  tfoot {
+    border-top: solid 1px $gray-xlight;
+    td {
+      padding-top: .5em;
+    }
+  }
+}
+
+.pl-plain-table__total {
+  font-weight: $font-semibold;
+  position: relative;
+  right: -$table-horizontal-spacing + .5em;
+  text-align: right;
+}

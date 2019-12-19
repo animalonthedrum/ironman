@@ -1,0 +1,356 @@
+// Page Layouts
+// 1. Layout Containers, Columns, and Rows
+// 2. Edit Mode
+// 3. Page Title (display Body Header)
+// The following can be removed if we had a standard layout.
+// 5. News Article Page
+// 6. Month List and Day View (Calendar)
+// 7. Single Event Page
+// 8. Sports Pages (Roster, Game Schedule, Player Stats, Team Stats, Photo, Video)
+// 9. Error Notices
+
+// 1. Layout Containers, Columns, and Rows
+.layoutContainer{
+  background-color: $content-area-background;
+  @include content-area-width;
+  @include content-container-padding;
+  .layoutContainer { // This targets Tab Element layoutContainers
+    @include content-container-padding(0, false);
+    padding-bottom: 15px; // refactor when doing tab element
+    .user_mode &{
+      @include adjust-margin-x(-1);
+      width: auto;
+    }
+  }
+}
+.full-width-container{
+  max-width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+.full-width{
+  max-width: 100%;
+  > .column{
+    max-width: 100%;
+  }
+
+  &.collapse-padding{
+    padding-left: 0;
+    padding-right: 0;
+    > .column{
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
+.column{
+  position: relative;
+  min-height: 1px;
+  @include column-padding;
+  @media screen and (max-width: $breakpoint-sm-max){
+    width: 100%;
+  }
+  .edit_mode & {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+.row{
+  @extend %clearfix;
+  > .column{
+    float: left;
+  }
+}
+@media screen and (max-width: $breakpoint-sm-max) {
+  .col{
+    &-xs{
+      &-12{ width: 100%; }
+      &-11{ width: (11/12 * 100%); }
+      &-10{ width: (10/12 * 100%); }
+      &-9{ width: (9/12 * 100%); }
+      &-8{ width: (8/12 * 100%); }
+      &-7{ width: (7/12 * 100%); }
+      &-6{ width: (6/12 * 100%); }
+      &-5{ width: (5/12 * 100%); }
+      &-4{ width: (4/12 * 100%); }
+      &-3{ width: (3/12 * 100%); }
+      &-2{ width: (2/12 * 100%); }
+      &-1{ width: (1/12 * 100%); }
+    }
+  }
+}
+@media screen and (min-width: $breakpoint-md-min) {
+  .col-md{
+    &-12{ width: 100%; }
+    &-11{ width: (11/12 * 100%); }
+    &-10{ width: (10/12 * 100%); }
+    &-9{ width: (9/12 * 100%); }
+    &-8{ width: (8/12 * 100%); }
+    &-7{ width: (7/12 * 100%); }
+    &-6{ width: (6/12 * 100%); }
+    &-5{ width: (5/12 * 100%); }
+    &-4{ width: (4/12 * 100%); }
+    &-3{ width: (3/12 * 100%); }
+    &-2{ width: (2/12 * 100%); }
+    &-1{ width: (1/12 * 100%); }
+  }
+  .full-width-container{
+    .col-md{
+      &-12{ max-width: ( ($content-area-width - $content-area-padding) * (12/12) ) }
+      &-11{ max-width: ( ($content-area-width - $content-area-padding) * (11/12) ) }
+      &-10{ max-width: ( ($content-area-width - $content-area-padding) * (10/12) ) }
+      &-9{ max-width: ( ($content-area-width - $content-area-padding) * (9/12) ) }
+      &-8{ max-width: ( ($content-area-width - $content-area-padding) * (8/12) ) }
+      &-7{ max-width: ( ($content-area-width - $content-area-padding) * (7/12) ) }
+      &-6{ max-width: ( ($content-area-width - $content-area-padding) * (6/12) ) }
+      &-5{ max-width: ( ($content-area-width - $content-area-padding) * (5/12) ) }
+      &-4{ max-width: ( ($content-area-width - $content-area-padding) * (4/12) ) }
+      &-3{ max-width: ( ($content-area-width - $content-area-padding) * (3/12) ) }
+      &-2{ max-width: ( ($content-area-width - $content-area-padding) * (2/12) ) }
+      &-1{ max-width: ( ($content-area-width - $content-area-padding) * (1/12) ) }
+    }
+  }
+}
+@media screen and (min-width: $breakpoint-intermediate-min) and (max-width: $breakpoint-intermediate-max) {
+  .layout-50-25-25,
+  .layout-25-25-50 {
+    .col-md-3 {
+      width: (6/12 * 100%);
+      max-width: ( ($content-area-width - $content-area-padding) * (6/12) )
+    }
+    .col-md-6 {
+      width: 100%;
+      max-width: ( ($content-area-width - $content-area-padding) * (12/12) )
+    }
+  }
+  .layout-25-50-25 {
+    .col-md-3,
+    .col-md-6 {
+      width: (4/12 * 100%);
+      max-width: ( ($content-area-width - $content-area-padding) * (4/12) )
+    }
+  }
+}
+
+// 2. Edit Mode
+.edit_mode .yieldPageContent{
+  @include content-area-width;
+}
+.home .yieldPageContent {
+  overflow-x:hidden;
+}
+.header_image {
+  .yieldPageContent {
+    padding-top: 50px;
+    @include touch-device {
+      padding-top:25px;
+    }
+  }
+}
+.custom-search-page {
+  .yieldPageContent {
+    padding-top: 0px;
+    @include touch-device {
+      padding-top:0px;
+    }
+  }
+}
+
+// 3. Page Title (display Body Header)
+#displayBodyHeader{
+  @include page-title-text;
+}
+
+// 5. News Article Page
+.newsItemColumn{
+  background-color: $content-area-background;
+  @include content-area-width;
+  @include content-container-padding;
+}
+.newsContentNode{
+  + .column{
+    @include content-area-width;
+    // @include content-container-padding(2);
+  }
+}
+// News Article Page - Draft
+.yieldPageContent > .noEntry.pageElement{
+  @include content-area-width;
+  @include content-container-padding(2);
+}
+
+// 6. Month List and Day View (Calendar)
+.calendarContainer{
+  background-color: $content-area-background;
+  @include content-area-width;
+  @include content-container-padding(2);
+}
+
+// 7. Single Event Page
+#event_show,
+#event_show + .eventTags,
+#event_show + .eventTags + .bottomOptions{
+  background-color: $content-area-background;
+  @include content-area-width;
+  @include content-container-padding(2);
+}
+
+// 8. Sports Pages (Roster, Game Schedule, Player Stats, Team Stats, Photo, Video)
+#sport-header{
+  background-color: $content-area-background;
+  @include content-area-width;
+  @include content-container-padding(2);
+}
+.user_mode{
+  .leaguePage,
+  .sportsPage,
+  [id="sport-header"] ~ [id="panelTwo"]{
+    .yieldPageContent{
+      > div,
+      > ul,
+      ~ #rapidTabs,
+      ~ #contentTabsLoader,
+      ~ #tab_completegamelist_content,
+      ~ #tab_boxscores_content{
+        background-color: $content-area-background;
+        @include content-area-width;
+        @include content-container-padding(2);
+      }
+    }
+  }
+}
+
+// 9. Error Notices
+#errorNotice{
+  background-color: $content-area-background;
+  @include content-area-width;
+  @include content-container-padding(2);
+}
+
+[id^="sovrn"]{display: none;}
+
+
+//custom 
+.user_mode {
+  .theme-search-wrapper, #topNav {
+    display: none;
+  }
+}
+
+.user_mode:not(.newsPage) {
+  .layoutContainer:not(.hero-home ):not(.hero-slider):not(.video-pack):not(.hero-slider-text):not(.coverage-container):not(.become-section):not(.section-title-horizontal):not(.section-title-vertical):not(.primary-color-background):not(.custom-background):not(.remove-margin-vert):not(.race-results) {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    @include touch-device {
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+  }
+  &.margin-sm {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  &.margin-lrg {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    @include touch-device {
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+  }
+  &.remove-margin-vert {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+.element-bg-white {
+  background-color: $color-white;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.container-bg-white {
+  background-color: $color-white;
+}
+
+//NEWSPAGE 
+.user_mode.newsPage {
+  .newsItemColumn {
+    >.column {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  .newsContentNode {
+    margin-top:50px;
+    @include touch-device {
+      margin-top: 30px;
+    }
+      >.layoutContainer {
+        >.column-2 {
+        >.pageEl {
+          .pageElement {
+            margin-top: 0;
+          }
+        }
+      }
+
+    }
+  }
+  .column-1 {
+    background-color: $color-white;
+  }
+  .desktop-nav-container {
+    background-color:$color-white!important;
+   
+    .nav-list li a {
+      color: $color-secondary;
+    }
+
+    .desktop-nav-logo svg {
+      .IMTEXT {
+        fill: #000!important;
+        animation: none!important;
+      }
+
+      .IMREG {
+        fill: #000 !important;
+        animation: none!important;
+      }
+    }
+
+    &:after {
+      max-width: 100%;
+      transition: max-width $transition-linear;
+    }
+
+    .nav-list-extra {
+      ul {
+        list-style: none;
+        display: flex;
+
+        li {
+          a {
+            color: $color-secondary;
+          }
+        }
+      }
+    }
+  }
+  .yieldPageContent {
+    padding-top: 175px!important;
+    overflow-x: hidden;
+    @include touch-device {
+      padding-top: 25px!important;
+    }
+  }
+}
+
+.user_mode {
+  .helper-text {
+    display: none;
+  }
+}

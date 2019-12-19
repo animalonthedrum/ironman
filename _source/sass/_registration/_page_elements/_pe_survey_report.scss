@@ -1,0 +1,78 @@
+/* pe_survey_report.css **************************************************************************************************************************************** */
+
+#defaultReport { clear: both; }
+.report-container { clear:both; overflow:auto; position: relative; border:1px solid #ccc; }
+.report-scroll { border:1px solid #CCC; }
+.itemVariations .columnName{
+    display: inline-block;
+    width: 50%;
+    padding: 5px 0;
+}
+.reportTableElement .filtered_survey_actions { float:right; list-style:none; margin-left:10px; }
+.reportTableElement .filtered_survey_actions .icon { color:#666; font-size:14px; float:left; text-indent2:-999em; padding:0 0 0 20px; margin:3px 6px 0 0; }
+.reportTableElement .report_results_count {
+  background:url($asset_path_for+"/app_images/registration/gloss_shadow_light.png") repeat-x 0 center #EEE;
+  border: 1px solid #DDD;
+  border-bottom:none;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  color: #666;
+  font-size: 11px;
+  font-style: italic;
+  font-weight: normal;
+  margin: 0;
+  padding: 5px 4px 4px;
+}
+.reportTableElementHeader, .reportTableElementHeader h3, .reportTableElement .filtered_survey_actions li {
+  display: inline;
+  //
+}
+// Report Table
+.reportTable{
+  margin-bottom: 0;
+  tbody{
+    tr{
+      &:last-child{
+        td{
+          border-bottom: none;
+        }
+      }
+      td{
+        &:first-child{border-left: none;}
+        &:last-child{border-right: none;}
+      }
+    }
+  }
+}
+
+/* fullscreen report popup */
+.fullscreen-overlay {
+    top: 0;
+    left: 0;
+    bottom:0;
+    right:0;
+    background: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    z-index:99999;
+}
+.fullscreen-popup {
+    background:#FFF;
+    position:absolute;
+    top:20px; right:20px; bottom:20px; left:20px;
+    padding:20px;
+}
+.fullscreen-popup .fullscreen-close {
+    line-height:20px;
+    position:fixed;
+    z-index:99999;
+    top:20px;
+    font-weight:bold;
+    right:20px;
+    width:20px;
+    height:20px;
+    display:block;
+    cursor:pointer;
+    color:#999;
+    text-align:center;
+}
+.fullscreen-popup .fullscreen-close:hover { color:#c00; }

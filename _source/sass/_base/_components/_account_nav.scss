@@ -1,0 +1,321 @@
+// 1. Settings
+// 2. Default Style
+// 3. Mobile Style
+// 4. Page Manager Adjustments
+
+
+// 1. Settings
+$account-nav-bottom: false !default;
+$account-nav-mobile-bottom: true !default;
+$account-nav-background: #23282b !default;
+$account-nav-color: #FFF !default;
+$account-nav-secondary-color: $account-nav-color !default;
+$account-nav-secondary-color-hover: darken($account-nav-color, 20%) !default;
+$account-nav-font-size: 14px !default;
+$account-nav-height-desktop: 40px !default;
+$account-nav-height-mobile: 44px !default;
+$account-nav-z-index: 399 !default;
+$account-nav-icon-width: 32px !default;
+
+// External Variables
+$desktop-padding: 15px !default; // config.scss
+$mobile-padding: 10px !default; // config.scss
+$page-manager-width: 60px !default; // config.scss
+$content-area-width: 1000px !default; // config.scss
+$content-area-padding: ($desktop-padding * 2) !default; // config.scss
+$content-area-padding-mobile: ($mobile-padding * 2) !default; // config.scss
+$asset-path-for: "https://app-assets1.sportngin.com" !default; // variables.scss
+
+
+@mixin account-nav-location {
+  // Account Nav Location Bottom
+  @if $account-nav-bottom == true {
+    body{
+      position: relative;
+      padding-bottom: $account-nav-height-desktop;
+      &.noUserBar { padding-bottom: 0; }
+    }
+    #accountNav{
+      bottom: 0;
+    }
+  } @else {
+    body{
+      padding-top: $account-nav-height-desktop;
+      &.noUserBar { padding-top: 0; }
+    }
+    #accountNav{
+      top: 0;
+      .has-mobile-nav &{
+        // position relative to avoid conflicts with the smart app banner (adds html margin)
+        position: relative;
+      }
+    }
+  }
+}
+@mixin account-nav-location-mobile {
+  // Account Nav Location Bottom
+  @if $account-nav-mobile-bottom == true {
+    &.has-mobile-nav body{
+      position: relative;
+      padding-top: 0;
+      padding-bottom: $account-nav-height-mobile;
+      &.noUserBar { padding-bottom: 0; }
+    }
+    &.has-mobile-nav #accountNav{
+      bottom: 0;
+      top: auto;
+      position: absolute;
+    }
+  } @else {
+    &.has-mobile-nav body{
+      padding-top: $account-nav-height-mobile;
+    }
+    &.has-mobile-nav #accountNav {
+      top: auto;
+    }
+    &.slide-nav-open .theme-nav-style-slide {
+      top: $account-nav-height-mobile;
+      height: calc(100vh - #{$account-nav-height-mobile});
+    }
+  }
+}
+
+
+// 2. Default Style
+html:not(.has-se-bar) {
+  @include account-nav-location;
+}
+
+#accountNav {
+  position: absolute;
+  padding: 0 calc(50% - #{$content-area-width / 2});
+  width: 100%;
+  z-index: $account-nav-z-index;
+  left: 0;
+  height: $account-nav-height-desktop;
+  line-height: 1;
+  text-align: left;
+  list-style: none;
+  overflow: hidden;
+  white-space: nowrap;
+  background: $account-nav-background;
+
+  // admin nav item visual style
+  a {
+    display: block;
+    height: 100%;
+    color: $account-nav-color;
+    font-size: 14px;
+    font-weight: 300;
+    text-decoration: none;
+    margin: 0;
+    padding: 0 8px;
+  }
+
+  > li {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: $account-nav-height-desktop;
+    height: $account-nav-height-desktop;
+
+    // user dropdown button
+    &.home {
+      // drodown arrow
+      span.right {
+        margin-left: .3em;
+        display: inline-block;
+        font: normal normal normal $account-nav-font-size/1 FontAwesome;
+        @include font-smoothing;
+        transform: translate(0, 0);
+        &:before { content: "\f107"; }
+      }
+    }
+    // Icons (like messages)
+    a img { vertical-align: middle; }
+  }
+
+  .nginLogo {
+    float: right;
+    margin: 0 $content-area-padding;
+    a {
+      width: 120px;
+      background: url($asset-path-for+"/logo_images/logo.svg") right center no-repeat;
+      text-indent: -20000px;
+      background-size: 100%;
+    }
+  }
+
+  // small links like "create account"
+  .secondary a {
+    font-weight: normal;
+    font-size: 10px;
+    color: $account-nav-secondary-color;
+    &:hover { color: $account-nav-secondary-color-hover; }
+  }
+
+  // site logo link
+  .currentSite {
+    a {
+      display: block;
+      float: left;
+      // site icon link
+      &:first-child {
+        width: 20px;
+        //background: url($logoGraphicTiny) right center no-repeat;
+      }
+    }
+  }
+
+  // theme & site pickers -- override inline style :(
+  .local-dev-tool { float: right; line-height: $account-nav-height-desktop !important; }
+  .local-dev-tool ~ .nginLogo { display: none; }
+
+}
+
+// Notifications Menus
+.dashboard_nav .count,
+#accountNav .count {
+  background: #c00;
+  border: 1px inset rgba(201, 201, 201, 0.5);
+  color: #eee;
+  float: right;
+  font: bold 10px $font-primary;
+  min-width: 1.5em;
+  padding: 0 2px;
+  text-align: center;
+  text-shadow: none;
+}
+
+#accountNav .count {
+  float: none;
+  position: relative;
+  margin-left: -10px;
+  top: -6px;
+}
+
+#user_tools_menu_callout .count { margin-top: 5px; }
+
+// Drop Down Menu
+#accountNav #user_tools_menu_callout,
+#user_sites ul,
+#tst_options ul,
+#help_and_updates ul { display: none; }
+#user_sites_menu { max-height: 500px; overflow: auto; }
+
+#user_sites a,
+#tst_options a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  text-indent: -999em;
+  width: $account-nav-icon-width;
+  &:after{
+    content: "";
+    width: 100%;
+    height: #{$account-nav-icon-width + ($account-nav-font-size/2)};
+  }
+}
+
+#user_sites a {
+  &:after{
+    background: url( $asset-path-for+"/app_images/link_icons.png") 8px -3231px no-repeat;
+  }
+}
+#tst_options a {
+  &:after{
+    background: url( $asset-path-for+"/app_images/link_icons.png") 8px -2308px no-repeat;
+  }
+}
+
+// HELP MENU (not sure where/how this displays)
+#help_and_updates a.new_help_and_updates:after,
+#help_and_updates_menu a.new_help_and_updates:after {
+  color: white;
+  padding: 0 2px 0 2px;
+  font-size: 8px;
+  content: 'NEW';
+  background: green;
+  border-radius: 2px;
+  vertical-align: top;
+  line-height: 12px;
+}
+#help_and_updates a.new_help_and_updates {
+  position: relative;
+  &:after {
+    position: absolute;
+    right: 0;
+    top: calc(50% - #{$account-nav-font-size});
+    transform: translateY(-50%);
+  }
+}
+#help_and_updates_menu {
+  img {
+    width: 12px;
+    height: 12px;
+  }
+  a.new_help_and_updates:after {
+    position: relative;
+    left: 3px;
+    display: inline;
+  }
+}
+
+// Inline-Manual
+#help_link a {
+  display: flex;
+  align-items: center;
+}
+#help_link .svg-help {
+  display: inline-block;
+  fill: currentColor;
+  height: 1.75em;
+  vertical-align: -.5em;
+}
+
+// 3. Mobile Style
+.has-mobile-nav {
+
+  #accountNav {
+    padding: 0 $content-area-padding-mobile;
+    height: $account-nav-height-mobile;
+    margin-top: -$account-nav-height-mobile;
+
+    > li {
+      height: $account-nav-height-mobile;
+      line-height: $account-nav-height-mobile;
+      display: none;
+    }
+
+    .home{
+      display: block;
+      float: right;
+    }
+    #login,
+    #logout {
+      display: inline-block;
+      float: right;
+      a {
+        border: none;
+        height: $account-nav-height-mobile;
+        line-height: $account-nav-height-mobile;
+      }
+    }
+  }
+}
+html:not(.has-se-bar) {
+  @include account-nav-location-mobile;
+}
+
+// 4. Page Manager Adjustments
+.page-manager-visible{
+  &.has-main-nav #accountNav{
+    padding: 0 calc(50% - #{($content-area-width + $page-manager-width) / 2});
+    width: calc(100% - #{$page-manager-width});
+    right: 0;
+    left: auto;
+  }
+  &.has-mobile-nav #accountNav{
+    padding-left: $page-manager-width + $content-area-padding-mobile;
+  }
+}

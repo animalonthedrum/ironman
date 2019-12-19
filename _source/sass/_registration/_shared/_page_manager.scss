@@ -1,0 +1,312 @@
+$page-manager-width: 60px;
+
+html.page-manager-visible {
+  .sn-pageManager { display: block; }
+}
+
+.sn-pageManager {
+  display: none;
+  position: fixed;
+  width: $page-manager-width;
+  height: 100%;
+  left: 0;
+  // top: $snAdminBarHeight;
+  background: #f1f3f4;
+  border-right: 1px solid #d5dadd;
+  top: 0px;
+  z-index: 499; //same as account nav dropdowns
+  // z-index: 13; // sits above side nav wrap
+  font-family: 'Open Sans', sans-serif;
+    // adjust sidebar items
+    // ideally admin toggle & admin nav links should be liquid
+    .adminToggle,
+    #adminNav,
+    .sn-sidebarItem {
+      border: 0px solid #D5DADD;
+      border-width: 0px 0px 1px 0px;
+    }
+    .adminToggle {
+      width: 100%;
+      display: block;
+      position: relative;
+      text-indent: -99999px;
+    }
+    .adminToggle,
+    #adminNav,
+    .sn-sidebarItem {
+      height: $page-manager-width + 10;
+    }
+    .sn-sidebarLink {
+      cursor: pointer;
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: transparent;
+      transition: background-color 400ms;
+    }
+    .active > .sn-sidebarLink {
+        background-color: #E5E7E8;
+    }
+    .goToAdmin {
+        background: none;
+        background: url('../images/admin_gear.svg') center 35% no-repeat;
+    }
+    #adminNav img {
+        display: none;
+    }
+    #adminNav {
+        background: url('../images/switch_off.svg') center 35% no-repeat;
+    }
+    .sn-edit-mode-disabled {
+        background: url($asset-path-for+'/app_images/pageManager/switch_off_disabled.png') center 35% no-repeat;
+        position: relative;
+        .sn-tooltip {
+            position: relative;
+            width: 200px;
+            font-size: 12px;
+            font-weight: 400;
+            background: #e03740;
+            color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 2px 1px rgba(0,0,0,.3);
+            left: 57px;
+            padding:10px;
+            text-align: center;
+            margin-top: 6px;
+            &::after {
+              content: "";
+              position: absolute;
+              width: 0;
+              height: 0;
+              border: 6px solid black;
+              border-color: #e03740 transparent transparent #e03740;
+              transform: rotate(-45deg);
+              box-shadow: -1px -1px 2px 0px rgba(0, 0, 0, 0.3);
+              left: -4px;
+              z-index: 0;
+              top: 23px;
+            }
+        }
+    }
+    .sn-togglePages {
+        background: url('../images/pages_icon.svg') center center no-repeat;
+    }
+    #adminNav a {
+      display: block;
+      overflow: hidden;
+      height: 60px;
+    }
+    .adminToggle:before,
+    #adminNav > a:before,
+    .sn-sidebarItem > a:before {
+      content: '';
+      text-align: center;
+      width: 100%;
+      font-size: 10px;
+      line-height:initial;
+      font-weight: 400;
+      color: #84929c;
+      text-indent: 0;
+      display: block;
+      position: absolute;
+      margin-top: 43px;
+    }
+    .adminToggle:before {
+      content: 'Admin';
+    }
+    #adminNav > a:before {
+      content: 'Edit Mode';
+    }
+    .sn-edit-mode-disabled {
+      opacity: .5;
+
+      > a:before {
+        content: 'Edit Mode';
+      }
+    }
+    .sn-structure.sn-sidebarItem > a:before {
+      content: 'Pages';
+    }
+    //sn-tabWrapper
+    .sn-tabWrapper {
+      opacity: 0;
+      top: 0px;
+      left: -200px;
+      position: absolute;
+      transition: all 500ms;
+      width: 200px;
+      height: 100%;
+      background: #F9FAFB;
+      z-index: -1;
+      box-shadow: 5px 0px 10px -5px rgba(50,50,50,.5);
+      overflow: auto;
+    }
+    .active .sn-tabWrapper {
+      opacity: 1;
+      left: 100%;
+      margin: 0 0 0 1px;
+    }
+    //sn-tabContainer
+    .sn-tabContainer {
+      display: none;
+      border-top: 1px solid #dedede;
+    }
+    //set initial tab settings
+    .sn-nav>li.sn-tab,
+    .sn-nav-tabs>li.sn-tab,
+    .sn-tab {
+      position: absolute;
+      width: 50%;
+      z-index: 1;
+    }
+    .sn-nav>li.sn-tab.active,
+    .sn-nav-tabs>li.sn-tab.active,
+    .sn-tab.active {
+      width: 100%;
+      z-index:0;
+    }
+    //title
+    .sn-title {
+      width:100%;
+      border-bottom: 5px solid transparent;
+      font-size: 14px;
+      font-weight: 300;
+      color: #394146;
+      padding-top: 10px;
+      text-align: center;
+    }
+    .sn-tab.active .sn-title {
+      width: 50%;
+      border-bottom: 5px solid #1997c8;
+    }
+    .sn-tab.two .sn-title {
+      margin-left: 100%;
+    }
+    .sn-tab.two.active .sn-title {
+      margin-left: 50%;
+    }
+
+    //sn-subtitle
+    .sn-subtitle {
+      text-transform: uppercase;
+      font-size: 12px;
+      padding-top: 20px;
+    }
+    .sn-subtitle, .sn-subtitle span {
+      display: block;
+      text-align: center;
+      font-size: 9px;
+      color: #808F98;
+      font-weight: 600;
+    }
+    .sn-subtitle span {
+      font-size: 16px;
+      text-transform: capitalize;
+    }
+    //Child Node Styles
+    .sn-pages {
+      padding:10px 20px 50px 20px;
+      ul {
+        padding: 0;
+        list-style-type: none;
+        position: relative;
+      }
+      li {
+        background-color: white;
+        background-repeat: no-repeat;
+        border: 1px solid #B9C1C6;
+        padding: 0 0 0 14px;
+        border-radius: 2px;
+        margin: 2px 0;
+        font-weight: 300;
+        font-size: 12px;
+        width: 100% !important;
+
+        a {
+          color: #394146;
+          cursor:move;
+
+          &:hover { text-decoration: none; }
+        }
+
+        p {
+          color: #394146;
+          min-height: 24px;
+          line-height: 1.5;
+          padding-top: 3px;
+          margin: 0;
+        }
+      }
+
+      // page statuses
+
+
+      @mixin page-status-icon($icon-width, $background-image) {
+        $icon-horizontal-spacing: 4px;
+        padding-right: $icon-width + ($icon-horizontal-spacing * 2);
+
+        &:after {
+          right: $icon-horizontal-spacing;
+          width: $icon-width;
+          background-image: url($background-image);
+        }
+      }
+
+      .private { @include page-status-icon(15px, $asset-path-for+'/app_images/pageManager/private.png'); }
+      .disabled { @include page-status-icon(15px, $asset-path-for+'/app_images/pageManager/disabled.png'); }
+      //.paywalled { @include page-status-icon(32px, $paywallImage); }
+
+      .private,
+      .disabled,
+      .paywalled {
+        position: relative;
+
+        &:after {
+          $icon-height: 12px;
+          content: '';
+          position: absolute;
+          height: $icon-height;
+          top: 50%;
+          margin-top: -$icon-height / 2; // vertical center
+          display: inline-block;
+          background-size: auto 100%;
+          background-repeat: no-repeat;
+        }
+      }
+
+      .disabled a, .private a { color: #808F98; }
+
+      .drag {
+        cursor: move;
+        background-image: url($asset-path-for+'/app_images/pageManager/drag.png');
+        background-position: 2px center;
+        background-repeat: no-repeat;
+      }
+    }
+}
+.sn-pageManager:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  top: 0;
+  z-index: -1;
+}
+//editmode styles
+.edit_mode {
+  .sn-pageManager .cmsNavButton {
+  padding:0;
+  margin: 20px 0px 0px;
+    a {
+        background: none;
+        text-align:center;
+        display:block;
+        cursor: pointer;
+    }
+  }
+  #adminNav {
+      background: url('../images/switch_on.svg') center 35% no-repeat;
+      background-color: #E5E7E8;
+  }
+}

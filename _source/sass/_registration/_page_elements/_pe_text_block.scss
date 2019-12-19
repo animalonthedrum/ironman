@@ -1,0 +1,80 @@
+// Text Block Specific Styles
+.textBlockElement{
+  > h3{
+    //padding: 15px;
+  }
+}
+.pageEl{
+  .textBlockElement {
+    > h3{
+      padding: 15px 15px 15px 0px;
+    }
+    table {
+      border-style: solid;
+      border-color: #999;
+  
+      caption {
+        text-align: center;
+        font-size: 14px;
+        padding: 5px;
+        font-weight: bold;
+      }
+  
+      td, th {
+        padding: 2px 12px;
+      }
+  
+      &:not([border]) {
+        border-style: none;
+        border-spacing: 2px;
+        border-collapse: separate;
+  
+        th {
+          @include table-th;
+          @include table-th-text;   
+        }
+  
+        td {
+          font-size: 12px;
+          padding: $table-cell-padding-vertical $table-cell-padding-horizontal;
+          height: $table-row-min-height; // Acts as min-height on table cells
+          background: #eee;
+        }
+      }
+  
+      &[align="center"] {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  
+    blockquote {
+      font-size: 1.5em;
+      padding: 1em;
+      float: none;
+      width: 75%;
+      margin: auto;
+    }
+  
+    .leftTextImage,
+    .rightTextImage {
+      br {
+        display: none;
+      }
+    }
+  
+    p {
+      img {
+        height: auto !important;
+        max-width: 100%;
+      }
+    }
+  
+    .text {
+      > ol, > ul {
+        list-style-position: inside;
+        margin-left: 0;
+      }
+    }
+  }
+}

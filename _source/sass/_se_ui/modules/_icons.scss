@@ -1,0 +1,60 @@
+// # Icons
+// SVG icon styles
+
+.pl-icon,
+%pl-icon {
+  display: inline-block;
+  fill: currentColor;
+  height: 1em;
+  margin: 0 .2em -.09em; // Fixes issues with vertical align when next to text
+  transform: scale(1.4);
+  width: 1em;
+}
+.pl-icon--small {
+  @extend %pl-icon;
+  margin-bottom: -.14em;
+  transform: scale(1);
+}
+.pl-icon--right {
+  @extend %pl-icon;
+  margin-right: 0;
+}
+.pl-icon--left {
+  @extend %pl-icon;
+  margin-left: 0;
+}
+.pl-icon--shrink {
+  @extend %pl-icon;
+  margin-left: 0;
+  margin-right: 0;
+}
+.pl-icon--light {
+  @extend %pl-icon;
+  opacity: .7;
+}
+.pl-icon--disabled {
+  @extend %pl-icon;
+  opacity: .3;
+}
+.pl-icon--color-highlight {
+  @extend %pl-icon;
+  fill: $color-highlight;
+}
+.pl-icon--color-success {
+  @extend %pl-icon;
+  fill: $color-success;
+}
+.pl-icon--color-warning {
+  @extend %pl-icon;
+  fill: $color-warn;
+}
+.pl-icon--color-error {
+  @extend %pl-icon;
+  fill: $color-alert;
+
+  &.svg-wrench { // tweak this one because solid red looks jarring
+    fill: none;
+    stroke: $color-alert;
+    stroke-width: .5px;
+  }
+}

@@ -1,0 +1,93 @@
+// # Side nav
+// Vertical navigation presented in an off-screen menu for small screens and
+// shown on the left side of the screen for large screens.
+
+// The side-nav background color fills at least the full document/body height
+// Takes up more height if its contents are taller than the body
+.pl-side-nav {
+  background-clip: padding-box;
+  background-color: $gray-xlight;
+  border-right: 1px solid $color-content-xxlight;
+  position: relative;
+  width: $side-nav-width;
+
+  // Always show nav if screen is not small
+  @include media-small {
+    &.pl-is-open,
+    &:not(.pl-is-open) {
+      display: block !important;
+    }
+  }
+}
+
+// These classes only apply to full scrolling pages. This may be temporary.
+.pl-has-side-nav .pl-side-nav {
+  min-height: 100%;
+  padding-top: $ngin-bar-height;
+  position: absolute;
+  top: 0;
+  z-index: 1; // Position below ngin-bar
+
+  &.pl-is-open {
+    display: block;
+  }
+  &:not(.pl-is-open) {
+    display: none;
+  }
+}
+
+.pl-side-nav__toggle {
+  @include media-small {
+    display: none;
+  }
+}
+
+.pl-side-nav__logo-container {
+  background-color: #fff;
+  border-radius: 999px;
+  display: block;
+  height: 7.1429em; // 100px / 14px
+  margin: auto;
+  padding: 1.4286em; // 20px / 14px
+  width: 7.1429em; // 100px / 14px
+}
+
+.pl-side-nav__logo {
+  display: block;
+  width: 100%;
+}
+
+.pl-side-nav__title {
+  @include font-medium;
+  margin-top: 12px;
+  text-align: center;
+}
+
+.pl-side-nav__description {
+  color: $color-content-light;
+  text-align: center;
+}
+
+.pl-side-nav__section,
+%pl-side-nav__section {
+  padding-bottom: 1.4286em; // 20px / 14px
+  padding-top: 1.4286em; // 20px / 14px
+
+  & + & {
+    border-top: solid 1px $color-content-xxlight;
+  }
+}
+
+.pl-side-nav__section--padded {
+  @extend %pl-side-nav__section;
+  padding-left: 1.4286em; // 20px / 14px
+  padding-right: 1.4286em; // 20px / 14px
+}
+
+.pl-side-nav__section-heading {
+  @include font-small;
+  font-weight: $font-semibold;
+  margin-bottom: .5714em; // 8px / 14px
+  padding-left: 1.7143em; // 24px / 14px
+  padding-right: 1.7143em; // 24px / 14px
+}

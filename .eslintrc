@@ -1,0 +1,42 @@
+{
+  "rules": {
+    "semi": ["error", "always"],
+    "indent": ["error", 2],
+    "no-mixed-spaces-and-tabs": ["error", "smart-tabs"],
+    "no-multiple-empty-lines": ["error", { "max": 2 }],
+    "no-trailing-spaces": ["error", { "skipBlankLines": false }],
+    "max-lines": ["off", {"max": 500, "skipBlankLines": true, "skipComments": true}],
+    "spaced-comment": ["error", "always"],
+    "quotes": ["error", "single", {"avoidEscape": true} ],
+    "eqeqeq": ["error", "smart"],
+    "no-redeclare": ["error"],
+    "curly": ["error", "multi-line"],
+    "complexity": ["error", { "max": 20 }],
+    "space-infix-ops": "error",
+    "space-in-parens": ["error", "never"],
+    "space-before-function-paren": ["error", "never"],
+    "space-before-blocks": ["error", { "functions": "never", "keywords": "never", "classes": "never" }],
+    "one-var-declaration-per-line": ["error", "always"],
+    "nonblock-statement-body-position": ["error", "beside"],
+    "no-unneeded-ternary": ["error", { "defaultAssignment": false }],
+    "object-curly-newline": ["error", { "multiline": true }],
+    "brace-style": ["error", "stroustrup", { "allowSingleLine": true }],
+    "block-spacing": ["error", "always"],
+    "dot-location": ["error", "property"],
+    "no-console": ["off", { "allow": ["log", "warn", "error"] }]
+  },
+  "extends": ["eslint:recommended"],
+  "env": {
+    "browser": true,
+    "jquery": true
+  },
+  "globals": {
+    "NGIN": true,
+    "_": true,
+    "FUI": true,
+    "googletag": true,
+    "google": true,
+    "Sortable": true,
+    "Ajax": true
+  }
+}

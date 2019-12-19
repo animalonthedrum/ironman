@@ -1,0 +1,254 @@
+//
+html{
+  background: none !important;
+}
+body:not(.logged_in){
+  background: transparent;
+  &#survey_steps {
+    #tstRegistrationHeader, #surveyNameHeader{
+      h1{
+        max-width: 85%;
+      }
+    }
+  }
+}
+#survey_steps {
+  #surveyStatus{
+    a{
+      display: block;
+      margin: auto;
+      width: 100%;
+      padding: 5px;
+      &.goToLink:before{
+        position: relative;
+        padding-right: 8px;
+        color: #666;
+      }
+    }
+  }
+  form{
+    .pageElement{
+      padding: 0;
+    }
+  }
+  .pageEl{
+    margin-bottom: 1em;
+  }
+  .pageElement.textBlockElement{
+    padding: 15px;
+  }
+  .sn-reg-logo{
+    position: relative;
+    width: 100%;
+    display: inline-block;
+    max-width: 15%;
+    float: left;
+    min-height: 65px;
+    padding: 28px 20px 20px 20px;
+    img{
+      display: block;
+      max-height: 65px;
+      max-width: 65px;
+      margin: auto;
+      width: 100%;
+    }
+  }
+  .siteContainer{
+    #who_are_you_registering_page{
+      .textBlockElement{
+        > h3{
+          //padding-left: 15px;
+          padding: 0px;
+        }
+      }
+    }
+    #PersonaSelect, .miniPersona{
+      max-width: $maxWidth;
+      width: 100%;
+    }
+    #displayBodyHeader{
+      display: block;
+      padding: 30px 15px 30px 15px;
+      border-bottom: 1px solid $borderColor;
+      margin-bottom: 15px;
+      font-size: 22px;
+      span{
+        max-width: $maxWidth;
+      }
+    }
+    #surveyNameHeader{
+      text-align: left;
+      padding-left: 15%;
+      background: $lightGrey;
+      h1{
+
+      }
+    }
+  }
+  #form_div{
+    .layoutContainer:last-child{
+      content:'last child';
+      display: block;
+      // margin: auto;
+    }
+  }
+  #tstRegistrationHeader{
+    height: auto;
+    h1{
+      font:normal 24px/1.5em $fontOne;
+      padding: 0px;
+      text-align: left;
+      width: 100%;
+      max-width: 50%;
+      display: inline-block;
+      height: auto;
+      padding: 20px 15px 5px 15px;
+      opacity: 0;
+      transition: 300ms opacity;
+      &.sn-show{
+        opacity: 1;
+      }
+    }
+    a.adminToggle {
+      width: 100%;
+      position: absolute;
+      right: 0;
+      top: 20px;
+      right: 20px;
+      text-align: right;
+    }
+  }
+}
+#adminNav {
+  position: absolute;
+  right: 0;
+  top: 60px;
+  right: 20px;
+}
+.sn-media-slider{
+  .slider-pagination{
+    //
+    .paging-item{
+
+      &.flex-active{
+
+      }
+    }
+  }
+  .slider{
+    .slide-title{
+      font: normal 2em/1.5em $fontOne;
+      margin: 1% 0px;
+    }
+    .slide-description{
+      font: normal 1em/1.5em $fontOne;
+      margin: 1% 0px;
+    }
+  }
+}
+%iconLink{
+  display: inline-block;
+  content: '';
+  width: 20px;
+  height: 15px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.60;
+}
+.icon{
+  &.editLink, &.deleteLink{
+    background-image: none;
+    padding-left: 5px;
+    font:normal 14px/1em $fontOne;
+    &:before{
+      @extend %iconLink;
+    }
+    &:hover{
+      color: $link-color !important;
+    }
+  }
+  &.editLink{
+    &:before{
+      background-image: url('../images/se-ui/system-sprite/pencil.svg');
+    }
+  }
+  &.deleteLink{
+    &:before{
+      background-image: url('../images/se-ui/system-sprite/times-circle.svg');
+    }
+  }
+}
+@media only screen and (max-width: 1024px) {
+  #survey_steps {
+    .sn-reg-logo{
+      padding: 25px 5px 10px 15px;
+      max-width: 20%;
+    }
+    .adminToggle{
+      display: none;
+    }
+    #adminNav {
+      display: none;
+    }
+    .siteContainer{
+      #tstRegistrationHeader, #surveyNameHeader{
+        h1{
+          max-width: 80%;
+        }
+      }
+      #surveyNameHeader{
+        padding-left: 20%;
+      }
+      #pageContentContainer{
+        #panelTwo{
+          width: 100%;
+          max-width: 100%;
+        }
+        #panelOne{
+          display: none !important;
+        }
+      }
+    }
+    #accountNav{
+      display: none;
+    }
+  }
+  body:not(.logged_in){
+    background: transparent;
+    &#survey_steps {
+      #tstRegistrationHeader, #surveyNameHeader{
+        h1{
+          max-width: 80%;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  #survey_steps {
+    .siteContainer{
+      #displayBodyHeader{
+        padding: 15px;
+      }
+      .pageElement {
+       //padding: 10px 0px;
+      }
+      #tstRegistrationHeader, #surveyNameHeader{
+        h1{
+          max-width: 80%;
+        }
+      }
+      #tstRegistrationHeader{
+        h1{
+          font-size: 20px;
+        }
+      }
+      #surveyNameHeader{
+        h1{
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+/* News Article View */
+// 1. News Article
+// 2. Page layout padding/structure
+// 3. Tags
+
+
+// 1. News Article
+.newsItemElement {
+  .titleText{margin-bottom: rem(15);}
+  .authorDetails {
+    font-size: em(12);
+    margin:15px 0;
+  }
+  .teaserText {
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    color:$bodyCopyColorTwo;
+  }
+  .imageOriginal {
+    display: block;
+    width: 100%;
+    border: $borderWidth solid $borderColor;
+    margin-bottom: 1rem;
+  }
+  .newsArticleThumbnail{
+    float: left;
+    margin: .35em 1em 0 0;
+    border: $borderWidth solid $borderColor;
+    height: 4em; // Double the "titleText" font-size
+  }
+}
+
+// 2. Page layout padding/structure
+.newsPage .yieldPageContent{
+  padding-top: $bootstrap-padding-md * 2px !important;
+}
+@media only screen and (max-width: 768px){
+  .newsPage .yieldPageContent{
+    padding-top: $bootstrap-padding-sm * 2px !important;
+  }
+}
+
+// 3. Tags
+.newsTags {
+  font-size: .75rem;
+}

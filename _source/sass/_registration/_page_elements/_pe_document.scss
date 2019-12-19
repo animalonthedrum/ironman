@@ -1,0 +1,132 @@
+/* Document Page Element */
+// 1. Element Styling
+// 2. Document Icons
+
+// 1. Element Styling
+.documentElement {
+  h3 {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin: 0 0 1em 0;
+    padding: 15px 0 0 60px;
+    font-family: $fontTwo;
+    font-size: rem(16);
+    font-weight: 700;
+    background-repeat: no-repeat;
+    background-size: 40px;
+    background-position: left center;
+    line-height: 1.2;
+    text-transform: none;
+    &.iconSizeXS{
+      background-size: 16px 16px;
+      min-height: 16px;
+      padding-left: 22px;
+      padding-top: 0;
+    }
+    &.iconSizeS{
+      background-size: 24px 24px;
+      min-height: 24px;
+      padding-left: 30px;
+      padding-top: 0;
+    }
+    &.iconSizeM{
+      background-size: 32px 32px;
+      min-height: 32px;
+      padding-left: 40px;
+      padding-top: 0;
+    }
+    &.iconSizeL{
+      background-size: 48px 48px;
+      min-height: 48px;
+      padding-left: 56px;
+      padding-top: 0;
+    }
+    &.iconSizeXL{
+      background-size: 60px 60px;
+      min-height: 60px;
+      padding-left: 68px;
+      padding-top: 0;
+    }
+  }
+}
+
+// 2. Document Icons
+.pdf{
+  background-image:  url($asset_path_for+"/app_images/docIconPdf.svg");
+}
+
+.word{
+  background-image:  url($asset_path_for+"/app_images/docIconWord.svg");
+}
+
+.excel{
+  background-image:  url($asset_path_for+"/app_images/docIconExcel.svg");
+}
+
+.powerpoint{
+  background-image:  url($asset_path_for+"/app_images/docIconPpt.svg");
+}
+
+.iconText{
+  background-image:  url($asset_path_for+"/app_images/docIconText.svg");
+}
+
+.imageBmp{
+  background-image:  url($asset_path_for+"/app_images/docIconBmp.svg");
+}
+
+.imageEps{
+  background-image:  url($asset_path_for+"/app_images/docIconEps.svg");
+}
+
+.imageGif{
+  background-image:  url($asset_path_for+"/app_images/docIconGif.svg");
+}
+
+.imageJpg{
+  background-image:  url($asset_path_for+"/app_images/docIconJpg.svg");
+}
+
+.imagePng{
+  background-image:  url($asset_path_for+"/app_images/docIconPng.svg");
+}
+
+.imageTif{
+  background-image:  url($asset_path_for+"/app_images/docIconTif.svg");
+}
+
+.videoAvi{
+  background-image:  url($asset_path_for+"/app_images/docIconAvi.svg");
+}
+
+.videoMov{
+  background-image:  url($asset_path_for+"/app_images/docIconMov.svg");
+}
+
+.videoMpg{
+  background-image:  url($asset_path_for+"/app_images/docIconMpg.svg");
+}
+
+.iconCsv{
+  background-image:  url($asset_path_for+"/app_images/docIconCsv.svg");
+}
+
+.audioMp3{
+  background-image:  url($asset_path_for+"/app_images/docIconMp3.svg");
+}
+
+.audioWav{
+  background-image:  url($asset_path_for+"/app_images/docIconWav.svg");
+}
+
+.zip{
+  background-image:  url($asset_path_for+"/app_images/docIconZip.svg");
+}
+
+.generic{
+  background-image:  url($asset_path_for+"/app_images/docIconGeneric.svg");
+}

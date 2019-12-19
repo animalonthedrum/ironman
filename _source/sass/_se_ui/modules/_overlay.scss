@@ -1,0 +1,85 @@
+// # Overlay
+// Darkens and blurs page content while a modal is open
+
+$backdrop-filter: backdrop-filter; // hack to suppress warning
+
+.pl-overlay {
+  -webkit-backface-visibility: hidden;
+  #{$backdrop-filter}: blur(2px); // Not well supported, but degrades gracefully
+  align-items: center;
+  animation: ng-dialog-fadein $duration;
+  background-color: rgba(0, 0, 0, .7);
+  bottom: 0;
+  display: flex;
+  left: 0;
+  overflow: auto;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: $z-overlay;
+}
+
+.pl-overlay__content {
+  margin: auto;
+}
+
+.pl-image-preview-modal {
+  padding: 5%;
+}
+
+.pl-image-preview-modal__image {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+  display: block;
+  margin: auto;
+  max-height: calc(100vh - 30rem);
+  max-width: 100%;
+}
+
+body.ngdialog-open {
+  overflow: hidden;
+}
+
+@at-root {
+
+  @-webkit-keyframes ng-dialog-fadeout {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes ng-dialog-fadeout {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      display: none;
+      opacity: 0;
+    }
+  }
+
+  @-webkit-keyframes ng-dialog-fadein {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ng-dialog-fadein {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+.ngdialog.ngdialog-closing .pl-overlay {
+  -webkit-backface-visibility: hidden;
+  animation: ng-dialog-fadeout $duration forwards;
+}

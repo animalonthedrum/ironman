@@ -1,0 +1,68 @@
+// Page / Element Bottom Options
+.pageOptions,
+.extendedOptions {
+  @include line-pattern-border($pos:top);
+  overflow: hidden;
+  font-size: 12px;
+  padding-top: 12px;
+  text-transform: uppercase;
+
+  li {
+    list-style: none;
+    float: left;
+    white-space: nowrap;
+    line-height: 2em;
+
+    &:not(:first-child):before {
+      content: "";
+      display: inline-block;
+      vertical-align: middle;
+      height: 2em;
+      width: 1em;
+      margin-left: 1em;
+      border-left: 2px solid $bodyCopyColorThree;
+      transform: skewX(-22deg);
+    }
+  }
+
+  a {
+    color: $bodyCopyColorTwo;
+    display: inline-block;
+
+    > img { vertical-align: middle !important; } // overrid AddThis module
+
+    &:hover { color: $bodyCopyColorOne; }
+  }
+}
+
+//Sharing icons
+.sn-share-icons{
+  display:block;
+  color:$bodyCopyColorTwo;
+  font-size:0.875rem;
+  div{
+    display:inline-block;
+    padding:0 2px;
+    vertical-align:middle
+  }
+  .sn-share-text{
+    position:relative;
+    padding-left:17px;
+    transform: translate(0,-2px);
+    &:before{
+      content: "\f1e0";
+      position: absolute;
+      font-family: FontAwesome;
+      font-size: 0.875rem;
+      top: 0;
+      left: 0;
+    }
+  }
+}
+.sharingOptions{
+  width:100%;
+  text-align:center;
+  margin-top:15px;
+  padding:25px 0 10px 0;
+  border-top:$borderWidth solid $borderColor;
+}

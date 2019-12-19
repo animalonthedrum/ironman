@@ -1,0 +1,76 @@
+// Site Search (Desktop)
+$nav-title-bar-height: 40px !default;
+$nav-title-bar-height-fixed: .01px !default;
+$nav-title-bar-band-background-color: seashell !default;
+$nav-title-bar-text-color: $gray-dk !default;
+$nav-title-bar-font-family: null !default;
+$nav-title-bar-font-size: 14px !default;
+$nav-title-bar-line-height: 1 !default;
+$nav-title-bar-text-case: uppercase !default;
+$nav-title-bar-text-weight: 700 !default;
+
+// External Variables
+// $content-area-width
+// $transition-linear
+// $site-logo-offset
+// $site-logo-offset-fixed
+
+
+// Basic Structure
+.theme-search-wrapper{ // Hides Title Bar while navigation is loading
+  display: none;
+  .has-mobile-nav &,
+  .has-main-nav &{
+    display: block;
+  }
+}
+.has-main-nav{
+  .theme-search-wrapper{
+    background-color: $nav-title-bar-band-background-color;
+    .theme-search-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: $nav-title-bar-height;
+      transition: height $transition-linear;
+      @include content-area-width;
+      @include content-container-padding;
+    }
+  }
+  .site-tagline-text{
+    color: $nav-title-bar-text-color;
+    font-family: $nav-title-bar-font-family;
+    font-size: $nav-title-bar-font-size;
+    text-transform: $nav-title-bar-text-case;
+    font-weight: $nav-title-bar-text-weight;
+    display: inline-block;
+    line-height: $nav-title-bar-line-height;
+  }
+}
+
+// Basic Modifiers
+.has-main-nav{
+  .nav-fixed .theme-search-wrapper .theme-search-bar{
+    height: $nav-title-bar-height-fixed;
+  }
+  .has-site-logo .theme-search-wrapper .theme-search-bar{
+    padding-left: $site-logo-offset;
+    transition: height $transition-linear, padding $transition-linear;
+  }
+  .has-site-logo.nav-fixed .theme-search-wrapper .theme-search-bar{
+    padding-left: $site-logo-offset-fixed;
+  }
+}
+
+.has-mobile-nav {
+  .site-tagline-text{
+    display: none;
+  }
+}
+
+// Global Title Nav
+// Edit mode UI
+.custom-title-bar-extra{
+  @include edit_ui_element($padding: -5px);
+  &:empty{ display: none; }
+}

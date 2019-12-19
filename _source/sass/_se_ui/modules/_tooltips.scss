@@ -1,0 +1,153 @@
+// # Tooltips
+
+$pointer-side: 12px;
+$pointer-offset: $pointer-side / 2;
+$pointer-height: hypotenuse($pointer-side) / 2;
+
+.pl-tooltip,
+%tooltip {
+  background-color: $gray;
+  border-radius: 4px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, .08);
+  color: #fff;
+  cursor: pointer;
+  display: none;
+  margin-top: $pointer-height;
+  padding: 8px 12px;
+  position: absolute;
+  z-index: $z-tooltip;
+  // fit-content has no IE support and sass lint disallows duplicate properties
+  @each $val in (224px, fit-content) {
+    max-width: $val;
+  }
+  &.pl-is-visible {
+    display: block;
+  }
+}
+
+.pl-tooltip__pointer {
+  background-color: inherit;
+  height: $pointer-side;
+  left: 50%;
+  margin-left: -$pointer-offset;
+  position: absolute;
+  top: -$pointer-offset;
+  transform: rotate(45deg);
+  width: $pointer-side;
+}
+
+// Allows us to set width of tooltip to 100%
+.pl-tooltip__container {
+  position: relative;
+}
+
+.pl-tooltip__image {
+  color: #000;
+  display: block;
+  margin: .5em auto;
+  svg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+  }
+}
+
+
+// ## Different tooltip colors
+
+.pl-tooltip--success {
+  @extend %tooltip;
+  background: $color-success;
+}
+
+.pl-tooltip--warn {
+  @extend %tooltip;
+  background: $color-warn;
+}
+
+.pl-tooltip--alert {
+  @extend %tooltip;
+  background: $color-alert;
+}
+
+
+// ## Tooltip size and position variations
+
+.pl-tooltip--float-right {
+  @extend %tooltip;
+  max-width: 100%;
+  padding: $layout-spacing-medium;
+  right: -$pointer-offset;
+  text-align: center;
+  @include media-small {
+    padding: $layout-spacing-medium $layout-spacing-large;
+  }
+  .pl-tooltip__pointer {
+    left: auto;
+    right: $pointer-offset;
+  }
+}
+
+.pl-tooltip--above {
+  @extend %tooltip;
+  margin-bottom: $pointer-height;
+  margin-top: 0;
+  transform: translatey(calc(-100% - #{ceil($pointer-height)}));
+  .pl-tooltip__pointer {
+    bottom: -$pointer-offset;
+    top: auto;
+  }
+}
+
+// When used with Tether positioning
+.pl-tooltip.tether-enabled {
+  max-width: 22rem; // 308px / 14px
+
+  // Horizontally centered pointer
+  &.tether-element-attached-bottom {
+    margin: 0 0 $pointer-height;
+    .pl-tooltip__pointer {
+      bottom: -$pointer-offset;
+      top: auto;
+    }
+  }
+  &.tether-element-attached-top {
+    margin: $pointer-height 0 0;.pl-tooltip__pointer {
+      bottom: auto;
+      top: -$pointer-offset;
+    }
+  }
+
+  // Corner positioned pointer
+  &.tether-element-attached-right .pl-tooltip__pointer {
+    left: auto;
+    right: $pointer-offset;
+  }
+  &.tether-element-attached-left .pl-tooltip__pointer {
+    left: $pointer-offset;
+    right: auto;
+  }
+
+  // Vertically centered pointer
+  &.tether-element-attached-middle {
+    &.tether-element-attached-right .pl-tooltip__pointer {
+      left: auto;
+      right: -$pointer-offset;
+    }
+    &.tether-element-attached-left .pl-tooltip__pointer {
+      left: -$pointer-offset;
+      right: auto;
+    }
+  }
+
+  // Pinned (hide pointer)
+  &.tether-pinned  .pl-tooltip__pointer {
+    display: none;
+  }
+
+  // Out Of Bounds (hide)
+  &.tether-out-of-bounds {
+    display: none !important; // override inline style
+  }
+}

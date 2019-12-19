@@ -1,0 +1,9 @@
+// These paths are setup to work when deployed to our S3 buckets.
+// We have also modified SNAP to route the `latest` url path
+// to the appropriate files when serving locally with `snap serve`.
+
+// NOTE: If you use the `inline-image` compass helper, don't use these variables.
+//       Instead use the full path, like `inline-image('themes/assets/fonts/img.svg')`.
+
+$shared-image-path: "../images/se-ui";
+$shared-font-path: "../../assets/latest/fonts";

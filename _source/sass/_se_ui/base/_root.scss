@@ -1,0 +1,39 @@
+// # Root
+// Elements near the document root
+
+
+// ## Wildcard
+// `box-sizing: inherit` allows descendant elements to respect box-sizing set
+// on their ancestors. Borrowed from https://goo.gl/PJKtjM
+* {
+  box-sizing: inherit;
+  color: inherit;
+  text-decoration: inherit;
+}
+
+
+// ## Document root
+html {
+  background: #fff;
+  box-sizing: border-box;
+  color: $color-content;
+  font-family: $font-default;
+  font-size: 1em;
+  height: 100%; // Allows side-nav to fill full height of document
+  line-height: $font-leading-body;
+
+  @media (min-width: $media-small) {
+    font-size: .875em; // 14px
+  }
+  &.pl-has-side-nav {
+    @media (min-width: $media-small + $side-nav-width) {
+      font-size: .875em; // 14px
+    }
+  }
+}
+
+// Allows side-nav to fill full height of document
+body {
+  min-height: 100%;
+  position: relative;
+}

@@ -1,0 +1,112 @@
+$pages-hidden-in-user-mode: null !default;
+
+// General Navigation Layout
+.has-main-nav{
+  .topNav{
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    &.nav-fixed{
+      position: fixed;
+      top: 0;
+    }
+  }
+  &.page-manager-visible{
+    .topNav{
+      margin-left: $page-manager-width;
+    }
+  }
+}
+
+#topNavPlaceholder{
+  transition: height $transition-linear;
+  // No Sub Nav
+  .has-main-nav &{
+    height: $nav-title-bar-height + $main-nav-height;
+    background-color: $main-nav-band-background-color;
+  }
+  // No Sub Nav Fixed
+  .has-main-nav.nav-fixed &{
+    height: $nav-title-bar-height-fixed + $main-nav-height-fixed;
+  }
+  // With Sub Nav
+  .has-main-nav.has-sub-nav &{
+    height: $nav-title-bar-height + $main-nav-height + $sub-nav-height;
+    background-color: $sub-nav-band-background-color;
+  }
+  // With Sub Nav Fixed
+  .has-main-nav.has-sub-nav.nav-fixed &{
+    height: $nav-title-bar-height-fixed + $main-nav-height-fixed + $sub-nav-height-fixed;
+  }
+  @if ($sub-nav-hide-on-home == true){
+    .has-main-nav.has-sub-nav .home.user_mode & {
+      height: $nav-title-bar-height + $main-nav-height;
+      background-color: $main-nav-band-background-color;
+    }
+    .has-main-nav.has-sub-nav.nav-fixed .home.user_mode & {
+      height: $nav-title-bar-height-fixed + $main-nav-height-fixed;
+    }
+  }
+}
+
+
+.has-main-nav.nav-fixed{
+  .theme-main-nav .theme-nav{
+    line-height: $main-nav-height-fixed;
+  }
+  .theme-sub-nav .theme-nav{
+    line-height: $sub-nav-height-fixed;
+  }
+  .theme-search-wrapper .theme-search-bar{
+    height: $nav-title-bar-height-fixed;
+  }
+}
+
+
+@if ($pages-hidden-in-user-mode != null){
+  @each $page in $pages-hidden-in-user-mode{
+    @if (to-lower-case($page) == home){
+      .user_mode .theme-main-nav .theme-nav .theme-nav-item.home,
+      .user_mode .theme-mobile-nav .theme-nav .theme-nav-item.home.theme-nav-forward{
+        display: none !important;
+      }
+    } @else {
+      .user_mode .theme-main-nav .theme-nav .theme-nav-item[data-title="#{to-lower-case($page)}"],
+      .user_mode .theme-mobile-nav .theme-nav .theme-nav-item[data-title="#{to-lower-case($page)}"]:not(.home){
+        display: none !important;
+      }
+    }
+  }
+}
+.has-main-nav {
+  .theme-main-nav {
+    position: relative;
+    &:after {
+      content:'';
+      height: 1px;
+      width: 100%;
+      max-width: $content-area-width;
+      background-color: $color-white;
+      display: block;
+      position: absolute;
+      bottom: 0;
+      right: 50%;
+      transform: translateX(50%);
+      // margin-right: auto;
+      // margin-left: auto;
+      // margin-top: 0;
+      // margin-bottom: 0;
+      transition: height $transition-linear, max-width $transition-linear;
+      z-index: -1;
+    }
+  }
+}
+.nav-fixed {
+  .theme-main-nav {
+    &:after {
+      height: 100px;
+      max-width: 100%;
+    }
+  }
+}

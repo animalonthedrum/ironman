@@ -1,0 +1,19 @@
+.table-extend {
+  padding-bottom: 30px;
+  .tableElement {
+    margin-bottom: 0;
+    .dataTable {
+      width: calc(100% + 1px);
+      .tbody {
+        overflow:visible;
+      }
+    }
+  }
+  .pageEl {
+    padding: 0 30px;
+    background-color: $color-white;
+    &:last-of-type {
+      padding-bottom: 15px;
+    }
+  }
+}

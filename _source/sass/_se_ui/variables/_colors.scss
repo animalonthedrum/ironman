@@ -1,0 +1,84 @@
+// # Colors
+// Variables for colors
+
+
+// ## Semantic colors
+$color-highlight-light: #edf3f6;
+$color-highlight:       #13769c; // Blue
+$color-highlight-dark: mix(black, $color-highlight, 5);
+
+$color-alert-light:     #fef5f5;
+$color-alert:           #ea322f; // Red
+
+$color-warn-light:      #fff5c6;
+$color-warn:            #fde872; // Yellow
+
+$color-success-light:   #f1fdf4;
+$color-success:         #13aa37; // Green
+$color-success-dark:    #0f852b;
+
+
+// ## Background colors
+// Colors without semantic meaning. Typically used with background-color.
+$gray-xxlight: #fbfbfc;
+$gray-xlight:  #f2f3f4;
+$gray-light:   #d4d9dc;
+$gray:         #505c63;
+$gray-dark:    #3a4247;
+$gray-xdark:   #23282b;
+
+
+// ## Text
+// Semantic values for text colors
+$color-content:                  #23282b;
+$color-content-light:            rgba($color-content, .7);
+$color-content-lighter:          rgba($color-content, .6); // common icon color
+$color-content-xlight:           rgba($color-content, .3);
+$color-content-xxlight:          rgba($color-content, .12);
+$color-content-xxxlight:         rgba($color-content, .06);
+
+$color-content-inverse:          #fff;
+$color-content-inverse-light:    rgba(255, 255, 255, .7);
+$color-content-inverse-lighter:  rgba(255, 255, 255, .6); // common icon color
+$color-content-inverse-xlight:   rgba(255, 255, 255, .3);
+$color-content-inverse-xxlight:  rgba(255, 255, 255, .12);
+$color-content-inverse-xxxlight: rgba(255, 255, 255, .06);
+
+
+// ## Shadows
+// Common values for box-shadow
+$shadow-small: 0 1px 2px rgba(0, 0, 0, .3);
+//
+$sn-base-color: #67767f;
+$sn-base-color--66: scale_color($sn-base-color, $lightness: -66%);
+$sn-base-color--44: scale_color($sn-base-color, $lightness: -44%);
+$sn-base-color--22: scale_color($sn-base-color, $lightness: -22%);
+$sn-base-color-18: scale_color($sn-base-color, $lightness: 18%);
+$sn-base-color-36: scale_color($sn-base-color, $lightness: 36%);
+$sn-base-color-54: scale_color($sn-base-color, $lightness: 54%);
+$sn-base-color-72: scale_color($sn-base-color, $lightness: 72%);
+$sn-base-color-90: scale_color($sn-base-color, $lightness: 90%);
+$sn-base-color-97: scale_color($sn-base-color, $lightness: 97%);
+
+$sn-accent-color: #1997c8;
+$sn-accent-color--22: scale_color($sn-accent-color, $lightness: -22%);
+$sn-accent-color-90: scale_color($sn-accent-color, $lightness: 90%);
+$sn-accent-color-95: scale_color($sn-accent-color, $lightness: 95%);
+
+$sn-success-color: #13aa37;
+$sn-success-color--22: scale_color($sn-success-color, $lightness: -22%);
+$sn-success-color-10: scale_color($sn-success-color, $lightness: 10%);
+$sn-success-color-90: scale_color($sn-success-color, $lightness: 90%);
+$sn-success-color-95: scale_color($sn-success-color, $lightness: 95%);
+
+$sn-warning-color: #eaa62f;
+$sn-warning-color--22: scale_color($sn-warning-color, $lightness: -22%);
+$sn-warning-color-10: scale_color($sn-warning-color, $lightness: 10%);
+$sn-warning-color-90: scale_color($sn-warning-color, $lightness: 90%);
+$sn-warning-color-95: scale_color($sn-warning-color, $lightness: 95%);
+
+$sn-error-color: #ea322f;
+$sn-error-color--22: scale_color($sn-error-color, $lightness: -22%);
+$sn-error-color-10: scale_color($sn-error-color, $lightness: 10%);
+$sn-error-color-90: scale_color($sn-error-color, $lightness: 90%);
+$sn-error-color-95: scale_color($sn-error-color, $lightness: 95%);

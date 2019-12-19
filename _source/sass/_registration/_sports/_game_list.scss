@@ -1,0 +1,201 @@
+.theme-game-list-widget {
+
+  // double class required for specificity
+  .statTable.sn-table-game-list {
+    
+    $team-slot-height: 30px;
+    $team-slot-spacing: 2px;
+    $score-width: 4em;
+    
+    th, td:not(.away-team-score):not(.home-team-score) { text-align: left; }
+    
+    .date-time,
+    .game-id-game-number {
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+    
+    .time { text-transform: lowercase; }
+    
+    .team-logo {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin: -11px 5px -9px 0;
+      vertical-align: middle;
+    }
+    
+    .status a {
+      @include link-with-arrow;
+      font-size: 11px;
+      position: relative;
+      display: block;
+      padding-right: 1em;
+      
+      &:after {
+        position: absolute;
+        right: 0;
+      }
+    }
+    
+    // TABLE LAYOUT STYLES
+    
+    @media only screen and (min-width: $maxWidth) {
+      
+      .layout-100 & {
+        table-layout: fixed;
+        
+        td {
+          word-wrap: normal;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        
+        .away-team-score,
+        .home-team-score { width: 4em; }
+        .date-time-header { width: 14.5em; }
+        .game-id-game-number-header { width: 6em; }
+        .status-header { width: 10em; }
+        
+        // make game number ellipsis from left (since right chars are most important)
+        .game-id-game-number {
+          white-space: normal;
+          
+          > * {
+            height: 1.5em;
+            display: inline-block;
+            vertical-align: middle;
+            word-wrap: normal;
+            overflow: hidden;
+            text-align: right;
+            text-overflow: clip;
+            direction: rtl;
+            max-width: 100%;
+          
+            &:after {
+              content: "…";
+              position: relative;
+              top: -1.75em;
+              display: inline-block;
+              background: #EEE;
+              width: 1em;
+              height: 1.7em;
+              line-height: 2;
+              left: -100%;
+              margin-right: -.99em; // trick FF into wrapping this
+              margin-top: -.5em;
+              margin-bottom: -.5em;
+              vertical-align: middle;
+            }
+          }
+        }
+      }
+    }
+    
+    
+    // COMAPCT LIST STYLES
+    // 100% width columns at desktop width are the only ones that can support
+    // the table layout. Everything else gets the compact list style.
+    
+    @mixin compact-list {
+      display: block;
+      
+      // override stat table adjustnments for outer table spacing
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+      
+      thead { display: none; }
+      tbody { display: block; }
+      td { display: inline-block; }
+      
+      tr {
+        font-size: 11px;
+        position: relative;
+        overflow: hidden;
+        display: block;
+        padding-top: $team-slot-height * 2 + $team-slot-spacing * 3 + 6px;
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-bottom: 6px;
+        
+        &:not(:last-child) {
+          @include line-pattern-border($pos:bottom);
+          margin-bottom: 12px - $team-slot-spacing;
+        }
+      }
+      
+      td:not(.away-team-name):not(.home-team-name):not(.away-team-score):not(.home-team-score) {
+        padding: 0;
+        background: none;
+        height: auto;
+        font-size: 11px;
+        text-transform: uppercase;
+        
+        &:not(.status) { margin-right: 6px; }
+      }
+      
+      .away-team-name,
+      .home-team-name,
+      .away-team-score,
+      .home-team-score {
+        position: absolute;
+        top: $team-slot-spacing;
+        left: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        line-height: $team-slot-height;
+        width: calc(100% - #{$score-width} - #{$team-slot-spacing});
+      }
+      
+      .home-team-name,
+      .home-team-score { top: $team-slot-height + $team-slot-spacing * 2; }
+      
+      .away-team-score,
+      .home-team-score {
+        width: $score-width;
+        left: auto;
+        right: 0;
+      }
+      
+      .game-id-game-number > *:before { content: "Game ID: "; }
+      
+      .status {
+        float: right;
+        margin-top: 1px;
+        
+        a { font-size: 11px; }
+      }
+    }
+    
+    .col-md-3 &,
+    .col-md-4 &,
+    .col-md-6 &,
+    .col-md-8 & { @include compact-list; }
+    
+    @media only screen and (max-width: $maxWidth - 1) {
+      .col-md-12 & { @include compact-list; }
+    }
+  }
+}
+
+// Tourney game list element
+.gameListElement .sn-table-game-list {
+  white-space: nowrap;
+
+ .status a {
+    padding-right: 0;
+
+    &:after { content: ''; }
+  }
+
+  // column widths
+  .away-team-score > div,
+  .home-team-score > div { min-width: 3em; }
+  .away-team-name > div,
+  .home-team-name > div { min-width: 14em; }
+  .venue-subvenue > div { min-width: 12em; }
+  .game-id-game-number > div { min-width: 4em; }
+  .status > div { min-width: 6em; }
+}

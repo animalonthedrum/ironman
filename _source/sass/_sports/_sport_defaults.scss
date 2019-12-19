@@ -1,0 +1,184 @@
+// 1. From Themes
+// 2. Default
+
+// 1. From Themes
+@media only screen and (max-width: 480px) {
+  /* filter styles */
+  .tag-filterForm .tag-filterWrap{
+    width:100%;
+    padding:16px 0;
+  }
+  .tag-filterForm .tag-filterWrap.button{
+    transform:translate(0,0);
+  }
+  .tag-filterForm .inputChoice{
+    float:right;
+  }
+  .tag-filterWrap.dropdown label{
+    width:100%;
+    select{
+      float:right;
+      width:70%;
+    }
+  }
+}
+
+// Game SHow Field of Play
+#FOP {
+  box-sizing: content-box;
+}
+
+#PlayerStatsDiv .sport-tools:nth-child(even) ul.pill-buttons li,
+#TeamStatsDiv .sport-tools:nth-child(even) ul.pill-buttons li {
+  &.selected a {
+    color: $link-color;
+    border-bottom: 3px solid $link-color;
+    background-color: transparent;
+  }
+
+  a {
+    background-color: transparent;
+    border: 0;
+  }
+}
+
+
+// 2. Default
+/* serious displaiy issues in chrome 15 Windows when combined with 3d transforms */
+#GameShowScoreboard,
+#FOP,
+.fopPopUp { text-rendering: optimizespeed; }
+
+.sportTableLabel .teamLogo{
+  float: left;
+  margin-right: 5px;
+}
+
+.sportTableLabel .teamName,
+.sportTableLabel h4.teamName {
+  padding:0;
+}
+
+.widgetHierarchy{
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.widgetHierarchy > ul li li .seasonDisplay{
+  display: none;
+}
+
+.widgetHierarchy ul{
+  list-style-type: none;
+}
+
+.widgetHierarchy .lastLi{
+  margin-bottom: 0;
+}
+
+.gameXtras{
+  display: block;
+  list-style-type: none;
+  font-size: 10px;
+}
+
+.gameXtras li{
+  border-top:1px solid #D5D5D5;
+  padding: 2px 0;
+}
+
+.gameXtras label{
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.status_in_progress{
+  font-style: italic;
+  color: #5e8d0f;
+}
+
+.boxscore .status_in_progress{
+  color: #a1e32f;
+}
+
+#TeamStatsDiv,
+#PlayerStatsDiv,
+#TeamInstanceStatsDiv {
+  .stat-category-header {
+    margin: 20px 0;
+    color: $link_color;
+    font: $sports-page-heading-font;
+    text-transform: initial;
+  }
+}
+
+#TeamStatsDiv *[id^="team-sm"],
+#PlayerStatsDiv *[id^="player-sm"],
+#TeamInstanceStatsDiv *[id^="team-sm"],
+#TeamInstanceStatsDiv *[id^="player-sm"]
+#TeamInstanceStatsDiv *[id^="division-team-sm"] {
+  margin-bottom: 15px;
+  &:last-child { margin-bottom: 0; }
+
+  h3 {
+    @include special-header;
+  }
+}
+
+#pageContentContainer h3.stat-category-header {
+  border-top: solid 1px #999;
+  background: #666;
+  background: linear-gradient(to bottom, #666 0%,#333 100%);
+  border-radius: 4px 4px 0px 0px;
+  color: #fff;
+  height: 2em;
+  line-height: 2em;
+  margin-bottom: .5em;
+  text-indent: 10px;
+}
+h3.stat-category-header .stat-category-nav {
+  position: absolute;
+  right: 0;
+  font-size: 11px;
+  color: $link-color;
+}
+#tab_completegamelist_content .pageElement {
+    overflow: auto;
+}
+
+/* filter styles */
+.tag-filterForm{
+	display:block;
+	width:100%;
+	padding: 20px 8px;
+	label{
+		float:left;
+		margin-right:8px;
+		select{
+			margin-right:4px;
+		}
+	}
+	.inputChoice{
+		float:left;
+		margin:0 5px 0 0;
+		padding: 6px 0 0 0;
+		label{
+			margin-right:4px;
+			padding:2px 2px 0 0;
+			font-size:.75em;
+		}
+	}
+	.tag-filterWrap{
+		display:inline-block;
+		padding:2px 12px 8px 0;
+		height:30px;
+	}
+}
+.tag-filterForm .tag-filterWrap.button{
+	transform:translate(0,-10px);
+
+  .col-md-3 &,
+  .col-md-4 & {
+    margin-top: 10px;
+  }
+}

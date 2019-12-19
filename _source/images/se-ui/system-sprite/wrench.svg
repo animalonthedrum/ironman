@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.4 (17249) - http://www.bohemiancoding.com/sketch -->
+    <title>wrench</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="wrench" sketch:type="MSArtboardGroup" fill="#000000">
+            <path d="M13.8428476,11.7491361 L8.8866268,6.79291528 C9.37680248,5.54024409 9.10448266,4.06971704 8.06966733,3.03490171 C6.98038803,1.94562241 5.34646909,1.72776656 4.03933394,2.32687017 L6.38128442,4.66882065 L4.74736548,6.3027396 L2.35095103,3.96078911 C1.69738345,5.26792427 1.96970327,6.90184321 3.05898257,7.9911225 C4.0937979,9.02593783 5.56432495,9.29825766 6.81699614,8.80808198 L11.7732169,13.7643028 C11.9910728,13.9821586 12.3178566,13.9821586 12.5357124,13.7643028 L13.7883836,12.5116316 C14.0607035,12.2937757 14.0607035,11.912528 13.8428476,11.7491361 L13.8428476,11.7491361 Z" id="icon" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
+</svg>

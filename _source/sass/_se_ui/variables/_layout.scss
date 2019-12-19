@@ -1,0 +1,42 @@
+// # Layout
+// Variables for spacing of layouts
+
+
+// ## Spacing
+$layout-spacing-small: .5714rem; // 8px / 14px
+$layout-spacing-medium: .8571rem; // 12px / 14px
+$layout-spacing-large: 1.7143rem; // 24px / 14px
+$layout-spacing-xlarge: 3.4286rem; // 48px / 14px
+
+
+// ## Widths
+$layout-width-large: 850px;
+$layout-width: 600px;
+$layout-width-small: 440px;
+$side-nav-width: 219px;
+$tablet-width: 500px;
+$desktop-width: 900px;
+
+
+// ## Z-index
+$z-alerts: 999;
+$z-detailed-option--checked: 2;
+$z-detailed-option--focus: 3;
+$z-detailed-option: 1;
+$z-grouped-field--error: 2;
+$z-grouped-field--focus: 3;
+$z-grouped-field--hover: 1;
+$z-option--focus: 3;
+$z-overlay: 99;
+$z-sticky--top-off: 2;
+$z-sticky--bottom-off: 1;
+$z-sticky--top-on: 2;
+$z-sticky--bottom-on: 1;
+$z-tooltip: 1;
+
+// ## Grid Config
+$grid-tag: 'pl-grid';
+$grid-content-tag: 'pl-grid-el';
+$grid-sort-attrs: (first: 'first', higher: 'higher', lower: 'lower', last: 'last');
+$grid-breakpoints: (phone: 0, tablet: $tablet-width, desktop: $desktop-width);
+$grid-spacing: (loose: $layout-spacing-large, tight: $layout-spacing-medium);

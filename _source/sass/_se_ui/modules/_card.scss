@@ -1,0 +1,181 @@
+// # Profile Cards
+
+%pl-card {
+  background: #fff;
+  box-shadow: 0 1px 2px #ccc;
+  display: block;
+  margin: 15px;
+  position: relative;
+  width: 250px;
+}
+
+.pl-card {
+  @extend %pl-card;
+}
+
+.pl-card--full-height {
+  @extend %pl-card;
+  align-items: stretch;
+  display: flex;
+}
+
+
+// ## Group of cards in a grid
+
+.pl-card__group {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 15px;
+}
+
+
+// ## Circular photo and blurred background photo
+// Uses font-size and EMs so image width can be relative to height of container
+
+$pl-card-avatar--height: 120px;
+$pl-card-avatar--img-height: ceil($pl-card-avatar--height * .66);
+
+.pl-card-avatar {
+  display: block;
+  height: $pl-card-avatar--height;
+  overflow: hidden;
+  position: relative;
+  // Creates a hard edge for blurred __background
+  &::before {
+    background: #fff;
+    bottom: 0;
+    content: '';
+    height: $pl-card-avatar--height - $pl-card-avatar--img-height - 1px;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+  }
+}
+
+.pl-card-avatar__background {
+  background: $gray-xlight no-repeat 50%;
+  background-size: cover;
+  filter: blur(10px);
+  height: $pl-card-avatar--img-height + 20px;
+  margin: -10px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.pl-card-avatar__image,
+.pl-card-avatar__image--custom {
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 3px solid #fff;
+  border-radius: $pl-card-avatar--img-height;
+  bottom: 0;
+  height: $pl-card-avatar--img-height;
+  left: 50%;
+  margin-left: round(-$pl-card-avatar--img-height / 2);
+  overflow: hidden;
+  position: absolute;
+  width: $pl-card-avatar--img-height;
+  z-index: 3;
+}
+
+.pl-card-avatar__image {
+  background-image: url('#{$shared-image-path}/avatar.svg');
+}
+
+
+// ## Title/subtitle and label/value content within a card
+
+.pl-card-detail__group {
+  padding: 20px;
+}
+
+%pl-card-detail {
+  border-top: 1px solid $color-content-xxlight;
+  display: block;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  &:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.pl-card-detail {
+  @extend %pl-card-detail;
+}
+
+.pl-card-detail--icon {
+  @extend %pl-card-detail;
+  padding-left: 35px;
+  position: relative;
+}
+
+.pl-card-detail__icon {
+  fill: currentColor;
+  height: 14px;
+  left: 0;
+  position: absolute;
+  top: 11px;
+  width: 14px;
+}
+
+.pl-card-detail__title {
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.pl-card-detail__subtitle {
+  color: $color-content-light;
+  margin-top: .25em;
+  text-align: center;
+}
+
+.pl-card-detail__label {
+  color: $color-content-xlight;
+  font-size: $font-xsmall;
+  margin-bottom: 0;
+}
+
+%pl-card-detail__value {
+  font-size: $font-xsmall;
+  margin-top: .25em;
+}
+
+.pl-card-detail__value {
+  @extend %pl-card-detail__value;
+}
+
+.pl-card-detail__value--nowrap {
+  @extend %pl-card-detail__value;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+// ## Add link
+
+.pl-card-add {
+  align-items: center;
+  background: $gray-xxlight;
+  color: $color-content-light;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3.5em 0;
+  text-decoration: none;
+  width: 100%;
+}
+
+.pl-card-add__icon {
+  color: $color-content-xlight;
+  fill: currentColor;
+  height: 75px;
+  margin: 5em 0 4em;
+  width: 75px;
+}

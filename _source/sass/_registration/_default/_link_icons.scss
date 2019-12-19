@@ -1,0 +1,280 @@
+// Icon Graphics
+// background-image: url($asset_path_for+"/theme_images/waterworld/img.png");
+.icon{
+  background-repeat: no-repeat;
+  padding: 0px 0 2px 20px;
+  background-image: url($asset_path_for+"/app_images/link_icons.png");
+}
+.rssLink{
+  position:relative;
+  background:none;
+  &:before {
+    content: "\f09e";
+    @include link-icon-left;
+  }
+}
+//admin mode
+.groupLink{
+  background-position: 0px -348px;
+}
+.goToLink{
+  position:relative;
+  background:none;
+  &:before {
+    content: "\f061";
+    @include link-icon-left;
+  }
+}
+.goBackLink{
+  position:relative;
+  background:none;
+  &:before {
+    content: "\f060";
+    @include link-icon-left;
+  }
+}
+// Hidden for v4 themes
+.monthViewLink,
+.iconDayCal,
+.alphaLink,
+.siteMapLink {
+  background-image: none;
+}
+//admin mode > registation > registration name
+.linkLink{
+  background-position: 0px -928px;
+}
+//admin mode
+.deleteLink{
+  background-position: 0px -1044px;
+}
+//admin mode
+.editLink{
+  background-position: 0px -1160px;
+}
+.printLink{
+  position:relative;
+  background:none;
+  &:before {
+    content: "\f02f";
+    @include link-icon-left;
+  }
+}
+//admin/edit mode
+.attachedLink{
+  background-position: 0px -1392px;
+}
+.reloadLink{
+  position:relative;
+  background:none;
+  &:before {
+    content: "\f021";
+    @include link-icon-left;
+  }
+}
+.iCalLink{
+  position:relative;
+  background:none;
+  &:before {
+    content: "\f073";
+    @include link-icon-left;
+  }
+}
+.excelLink{
+  position:relative;
+  background:none;
+  &:before {
+    content: "\f1c3";
+    @include link-icon-left;
+  }
+}
+.tagLink{
+  position:relative;
+  background:none;
+  &:before {
+    content: "\f02b";
+    @include link-icon-left;
+  }
+}
+.emailLink{
+  position:relative;
+  background:none;
+  &:before {
+    content: "\f003";
+    @include link-icon-left;
+  }
+}
+//not sure where .read .emailLink exist
+.read .emailLink{
+  background-position: 0px -2088px;
+}
+//seen in admin control panel
+.newLink{
+  background-position: 0px -2204px;
+}
+//admin/edit mode
+.tstAdminLink{
+  background-position: 0px -2320px;
+}
+//can't find working example
+.addLink{
+  background-position: 0px -2436px;
+}
+//admin/edit mode
+.lockedCheck{
+  background-position: 0px -2552px;
+}
+//admin/edit mode
+.gear{
+  background-position: 0px -2668px;
+  font-size: initial;
+  padding-right: 4px;
+  cursor: pointer;
+}
+//can't find working example
+.photo{
+  background-position: 0px -2784px;
+}
+//admin/edit mode
+.dibsLink{
+    background-image: url("/app_images/icon-dibs-small.svg");
+    background-position:2px center;
+}
+//admin/edit mode
+.mirrorLink{
+  background-position: 0 -2900px;
+}
+//can't find working example
+.myAccess {
+  background-image: url($asset_path_for+"/app_images/permissions.gif");
+  padding-left: 32px;
+}
+//can't find working example
+.orderLink{
+  background: url($asset_path_for+"/app_images/dragIcon.gif") 3px 3px no-repeat;
+}
+//admin/edit mode
+.fullscreenLink{
+  background: url($asset_path_for+"/app_images/icons/fullscreenIcon.png") 0 1px no-repeat;
+}
+//admin/edit mode
+.connectionLink {
+  background-position: 0 -3015px; }
+//admin/edit mode
+.saveLink { background-position:0 -3128px; }
+//can't find working example
+.checkLink { background-position:0 -3363px; }
+.fbLink {
+  position:relative;
+  background:none;
+  &:before {
+    content: "\f09a";
+    @include link-icon-left;
+  }
+}
+.twitterLink {
+  position:relative;
+  background:none;
+  &:before {
+    content: "\f099";
+    @include link-icon-left;
+  }
+}
+//can't find working example
+.pdfLink { background-position:0 -3679px; }
+//can't find working example
+.transferLink { background-position:0 -3796px; }
+// element specific links
+.sponsorElement .goToLink:before {
+  padding:5px 10px 5px 0px;
+  content: "\f061";
+}
+// Some of these styles are duplicated from .sn-social-media-icon
+// This is so .contactElement .icon is styled consistently
+.contactElement .icon,
+.sn-social-media-list .sn-social-media-icon {
+  border-radius: 100%;
+  color: #fff;
+  display: inline-block;
+  font-family: FontAwesome;
+  font-size: 1.2em;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
+  height: 1em;
+  line-height: 1em;
+  margin: .1em;
+  padding: 0;
+  text-align: center;
+  text-decoration: none;
+  text-rendering: auto;
+  transform: translate(0, 0);
+  transition: background-color .25s ease-in-out;
+  width: 1em;
+  &:before {
+    display: block;
+    font-size: .6em;
+    line-height: 1.66em;
+    width: 1.66em;
+    left: 0;
+  }
+}
+.contactElement .icon {
+  background-color: $bodyCopyColorThree;
+  font-size: 27px;
+  &:hover {
+    background-color: $link-color;
+  }
+}
+// dark and light modes override default hover color
+.sn-social-media-list {
+  &:not(.light):not(.dark) .sn-social-media-icon:hover {
+    background-color: $bodyCopyColorThree;
+  }
+  &.dark {
+    .icon-email,
+    .icon-link {
+      &:hover {
+        background-color: $bodyCopyColorThree;
+      }
+    }
+  }
+}
+//collector element general (is camera icon)
+.collectorElement {
+  .title{
+    font-weight: bold;
+    position:relative;
+    &:before {
+      content: "\f030";
+      position:absolute;
+      font-family: FontAwesome;
+      font-size:1.2em;
+      left:-25px;
+    }
+  }
+}
+//Photo Collector Page > 'View Site Map' Tab
+.contentTabs + .collectorTree.siteMapElement {
+  a[href*="/photo_gallery/"] + a[href*="/photo_gallery/"]:before {
+    content: "\f030";
+    position: absolute;
+    font-family: FontAwesome;
+    font-size: 1.2em;
+    left: -25px;
+  }
+}
+//document silo
+a[href*="/document/"] {
+  & + .info {
+    .title {
+      &:before {
+        content: "\f15b";
+        position: absolute;
+        font-family: FontAwesome;
+        font-size: 1.2em;
+        left: -25px;
+      }
+    }
+  }
+}

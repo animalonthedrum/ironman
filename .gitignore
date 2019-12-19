@@ -1,0 +1,10 @@
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+.Trashes
+ehthumbs.db
+Thumbs.db
+node_modules/
+_site/
+project.json 

@@ -1,0 +1,5 @@
+// Hide Loggly tracking images from bottom of page.
+// These images affect document flow.
+body > img[src*="loggly.com"] {
+  display: none;
+}

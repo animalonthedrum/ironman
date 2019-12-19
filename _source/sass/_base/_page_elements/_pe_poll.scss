@@ -1,0 +1,115 @@
+// Poll Element
+// 1. Settings
+// 2. Styles
+
+// External Variables
+// $global-ui-border-size
+// $global-ui-border-color
+// $bodyCopyColorTwo
+
+// 1. Settings
+$poll-element-inner-padding: 10px !default;
+$poll-element-choice-color: $bodyCopyColorTwo !default;
+$poll-element-choice-case: none !default;
+$poll-element-choice-font: null !default;
+$poll-element-choice-size: null !default;
+$poll-element-choice-weight: normal !default;
+$poll-element-total-color: $bodyCopyColorTwo !default;
+$poll-element-total-case: null !default;
+$poll-element-total-font: null !default;
+$poll-element-total-size: null !default;
+$poll-element-total-weight: bold !default;
+$poll-element-total-border-size: $global-ui-border-size !default;
+$poll-element-total-border-color: $global-ui-border-color !default;
+$poll-element-percentage-background: gainsboro !default;
+$poll-element-percentage-foreground: $link-color !default;
+$poll-element-percentage-font-size: 16px !default;
+$poll-element-percentage-color: null !default;
+$poll-element-percentage-line-height: 2 !default;
+
+
+// 2. Styles
+.pollElement {
+
+  // Header
+  h3 span{ @include special-header; }
+
+  // Shared
+  ul{
+    margin-top: 15px;
+    li{
+      display: block;
+      list-style: none;
+      padding-bottom: $poll-element-inner-padding;
+    }
+  }
+
+  // Form
+  .pollChoice{
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    label { // Choice Text
+      vertical-align: middle;
+      padding-left: $poll-element-inner-padding;
+      text-transform: $poll-element-choice-case;
+      font-family: $poll-element-choice-font;
+      font-size: $poll-element-choice-size;
+      font-weight: $poll-element-choice-weight;
+      color: $poll-element-choice-color;
+    }
+  }
+  .voteButton{
+    padding: 0;
+  }
+  .voteButton input[type='submit'] {
+    border: 0; // resets for user agent styles
+    width: 100%; // resets for user agent styles
+    @include global-link-style;
+    @include global-link-container;
+    @include global-link-text($align: center);
+    cursor: pointer;
+    &:focus,
+    &:hover{
+      outline: 0;
+    }
+  }
+
+  // Results
+  h5 { // Choice Text
+    text-transform: $poll-element-choice-case;
+    font-family: $poll-element-choice-font;
+    font-size: $poll-element-choice-size;
+    font-weight: $poll-element-choice-weight;
+    color: $poll-element-choice-color;
+  }
+  .pollTotal {
+    padding: $poll-element-inner-padding $poll-element-inner-padding 0 $poll-element-inner-padding;
+    border-top: $poll-element-total-border-size solid $poll-element-total-border-color;
+    h5{
+      color: $poll-element-total-color;
+      text-transform: $poll-element-total-case;
+      font-family: $poll-element-total-font;
+      font-size: $poll-element-total-size;
+      font-weight: $poll-element-total-weight;
+    }
+  }
+
+  // Percentage
+  .barForeground{
+    display: block;
+    background-color: $poll-element-percentage-foreground;
+  }
+  .barBackground{
+    display: block;
+    background-color: $poll-element-percentage-background;
+    margin-top: #{$poll-element-inner-padding/2};
+  }
+  .barBackground p {
+    white-space: nowrap;
+    margin: 0 0 0 #{$poll-element-inner-padding/2};
+    font-size: $poll-element-percentage-font-size;
+    line-height: $poll-element-percentage-line-height;
+    color: $poll-element-percentage-color;
+  }
+}

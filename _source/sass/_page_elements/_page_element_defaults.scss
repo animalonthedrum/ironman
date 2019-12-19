@@ -1,0 +1,192 @@
+/* Page Element Defaults
+-------------------------------------------------------------------- */
+
+.pageElementAdmin { overflow: visible; }
+.pageElement .inputForm h3 { margin-bottom: 0; }
+.pageElement td p { margin-bottom: 0; }
+
+.leftTextImage{
+  float: left;
+  margin: 5px 15px 10px 0;
+}
+
+.rightTextImage {
+  float: right;
+  margin: 5px 0 10px 10px;
+}
+
+.textImageSmall { width: 150px; }
+.textImageMedium { width: 200px; }
+.textImageLarge { width: 250px; }
+
+body .cutline {
+  margin: auto;
+  padding: 10px 20px;
+  background-color: #eee;
+  @include caption-style;
+}
+
+/* Mirror Button
+-------------------------------------------------------------------- */
+
+.mirrorButton { float: left; }
+.mirrorButton a {
+  background: url('http://app-assets3.sportngin.com/app_images/mirror_content_button.svg?1468434667') no-repeat;
+   border: solid transparent;
+   border-width: 6px 7px;
+   border-radius: 4px;
+   box-sizing: content-box;
+   color: inherit;
+   display: block;
+   font-size: 14px;
+   font-weight: bold;
+   height: 22px;
+   letter-spacing: .1em;
+   line-height: 22px;
+   padding-left: 25px;
+   text-decoration: none;
+   text-transform: uppercase;
+   transition: background-color 0.2s ease-in;
+}
+
+/* Page Element Margins
+-------------------------------------------------------------------- */
+
+#panelTwo .mirrorOriginLink,
+#panelTwo .mirrorButton { margin-top: 3px; }
+
+.layoutContainer .pageElementAdmin { margin: 0 10px; }
+.layoutContainer .column1 .pageElementAdmin .pageElement,
+.layoutContainer .column1 .pageElementAdmin .hrElement { margin-left: 0; }
+
+
+/* Page Element Typography
+-------------------------------------------------------------------- */
+
+
+.boardMemberElement h3,
+.photoGalleryElement h3,
+.directorySearchElement h3,
+.documentElement h3 {
+  font-size: 1.5em;
+  font-weight: bold;
+  line-height: 14px;
+}
+
+.markdownElement h1 { margin-bottom: .5em; }
+
+.paginationElement h4,
+.paginationNav,
+.searchResultsElement h3 {
+  font-size: 12px;
+  font-weight: bold;
+}
+.rosterElement h4{
+  margin: 6px 0;
+}
+
+.boardMemberElement .position,
+.paginationElement .results,
+.searchBlock label,
+.calPreviewEvent .time {
+  font-size: 10px;
+  line-height: 11px;
+  color: #666;
+}
+
+.boardMemberElement .position { text-transform: uppercase; }
+
+.galleryElement p {
+  font-size: 11px;
+  line-height: 120%;
+}
+
+.linkElement .text,
+.contactFormElement .contactEmail,
+.sideGraphicLink {
+  font-size: 11px;
+  font-style: italic;
+  color: #666;
+}
+
+.helpText {
+  color: #666;
+  font-style: italic;
+}
+
+.markdownElement pre {
+  padding: 10px;
+  border: solid 1px #333;
+  background: #666;
+  color: #fff;
+}
+
+.markdownElement pre { margin-bottom: 1.5em; }
+
+/* Page Element Mirrors
+-------------------------------------------------------------------- */
+
+.elementPreview {
+  background: #3C4046 url($asset_path_for+"/app_images/mirror_background.jpg") no-repeat;
+  _height: 100px;
+  border: solid 1px #333;
+  padding: 5px;
+  color: #fff;
+}
+
+#lightbox .elementPreview { margin-top: 10px; }
+
+.elementPreviewTitle {
+  background-repeat: no-repeat;
+  padding: 2px 0 3px 25px;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.elementPreviewImg { margin: 0 0 5px 25px; }
+
+.mirrorSiteHeader { margin-bottom: 3px; }
+
+.mirrorOriginLink {
+  font-size: 9px;
+  line-height: 10px;
+  background-repeat: no-repeat;
+  padding: 3px 0 3px 20px;
+  display: inline-block;
+}
+
+#lightbox .elementPreview .mirrorOriginLink,
+#panelTwo .elementPreview .mirrorOriginLink,
+.elementPreview .mirrorOriginLink:hover {
+  margin-top: 3px;
+  display: block;
+  color: #fff;
+  border-top: solid 1px #666;
+  background-position: 4px 5px;
+  padding: 7px 0 3px 25px;
+}
+
+.mirrorOrigin {
+  font-size: 9px;
+  line-height: 10px;
+  background-repeat: no-repeat;
+  color: #999;
+  padding: 3px 0 3px 25px;
+  background-position: 3px 0px;
+}
+
+.mirrorOption { padding-left: 5px; }
+
+/* Mirrored Pages
+-------------------------------------------------------------------- */
+.elementPreviewTitle a,
+.elementPreviewTitle a:hover { color: #fff; }
+
+.rapidContentMirror p { margin: 1em 0; }
+
+
+/* Display Body Header
+-------------------------------------------------------------------- */
+.displayBodyHeader-image {
+  padding: 0;
+}

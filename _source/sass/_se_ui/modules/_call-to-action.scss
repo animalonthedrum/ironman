@@ -1,0 +1,12 @@
+// # Call to action
+
+%pl-call-to-action {
+  background-color: $color-content-xxxlight;
+}
+
+
+// ## Call to action small
+.pl-call-to-action--small {
+  @extend %pl-call-to-action;
+  padding: 1.1429rem $layout-spacing-large; // 16px / 14px
+}

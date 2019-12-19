@@ -1,0 +1,191 @@
+/* Countdown Element */
+// 1. Global Styles
+// 2. User Options
+// 3. Accomidation for small columns & Mobile adjustments
+
+// 1. Global Styles
+.countdownElement {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
+  position:relative;
+  padding: 35px 0;
+  text-align:left;
+  background-position: center center;
+  h2 {
+    margin-right: 7px; // width of stripes on right of special header
+    text-transform: uppercase;
+    @include special-header;
+    &:empty {
+      display: none;
+    }
+  }
+  abbr {
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    align-self: center;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    min-width: 340px;
+    padding: 0 15px;
+    position: relative;
+    border:none;
+    line-height:1;
+    text-align:center;
+    text-decoration:none;
+    white-space: nowrap;
+  }
+  span {
+    display:inline-block;
+    margin:0 6px;
+  }
+  b {
+    display:inline-block;
+    font-family:$font-primary;
+    font-weight:900;
+    font-size:rem(52);
+  }
+  small {
+    display:block;
+    margin-top:2px;
+    font-size:rem(12);
+    text-transform: uppercase;
+  }
+}
+  
+// 2. User options
+.countdownElement.countdown-dark {
+  background: #555;
+  color: #fff;
+  h2{
+    &:after{
+      border-left:2px solid #555;
+    }
+  }
+  &:before,
+  &:after{
+    content:"";
+    display:block;
+    position:absolute;
+    left:0;
+    width:100%;
+    height:10px;
+    @include line-pattern(#fff,transparent);
+  }
+  &:before{
+    top:0;
+  }
+  &:after{
+    bottom:0;
+    clear:both;
+  }
+}
+.countdownElement.countdown-light{
+  background: transparent;
+  color: $bodyCopyColorTwo;
+  b{
+    color:$link-color;
+  }
+  &:before,
+  &:after{
+    content:"";
+    display:block;
+    position:absolute;
+    left:0;
+    width:100%;
+    height:10px;
+    @include line-pattern();
+  }
+  &:before{
+    top:0;
+  }
+  &:after{
+    bottom:0;
+    clear:both;
+  }
+}
+
+// 3. Accomidation for small columns & Mobile adjustments
+@media only screen and (min-width: 900px) {
+  .col-md-4, .col-md-3{ 
+    .countdownElement{
+      display: block;
+      h2 {
+        margin-bottom: 15px;
+        width: 100%;
+      }
+      abbr {
+        display: block;
+        margin: 0 auto;
+        min-width: 0;
+        white-space: initial;
+      }
+      b{
+        font-size:rem(36);
+      }
+      small{
+        font-size:rem(11);
+      }
+    }
+  }
+}
+@media only screen and (min-width: 769px) and (max-width: 900px) {
+  .col-md-4, .col-md-3{ 
+    .countdownElement{
+      abbr {
+        span{
+          width:33%;
+          padding:1.5% 0;
+        }
+      }
+      b{
+        font-size:rem(36);
+      }
+      small{
+        font-size:rem(11);
+      }
+    }
+  }
+}
+@media only screen and (max-width: 900px) {
+  .countdownElement{
+    display: block;
+    h2 {
+      margin-bottom: 15px;
+      width: 100%;
+    }
+    abbr {
+      display: block;
+      margin: 0 auto;
+      min-width: 0;
+      white-space: initial;
+    }
+    b{
+      font-size:rem(40);
+    }
+  }
+}
+@media only screen and (max-width: 600px) {
+  .countdownElement{
+    b{
+      font-size:rem(32);
+    }
+    small{
+      font-size:rem(11);
+    }
+  }
+}
+@media only screen and (max-width: 370px) {
+  .countdownElement{
+    abbr {
+      span{
+        width:33%;
+        padding:1.5% 0;
+      }
+    }
+  }
+}

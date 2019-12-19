@@ -1,0 +1,51 @@
+// 4. Site Header
+
+// .home #displayBodyHeader { display: none; }
+.site-banner-wrapper {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-size: cover;
+  margin: 0 auto;
+  max-width: $maxWidth;
+  position: relative;
+  width: 100%;
+
+  .site-banner-text-wrapper {
+    color: #fff;
+    font-size: 36px;
+    line-height: 1;
+    padding: .5em;
+    text-align: center;
+    width: 100%;
+
+    h2, h3 {
+      font-size: 1em;
+      line-height: 1.25;
+      text-transform: none;
+    }
+
+    h1 {
+      font-size: 1.5em;
+      font-weight: 900;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+  }
+}
+
+@media (max-width: 699px) {
+  .site-banner-wrapper .site-banner-text-wrapper {
+    font-size: 4.5vw;
+
+    h1 { font-weight: 700; }
+    h2, h3 { display: none; }
+  }
+}
+
+@media (min-width: 700px) and (max-width: 1000px) {
+  .site-banner-wrapper .site-banner-text-wrapper { font-size: 3.6vw; }
+}

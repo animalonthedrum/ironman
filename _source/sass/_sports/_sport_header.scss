@@ -1,0 +1,518 @@
+/* Sport Header
+-------------------------------------------------------------------- */
+#sport-header {
+  display: block;
+  width: 100%;
+
+  .teamLogo {
+    left: 15px;
+    height: 40px;
+    width: 120px;
+  }
+
+  #snm_advert {
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px;
+    background: transparent;
+    position: absolute;
+    z-index: 1;
+    opacity: 0.8;
+    transition: all 0.3s ease-in-out;
+
+    &:before{
+      width: 30px;
+      height: 25px;
+      position: absolute;
+      display: block;
+      font: normal 14px/1em $font-primary;
+      font-size: 1.75em;
+      text-rendering: auto;
+      @include font-smoothing();
+      content: "";
+      background:url($asset_path_for+"/app_images/marketing/mobilePhone.svg");
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    &:hover{ opacity: 1; }
+
+    span,
+    strong {
+      color: #444;
+      font-size: 9px;
+      text-align: left;
+      display: block;
+      line-height: 13px;
+      display: block;
+      padding-left:33px;
+    }
+  }
+}
+/* Leagues and Levels Breadcrumbs
+-------------------------------------------------------------------- */
+#sport-crumbs {
+  background: #fff;
+  position: relative;
+  float: left;
+  display: block;
+  width: 100%;
+  @include line-pattern-border(3, bottom);
+
+  &.no-crumbs { border-image: none; }
+
+  .sport-crumbs-btns {
+    display: block;
+    float: left;
+    overflow-x: scroll;
+    overflow-y:hidden;
+    -ms-overflow-style: none;
+    width: 100%;
+    min-height:46px;
+
+    &::-webkit-scrollbar { display: none; }
+  }
+
+  ul {
+    display: inline-block;
+    float: left;
+
+    li {
+      float: left;
+      list-style: none;
+
+      a {
+        padding: 0px;
+
+        &:before {
+          content: "\f054";
+          color: #ccc;
+          display: inline-block;
+          font: normal 10px/1em FontAwesome;
+          padding: 2px;
+          position: relative;
+          margin: 0 0 0 10px;
+        }
+      }
+
+      &:first-child a:before { display: none; }
+    }
+
+    li.crumbSelected {
+      background:#fff;
+      position: relative;
+
+      a { color: #000; }
+
+      .arrow-down:after {
+        content: "\f0d8";
+        color: #000;
+      }
+    }
+  }
+
+  .sport-crumbs-list ul li a { padding: 10px 20px; }
+
+  a {
+    color: #666666;
+    display: block;
+    outline: medium none;
+    padding: 10px 20px;
+    position: relative;
+    text-decoration: none;
+    font-weight: normal;
+
+    span {
+      display: inline-block;
+      font-size: 16px;
+      padding: 10px;
+      text-align: center;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+
+      &:after {
+        border-radius: 20px;
+        font: 16px/1em FontAwesome;
+        margin: auto;
+        padding: 4px;
+        text-align: center;
+        color:$link-color;
+      }
+    }
+
+    .arrow-down {
+      padding-left: 0px;
+      padding-right: 15px;
+    }
+  }
+
+  a:hover { color: #000; }
+
+  .arrow-down:after {
+    content: "\f0d7";
+    display: inline-block;
+  }
+
+  .sport-crumbs-list {
+    display: none;
+    text-align: left;
+    float: left;
+    margin: auto;
+    position: absolute;
+    top: 49px;
+    width: 100%;
+    max-width: 50%;
+    z-index: 20;
+    left:0px;
+    border-bottom: 4px solid $accent-color;
+
+    &.thisCrumb {
+      display: block !important;
+      -webkit-animation: dropdown-season $transition-standard;
+      animation: dropdown-season $transition-standard;
+    }
+
+    ul {
+      list-style: none;
+      width: 100%;
+
+      li {
+        width: 100%;
+        display: block;
+
+        a {
+          background: rgba(0,0,0,0.85);
+          color:#fff;
+          display: block;
+          font-size: 12px;
+          line-height: 24px;
+          padding: 5px 10px;
+          text-decoration: none;
+          width: 100%;
+          display: block;
+
+          &:before { display: none; }
+
+          &:hover {
+            color:#fff;
+            background-color: #000;
+          }
+
+          img { margin: 0 3px -3px 0; }
+        }
+      }
+
+      .sport-crumbs-list-close {
+        display: block;
+        background: rgba(0,0,0,0.85);
+
+        a {
+          display: block;
+          float: right;
+          text-align: right;
+          width: 50px;
+          border-bottom: 0px;
+          background: transparent;
+          padding: 10px 10px 0px 10px;
+
+          &:after {
+            content: "\f00d";
+            position: relative;
+            font: normal normal normal 12px/1em FontAwesome;
+            font-size: inherit;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            transform: translate(0, 0);
+            transition: all 0.5s ease-in-out;
+            transform: rotate(0deg);
+            border-radius: 40px;
+            padding: 3px 5px;
+            color: #fff;
+            opacity: 0.7;
+
+            &:hover {
+              color: #000;
+              border-color: #000;
+            }
+          }
+
+          &:hover {
+            background: transparent;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
+#sport-crumbs a {
+  &.last_child,
+  &.last_child:hover { background: none; }
+}
+
+.dropdown-wrapper:before { display: none; }
+.prototip .sport-crumbs-list { display: block; }
+
+
+/* Sport Tools
+-------------------------------------------------------------------- */
+#sport-header {
+  .sport-tools {
+    margin: 10px 0px;
+    border-bottom: 3px solid #ececec;
+
+    ul {
+      li {
+        @include content-tab-item;
+
+        a {
+          @include content-tab;
+
+          &:before {
+            font: normal normal normal 14px/1em FontAwesome;
+            padding: 0px;
+            display: none;
+          }
+        }
+
+        &:hover { border-bottom:5px solid $link-color; }
+      }
+
+      .selected{
+        color: #fff;
+        border-bottom:5px solid $link-color;
+        border-right:0px;
+      }
+
+      #tool-home a:before { content: "\f015"; }
+      #tool-roster a:before { content: "\f007"; }
+      #tool-game-schedule a:before { content: "\f133"; }
+      #tool-player-stats a:before { content: "\f080"; }
+      #tool-team-stats a:before { content: "\f1fe"; }
+      #tool-standings a:before { content: "\f1b3"; }
+      #tool-bracket a:before { content: "\f0e8"; }
+      #tool-photo a:before { content: "\f03e"; }
+      #tool-video a:before { content: "\f1c8"; }
+      #tool-posts a:before { content: "\f086"; }
+      .tool-yellow-admin a:before { content: "\f013"; }
+      .tool-yellow-manage-team a:before { content: "\f024"; }
+    }
+
+    ul.tools { width: 100%; }
+    .button-tool { float: left; }
+
+    li,
+    #autoRefreshBar li {
+      display: inline;
+      float: left;
+    }
+
+    li.tool-yellow {
+      border-color: #edc52c;
+
+      a {
+        background: #fddd40 url($asset_path_for+"/app_images/sport-header/btnsBG-yl.gif") 0 0 repeat-x;
+        border-color: #ffc;
+        color: #807540;
+      }
+    }
+
+    li.tool-yellow:hover {
+      border-color: #dda300;
+      color: #594100;
+
+      a {
+        background-color: #fddd40;
+        background-position: 0 -80px;
+        border-color: #ffc;
+        color: #1a1a1a;
+      }
+    }
+
+    li.tool-yellow:active {
+      border-color: #dda300;
+      color: #594100;
+
+      a {
+        background-color: #fddd40;
+        background-position: 0 -160px;
+        color: #333;
+      }
+    }
+  }
+}
+
+.sport-tools {
+  li {
+    @include content-tab-item;
+
+    a { list-style: none; }
+  }
+}
+
+.sport-tools li a,
+#autoRefreshBar li a,
+#autoRefreshBar li label {
+  background-color: transparent;
+  color: $link-color;
+  cursor: pointer;
+  display: block;
+  font: bold 13px/1.1 $font-primary;
+  text-transform: uppercase;
+  outline: medium none;
+  padding: 10px;
+  text-decoration: none;
+  text-shadow: 1px 1px 1px #fff;
+  width: auto;
+}
+
+.sport-tools li:hover,
+#autoRefreshBar li:hover,
+#sport-slider li:hover,
+.sport-tools li.selected { border-bottom: 5px solid $link-color; }
+
+#autoRefreshBar .selected {
+  color: #fff;
+  border-bottom: 5px solid $link-color;
+}
+
+.sport-tools li:active,
+#autoRefreshBar li:hover { color: #333; }
+
+.sport-tools li:hover a,
+#autoRefreshBar li:hover a,
+#autoRefreshBar li:hover label {
+  background-color: transparent;
+  background-position: 0 -80px;
+  color: $link-color-darken-10;
+}
+
+.sport-tools li:active a,
+#autoRefreshBar li:active a,
+#autoRefreshBar li:active label {
+  background-color: #f9f9f9;
+  background-position: 0 -160px; color: #333;
+}
+
+.sport-tools .selected a,
+#autoRefreshBar .selected a,
+#autoRefreshBar .selected label,
+.sport-tools li.selected:hover a,
+#autoRefreshBar li.selected:hover a,
+#autoRefreshBar li.selected:hover label {
+  color: $link-color;
+  font-weight: bold;
+  background-position: 0 -240px;
+}
+
+body #autoRefreshBar { // `body` added for increased specificty
+  margin: 10px 0 20px;
+  padding: 5px 10px 0;
+
+  li {
+    display: inline-block;
+    list-style: none;
+  }
+  p {
+    margin-bottom: 0;
+    line-height: 34px;
+  }
+}
+
+
+/* Admin Menu
+-------------------------------------------------------------------- */
+.sport-admin-buttons{
+  float: right;
+  margin: 14px 4px 0 0;
+  list-style: none;
+
+  ul {
+    list-style: none;
+
+    li { display: inline; }
+  }
+}
+
+/* Yes, double ID's because I only want to target this when it's a child of the sport-header. It will be moved elsewhere when the Tip js fires. */
+#sport-header #tool-pages-menu,
+#sport-header #sport-admin-menu { display: none; }
+
+
+/* Specific Pills
+-------------------------------------------------------------------- */
+#tool-home{
+  a:hover  span { background-position: 0 -80px; }
+  a:active span { background-position: 0 -160px; }
+  &.selected span { background-position: 0 -240px; }
+}
+
+#tool-createWidget {
+  float: right;
+
+  a {
+    background: #fddd40 url($asset_path_for+"/app_images/sport-header/btnsBG-yl.gif") 0 0 repeat-x;
+    border-color: #ffc;
+  }
+}
+
+
+/* Team Mini Header
+-------------------------------------------------------------------- */
+.teamMiniHeader {
+  padding-bottom: 5px;
+
+  .teamLogo-small { float: left; }
+
+  h4 {
+    font-size: 16px;
+    margin-left: 5px;
+    line-height: 20px;
+    float: left;
+  }
+}
+
+
+/* Overlay
+-------------------------------------------------------------------- */
+#sport-tools-overlay {
+  background: #fff url(/app_images/loader4.gif) 50% 50% no-repeat;
+  opacity: 0.5;
+  position: absolute;
+  z-index: 2;
+}
+
+@media only screen and (max-width:1024px) {
+  #sport-header .sport-tools ul li a { font-size: .8em; }
+}
+
+@media only screen and (max-width:769px) {
+  #sport-header {
+    #sport-crumbs {
+      ul li.crumbSelected { position:static; }
+
+      .sport-crumbs-list { max-width: 100%; }
+
+      a {
+        span {
+          font-size: 0.70em;
+
+          &:after { font: 10px/1em FontAwesome; }
+        }
+
+        .arrow-down { margin-left: 0px; }
+      }
+    }
+
+    .sport-tools ul li a {
+      padding: 10px 2px;
+      font-size: 0em;
+
+      &:before {display: block; }
+    }
+  }
+}

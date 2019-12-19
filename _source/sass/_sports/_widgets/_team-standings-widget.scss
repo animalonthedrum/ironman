@@ -1,0 +1,60 @@
+[id^="widget_standings_widget_"],
+#tab_division_standings_content {
+  .sportTableLabel {
+    @include sport-table-label;
+  }
+  ul {
+    ul {
+      padding-top: 2px;
+      padding-left: 25px;
+      position: relative;
+      &:before {
+        background: $bodyCopyColorThree;
+        content: '';
+        height: calc(100% - 4px);
+        left: 2px;
+        position: absolute;
+        width: 3px;
+      }
+      h4.teamName:before {
+        background: $bodyCopyColorThree;
+        content: '';
+        height: 3px;
+        left: -22px;
+        margin-top: -1px;
+        position: absolute;
+        top: 50%;
+        width: 20px;
+      }
+      @media (max-width: 400px) {
+        padding-left: 4px;
+        h4.teamName:before {
+          display: none;
+        }
+      }
+    }
+  }
+  th:not(.name) {
+    text-align: center;
+  }
+}
+
+tr[id^="standing_"] {
+  td.name {
+    text-align: left;
+  }
+}
+
+tr[id^="standing_"] .teamLogo-tiny {
+  background: #fff;
+  margin-right: 10px;
+  position: relative;
+  &:after {
+    background: $accent_color;
+    content: '';
+    height: 100%;
+    position: absolute;
+    right: -5px;
+    width: 3px;
+  }
+}

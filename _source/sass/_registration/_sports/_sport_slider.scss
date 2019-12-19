@@ -1,0 +1,178 @@
+  /* Roster & Game Center Buttons
+  -------------------------------------------------------------------- */
+  #sport-slider { 
+    background: #f2f2f2;
+    border: 1px solid #e6e6e6;
+    border-radius: 2px;
+    clear: both;
+    margin: 0px 0px 15px 0px;
+    overflow: hidden;
+    position: relative;
+    padding: 5px;
+    display: block;
+    .inner-wrap{
+      display: block;
+      min-height: 70px;
+      /* Slider Track */
+      #track { 
+        bottom: 0;
+        clear:  both;
+        height: 10px;
+        position: absolute;
+        width: 100%;
+        z-index: 100;
+        background-color:#ddd;
+        border: 1px solid #ccc;
+        display: none;
+        #handle { 
+          background-color: #888;
+          cursor: move;
+          height:10px;
+          left: 0;
+          position: absolute;
+          top: 0;
+          width:100px;
+          z-index: 100;
+          border-radius: 1px;
+        }
+      } 
+    }
+  }
+  .sportsPage .prototip{
+    display: none !important;
+  }
+  
+  #scrollbox { position: absolute; width: 1%; }
+
+  #track-left  { background-position: 0 -10px; float: left; }
+  #track-right { background-position: -6px -10px; float: right; }
+  #track-left,
+  #track-right { height: 10px; width: 10px; }
+
+
+  /* Scrollable Container
+  -------------------------------------------------------------------- */
+  #scroll-container {
+    padding: 0 0 15px; 
+    position: relative; 
+    overflow-x: auto; 
+    overflow-y: hidden; 
+    min-height: 70px;
+    &::-webkit-scrollbar {
+      display:none;
+    }
+  }
+
+  /* Player/Roster Buttons
+  -------------------------------------------------------------------- */
+  #sport-slider li { margin: 0 0 0 2px; }
+
+  /* Game Buttons
+  -------------------------------------------------------------------- */
+  #sport-slider .month { 
+    background: url($asset_path_for+"/app_images/months.gif") 0 0; 
+    display: inline-block;
+    float: left;
+    height: 45px;
+    margin: 2px 2px 0 0;
+    width: 10px;
+    text-indent: -999999px;
+  }
+
+    /* Months */
+    #sport-slider .mth-jan { background-position: 0 0; }
+    #sport-slider .mth-feb { background-position: -10px 0; }
+    #sport-slider .mth-mar { background-position: -20px 0; }
+    #sport-slider .mth-apr { background-position: -30px 0; }
+    #sport-slider .mth-may { background-position: -40px 0; }
+    #sport-slider .mth-jun { background-position: -50px 0; }
+    #sport-slider .mth-jul { background-position: -60px 0; }
+    #sport-slider .mth-aug { background-position: -70px 0; }
+    #sport-slider .mth-sep { background-position: -80px 0; }
+    #sport-slider .mth-oct { background-position: -90px 0; }
+    #sport-slider .mth-nov { background-position: -100px 0; }
+    #sport-slider .mth-dec { background-position: -110px 0; }
+    #sport-slider .mth-tbd { background-position: -120px 0; }
+
+  #sport-slider .games                { float:left; display:inline-block; }
+  #sport-slider .games li            { position: static; }
+  #sport-slider .games a             { padding: 3px 4px 3px; }
+  #sport-slider .games span          { display: block; text-align: center; }
+  #sport-slider .games .dayOfTheWeek { font: normal 8px $fontOne; text-transform: uppercase; }
+  #sport-slider .games .date         { font: normal 18px $fontOne; }
+  #sport-slider .games .outcome      { font-weight: normal; margin: 0; text-align: center; }
+
+    /* Prototip Tooltips - General
+    -------------------------------------------------------------------- */
+    #tooltips { display: none; } /* This div is where the tooltips are stored in the markup. Prototip grabs them from here, and clones/displays them in the right place when you hover over the trigger */
+
+    .prototip .ngin .tooltip-outer                  { background: #e6e6e6; border: 1px solid #333; position: relative; width: 320px; }
+    .prototip .ngin .tooltip-outer h3               { background: #363636 url($asset_path_for+"/app_images/tooltips/headerBG.gif") 0 0 repeat-x; border-bottom: 1px solid #333; color: #fff; font-size: 1.1em; line-height: 30px; padding: 0 10px; text-align: left; }
+    .prototip .ngin .tooltip-inner                  { height: 94px; position: relative; width: 200px; }
+
+    .prototip .ngin .mult_games                     { width: 350px; }
+    .prototip .ngin .rosterTooltip                  { width: 200px; }
+
+    .prototip_StemWrapper { margin: 8px 0 0 !important; }
+
+    /* Player */
+    .stats              { margin: 0 0 10px 85px; }
+    .stats .stats-major {
+      font-weight: bold;
+      font-size: 18px;
+      display: block;
+      padding: 15px 5px 0px 15px;
+      width: auto;
+      &:after{
+        content:'';
+        display: block;
+        max-width: 100px;
+        margin: auto;
+        border-bottom: 1px solid #ddd;
+        padding-top: 5px;
+      }
+    }
+    .stats .stats-minor {display: block; padding: 5px 0px 0px 0px; width: auto; }
+
+      /* Tool tip */
+      .prototip .ngin .tooltip-inner .stats           { float: left; margin: 0; position: absolute; left: 94px; top: 25px; text-align: center; }
+      .prototip .ngin .tooltip-inner .stats .position { background: url($asset_path_for+"/app_images/tooltips/bio-groove.png") 50% 100% no-repeat; font-weight: bold; font-size: 18px; display: block; padding: 0 0 15px; width: 90px; }
+      .prototip .ngin .tooltip-inner .stats .bio      { display: block; padding: 10px 0 5px; width: 100px; }
+
+    /* Game Score */
+    .score-home                                       { background: #e6e6e6 url($asset_path_for+"/app_images/tooltips/vs-r.png") 0%   50% no-repeat; float: right; width: 160px; }
+    .score-away                                       { background: #e6e6e6 url($asset_path_for+"/app_images/tooltips/vs-l.png") 100% 50% no-repeat; float: left;  width: 160px; }
+    .mult_games .score-away, .mult_games .score-home  { width: 175px; }
+    .score-away .score, .score-home .score            { font: bold 48px $fontOne; }
+    .prototip .ngin .game .tooltip-inner              { min-height: 120px; width: 320px; }
+    .prototip .ngin .game                             { width: 320px; }
+    .prototip .score                                  { border: none; text-align: center; }
+    
+    /* Team Name */
+    .score-home .teamName, .score-away .teamName    { font-size: 12px; height: 16px; line-height: 16px; overflow: hidden; text-transform: uppercase; text-align: center; }
+    .score-home .teamName                           { padding: 0 10px 0 15px; }
+    .score-away .teamName                           { padding: 0 15px 0 10px; }
+    .mult_games .teamName                           { background: none; border: none; font-size: 10px; height: 30px; line-height: 35px; }
+    .mult_games .score-away .teamName               { color: #666; text-align: left; padding: 0 0 2px 5px; }
+    .mult_games .score-home .teamName               { color: #666; text-align: right; padding: 0 5px 2px 0; }
+
+
+    /* Game Listing */
+    .game-listing                     { background: url($asset_path_for+"/app_images/tooltips/game-listingBG.gif") 0 100% repeat-x; }
+    .game-listing .sport-colors       { min-height: 30px; height: 30px; }
+    .game-listing .score-home         { background: transparent url($asset_path_for+"/app_images/tooltips/vs-sm-lt-r.gif") 0    5px no-repeat; }
+    .game-listing .score-away         { background: transparent url($asset_path_for+"/app_images/tooltips/vs-sm-lt-l.gif") 100% 5px no-repeat; }
+
+    .game-listing .score              { font: normal 24px $fontOne; }
+    .game-listing .score-home .score  { background: none; margin: 0 75px 0 0; float: right; padding: 0; text-align: right; }
+    .game-listing .score-away .score  { background: none; margin: 0 0 0 75px; float: left;  padding: 0; text-align: left; }
+    .game-listing p                   { background: #ccc; border-top: 1px solid #b3b3b3; padding: 10px 0; text-align: center; }
+
+/* Page Title
+-------------------------------------------------------------------- */
+#sport-header .pageTitle { 
+  font-size: 32px;
+  margin: 0 15px;
+  padding: 20px 0 10px;
+  text-align: center;
+}

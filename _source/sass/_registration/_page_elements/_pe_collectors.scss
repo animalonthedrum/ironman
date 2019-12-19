@@ -1,0 +1,158 @@
+/* Collectors */
+// 1. Mixins (Remove when liquid)
+// 2. Collector Elements (Global styles)
+// 3. News Collection
+// 4. Media Queries
+// 5. Document Collection and Photo Collection (Please audit these styles)
+// Note: News Collection element should mirror news aggregator style.
+// Note: Consider breaking this file into multiple files when styling Photo and Document collectors, if it is logical, or delete this note.
+
+// 1. Mixins (Remove when liquid)
+@mixin newscol-header{
+  font-size: em(18);
+  text-transform: none;
+}
+@mixin newscol-image{
+  display: block;
+  float: left;
+  padding: 3px 15px 7px 0px;
+  img{
+    width: auto;
+    display: block;
+  }
+}
+@mixin newscol-date-author{
+  font-size: 0.75em;
+  line-height: 1.25;
+  display: inline-block;
+  margin-right: .5em;
+}
+@mixin newscol-teaser{
+  font-size: 0.875em;
+  text-transform: uppercase;
+  line-height: 1.25;
+  margin: .75em 0;
+}
+
+// 2. Collector Elements (Global styles)
+.collectorElement {
+  .tags{
+    font-size: em(12);
+    line-height: 1.5;
+    margin: 0;
+  }
+}
+
+// 3. News Collection
+.collectorNews{
+  .item{
+    position: relative;
+    @include list-item();
+    @extend %clearfix;
+    > a{ @include newscol-image; }
+    > h4 { @include newscol-header; }
+  }
+  .dateAuthor{
+    line-height: 1;
+    margin: 0;
+  }
+  .newsAuthor, .newsDate{
+    @include newscol-date-author;
+  }
+  .teaser{
+    @include newscol-teaser;
+  }
+  .tags{
+    font-size: em(12);
+    line-height: 1.5;
+    margin: 0;
+  }
+  .clearAll{
+    display: none; // Old markup, remove when liquid
+  }
+  .articleHasImage{
+    > h4, .dateAuthor, .teaser, .tags{
+      padding-left: 90px;
+    }
+  }
+}
+
+// 4. Media Queries
+@include page-element-break(350){
+  .collectorNews{
+    .articleHasImage{
+      > a{float: none;}
+      > h4, .dateAuthor, .teaser, .tags{
+        padding-left: 0;
+      }
+    }
+  }
+}
+
+@media (min-width: 769px) and (max-width: 999px){
+  .layout-50-25-25,
+  .layout-25-25-50{
+    .col-md-3, {
+      .collectorNews{
+        .articleHasImage{
+          > a{float: left;}
+          > h4, .dateAuthor, .teaser, .tags{
+            padding-left: 90px;
+          }
+        }
+      }
+    }
+  }
+  .layout-25-50-25{
+    .col-md-3, .col-md-6{
+      .collectorNews{
+        .articleHasImage{
+          > a{float: none;}
+          > h4, .dateAuthor, .teaser, .tags{
+            padding-left: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// 5. Document Collection and Photo Collection
+.collectorDocuments,
+.collectorPhotos {
+  .item {
+    @include list-item;
+
+    .info {
+      font-size: 1em;
+      font-weight: normal;
+      float: left;
+      margin-left: 25px; // Offset the icon
+    }
+
+    & > a img {
+        display: none;
+    }
+  }
+
+  img {
+    margin: 0 10px 10px 0;
+    float: left;
+  }
+
+  h4 {
+    font-size: 1.125em;
+  }
+
+  li h4 a {
+    font-size: .75em;
+    text-decoration: none;
+  }
+
+  .dateAuthor {
+    color: #666;
+    font-size: .75em;
+    margin-bottom: .25em;
+  }
+}

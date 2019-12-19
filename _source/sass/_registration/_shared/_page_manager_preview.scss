@@ -1,0 +1,35 @@
+.sn-preview {
+    display: block;
+    font-size: 10px;
+    font-weight: 400;
+    color: #84929c;
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #D5DADD;
+    line-height: 1.4;
+    &:hover{
+      color: #84929c;
+      text-decoration: none;
+    }
+    &.preview-on{
+      background-color: #E5E7E8;
+    }
+    &.preview-on, &.preview-off{
+      &:before{
+        content:"";
+        display:block;
+        margin: 0 auto;
+        width: 20px;
+        height: 20px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+      }
+    }
+    &.preview-off:before{
+      background-image: url(../images/eye-off.svg);
+    }
+    &.preview-on:before{
+      background-image: url(../images/eye-on.svg);
+    }
+}

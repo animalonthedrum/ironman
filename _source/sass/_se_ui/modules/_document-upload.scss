@@ -1,0 +1,56 @@
+$pl-document-upload--view-size: 64px;
+$pl-document-upload--upload-icon-size: 64px;
+$pl-document-upload--file-icon-size: 140px;
+$pl-document-upload--preview-size: 250px;
+
+.pl-document-upload {
+  display: block;
+  text-align: center;
+}
+
+.pl-document-upload__preview {
+  margin: auto;
+  max-width: $pl-document-upload--preview-size;
+}
+
+.pl-document-upload__image {
+  border: 1px solid $gray-xlight;
+  margin: auto;
+  max-height: $pl-document-upload--preview-size;
+}
+
+.pl-document-upload__view-image {
+  border: 1px solid $gray-xlight;
+  cursor: pointer;
+  display: block;
+  margin-top: .25em;
+  max-height: $pl-document-upload--view-size;
+  max-width: $pl-document-upload--view-size;
+}
+
+.pl-document-upload__file-icon {
+  fill: $color-content-lighter;
+  height: $pl-document-upload--file-icon-size;
+  margin: auto;
+  width: $pl-document-upload--file-icon-size;
+}
+
+.pl-document-upload__upload-icon {
+  fill: $color-content-lighter;
+  height: $pl-document-upload--upload-icon-size;
+  margin: auto;
+  width: $pl-document-upload--upload-icon-size;
+}
+
+.pl-document-upload__view-icon {
+  cursor: pointer;
+  display: block;
+  fill: $color-content-lighter;
+  height: $pl-document-upload--view-size;
+  margin: 0 $pl-document-upload--view-size / -6;
+  width: $pl-document-upload--view-size;
+}
+
+.pl-document-upload__filename {
+  font-size: $font-medium;
+}

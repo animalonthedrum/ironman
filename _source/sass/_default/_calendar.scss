@@ -1,0 +1,255 @@
+/*  Shared Styles
+-------------------------------------------------------------------- */
+#monthViewCalendar,
+#month_list,
+#dayViewCalendar,
+#event_show {
+  .vevent {
+    .noEntry {
+      margin-top: initial;
+      font-size: .75em;
+      line-height: initial;
+      border-top: initial;
+    }
+  }
+}
+
+#monthViewCalendar .caption,
+#month_navigation h2,
+#dayViewCalendar h2 {
+  padding-top: 32px;
+  padding-bottom: 15px;
+  font-size: 36px;
+  font-family: $font-primary;
+  line-height: 1.35;
+  font-weight: 700;
+  text-align: center;
+  color: #333;
+
+  @media only screen and (max-width: 640px) { font-size: 28px; }
+
+  a {
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    font-size: 0;
+
+    &:after {
+      font: normal normal normal 1.5rem/1 FontAwesome;
+      vertical-align: bottom;
+      color: $link-color;
+    }
+
+    &:first-child:after {
+      content: "\f060"; // fa-arrow-left
+      margin-right: 1vw;
+    }
+
+    &:last-child:after {
+      content: "\f061"; // fa-arrow-right
+      margin-left: 1vw;
+    }
+  }
+}
+
+#month_navigation h2,
+#dayViewCalendar h2 {
+  @include line-pattern-border($pos:bottom);
+}
+
+/*  Month View
+-------------------------------------------------------------------- */
+#monthViewCalendar {
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    word-wrap: break-word;
+  }
+
+  th,
+  td {
+    border: solid 2px #fff;
+    padding: 4px;
+    vertical-align: top;
+    line-height: 1;
+  }
+
+  th {
+    text-align: center;
+    background-color: $link-color;
+    color: #fff;
+
+    @media only screen and (max-width: 1024px) {
+      font-size: 0;
+      &:first-letter { font-size: initial; }
+    }
+    @media only screen and (max-width: 640px) {
+      display: none;
+    }
+  }
+
+  td {
+    height: 75px;
+    background-color: $table-body-background;
+
+    @media only screen and (max-width: 640px) {
+      display: block;
+      height: auto;
+    }
+  }
+
+  ul,
+  li {
+    display: block;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    line-height: 1.4;
+    text-align: left;
+    font-weight: 400;
+  }
+
+  .vevent {
+    position: relative;
+    overflow: hidden;
+    margin: 10px 0;
+    line-height: 1.2;
+  }
+
+  .summary {
+    font-size: inherit;
+    margin-bottom: .25em;
+  }
+
+  .description,
+  .type { display: none; }
+
+  .tags { font-style: italic; }
+
+  .today {
+    background-color: transparent;
+    box-shadow: inset 0 0 0 1px $link-color;
+  }
+
+  .dateLink { display: block; }
+
+  .dateLink,
+  .otherMonth {
+    text-align: right;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .otherMonth { color: #ddd; }
+}
+
+
+/*  Day View
+-------------------------------------------------------------------- */
+#dayViewCalendarEvents {
+  .eventAggregatorElement .summary,
+  .eventAggregatorElement .details { padding-left: 0; }
+}
+
+#dayViewCalendarEvents,
+#month_list {
+  // make this look like a boxscore (normally wrapped in .boxscore-container)
+  .boxscore { @extend %boxscore-table; }
+}
+
+
+/*  Month List View
+-------------------------------------------------------------------- */
+#month_list,
+#event_show {
+
+  .vevent {
+    .location {
+      text-transform: none;
+      color: inherit;
+      font-weight: inherit;
+      font-family: inherit;
+    }
+  }
+
+  .showMoreEvents {
+    background: $table-body-background;
+    border-top: 1px solid #ccc;
+    padding: 5px 5px 5px 40px;
+    text-align: left;
+  }
+}
+
+/*  Event Show
+-------------------------------------------------------------------- */
+
+#event_show {
+
+  + .eventTags { margin-top: -$base-padding; }
+
+  ~ .eventTags {
+    font-size: 12px;
+    padding-left: 95px;
+
+    @media only screen and (max-width: 360px) { padding-left: 0; }
+  }
+
+  ~ .eventContentNode {
+    @include line-pattern-border;
+
+    ~ .eventTags {
+      padding-top: 15px;
+      @include line-pattern-border;
+    }
+  }
+}
+
+
+/*  Dib Item
+-------------------------------------------------------------------- */
+.dibItem {
+  .location,
+  .tags,
+  .type {
+    font-size: 11px;
+    color: #666;
+  }
+  .time {
+    font-weight: bold;
+  }
+  .vevent li {
+    display: block;
+    list-style-type: none;
+    margin: 0;
+  }
+}
+
+
+/*  iCal Events
+-------------------------------------------------------------------- */
+.ical_icon {
+  float:right;
+  margin: 0.5em 0 0 0.3em;
+  position: relative;
+  top: -4px;
+
+  @media only screen and (max-width: 640px) {
+    #monthViewCalendar & {
+      float: none;
+      margin: 0 .3em 0 0;
+      position: static;
+    }
+  }
+}
+.ics_file_download,
+.aggregatorElement a .ics_file_download {
+  float: none;
+  width: auto;
+  border: none;
+}
+
+
+/*  Show More Link
+-------------------------------------------------------------------- */
+.showMoreEvents small { float: right; }

@@ -1,0 +1,187 @@
+.siteContainer > #masterScoreboard {
+  background: transparent;
+  max-width: 940px;
+  margin: 18px auto;
+
+  html.has-mobile-nav & { margin: 0; }
+}
+
+
+#masterScoreboard {
+  background: #fff;
+  .scoreboardRibbon {
+    margin: 0px;
+  }
+}
+.scoreboardRibbon {
+  background: rgba(7,7,7,.75);
+  z-index: 0;
+}
+.pageElement .scoreboardRibbon{
+  margin: 0 5px;
+}
+$scoreboard-ribbon-padding: 13px;
+$scoreboard-ribbon-height: 125px;
+.scoreboardRibbon{
+  height: $scoreboard-ribbon-height + ($scoreboard-ribbon-padding*2);
+  position: relative;
+  text-transform: capitalize;
+  overflow: hidden;
+  padding-top: $scoreboard-ribbon-padding;
+  .next_button, .previous_button {
+    width: 30px;
+    height: $scoreboard-ribbon-height;
+    cursor: pointer;
+    z-index: 500;
+    color: $accent-color;
+    display: block;
+    font: .875em FontAwesome;
+    line-height: $scoreboard-ribbon-height;
+    position: absolute;
+    text-align: center;
+    &:hover {
+      background: rgba(7,7,7,.75);
+    }
+    &::selection {
+      background: transparent;
+    }
+    &::-moz-selection {
+      background: transparent;
+    }
+  }
+  .next_button_disabled, .previous_button_disabled {
+    cursor: default;
+    &:before {
+      color: #999;
+    }
+    &:hover {
+      background: transparent;
+    }
+  }
+  .previous_button {
+    left: 8px;
+    &:before {
+      content: "\f060";
+    }
+  }
+  .next_button {
+    right: 8px;
+    &:before {
+      content: "\f061";
+    }
+  }
+  .container{
+    height: 125px;
+    overflow: hidden;
+    position: absolute;
+    left: 45px;
+    right: 45px;
+    z-index: 490;
+    padding: 0px;
+    width: auto;
+    ul{
+      width: 100000px;
+      position: relative;
+    }
+  }
+  .game{
+    display: block;
+    float: left;
+    width: 154px;
+  }
+  .gameLink{
+    height: 125px;
+    width: 100%;
+    cursor: pointer;
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+    cursor: pointer;
+    background: #fff;
+  }
+  a{
+    > span{
+      display: block;
+      font-weight: normal;
+      color: #666;
+      line-height: 1.5em;
+      padding-left: 10px;
+      padding-right: 10px;
+      &:last-child {
+        padding-bottom: 8px;
+      }
+    }
+  }
+  .date{
+    background: $link-color;
+    color: #fff;
+    font-family: $font-primary;
+    font-size: 11px;
+    letter-spacing: .5px;
+    margin-bottom: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .team{
+    font-size: 12px; display: block; clear: both;
+  }
+  .game{
+    padding-right: 2px;
+    &:last-child {
+      padding-right: 0;
+    }
+    .name{
+      float: left; clear: left; max-width: 105px; white-space: nowrap; word-wrap: normal; overflow: hidden; text-overflow: ellipsis; font-weight: bold;
+    }
+    .score{
+      float: right; font-weight: bold;
+    }
+    .status{
+      clear: both;
+      font-family: $font-primary;
+      font-size: 11px;
+      font-weight: 600;
+      padding-top: 10px;
+      text-transform: uppercase;
+    }
+    .boom{
+      .name{
+        color: $link-color;
+      }
+      .score{
+        color: $link-color;
+      }
+    }
+  }
+  .in_progress .status{
+    color: $link-color;
+    font-style: italic;
+    font-weight: bold;
+  }
+  .completed .status{
+    font-weight: bold;
+  }
+}
+// Shrink ribbon buttons when within 25% column.
+@media (min-width: 1000px) {
+  .col-md-3 {
+    .scoreboardRibbon {
+      .container {
+        left: 25px;
+        right: 25px;
+      }
+      .previous_button,
+      .next_button {
+        width: 18px;
+      }
+      .previous_button {
+        left: 4px;
+      }
+      .next_button {
+        right: 4px;
+      }
+    }
+  }
+}

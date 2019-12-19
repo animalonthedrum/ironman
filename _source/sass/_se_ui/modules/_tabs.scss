@@ -1,0 +1,41 @@
+// # Tabs
+// Horizontal tabs for navigating within a page
+
+.pl-tabs {
+  display: flex;
+  overflow-x: auto;
+}
+.pl-tabs__item {
+  & + & {
+    margin-left: 1.7143em; // 24px / 14px
+  }
+}
+.pl-tabs__link {
+  border-bottom: solid 2px transparent;
+  color: $color-content;
+  cursor: pointer;
+  display: block;
+  padding-bottom: .2857em; // 4px / 14px
+  padding-top: .2857em; // 4px / 14px
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    border-bottom-color: $color-content-xlight;
+  }
+  &[aria-selected='true'] {
+    border-bottom-color: $color-highlight;
+  }
+}
+
+// For `jquery-accessible-tabpanel-aria` plugin
+.js-tabcontent {
+  &[aria-hidden='true'] {
+    display: none;
+  }
+
+  .invisible {
+    left: -9999px;
+    position: absolute;
+  }
+}

@@ -1,0 +1,150 @@
+#survey_steps {
+
+  a { color: $link-color; }
+
+  .dragTwo .handle,
+  .drag .handle {
+    height: auto;
+  }
+
+  .siteContainer {
+    width: 100%;
+    max-width: 990px;
+    display: block;
+    margin: auto;
+
+    #accountNav {
+      margin: auto;
+      padding: 0px;
+    }
+
+    #adminNav { top: 93px; }
+    .adminToggle {
+      display: block;
+      position: absolute;
+      padding:0;
+      top: 0;
+      right: 0;
+      width: 75px;
+      height: 75px;
+      text-indent: -1000px;
+      background-repeat:no-repeat;
+      overflow: hidden;
+    }
+
+    #surveyNameHeader {
+      h1 {
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: #fff;
+        background-color: $color-primary;
+        font: bold 22px/40px $font-primary;
+        padding: 0 15px;
+
+        @media only screen and (min-width: 421px) and (max-width: 767px) {
+          padding-left: 180px;
+          text-align: right;
+        }
+
+        @media only screen and (max-width: 420px) {
+          background-image: none !important;
+        }
+      }
+    }
+
+    #pageContentContainer {
+
+      #panelOne {
+        width: 100%;
+        max-width: 30%;
+        display: inline-block;
+        float: left;
+        padding:5px;
+        padding-bottom: 30px;
+      }
+
+      #panelTwo {
+        width: 100%;
+        max-width: 70%;
+        display: inline-block;
+        float: left;
+        padding:5px;
+      }
+    }
+  }
+  .textBlockElement{
+    .miniPersona + &{margin-top: 1em;}
+    .pageElement{
+      .resultsTable{
+        margin: .5em 0 1.5em 0;
+        width:100%;
+        tr{
+          border:none;
+          border:1px solid #CCC;
+        }
+        th, td{
+          background: none;
+          color: #333;
+          border: none;
+          text-align: left;
+          padding: .45em .75em;
+        }
+        th{
+          width: 35%;
+          border-right: 1px solid #CCC;
+        }
+      }
+    }
+  }
+  #siteFooter {
+    max-width: 990px;
+    background-color: $color-primary;
+    padding: 15px;
+    text-align: center;
+
+    a {
+      color:#fff;
+      text-decoration: none;
+      margin-right: 10px;
+      opacity: 0.9;
+      font: 100 .9em/1.5em $font-primary;
+    }
+
+    a:hover { opacity: 1; }
+  }
+}
+
+#survey_steps.edit_mode {
+
+  .rapidTabsConstruction {
+    border-top:0px;
+  }
+
+  .contentTabs.rapidTabsConstruction {
+
+    a,
+    a:hover {
+      background-color: #e1af10;
+      color: #666;
+    }
+
+    .selected {
+
+      a {
+        background-color: #fde771;
+        color:#000;
+      }
+
+      a:hover {
+        background-color: #F7CE29;
+        color:#666;
+      }
+    }
+
+    li span a {
+      margin-right: 0px;
+    }
+  }
+}

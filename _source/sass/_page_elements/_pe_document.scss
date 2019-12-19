@@ -1,0 +1,19 @@
+/* Document Page Element */
+// 1. Element Styling
+// 2. Document Icons
+
+// 1. Element Styling
+.documentElement {
+
+  h3 {
+    a{
+      @include global-link-container;
+      @include global-link-style;
+      @include global-link-text;
+      @include global-link-icon-character;
+      @include global-link-icon-style;
+      font-size: 16px;
+      font-weight: 400;
+    }
+  }
+}

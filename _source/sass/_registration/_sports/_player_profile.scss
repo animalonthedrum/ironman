@@ -1,0 +1,84 @@
+$breakpointWidth: 500px;
+$playerPhotoWidth: 200px;
+$playerPhotoHeight: 250px;
+
+.rosterPlayerInfoElement {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  text-align: center;
+  @include line-pattern-border(3, bottom);
+
+  @media screen and (min-width: $breakpointWidth) {
+    position: relative;
+    padding-bottom: 6px;
+    text-align: left;
+  }
+
+  h3 {
+    margin-bottom: 20px;
+    background-color: transparent !important; // Overwrite inline styles
+    border-color: transparent !important; // Overwrites inline styles
+    color: $bodyCopyColorTwo !important; // Overwrites inline styles
+    text-transform: none;
+    font-size: 2rem;
+    position: relative;
+
+    @media screen and (min-width: $breakpointWidth) {
+      width: calc(100% - #{$playerPhotoWidth} - 20px);
+      float: right;
+    }
+
+    small {
+      display: inline-block;
+      padding: .25em .5em;
+      font-size: 1.25rem;
+      background-color: $link-color;
+      color: #fff;
+    }
+  }
+
+  .RosterPlayerInfoImage img {
+    display: block;
+    max-height: $playerPhotoHeight;
+    max-width: $playerPhotoWidth;
+    margin: auto;
+
+    @media screen and (min-width: $breakpointWidth) {
+      margin: 0;
+      float: left;
+    }
+  }
+
+  table {
+    display: inline-block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    @media screen and (min-width: $breakpointWidth) {
+      max-width: calc(100% - #{$playerPhotoWidth} - 20px);
+      margin-left: 20px;
+      margin-top: 0;
+    }
+  }
+
+  th,
+  td {
+    font-size: 1rem;
+    text-align: left;
+  }
+
+  tr:not(:first-child) {
+    th,
+    td {
+      padding-top: 10px;
+    }
+  }
+
+  th {
+    padding-right: 20px;
+
+    &:after {
+      content: ':';
+    }
+  }
+}

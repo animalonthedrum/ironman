@@ -1,0 +1,23 @@
+// Global Page Element Headers
+.pageElement > h3:first-child{
+  @include page-element-header;
+}
+.pageElement > h3:only-child{
+  margin-bottom: 0;
+}
+
+// Table Element
+.tableElement {
+  & > h3:first-child {
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    color: white;
+    background-color: $color-primary;
+    height: 68px;
+    padding-left: $content-container-margin;
+    margin-bottom: 0;
+    @include mobile{ padding-left: $mobile-padding; }
+    @include tablet{ padding-left: $mobile-padding; }
+  }
+}

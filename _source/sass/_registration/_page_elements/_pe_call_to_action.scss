@@ -1,0 +1,254 @@
+/* Call to Action Element */
+// 1. Default Styles
+// 2. Variations
+// 3. Edge Case Fixes
+// 4. Fix for tall text in short container
+// 5. Adjustments for Small Columns & Mobile Views
+// 6. Accomidation for touch screens
+$link-color_opacity_black: rgba(0,0,0,0.7);
+// 1. Default Styles
+.sn-call-to-action,
+.sn-call-to-action * {
+  box-sizing: border-box;
+}
+.sn-call-to-action {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  //padding:7px 0 5px 0;
+/*
+ &:before {
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    display:block;
+    width:100%;
+    height:5px;
+    background:$accent-color;
+    border-bottom:2px solid #fff;
+    z-index:10;
+  }
+  &:after {
+    content:"";
+    position:absolute;
+    bottom:0;
+    left:0;
+    display:block;
+    width:100%;
+    height:3px;
+    border-top:2px solid #fff;
+    z-index:10;
+    @include line-pattern(#aaa,#fff);
+  }
+*/
+  img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  .sn-call-to-action-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    z-index: 1;
+    text-align: center;
+  }
+  .sn-call-to-action-overlay-inner {
+    display: table;
+    width: 100%;
+    height: 100%;
+  }
+  .sn-call-to-action-overlay-text {
+    display: table-cell;
+    font-size: rem(10);
+    height: 100%;
+    line-height: 1;
+    vertical-align: middle;
+  }
+  .sn-call-to-action-title {
+    color: #fff;
+    font-family:$fontOne;
+    font-size: rem(24);
+    font-weight:normal;
+    margin-bottom: 0.3em;
+  }
+  .sn-call-to-action-subtitle {
+    color: #fff;
+    font-family:$fontTwo;
+    font-size: rem(16);
+    font-weight: 400;
+    line-height: 130%;
+    margin-bottom:0;
+    a,
+    span {
+      margin: 0 .25em;
+      color: #fff;
+      display: inline-block;
+    }
+  }
+}
+.sn-call-to-action .sn-call-to-action-subtitle:first-of-type > * {
+  padding-top: 5px;
+}
+
+// 2. Variations
+
+/* Slide Up */
+.sn-call-to-action.sn-variation-slide-up {
+  .sn-call-to-action-overlay {
+    background: $link-color_opacity_black;
+    top: auto;
+    height: 0;
+    transition: height 0.5s ease;
+  }
+  .sn-call-to-action-title {
+    margin-bottom: 20px;
+  }
+  .sn-call-to-action-subtitle {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  &:hover {
+    .sn-call-to-action-overlay {
+      height: 100%;
+    }
+    .sn-call-to-action-subtitle {
+      opacity: 1;
+    }
+  }
+}
+
+/* Zoom */
+.sn-call-to-action.sn-variation-zoom {
+  img {
+    transform: scale(1);
+    transition: transform 0.5s ease;
+  }
+  &:hover {
+    img {
+      transform: scale(1.2);
+    }
+  }
+}
+
+/* Text Zoom */
+.sn-call-to-action.sn-variation-text-zoom {
+  .sn-call-to-action-overlay-text {
+    transform: scale(1);
+    transition: transform 0.5s ease;
+  }
+  &:hover {
+    .sn-call-to-action-overlay-text {
+      transform: scale(1.1);
+    }
+  }
+}
+
+/* Border */
+.sn-call-to-action.sn-variation-border {
+  .sn-call-to-action-overlay {
+    box-shadow: inset 0 0 0 0 transparent, inset 0 0 0 0 transparent;
+    transition: box-shadow 0.5s ease-in;
+  }
+  &:hover {
+    .sn-call-to-action-overlay {
+      box-shadow: inset 0 7px 0 10px $link-color_opacity_black, inset 0 -5px 0 10px $link-color_opacity_black;
+    }
+  }
+}
+
+// 3. Edge Case Fixes
+
+/* mirrored CTA preview img alignment fixes */
+.pe25 .elementPreview img,
+.pe33 .elementPreview img {
+  width: 100%;
+  margin: 0px;
+}
+
+// 4. Fix for tall text in short container
+.sn-call-to-action.sn-variation-tall-text {
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    max-width: initial;
+    min-width: 100%;
+    transform: translate(-50%, -50%);
+  }
+}
+.sn-call-to-action.sn-variation-zoom.sn-variation-tall-text {
+  &:hover {
+    img {
+      transform: scale(1.2) translate(-40%, -40%);
+    }
+  }
+}
+
+// 5. Adjustments for Small Columns & Mobile Views
+
+/* paragraph spacing */
+.pe25 .sn-call-to-action-overlay-text p {
+  margin-bottom: .15em;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1000px) {
+  .col-md-4 .sn-call-to-action, .col-md-3 .sn-call-to-action{
+    .sn-call-to-action-title{
+      font-size: rem(20);
+    }
+    .sn-call-to-action-subtitle{
+      font-size: rem(14);
+    }
+  }
+}
+@media only screen and (max-width: 350px) {
+  .sn-call-to-action{
+    .sn-call-to-action-title{
+      font-size: rem(20);
+    }
+    .sn-call-to-action-subtitle{
+      font-size: rem(14);
+    }
+  }
+}
+
+// 6. Accomodation for touch screens
+.touch-screen {
+  .sn-call-to-action.sn-variation-slide-up,
+  .sn-call-to-action.sn-variation-slide-up:focus,
+  .sn-call-to-action.sn-variation-slide-up:hover{
+    .sn-call-to-action-overlay {
+      height: 100%;
+      transition: none;
+    }
+    .sn-call-to-action-subtitle {
+      opacity: 1;
+      transition: none;
+    }
+  }
+  .sn-call-to-action.sn-variation-border,
+  .sn-call-to-action.sn-variation-border:focus,
+  .sn-call-to-action.sn-variation-border:hover{
+    .sn-call-to-action-overlay{
+      transition: none;
+      box-shadow: inset 0 7px 0 10px $link-color_opacity_black, inset 0 -5px 0 10px $link-color_opacity_black;
+    }
+  }
+  .sn-call-to-action.sn-variation-text-zoom,
+  .sn-call-to-action.sn-variation-text-zoom:focus,
+  .sn-call-to-action.sn-variation-text-zoom:hover{
+    .sn-call-to-action-overlay-text{
+      transition: none;
+      transform: scale(1);
+    }
+  }
+}

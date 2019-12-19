@@ -1,0 +1,264 @@
+#GameShowContent.game_show_nextgen .GameShowDataContainer.play_by_play {
+  padding: 0;
+}
+
+body .GameShowDataContainer.play_by_play {
+  .StatWidget,
+  .StatWidgetColumn .StatWidgetHolder { margin: 0 0 0 0; }
+}
+
+#PBP {
+  $query-small: "screen and (min-width: 400px)";
+  $query-medium: "screen and (min-width: 550px)";
+  $query-large: "screen and (min-width: 800px)";
+  $clock-width-small: 18%;
+  $clock-width-medium: 35%;
+  $clock-width-large: 22.5%;
+  $play-margin-small: 6px;
+  $play-margin-medium: 12px;
+
+  padding-bottom: 16px;
+  background: $table-body-background;
+
+  #PBP-loader + & {
+    display: none;
+  }
+
+  .pbp-list:before { // Background stripe (timeline)
+    @media #{$query-large} {
+      content: '';
+      position: absolute;
+      background-color: #ccc;
+      left: 50%;
+      top: 0;
+      height: 100%;
+      width: 1px;
+    }
+  }
+
+  .pbp-header:not(:first-child) {
+    margin-top: 48px;
+    
+    .homeTeam,
+    .awayTeam {
+      display: none;
+    }
+  }
+
+  .pbp-team-header {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    position: relative;
+
+    .homeTeam,
+    .awayTeam {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      color: #fff;
+      width: 50%;
+      padding: 10px $play-margin-small;
+
+      @media #{$query-medium} {
+        padding-left: $play-margin-medium;
+        padding-right: $play-margin-medium;
+      }
+    }
+
+    .homeTeam {
+      -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+      justify-content: flex-end;
+
+      .team_logo {
+        -webkit-order: 1;
+        -ms-flex-order: 1;
+        order: 1;
+        margin-left: 8px;
+      }
+    }
+
+    .awayTeam .team_logo {
+      margin-right: 8px;
+    }
+
+    .team_logo {
+      display: none;
+
+      @media #{$query-small} {
+        display: block;
+      }
+    }
+
+    .interval {
+      -webkit-order: 1;
+      -ms-flex-order: 1;
+      order: 1;
+      -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      width: 100%;
+      background-color: $table-body-background;
+      text-transform: capitalize;
+      text-align: center;
+
+      @media #{$query-medium} {
+        font-size: 18px;
+      }
+
+      span {
+        display: block;
+        margin: 16px 0 8px;
+      }
+
+      br { display: none; }
+    }
+  }
+
+  .clockTime {
+    position: absolute;
+    top: 0;
+    color: #fff;
+    text-align: center;
+    min-width: $clock-width-medium;
+
+    @media #{$query-small} {
+      min-width: $clock-width-small;
+    }
+
+    @media #{$query-large} {
+      min-width: $clock-width-large;
+      background-color: $table-body-background;
+      color: #666;
+    }
+  }
+
+  .play {
+    position: relative;
+    margin: $play-margin-small;
+    width: calc(60% - #{$play-margin-small});
+    background: #fff;
+    font-size: 12px;
+
+    @media #{$query-small} {
+      width: calc(55% - #{$play-margin-small});
+    }
+
+    @media #{$query-medium} {
+      width: calc(55% - #{$play-margin-medium});
+      margin-top: $play-margin-medium;
+      margin-bottom: $play-margin-medium;
+      font-size: 14px;
+    }
+
+    @media #{$query-large} {
+      width: calc(45% - #{$play-margin-medium});
+    }
+  }
+
+  .playAway {
+    margin-left: $play-margin-small;
+
+    @media #{$query-medium} {
+      margin-left: $play-margin-medium;
+    }
+
+    @media #{$query-large} {
+      text-align: right;
+    }
+
+    .clockTime {
+      right: 0;
+
+      @media #{$query-large} {
+        right: -$clock-width-large;
+      }
+    }
+
+    .playerPhoto {
+      @media #{$query-large} {
+        float: right;
+        margin-right: 0;
+        margin-left: 8px;
+      }
+    }
+  }
+
+  .playHome {
+    margin-left: 40%;
+    margin-right: $play-margin-small;
+
+    @media #{$query-small} {
+      margin-left: 45%;
+    }
+
+    @media #{$query-medium} {
+      margin-right: $play-margin-medium;
+    }
+
+    @media #{$query-large} {
+      margin-left: 55%;
+    }
+
+    .playType {
+      text-align: right;
+      padding-left: $clock-width-medium;
+
+      @media #{$query-small} {
+        padding-left: $clock-width-small;
+      }
+      @media #{$query-large} {
+        padding-left: 8px;
+        text-align: left;
+      }
+    }
+    .clockTime {
+      @media #{$query-large} {
+        left: -$clock-width-large;
+      }
+    }
+  }
+
+  .playerName {
+    margin-bottom: 0;
+
+    br { display: none; }
+
+    a:after { content: ' '; }
+  }
+
+  .playerInfo {
+    overflow: hidden;
+  }
+
+  .playerPhoto {
+    float: left;
+    margin-right: 8px;
+  }
+
+  .playType {
+    color: #fff;
+    background: black;
+  }
+
+  .playType,
+  .playerInfo,
+  .extraDetails,
+  .clockTime {
+    padding: 4px;
+
+    @media #{$query-medium} {
+      padding: 8px;
+    }
+  }
+  .extraDetails {
+    padding-top: 0;
+  }
+}

@@ -1,0 +1,891 @@
+/* FCK Editor tweaks
+-------------------------------------------------------------------- */
+
+.selectElement{
+  display: block;
+  list-style-type: none;
+  height: 150px;
+  position: relative;
+  overflow: auto;
+  border: 1px solid #CCC;
+  margin: 0 25px;
+  .odd{
+    background-color: #EFEFEF;
+  }
+  li{
+    display: block;
+    margin: 0;
+    padding: 3px 5px;
+    background-repeat: no-repeat;
+  }
+}
+
+.selectElement input, .selectElement img, .selectElement h4{
+  display: inline;
+  margin-left: 5px;
+  vertical-align: middle;
+  font-weight: normal;
+}
+
+/* CMS Button
+-------------------------------------------------------------------- */
+
+.cmsButton{
+  display: block;
+  font-size: 14px;
+  line-height: 200%;
+  text-decoration: none;
+  background-image: url($asset-path-for+'/app_images/cmsButton.gif');
+  background-repeat: repeat-x;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Admin Toggle Button
+-------------------------------------------------------------------- */
+
+.goToAdmin{
+  background-image: url($asset-path-for+'/app_images/siteAdminToggle.gif');
+}
+
+.goToWebsite{
+  background-image: url($asset-path-for+'/app_images/websiteToggle.gif');
+}
+
+/* ADMIN - Page Options
+-------------------------------------------------------------------- */
+
+#adminPageOptions{
+  display: block;
+  line-height: 18px;
+  background-color: #FDE872;
+  a{
+    text-decoration: none;
+  }
+  option{
+    padding-right: 10px;
+  }
+  label{
+    font-weight: bold;
+  }
+}
+
+.editPageLink:link, .editPageLink:visited{
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  padding: 3px;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: .15em;
+  background-color: #F9D100;
+  border-top: solid 1px #DDA301;
+  border-bottom: solid 1px #DDA301;
+  margin: 0 1px 25px 1px;
+}
+
+/* Construction Rapid Content
+-------------------------------------------------------------------- */
+
+.rapidContentConstruction{
+  padding: 15px 15px 0;
+  background: #FDE872 url( $asset-path-for+'/app_images/cmsTabFooter.gif') repeat-x bottom left;
+  border-bottom: solid 1px #DDA301;
+  .pageElementAdmin{
+    margin-left: 0;
+    margin-right: 0;
+    background: #FFF3B0;
+    border: 1px solid #DDA301;
+    .pageElement{
+      margin: 10px;
+    }
+  }
+}
+
+.rapidTabsConstructionLoader{
+    background: #FDE872 url( $asset-path-for+'/app_images/cmsTabFooter.gif') repeat-x bottom left;
+    border-bottom: solid 1px #DDA301;
+}
+
+/* CMS Page Status */
+
+.cmsPageStatus{
+  margin-bottom: 15px;
+  text-align: center;
+  ul{
+    display: block;
+    list-style-type: none;
+    width: 395px;
+    margin: 0 auto;
+    li{
+      float: left;
+    }
+  }
+}
+
+.cmsPageStatus li a{
+    display: block;
+    height: 30px;
+    height: 0pt;
+    overflow: hidden;
+    padding-top: 30px;
+}
+
+.cmsPageStatus .cmsPageDisabled a{
+    width: 103px;
+    background-image: url($asset-path-for+'/app_images/publicPrivateToggle_disabled.png');
+}
+
+.cmsPageStatus .cmsPagePaywalled a{
+    width: 112px;
+    background-image: url($asset-path-for+'/app_images/publicPrivateToggle_paywalled.png');
+}
+
+.cmsPageStatus .cmsPagePrivate a{
+    width: 91px;
+    background-image: url($asset-path-for+'/app_images/publicPrivateToggle_private.png');
+}
+
+.cmsPageStatus .cmsPagePublic a{
+    width: 89px;
+    background-image: url($asset-path-for+'/app_images/publicPrivateToggle_public.png');
+}
+
+.cmsPageStatus .selected a{
+    background-position: 0 -30px;
+}
+
+.cmsPageStatus .inlineHelp, .inlineHelp{
+    clear: left;
+    font-size:.8em;
+    line-height:135%;
+    padding: 15px 5px;
+}
+
+/* CMS Page Tab Tables */
+
+.rapidContentConstruction .dataTable, .rapidContentConstruction .resultsTable, #profiles_table{
+    border: solid 1px #DDA301;
+    text-align: left;
+    margin-bottom: 15px;
+    clear: both;
+}
+
+.rapidContentConstruction .odd  { background-color: #FFF3B0; }
+.rapidContentConstruction .even { background-color: #FEFCF4; }
+
+.rapidContentConstruction .genericPermissions{
+    color: #333333;
+}
+
+
+/* White inner container for content construction tabs
+-------------------------------------------------------------------- */
+.rapidContentConstructionInner {
+  background: #fff;
+  border: 1px solid #DDA301;
+  margin-bottom: 15px;
+  padding: 15px;
+}
+
+.rapidContentConstructionInner .layoutContainer { background: transparent; border: none; }
+
+.rapidContentConstructionInner .pageElement {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.rapidContentConstructionInner .statTable th,
+.rapidContentConstructionInner .statTable td {
+  width: auto;
+}
+
+.rapidContentConstructionInner .statTable .odd {
+  background-color: #f2f2f2;
+}
+
+.rapidContentConstruction .rapidContentConstructionInner .odd  { background-color: #f2f2f2; }
+.rapidContentConstruction .rapidContentConstructionInner .even { background-color: #e5e5e5; }
+
+.rapidContentConstructionInner .pageElement:last-child,
+.rapidContentConstructionInner .pageElement:last-child .dataTable { margin-bottom: 0; }
+
+
+/* Yellow inner container for content construction tabs
+-------------------------------------------------------------------- */
+.rapidContentConstructionInnerYellow {
+  background: #fff3b0;
+  border: 1px solid #DDA301;
+  clear: both;
+  margin-bottom: 15px;
+  padding: 15px 0;
+}
+
+
+
+/* Data Tables
+-------------------------------------------------------------------- */
+.rapidContentConstruction .dataTable td, .rapidContentConstruction .dataTable th, .rapidContentConstruction .resultsTable tr{
+   border: none;
+}
+
+.dataTable .odd .permissionDisabled{
+    background: #CCC;
+}
+
+.dataTable .even .permissionDisabled{
+    background: #EFEFEF;
+}
+
+.dataTable .key .permissionDisabled{
+    background: #999;
+}
+
+.dataTable .profilePic{
+  float: left;
+}
+.dataTable .profilePic img { float: left; }
+
+.dataTable .profileSubPic {
+  float: left;
+  margin: 10px 5px 0 -10px;
+}
+.dataTable td .profileSubPic img {
+  height: 16px;
+  width: 16px;
+}
+
+.dataTable .persona{
+  line-height: 25px;
+}
+
+.dataTable .persona input{
+  margin: 5px 10px 0 5px;
+  float: left;
+}
+
+.dataTable .persona .profilePic{
+  line-height: 0;
+}
+
+.dataTable .persona img{
+  line-height: 0;
+  width: 25px;
+  height: 25px;
+}
+
+.dataTable .persona .name{
+  font-weight: bold;
+  font-size: 12px;
+  float: left;
+}
+
+#userPage .dataTable .persona { line-height: 1.2em; }
+.dataTable .personaSmall .profilePic  { line-height: 0; margin: 5px 5px 0 0; } /* used in User section */
+
+.dataTable .savedMessage{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/*  Archived Page Admin Status
+-------------------------------------------------------------------- */
+
+.cmsTabHeader{
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #666;
+    padding-top: 0;
+    margin: 0 5px 5px 0;
+    float: left;
+}
+
+.adminPageSettings{
+  width: 50%;
+  float: left;
+  display: block;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.adminPageStatus{
+  width: 40%;
+  float: right;
+  text-align: right;
+  display: block;
+}
+
+.adminPageStatus p{
+  margin-bottom: 7px;
+}
+
+.adminPageStatus li{
+  list-style-type: none;
+}
+
+.objectAttributesLinkDiv ul{
+  padding: 0 10px 10px;
+  list-style-type: none;
+}
+
+.pageElementMenu{
+  clear: both;
+  background: #FDE872 url( $asset-path-for+'/app_images/cmsTabFooter.gif') repeat-x bottom left;
+  border-bottom: 1px solid #DDA301;
+  border-top: 1px solid #DDA301;
+  margin-bottom: 5px;
+  text-align: left;
+  padding: 15px;
+  text-align: center;
+  p{
+    margin-bottom: 0;
+  }
+}
+
+#tab_content_content{
+  .pageElementMenu{
+    border-top: none;
+    h3{
+      font-size: 1em;
+    }
+  }
+}
+
+.addElementMenu{
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+/* CMS Page Options */
+
+.cmsPageOptions{
+    clear: both;
+    list-style-type: none;
+    margin-bottom: 15px;
+    line-height: 200%;
+}
+
+.cmsPageOptions label{
+    font-weight: bold;
+}
+
+/* CMS Node Picker */
+
+.pageElementAdmin .pageElementMenu, .pageElementAdmin .nodePickerContainer{
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+/* ADMIN - Page Elements
+-------------------------------------------------------------------- */
+
+/* PE spacing */
+
+.pageElementAdmin{
+  margin: 15px;
+  position: relative;
+  clear: both;
+}
+
+.layoutContainer .pageElementAdmin{
+  margin: 0 5px;
+}
+
+.collectorElement .pageElementAdmin{
+    margin: 0 0 20px 0;
+}
+
+.layoutContainer .pageElementAdmin .pageElement, .layoutContainer .pageElementAdmin .formElement, .layoutContainer .pageElementAdmin .hrElement, .pageElementAdmin .pageElement{
+  margin: 3px 0 0;
+}
+
+.layoutContainer .pageElementAdmin .formElement{
+    margin-top: 0;
+}
+
+/* Collapse PE Button */
+
+.collapsePE{
+    padding-left: 13px;
+    background: url($asset-path-for+'/app_images/nav_assets_black.gif') no-repeat 0 5px;
+}
+
+.expandPE{
+    padding-left: 13px;
+    background: url($asset-path-for+'/app_images/nav_assets_black.gif') no-repeat 0 -78px;
+}
+
+/* Admin Bar  Delete/Enable */
+.elementBar .pageElement_delete,
+.containerBar .layoutContainer_delete {
+  box-sizing: content-box;
+  background-image:url( $asset-path-for+'/app_images/icons/pe_trash.png');
+  background-position:3px 3px;
+  background-repeat:no-repeat;
+  padding:0 5px !important;
+  text-indent:-999em;
+  overflow:hidden;
+  text-align:left;
+}
+.elementBar .pageElement_delete:hover { background-position:3px -47px; }
+.containerBar .layoutContainer_delete { background-position:3px -20px; }
+.containerBar .layoutContainer_delete:hover { background-position:3px -45px; }
+.elementBar .pageElement_enable {
+  background-image:url( $asset-path-for+'/app_images/icons/pe_reload.png');
+  background-position:95% 3px;
+  background-repeat:no-repeat;
+  padding:0 20px 0 8px !important;
+}
+.elementBar .pageElement_enable:hover { background-position:95% -47px; }
+
+.drag .elementBar,
+.lock .drag .elementBar,
+.dragTwo .containerBar {
+  cursor: move;
+  position: relative;
+}
+
+.pageElementAdmin .lock .elementBar,
+.lock .containerBar,
+.drag .lock .elementBar,
+.drag .pageElement{
+  cursor: default;
+}
+
+.pageElementAdmin .elementBar,
+.photoGalleryThumb .elementBar,
+.galleryThumbAdmin .elementBar,
+.clientGraphic .elementBar {
+  display: table;
+  width: 100%;
+  height: 24px;
+  background: #FCCD22 url( $asset-path-for+'/app_images/elementBar.gif') repeat-x;
+  text-transform: uppercase;
+  font-size: 10px;
+  line-height: 22px;
+  position: relative;
+}
+.elementBar > * {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.elementBar > .handle {
+  width: 100%;
+  text-transform: none;
+  font-weight: normal !important;
+  color: #555;
+  line-height: 24px !important;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.elementBar .elementTitle { display: table; width: 100%; table-layout: fixed; }
+.elementBar .elementTitle span {
+  display: table-cell;
+  overflow: hidden;
+  padding-right: 8px;
+  text-overflow: ellipsis;
+  word-wrap: normal;
+}
+
+.elementBar,
+.elementBar a:link,
+.elementBar a:visited {
+  color: #333;
+  text-decoration: none;
+  margin: 1px 0;
+}
+
+.elementBar a:hover {
+  background-color: #FFDF5F;
+}
+
+.pageElementAdmin .elementBarMini {
+  display: block;
+  width: auto;
+  font-size: 10px;
+  height: 16px;
+  line-height: 14px;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.pageElementAdmin .elementBarMini .buttons { line-height: 16px; }
+.pageElementAdmin .elementBarMini .buttons a { min-width: 6px; }
+
+.dragTwo .handle,
+.drag .handle,
+.lock .handle,
+.working .handle {
+  height: 24px;
+  padding-left: 20px;
+  background-repeat: no-repeat;
+  background-position: 4px 6px;
+  line-height: 22px;
+  font-weight: bold;
+}
+
+.dragTwo .handle, .drag .handle{
+  background-image: url($asset-path-for+'/app_images/dragIcon.gif');
+}
+
+.lock .handle{
+  background-image: url( $asset-path-for+'/app_images/lockedIcon.gif');
+}
+
+.working .handle {
+    background-image: url( $asset-path-for+'/app_images/dragIcon_locked.gif');
+}
+
+.elementBar .buttons,
+.containerBar .buttons {
+  display: table;
+  margin: 0 0 0 auto;
+  line-height: 22px;
+  width: auto;
+  cursor: auto;
+}
+
+.elementBar .buttons a,
+.elementBar .buttons span {
+  text-align: center;
+  white-space: nowrap;
+  border-left: solid 1px #DDA301;
+  padding: 0 5px;
+  display: table-cell;
+  min-width: 11px;
+}
+
+.elementBar .buttons span {
+  color: #EFEFEF;
+  cursor: default;
+}
+
+.elementBar a.gray_out { opacity: 0.4; }
+
+.buttonImage {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-position: center;
+  background-size: 15px 15px;
+  background-repeat: no-repeat;
+  -webkit-box-sizing: content-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: content-box;    /* Firefox, other Gecko */
+  box-sizing: content-box;         /* Opera/IE 8+ */
+}
+
+.actionButton {
+  background-position: center;
+  background-size: 15px 15px;
+  background-repeat: no-repeat;
+  text-indent: -999em;
+  text-align: left;
+  -webkit-box-sizing: content-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: content-box;    /* Firefox, other Gecko */
+  box-sizing: content-box;         /* Opera/IE 8+ */
+}
+
+.buttonImageAdd { background-image: url( $asset-path-for+'/app_images/icons/image_add.svg'); }
+.buttonImageRemove { background-image: url( $asset-path-for+'/app_images/icons/image_remove.svg'); }
+.buttonChain { background-image: url( $asset-path-for+'/app_images/icons/link.svg'); }
+.buttonPrint { background-image: url( $asset-path-for+'/app_images/icons/print.svg'); }
+.buttonAddArticle { background-image: url( $asset-path-for+'/app_images/icons/add_article.svg'); }
+.buttonTool { background-image: url( $asset-path-for+'/app_images/icons/tool.svg'); }
+.buttonCopy { background-image: url( $asset-path-for+'/app_images/icons/copy.svg'); }
+.buttonDelete { background-image: url( $asset-path-for+'/app_images/icons/trash.svg'); }
+.buttonDownload { background-image: url( $asset-path-for+'/app_images/icons/download.svg'); }
+.buttonEdit { background-image: url( $asset-path-for+'/app_images/icons/edit.svg'); }
+.buttonPlayer { background-image: url( $asset-path-for+'/app_images/icons/player.svg'); }
+.buttonTrade { background-image: url( $asset-path-for+'/app_images/icons/trade.svg'); }
+.buttonEvent { background-image: url( $asset-path-for+'/app_images/icons/event.svg'); }
+.buttonFlag { background-image: url( $asset-path-for+'/app_images/icons/flag.svg'); }
+.buttonIcalFeed { background-image: url( $asset-path-for+'/app_images/icons/calendar.svg'); }
+.buttonGroup { background-image: url( $asset-path-for+'/app_images/icons/group.svg'); }
+.buttonMove { background-image: url( $asset-path-for+'/app_images/icons/website_tree.svg'); }
+.buttonSave { background-image: url( $asset-path-for+'/app_images/icons/save.svg'); }
+.buttonScore { background-image: url( $asset-path-for+'/app_images/icons/score.svg'); }
+.buttonUpload { background-image: url( $asset-path-for+'/app_images/icons/upload.svg'); }
+
+.warning {
+  background: #fde872;
+  border: 1px solid #FCCD22;
+  padding: 10px;
+}
+
+.peError{
+}
+
+/* ADMIN - Layout Container
+-------------------------------------------------------------------- */
+
+.collapsed .pageElementAdmin .pageElement{
+    height: 35px;
+    overflow: hidden;
+}
+
+.collapsed .pageElementAdmin .formElement{
+    display: none;
+}
+
+.layoutContainerAdmin{
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.layoutContainerAdmin .layoutContainer{
+    border: solid 3px #999;
+    padding: 3px;
+}
+
+.layoutContainerAdmin .layoutContainer .layoutContainer{
+  border: none;
+}
+
+.containerBar{
+  display: table;
+  width: 100%;
+  height: 25px;
+  background-color: #CCC;
+  text-transform: uppercase;
+  font-size: 11px;
+  margin: 0;
+  background: url($asset-path-for+'/app_images/layoutContainerBar.gif');
+}
+
+.dragTwo .containerBar .handle,
+.lock .containerBar .handle {
+  display: table-cell;
+  width: 100%;
+  height: 25px;
+  line-height: 25px;
+  padding-left: 20px;
+  background-repeat: no-repeat;
+  background-position: 4px 6px;
+  font-weight: bold;
+  color: #666;
+}
+
+.containerBar .buttons a,
+.containerBar .buttons span {
+  display: table-cell;
+  min-width: 11px;
+  border-left: solid 1px #999;
+  padding: 0 8px;
+  text-decoration: none;
+  height: 25px;
+  line-height: 25px;
+  color: #666;
+}
+
+.containerBar .buttons a:hover {
+    background-color: #666;
+    color: #FFF;
+}
+
+.columnBounds{
+    margin: 0 3px;
+    border: dashed 1px #DDA301;
+}
+
+.layoutContainerAdmin .columnBounds {
+  border: dashed 1px #DDA301;
+  margin: 0 0 0 3px;
+}
+
+.layoutContainerMirrored {
+  background: url($asset-path-for+'/app_images/mirrorBackground-layoutContainer.png');
+}
+
+.layoutContainerMirrored{
+   .columnBounds {
+    border: none;
+    margin: 0;
+  }
+  .mirrorButton {
+    display: none;
+  }
+}
+
+.addPageElement{
+    display: block;
+    margin: 5px;
+    height: 30px;
+    text-align: center;
+    text-indent: -10000px;
+    background: url($asset-path-for+'/app_images/addPE.png') no-repeat center center;
+    &:hover{
+      font-weight: bold;
+      text-decoration: none;
+      line-height: 30px;
+      text-indent: 0;
+      font-size: 10px;
+      background: url($asset-path-for+'/app_images/addPE_hover.png') no-repeat center center;
+    }
+}
+.addPageElementTop{
+    display: block;
+    margin: 5px;
+    height: 30px;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+    line-height: 30px;
+    text-indent: 0;
+    font-size: 10px;
+    background: url( $asset-path-for+'/app_images/addPE_hover.png') no-repeat center center;
+}
+
+/* ADMIN - Collectors and Aggregators
+-------------------------------------------------------------------- */
+
+.pageElementAdmin .collectorElement .item{
+  width: 98%;
+}
+
+/* ADMIN - Table Builder
+-------------------------------------------------------------------- */
+
+.tableBuilder{
+  td{
+    border: solid 3px #CCC;
+    padding: 0;
+  }
+  .input{
+    font-size: 10px;
+    line-height: 11px;
+    width: 75px;
+    padding: 2px;
+  }
+  .buildLinks{
+    background-color: #EFEFEF;
+    font-weight: bold;
+    text-align: center;
+    width: 51px;
+    a{
+      background-repeat: no-repeat;
+      background-position: center center;
+      width: 25px;
+      display: block;
+      height: 15px;
+      overflow: hidden;
+      float: right;
+    }
+    a:hover{
+      background-color: #FFF;
+    }
+    .right{
+      background-image: url($asset-path-for+'/app_images/table_builder_right.gif');
+      border-left: solid 1px #CCC;
+    }
+    .down{
+      background-image: url($asset-path-for+'/app_images/table_builder_down.gif');
+    }
+    .delete{
+      background-image: url($asset-path-for+'/app_images/table_builder_x.gif');
+      border-left: solid 1px #CCC;
+    }
+  }
+  .headerEnabled input{
+    background-color: #666;
+    color: #FFF;
+    font-weight: bold;
+  }
+}
+
+/* li-edit options */
+
+.liEdit{
+  list-style-type: none;
+  border-top: solid 1px #CCC;
+  background-color: #FFF;
+  .liEditLink{
+    font-size: 11px;
+    text-transform: uppercase;
+    padding: 0 5px;
+    margin-left: 5px;
+    border-left: solid 1px #DDA301;
+  }
+}
+
+.liEdit.even{
+}
+
+.liEdit .liEditLink:link, .liEdit .liEditLink:visited{
+  text-decoration: none;
+}
+
+.dragTwo.liEdit{
+  background-image: url($asset-path-for+'/app_images/dragIcon.gif');
+  background-repeat: no-repeat;
+  background-position: 5px center;
+  padding-left: 25px;
+  cursor: move;
+}
+
+.locked.liEdit{
+  background-image: url($asset-path-for+'/app_images/lockedIcon.gif');
+  background-repeat: no-repeat;
+  background-position: 5px center;
+  padding-left: 25px;
+  cursor: default;
+}
+
+.liEdit.disabled{
+  color: #999;
+  background-color: #EFEFEF;
+}
+
+/*  Setting Values
+-------------------------------------------------------------------- */
+
+.settingValues{
+  display: block;
+  margin: -1px 0 0;
+  padding: 3px 5px;
+  font-size: 10px;
+  color: #333;
+  list-style-type: none;
+  background-color: #fef7d0;
+  .settingValues li{
+    line-height: 160%;
+  }
+  .settingValues label{
+    font-weight: bold;
+  }
+}
+
+.settingValues.forForm{
+  background-color: transparent;
+}
+
+/*  Game Status
+-------------------------------------------------------------------- */
+.gameStatusConstruction                       { padding: 15px 15px 0; background: #FDE872 url( $asset-path-for+'/app_images/cmsTabFooter.gif') repeat-x bottom left; border-bottom: solid 1px #DDA301; }
+.cmsGameStatus                                { margin: 5px 0 0; text-align: center; }
+.cmsGameStatus ul                             { display: block; list-style: none; margin: 0 auto 4px; width: 242px; }
+.cmsGameStatus li                             { float: left; }
+.cmsGameStatus li a                           { background: url($asset-path-for+'/app_images/gameStatusToggle.png') 0 0; display: block; height: 30px; }
+.cmsGameStatus .cmsGameScheduled a            { width: 91px; }
+.cmsGameStatus .cmsGameInProgress a           { background-position: -91px 0; width: 96px; }
+.cmsGameStatus .cmsGameFinal a                { background-position: -187px 0; width: 55px; }
+
+.cmsGameStatus .cmsGameScheduled a.selected,
+.cmsGameStatus .cmsGameScheduled a:hover      { background-position: 0 -30px; }
+.cmsGameStatus .cmsGameInProgress a.selected,
+.cmsGameStatus .cmsGameInProgress a:hover     { background-position: -91px -30px; }
+.cmsGameStatus .cmsGameFinal a.selected,
+.cmsGameStatus .cmsGameFinal a:hover          { background-position: -187px -30px; }
+
+.cmsGameUnscheduled { padding: 0 0 15px; width:100%; }
+
+.cmsGameButtons { float: right; text-align: right; }
+
+
+/* Misc.
+-------------------------------------------------------------------- */
+.spinner-inline { margin:0 0 -4px; }
+.status-loading { background: url( $asset-path-for+'/app_images/miniLoader.gif') 5px 50% no-repeat; padding: 5px 0 5px 25px; }

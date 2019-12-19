@@ -1,0 +1,239 @@
+/* Comments */ 
+// 0. Variables
+// 1. Comment Thread/Stream Element
+// 2. Comment Aggregator Element
+// 3. Comment Input Form (Needs to be audited when UI/Forms is finished)
+// 4. Recaptcha (Needs to be audited when UI/Forms is finished)
+// 5. Media Queries
+
+
+// 0. Variables
+$left-column: 75px;
+
+// 1. Comment Thread/Stream Element
+.wontFit {display: none;}
+.commentThreadElement-container {
+  > h3 {@include special-header;}
+}
+.thread + .thread{
+  @include line-pattern-border($pos:top);
+}
+.commentStreamContainer{
+  &.ascending{
+    > .thread{@include line-pattern-border($pos:bottom);}
+  }
+  &.descending{
+    > .thread{@include line-pattern-border($pos:top);}
+  }
+}
+.comment{
+  padding: rem(30) 0;
+  img {
+    height: 60px;
+    width: 60px;
+    border: $borderWidth solid $borderColor;
+    float: left;
+  .comment-meta &{ margin-right: $left-column - 60px;}
+  }
+}
+.subcomments {
+  padding-left: $left-column;
+}
+.subcomment{
+  @include line-pattern-border();
+}
+.comment-content{
+  padding-left: $left-column;
+  h3 {
+    font-size: 1em;
+    color: $bodyCopyColorTwo;
+    text-transform: none;
+    span{ color: transparent; }
+  }
+  p:last-child{margin-bottom:0;}
+  .timeago {
+    color: $bodyCopyColorTwo;
+    display: block;
+    font-family: $fontTwo;
+    font-weight: 400;
+    font-size: em(10);
+    text-transform: uppercase;
+    margin: .5em 0 1.5em 0;
+  }
+  .comment-links{
+    margin: 0;
+    line-height: 1;
+    a{
+      font-size: em(12);
+      font-weight:500;
+      text-transform: uppercase;
+    }
+  }  
+}
+
+// 2. Comment Aggregator Element
+.commentAggregator{
+  > h3{ @include special-header;}
+  .comment{
+    @include line-pattern-border($pos:bottom);
+    &:last-of-type{ border: none; }
+  }
+  .comment .comment-meta{
+    margin: 0;
+    img{
+      max-height: 2.5em;
+      max-width: 2.5em;
+      margin: em(5) em(8) 0 0;
+    }
+    > b{
+      font-family: $fontOne;
+      font-weight: 700;
+      line-height: 1.125;
+    }
+    .timeago{
+      display: block;
+      font-size: 10px;
+      font-style: normal;
+      line-height: 1.125;
+      text-transform: uppercase;
+      margin: .25em 0 0 0;
+    }
+  }
+}
+.comment{
+  .comment-meta{
+    img{ margin-right: $left-column - 60px;}
+  }
+}
+
+// 3. Comment Input Form (Needs to be audited when UI/Forms is finished)
+.commentStreamContainer{
+  &.ascending{
+    .comment-form:nth-child(2) {
+      margin-top: 1.5em;
+    }    
+  }
+}
+.comment-form {
+  fieldset {
+    min-width: inherit; // Overflow scroll on children fix
+    border: none;
+    span.processing {
+      display: none;
+    }
+    + fieldset {
+      margin-top: 10px;
+    }
+  }
+  label {
+    font-size: .875em;
+    color: #333;
+    line-height: initial;
+    font-weight: 600;
+    display: block;
+  }
+  input.text {
+    width: 100%;
+    border:1px solid #eee;
+    padding:5px;
+    margin-top:5px; 
+  }
+  label + br {
+    display: none;
+  }
+  input + label,
+  textarea + label {
+    margin-top: 10px;
+  }
+  textarea {
+    border: 1px solid #eee;
+    margin-top: 5px;
+    max-width: 100%;
+    min-height: 5em;
+    padding: 5px;
+    width: 480px;
+  }
+  input#recaptcha_response_field {
+    border: 1px solid #eee !important;
+    padding: 5px;
+    background-color: #fff !important;
+  }
+  // this is gross 
+  .hideOnProcessing {
+    margin-bottom: 5px;
+  }
+}
+
+// 4. Recaptcha (Needs to be audited when UI/Forms is finished)
+.comment_element_recaptcha {
+  #recaptcha_area{
+    width: 100%;
+    overflow-x: auto;
+    margin: 5px 0px;
+    border: 1px solid #dfdfdf;    
+  }
+  .recaptchatable {
+    border: none !important;
+    td.recaptcha_image_cell {
+      width: 100%;
+    }
+    div#recaptcha_image {
+      border: none !important;
+      width: 100% !important;
+      max-width: 300px;
+      img#recaptcha_challenge_image {
+        width: 100%;
+        height: auto;
+        border: 1px solid #eee;
+      }
+    }
+    img#recaptcha_logo {
+      display: none;
+    }
+    span#recaptcha_privacy {
+      font-size: .75em;
+    }
+  }
+}
+// Edit Mode Style overrides (Remove/fix when edit mode is styled)
+#lightbox .comment-content{
+  > h3, p { color: $bodyCopyColorTwo !important; }
+} 
+
+// 5. Media Queries
+@include page-element-break(400){
+  .subcomments{
+    padding-left: 2em;
+  }
+}
+@include page-element-break(300){
+  .commentThreadElement-container .comment img{
+    float: none;
+    margin-bottom:rem(12);
+  }
+  .comment-content{padding-left:0;}
+}
+@media only screen and (min-width: 769px) and (max-width: 999px){
+  .layout-25-25-50,
+  .layout-50-25-25{
+    .col-md-3, .col-md-6{
+      .commentThreadElement-container .comment img{
+        margin: 0;
+        float: left;
+      }
+      .comment-content{padding-left:75px;}
+      .subcomments{ padding-left: 75px; }
+    }
+  }
+  .layout-25-50-25{
+    .col-md-3, .col-md-6{
+      .commentThreadElement-container .comment img{
+        margin-right: 1em;
+        float: none;
+        margin-bottom:rem(12);
+      }
+      .comment-content{padding-left:0;}
+      .subcomments{ padding-left: 2em; }
+    }
+  }
+}

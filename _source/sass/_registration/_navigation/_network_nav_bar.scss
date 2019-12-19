@@ -1,0 +1,100 @@
+.theme-network-bar {
+  padding: 0 $site-tagline-spacing;
+  display: block;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  word-wrap: normal;
+  @include flex(1,1,100%);
+
+  .theme-network-bar-site-title { display: none; }
+
+  &:not(.compact-style) {
+
+    .theme-network-bar-title {
+      display: inline-block;
+      vertical-align: top;
+      margin-right: 10px;
+      font-weight: 700;
+    }
+
+    .theme-network-bar-sites {
+      display: inline-table;
+      vertical-align: top;
+    }
+
+    .theme-network-bar-site {
+      padding: 5px 3px;
+      color: #FFF;
+      display: table-cell;
+      vertical-align: middle;
+      line-height: 30px;
+      text-decoration: none !important;
+
+      &:hover { background: rgba(255,255,255,.3); }
+    }
+
+    .theme-network-bar-site-logo {
+      display: block;
+      width: 30px;
+      height: 30px;
+      border: 0;
+
+      & + .theme-network-bar-site-name { display: none; }
+    }
+
+    .theme-network-bar-site-name { padding: 0 4px; }
+  }
+
+  &.compact-style {
+    .theme-network-bar-title {
+      cursor: pointer;
+      line-height: normal;
+      display: inline-block;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: $link-color-darken-10;
+      padding: 2px 5px;
+
+      &:hover { background: $link-color-darken-20; }
+
+      &:after {
+        margin-left: 5px;
+        @include fa-icon;
+        content: "\f107"; // dropdown arrow
+      }
+    }
+  }
+}
+
+.NGIN_tip.theme-network-bar-dropdown {
+  margin-top: -1px;
+  background: $link-color-darken-10;
+  border: 1px solid rgba(255,255,255,.15);
+  max-width: none !important;
+
+  .container { padding: 0; }
+
+  .close_tip { display: none; }
+
+  .theme-network-bar-sites {
+    display: block;
+    max-height: calc(100vh - 100px);
+    overflow: auto;
+
+    .theme-network-bar-site {
+      font-size: 14px;
+      padding: 4px 8px;
+      display: block;
+      color: white;
+
+      &:not(:first-child) { border-top: 1px solid rgba(255,255,255,.15); }
+
+      &:hover {
+        text-decoration: none;
+        background: $link-color;
+      }
+    }
+
+    .theme-network-bar-site-logo { display: none; }
+  }
+}

@@ -1,0 +1,114 @@
+/* Link Page Element */
+// All Styles - Specific .goToLink icon referenced in _link_icons
+
+// 1. Page Element Styles
+.linkElement{
+  h4{
+    a{
+      @include global-link-style;
+      @include global-link-container;
+      @include global-link-text;
+      @include global-link-icon-style;
+    }
+  }
+
+  .emailLink{
+    &:before{ display:none; }
+  }
+  .goToLink{
+    @include global-link-style;
+    @include global-link-container;
+    @include global-link-text;
+    @include global-link-icon-style;
+    @include global-link-icon-character;
+  }
+  .emailLink{
+    @include global-link-icon-character($character: "\f003"); // envelope-o
+  }
+  .text{
+    font-size:rem(13);
+    line-height: 1.5em;
+    margin: auto;
+    padding: 10px;
+    background-color: #eee;
+  }
+}
+
+// 2. Admin Panel Styles
+.admin .linkElement{
+  h4{
+    font-family:$font-primary;
+    font-size:rem(18);
+    font-weight:700;
+    background:transparent;
+    padding:10px 0 5px 0;
+    &:hover{
+      background:transparent;
+    }
+    a{
+      display: inline;
+      color:$link-color;
+      padding: 0;
+      margin-bottom: 0px;
+      background:transparent;
+      text-decoration:none;
+      opacity: 1;
+      &:hover{
+        text-decoration:underline;
+      }
+    }
+  }
+  .text{
+    font-size:rem(13);
+    padding: 0 0 10px 0;
+    background-color: #fff;
+  }
+}
+
+
+.custom-link {
+  .linkElement{
+    h4{
+      a{
+        @include global-link-style;
+        @include global-link-container;
+        @include global-link-text;
+        @include global-link-icon-style;
+        background-color: $color-gray-md;
+        &:after {
+          color: $color-primary;
+        }
+        &:hover {
+          background-color: $color-primary;
+          &:after {
+            color: $color-white;
+          }
+        }
+      }
+    }
+  }
+}
+.custom-link-light {
+  .linkElement{
+    h4{
+      a{
+        @include global-link-style;
+        @include global-link-container;
+        @include global-link-text;
+        @include global-link-icon-style;
+        background-color: $color-gray-lt;
+        color: $color-gray-md;
+        &:after {
+          color: $color-primary;
+        }
+        &:hover {
+          background-color: $color-primary;
+          color: $color-white;
+          &:after {
+            color: $color-white;
+          }
+        }
+      }
+    }
+  }
+}

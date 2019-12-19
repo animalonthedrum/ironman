@@ -1,0 +1,201 @@
+.dropdown-wrapper{
+  display: block;
+  position: relative;
+  width: 100%;
+  float: left;
+  clear: both;
+  z-index: 2;
+  background: #efefef;
+  &:before{
+    content: "";
+    height: 100%;
+    display: none;
+    width: 40px;
+    position: absolute;
+    left:-40px;
+    top:0;
+    background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.12) 100%);
+  }
+  #megaDropDown-season {
+    background: #404040;
+    display: inline-block;
+    margin: auto;
+    outline: medium none;
+    text-align: left;
+    text-decoration: none;
+    height: 100%;
+    position: relative;
+    padding:0px 50px 10px 10px;
+    transition: all 0.5s ease-in-out;
+    float: right;
+    min-width: 150px;
+    .season{
+      color: #fff;
+      display: block;
+      font: normal 10px/1em $fontOne;
+      margin: auto;
+      width: auto;
+      @include font-smoothing();
+    }
+    .subseason{
+      color: #fff;
+      font: bold 12px/1em $fontOne;
+      @include font-smoothing();
+    }
+    &:after{
+      content: "\f0d7";
+      display: none;
+      position: absolute;
+      right: 10px;
+      top:10px;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transform: translate(0, 0);
+      color: #fff;
+      transition: all 0.5s ease-in-out;
+      transform: rotate(0deg);
+      border-radius: 100px;
+      color: #fff;
+      font:normal 20px/1em FontAwesome;
+      padding: 0px 4px 4px 4px;
+    }
+  }
+  #megaDropDown-season-callout{
+    background: rgba(0,0,0, 0.75);
+    color: #ddd;
+    padding: 10px;
+    text-align: left;
+    position: absolute;
+    right: 0;
+    width: 100%;
+    max-width: 230px;
+    z-index: 2;
+    padding: 15px 15px 20px 15px;
+    display: none;
+    top:100%;
+    border-bottom: 4px solid $accent-color;
+    .season-title {
+      display: block;
+      font: bold 12px $fontOne;
+      padding: 0 0 5px;
+      margin: 5px 0;
+      span{
+        float: left;
+      }
+    }
+    select {
+      width: 100%;
+      border: 0px;
+      background: #333;
+      background-image:url($asset_path_for+"/app_images/select-down-arrow.svg");
+      background-position: right center;
+      background-repeat: no-repeat;
+      background-size: 27px;
+      padding: 10px;
+      color: #fff;
+      display: block;
+      -webkit-appearance:none;
+      -moz-appearance:none;
+      appearance:none;
+    }
+    a {
+      border-radius: 1px;
+      transition: all $transition-standard;
+      display: block;
+      font-size: 12px;
+      padding: 2px 5px;
+      text-decoration: none;
+      background: #333;
+      text-align: center;
+      color: #ddd;
+      margin-bottom: 3px;
+      &:hover{
+        background: #222;
+      }
+    }
+    a.close {
+      background: transparent;
+      border-radius: 100%;
+      color: #fff;
+      display: block;
+      float: right;
+      font-size: 12px;
+      font-weight: bold;
+      margin: 0;
+      padding: 0px 6px 2px 6px;
+      &:hover{
+        background: transparent;
+      }
+    }
+    a.current {
+      background: #000;
+      border-radius: 1px;
+      transition: all $transition-standard;
+      color: #aaa;
+      -moz-osx-font-smoothing: grayscale;
+      font-size: 12px;
+      font-weight: normal;
+      padding: 5px 10px;
+      text-align: center;
+      letter-spacing: .3px;
+      &:hover{
+        background: #333;
+      }
+    }
+    .footer {
+      margin: 10px 0 0;
+    }
+    optgroup option {
+      margin: 0;
+      padding: 0 0 0 10px;
+    }
+  }
+  #megaDropDown-season.mdd-active{
+    cursor: pointer;
+    background-color:#222;
+    &:after{
+      display: block;
+    }
+    &:hover{
+      background-color:#333;
+    }
+  }
+}
+.dropdown-wrapper.mdd-active-open{
+  #megaDropDown-season {
+    //background-color: #fdfdfd;
+    &:after{
+      content: "\f0d8";
+    }
+  }
+  #megaDropDown-season-callout{
+    display: block;
+    -webkit-animation: dropdown-season $transition-standard;
+    animation: dropdown-season $transition-standard;
+  }
+}
+@media only screen and (max-width: 768px) {
+  /* Seasons Mega Drop Down */
+  .dropdown-wrapper{
+    max-width: 100%;
+    width: 100%;
+    &:before{
+      display: none;
+    }
+    #megaDropDown-season {
+      .season{
+        font-size: 10px;
+      }
+      .subseason{
+        font-size: 9px;
+      }
+      &:after{
+
+      }
+    }
+    #megaDropDown-season-callout{
+      max-width: 100%;
+    }
+  }
+}

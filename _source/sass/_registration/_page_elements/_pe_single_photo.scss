@@ -1,0 +1,22 @@
+/* Single Image Element */
+
+.heroPhotoElement {
+  img {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    //border: $borderWidth solid $borderColor;
+  }
+  .cutline {
+    margin: 0;
+    width: 100%;
+    background: transparent;
+    font-style:normal;
+    font:normal 16px/1.3em $fontOne;
+    color: #666;
+    padding: 15px 15px 15px 0px;
+    //border-bottom: $borderWidth solid $borderColor;
+    //border-left: $borderWidth solid $borderColor;
+    //border-right: $borderWidth solid $borderColor;
+  }
+}

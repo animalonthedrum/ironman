@@ -1,0 +1,42 @@
+/*
+@import '../../../../../../assets/path-variables';
+@import '../../../../variables/colors';
+@import '../../../../variables/fonts';
+@import '../../../../variables/layout';
+
+$select2-spacing--xsmall: .2857rem; // 4px / 14px
+$select2-spacing--small: .5714rem; // 8px / 14px
+$select2-spacing--medium: .8571rem; // 12px / 14px
+
+$select2--arrow: url($shared-image-path+'/chevron-down.svg');
+$select2--radius: 2px;
+$select2-results--shadow: 0 0 0 1px $gray-light, 0 2px 5px 1px rgba(0, 0, 0, .2); // fake border
+$select2-result--padding: $select2-spacing--xsmall $select2-spacing--medium;
+$select2-result--indent: $select2-spacing--medium;
+$select2-search--padding: $select2-spacing--xsmall;
+$select2-tag--spacing: $select2-spacing--xsmall;
+
+@mixin select2-border {
+  border-radius: $select2--radius;
+  border: 1px solid $gray-light;
+}
+
+@mixin select2-border--hover {
+  border: 1px solid $gray-dark;
+}
+
+@mixin select2-border--focus {
+  border: 1px solid $color-highlight;
+  box-shadow: 0 0 0 1px $color-highlight;
+  outline: none;
+}
+
+@mixin select2-border--error {
+  border: 1px solid $color-alert;
+}
+
+@mixin select2-border--error-focus {
+  border: 1px solid $color-alert;
+  box-shadow: 0 0 0 1px $color-alert;
+}
+*/

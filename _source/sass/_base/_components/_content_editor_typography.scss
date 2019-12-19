@@ -1,0 +1,42 @@
+// WYSIWYG Editor Typography Styles
+// Ex: Text BLock Elements, News Article Previews, etc...
+.text,
+.previewText,
+.newsText {
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+  // Lists
+  > ul, > ol{
+    margin-bottom: 1em;
+  }
+  ul,
+  ol {
+    list-style-position: outside;
+    margin-left: 15px;
+    ul,
+    ol {
+      margin-left: 1em;
+    }
+  }
+  > ul, ul {
+    li {
+      list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAJCAYAAAD+WDajAAAAiklEQVQYlWP8//8/Awj8PXP5/98L1xmYZCUYWNztGMGCIMkf3XP+fxCzheMvQTn/QeKMfx8+/f/ZNAKsEBlwTS5nYPr35CWGBAj8e/SCgYlZS4WBkZ8HQ5LFQp+BiVGAl5FrfhMDk6QQVJSFgbMpk4HZxoQR7CAY/nv/0f9/X7+BHQPzBRmAgYEBAPFyQtPOKTMJAAAAAElFTkSuQmCC');
+      padding-left: 10px;
+    }
+  }
+
+  // Headers
+  @include content-typography-headers;
+
+  // Anchors
+  @include content-typography-anchors;
+
+  // Blockquote
+  @include content-typography-blockquote;
+
+  // Others
+  @include content-typography-other;
+
+}

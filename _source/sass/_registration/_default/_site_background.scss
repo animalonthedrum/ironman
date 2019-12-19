@@ -1,0 +1,40 @@
+// 1. From Theme
+// 2. From Layout Adjustments
+
+// 1. From Theme
+// Other background styles are rendered inline (based on user settings)
+.site-background {
+  position: absolute;
+}
+
+
+// 2. From Layout Adjustments
+html {
+  &.nav-fixed {
+    .site-background {
+      margin-top: $nav-placeholder-height-fixed - $nav-placeholder-height;
+      bottom: $nav-placeholder-height-fixed - $nav-placeholder-height;
+    }
+  }
+
+  &:not(.collapsed-mobile-nav) {
+
+    .site-background {
+      transition: margin-top $transition-linear, bottom $transition-linear;
+    }
+
+    &:not(.has-sub-nav) {
+      .site-background { margin-top: -$sub-nav-height; }
+
+      &.nav-fixed {
+        .site-background {
+          margin-top: $nav-placeholder-height-fixed - $nav-placeholder-height - $sub-nav-height-fixed;
+        }
+      }
+    }
+  }
+
+  &.collapsed-mobile-nav {
+    .site-background { margin-top: -$nav-placeholder-height; }
+  }
+}

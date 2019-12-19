@@ -1,0 +1,141 @@
+/* Lobar styles */
+
+.lobar-container {
+  position: fixed;
+  z-index: 498; // 1 less than the z-index of `div.sn-pageManager`
+  top: 0;
+  left: 0;
+	right: 0;
+  margin: 0;
+  background: #13759b;
+  box-shadow: inset 0 0 3px rgba(0,0,0,0.6);
+  transform: translateY(0);
+  transition:
+    transform 100ms linear,
+    opacity 100ms linear,
+    visibility 100ms linear;
+
+  &.lobar-exit {
+    transform: translateY(-25%);
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .page-manager-visible & { left: 60px; }
+}
+
+.lobar-content {
+  background: url($asset-path-for+"/app_images/marketing/emblem-lobar.png") no-repeat center left;
+  background-size: 20px;
+  background-position-x: 10px;
+  max-width: 1000px;
+  padding: .5em;
+  margin: 0 auto;
+  position: relative;
+
+  p {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0 2.15rem;
+    text-align: center;
+    font: 400 14px/100% 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #fff;
+    line-height: 1.6;
+
+    a,
+    a:link,
+    a:hover {
+      display: inline-block;
+      position: relative;
+      top: -1px;
+      height: 23px;
+      line-height: 24px;
+      margin: 0 0 0 15px;
+      padding: 0 7px;
+      color: #fff;
+      font-size: 10px;
+      font-weight: bold;
+      text-decoration: none;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: all 350ms ease;
+    }
+  }
+}
+
+.lobar-link,
+.lobar-link:link,
+.lobar-link:visited {
+  background: #13aa37;
+  color: #fff;
+}
+
+.lobar-link:hover {
+  color: #ccc;
+  background: #0e852b;
+}
+
+.lobar-close,
+.payment-lobar-close {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  width: 30px;
+  height: 36px;
+  margin: 0;
+  transform: translateY(-50%);
+  background: url($asset-path-for+"/app_images/marketing/icon-close.png") no-repeat center center;
+}
+
+
+/* Payment Status Lobar styles */
+.payment-lobar .lobar-content {
+  background: url($asset-path-for+"/app_images/marketing/emblem-lobar.png") no-repeat 16px center;
+  background-size: 20px;
+}
+
+.payment-invoices-button {
+  color: #fff;
+  font-size: 9px;
+  line-height: 24px;
+  height: 24px;
+  text-decoration: none;
+  text-transform: uppercase;
+  margin: 0 0 0 15px;
+  padding-left: 7px;
+  padding-right: 7px;
+  display: inline-block;
+  border-radius: 4px;
+  margin-top: -5px;
+}
+
+.payment-invoices-button:hover {
+  color: #ccc;
+}
+
+.lobar-green {
+  color: #fff;
+  background-color: #13aa37;
+}
+
+.lobar-yellow {
+  color: #22272b;
+  background-color: #fccd41;
+  border-color: #8f7834;
+}
+.lobar-red {
+  color: #fff;
+  background-color: #ca1c1b;
+  border-color: #761b25;
+}
+
+.lobar-green .payment-invoices-button {
+  background-color: #0a601f;
+}
+.lobar-yellow .payment-invoices-button {
+  background-color: #86702b;
+}
+.lobar-red .payment-invoices-button {
+  background-color: #6d1718;
+}

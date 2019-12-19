@@ -1,0 +1,60 @@
+// # Nav list
+// Vertical list of navigation items
+
+.pl-nav-list__link {
+  color: $color-content;
+  display: block;
+  padding: .5714em 1.7143em; // (8px / 14px) (24px / 14px)
+  text-decoration: none;
+
+  .pl-nav-list__item.pl-is-selected & {
+    background-color: $color-content-xxxlight;
+    box-shadow: inset 4px 0 0 0 $color-highlight;
+  }
+  &:focus,
+  &:hover {
+    box-shadow: inset 4px 0 0 0 $color-content-xlight;
+  }
+}
+
+
+// # Selectable list
+// Vertical nested list of clickable items and collapsible sections
+
+$selectable-spacing: 4px;
+$selectable-padding-small: 8px;
+$selectable-padding-large: 12px;
+
+.pl-selectable-list {
+  display: block;
+  list-style: none;
+  margin: 0;
+}
+
+.pl-selectable-list__item {
+  display: block;
+}
+
+.pl-selectable-list__link,
+%pl-selectable-list__link {
+  cursor: pointer;
+  display: block;
+  margin-bottom: $selectable-spacing;
+  overflow: hidden;
+  padding: $selectable-padding-small $selectable-spacing $selectable-padding-small ($selectable-padding-large * 2);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  &.selected {
+    background: $color-highlight;
+    color: #fff;
+  }
+
+}
+
+@for $i from 1 through 5 {
+  .pl-selectable-list__link--indent-#{$i} {
+    @extend %pl-selectable-list__link;
+    padding-left: $selectable-padding-large * ($i + 2);
+  }
+}

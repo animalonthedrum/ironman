@@ -1,0 +1,546 @@
+// 1. From Theme partial
+// 2. From Breakpoints
+// 3. Default Styles
+
+// 1. From Theme partial
+.pageEl {
+  .widgetElement {
+    .widgetHierarchy {
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+  }
+}
+
+// 2. From Breakpoints
+@media only screen and (max-width: 767px) {
+  .widgetElement {
+    .widget-roster-player {
+      table.statTable {
+        thead {
+          display: block;
+          float: left;
+          position: relative;
+          width: 50%;
+
+          tr {
+            float: left;
+            position: relative;
+            display: block;
+            width: 100%;
+
+            th {
+              display: block;
+              float: left;
+              height: 30px;
+              overflow: hidden;
+              padding-top: 8px;
+              width: 100%;
+            }
+          }
+        }
+
+        tbody {
+          display: block;
+          float: left;
+          position: relative;
+          width: 50%;
+
+          tr {
+            float: left;
+            position: relative;
+            display: block;
+            width: 100%;
+
+            td {
+              display: inline-block;
+              float: left;
+              height: 30px;
+              width: 100%;
+              border-left: none;
+              border-right: none;
+            }
+          }
+        }
+      }
+    }
+    .widget-gameTable .showMoreGames { display: none; }
+  }
+}
+
+// 3. Default Styles
+/* Widgets - Universal
+---------------------------------------------------------------------------------------------------- */
+.widgetFooter .teamLogo-tiny  { float: right; margin: 0 5px 0 0; }
+.widgetFooter .linkText       { float: right; line-height: 20px; }
+.widgetFooter .linkArrow      { float: right; }
+.widgetHierarchy h4 { margin: 5px 0; }
+
+/* Widgets - in Lightbox
+---------------------------------------------------------------------------------------------------- */
+.widget-source  { display: block; font-size: 1.2em; text-transform: uppercase; }
+.widget-data    { display: block; color: #000; }
+.widget-filters { display: block; color: #666; font-size: 0.9em; }
+
+/* Widget Footer
+---------------------------------------------------------------------------------------------------- */
+.widgetFooter { background: #fefefe; border: 1px solid #e6e6e6; font-size: 10px; margin: 5px 0 0; padding: 5px; }
+
+/* Widget - Roster Player Stats Widget
+---------------------------------------------------------------------------------------------------- */
+.widget-roster-player{
+  ul{
+    li{
+      padding: 0px;
+      &.lastLi{
+        background: #e6e6e6;
+        h4{
+          font-size: 1em;
+          padding: 15px;
+          margin-bottom:0px;
+          a{
+            text-transform: uppercase;
+          }
+          span{
+            color:#333;
+          }
+        }
+        .leader-highlight{
+          padding-bottom: 15px;
+          .sport-colors{
+            margin: auto;
+            border:0px;
+            width: auto;
+            display: inline-block;
+            .edge{
+              display: none;
+            }
+            .player_photo{
+              overflow: hidden;
+              margin: 0px 15px 10px 15px;
+              position: relative;
+              top:auto;
+              left: auto;
+              max-height: 70px;
+              max-width: 70px;
+              width: 100%;
+              height: 100%;
+              border: 3px solid $link_color;
+              background-color: #C7C7C7; // Same grey as default player photo
+              a{
+                img{
+                  width: 100%;
+                  height: 100%;
+                  display: block;
+                }
+              }
+            }
+          }
+          .stats{
+            margin: auto;
+            position: relative;
+            float: left;
+            display: inline-block;
+            p{
+              &.stats-minor{
+                padding: 0px;
+                font-size: 15px;
+              }
+              &.stats-major{
+                font-size: 2em;
+                padding: 0px;
+                &:after{
+                  border: 0px;
+                  display: none;
+                }
+              }
+            }
+          }
+        }
+        .noEntry{
+          padding: 15px;
+        }
+      }
+    }
+  }
+  table{
+    background: #fafafa;
+    padding: 0;
+    width: 100%;
+    .rank{
+      width: 1%;
+    }
+    .stat{
+      font-weight: bold;
+      text-align: right;
+    }
+  }
+  .leader-highlight{
+    background: #e6e6e6;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    p{
+      margin: 0px;
+      &.playerName{
+        font-size: 14px;
+        text-align: left;
+        padding: 5px 10px 10px;
+      }
+    }
+  }
+}
+
+[id^="widget_roster_widget"] .sportTableLabel {
+  @include sport-table-label;
+}
+
+.activePlayers > h4 {
+  @include special-header;
+}
+
+/* Widget - Game List
+---------------------------------------------------------------------------------------------------- */
+.widget-gameTable th { text-align: left; }
+.widget-gameTable a  { outline: none; }
+.game-location-small-list{ display: block; text-align: right; padding: 2px; margin-top: 3px; border-top: dotted 1px #CCC; font-size:9px }
+.showMoreGames { margin-top: 2px; }
+
+
+
+/* Widget - Team Buttons
+---------------------------------------------------------------------------------------------------- */
+
+  // Base team button styles
+
+  .widget-teamButtons {
+    .sport-colors {
+      position: relative;
+      line-height: 1.3;
+      padding: 0;
+    }
+    a {
+      @include button-style;
+      color: #fff;
+      display: block;
+      font-size: inherit;
+      padding: 12px 12px 10px 65px; // large left padding creates column for team logo
+      &:hover {
+        .teamLogo-small {
+          background-color: $link_color;
+        }
+      }
+    }
+    .teamLogo-small {
+      background-color: $link-color-darken-20;
+      background-size: cover;
+      border-radius: 0;
+      display: block;
+      float: left;
+      left: -53px; // pull logo into the column created by the left padding above
+      margin-top: -10px;
+      overflow: visible;
+      position: absolute;
+      top: 50%;
+      width: 40px !important; // overrides an earlier !important
+      &:after {
+        background: $accent_color;
+        content: '';
+        height: 100%;
+        position: absolute;
+        right: -5px;
+        width: 3px;
+      }
+    }
+    .teamname {
+      font-weight: 600;
+    }
+    .teamname-separator {
+      padding-left: 2px;
+      padding-right: 2px;
+    }
+  }
+
+  // Mixins for team buttons grid layouts
+  // Can't use silent classes because Sass won't @extend an outer selector from within @media
+
+  // Enable 2- and 3-column button grids (column widths must also be specified)
+  @mixin float-team-button-cols {
+    .teamBtnCol {
+      box-sizing: border-box;
+      float: left;
+      + .teamBtnCol {
+        padding-left: 5px;
+      }
+    }
+  }
+
+  // Center and stack button contents
+  @mixin stack-logo-and-teamname {
+    text-align: center;
+    a {
+      padding-left: 12px;
+    }
+    .teamLogo-small {
+      display: block;
+      float: none;
+      left: auto;
+      margin: 0 auto 9px;
+      position: relative;
+      top: auto;
+      &:after {
+        height: 3px;
+        width: 100%;
+        left: 0;
+        right: 0;
+        bottom: -5px;
+      }
+    }
+    .teamname-separator {
+      display: block;
+      height: 0;
+      overflow: hidden;
+      width: 0;
+    }
+  }
+
+  // Team button layouts
+
+  .widget-teamButtons {
+
+    @media (min-width: 1025px) {
+      .col-md-12 &.columns-3,
+      .col-md-6 &.columns-3,
+      .col-md-4 &.columns-3,
+      &.columns-2 {
+        @include float-team-button-cols;
+      }
+      &.columns-3 {
+        .col-md-12 &,
+        .col-md-6 &,
+        .col-md-4 & {
+          .teamBtnCol {
+            width: 33.3%;
+          }
+        }
+      }
+      .col-md-6 &.columns-3,
+      .col-md-4 &.columns-3,
+      .col-md-4 &.columns-2,
+      .col-md-3 &.columns-2,
+      .col-md-3 &.columns-1 {
+        @include stack-logo-and-teamname;
+      }
+      &.columns-3 {
+        .col-md-6 &,
+        .col-md-3 & {
+          font-size: 13px;
+        }
+        .col-md-4 & {
+          font-size: 11px;
+          a {
+            padding: 8px 4px 4px;
+          }
+        }
+      }
+      &.columns-2 {
+        .teamBtnCol {
+          width: 50%;
+        }
+        .col-md-6 & {
+          font-size: 15px;
+        }
+        .col-md-4 &,
+        .col-md-3 & {
+          font-size: 13px;
+          a {
+            padding: 10px 8px 6px;
+          }
+        }
+      }
+    }
+
+    // A left nav takes up some of the available width between these dimensions
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .col-md-12 &.columns-3,
+      .col-md-4 &.columns-3,
+      .col-md-3 &.columns-3,
+      .col-md-4 &.columns-2,
+      .col-md-3 &.columns-2,
+      .col-md-4 &.columns-1,
+      .col-md-3 &.columns-1  {
+        @include stack-logo-and-teamname;
+      }
+      .col-md-12 &.columns-3,
+      .col-md-12 &.columns-2 {
+        @include float-team-button-cols;
+      }
+      .col-md-12 &.columns-3 {
+        .teamBtnCol {
+          width: 33.3%;
+        }
+      }
+      .col-md-12 &.columns-2 {
+        .teamBtnCol {
+          width: 50%;
+        }
+      }
+    }
+
+    @media (min-width: 500px) and (max-width: 768px) {
+      &.columns-3,
+      &.columns-2 {
+        @include float-team-button-cols;
+      }
+      &.columns-3 {
+        @include stack-logo-and-teamname;
+        .teamBtnCol {
+          width: 33.3%;
+        }
+      }
+      &.columns-2 {
+        .teamBtnCol {
+          width: 50%;
+        }
+      }
+    }
+    // Below this size, all button grids are single-column
+
+  }
+
+  /* -- Filterable, Sortable Table Variant */
+  .widget-teamButtons table {width:100%}
+
+  .widget-teamButtons thead           {background:#ccc;border:1px solid #bbb;}
+  .widget-teamButtons th:first-child  {padding:5px}
+
+  .widget-teamButtons td:first-child { min-width: 45px; }
+  .widget-teamButtons td .sport-colors {border:none; min-width: 45px; }
+  .widget-teamButtons td .teamname { padding: 5px 0; }
+
+  .widget-teamButtons tbody a,
+  .widget-teamButtons tbody a:hover,
+  .widget-teamButtons tbody a:active  { background:none; border:none; color:#808080; display:block; margin:0; text-decoration:none; }
+
+  .widget-teamButtons tbody tr        { background: #f4f4f4 url(#{'<%= asset_path_for("/app_images/widgets/teamButtonBG.gif") %>'}) 0 0 repeat-x; border: 1px solid #bbb; color: #808080;}
+  .widget-teamButtons tbody tr:hover  { background-color: #e5e5e5; background-position: 0 -140px; border: 1px solid #666; color: #1a1a1a; text-decoration: none; }
+  .widget-teamButtons tbody tr:active { background-color: #f6f6f6; background-position: 0 -280px; border: 1px solid #999; color: #333; text-decoration: none; }
+
+
+
+/* Widget - Team Buttons
+---------------------------------------------------------------------------------------------------- */
+.singleSurveyResultWidget               { line-height: 1.5em }
+.column .singleSurveyResultWidget b     { opacity: 0.8; }
+.column .singleSurveyResultWidget b,
+.column .singleSurveyResultWidget span  { display: block; float: left; }
+
+.pe100 .singleSurveyResultWidget b,
+.pe66  .singleSurveyResultWidget b,
+.pe50  .singleSurveyResultWidget b      { margin: 0 1% 0 0; text-align: right; width: 25%; }
+.pe100 .singleSurveyResultWidget span,
+.pe66  .singleSurveyResultWidget span,
+.pe50  .singleSurveyResultWidget span   { width: 70%; }
+
+.pe33 .singleSurveyResultWidget b,
+.pe33 .singleSurveyResultWidget span,
+.pe25 .singleSurveyResultWidget b,
+.pe25 .singleSurveyResultWidget span    { float: none; }
+
+
+#lightboxBody .singleSurveyResultWidget { margin: 15px 15px -15px }
+#lightboxBody .singleSurveyResultWidget .odd,
+#lightboxBody .singleSurveyResultWidget .even { background: none; }
+
+
+/* Widget - Gallery
+---------------------------------------------------------------------------------------------------- */
+
+.galleryWidget {
+  background: #DDD url($asset_path_for+"/app_images/widgets/galleryBG.png") 0 26px repeat-x;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: relative;
+  .scrollable{
+    position: relative;
+    width: 100%;
+    height: auto;
+    .items{
+      position: relative;
+      width: auto;
+      padding: 10px 0px 10px 10px;
+    }
+  }
+}
+.galleryWidget .header {
+  color:#FFF;
+  font-size:11px;
+  background:#333;
+  text-align:right;
+  width: 100%;
+  display: block;
+  position: relative;
+}
+.galleryWidget .header h3 {
+  display:inline;
+  float:left;
+  margin:0;
+  font-size:11px;
+  padding:5px 10px;
+  width: 65%;
+}
+.galleryWidget .header a {
+  color:#999;
+  display:inline-block;
+  padding:5px 10px;
+  zoom:1;
+  *display:inline;
+  text-decoration:none;
+  background: #444;
+  transition: all 0.3s ease-in-out;
+}
+.galleryWidget .header a:hover { color:#FFF; }
+.galleryWidget .next,
+.galleryWidget .prev {
+  position: absolute;
+  height:0;
+  width:29px;
+  height:100px;
+  bottom:0;
+  cursor:pointer;
+  display: none;
+}
+.galleryWidget .next { right: 0; }
+.galleryWidget .prev { left: 0; }
+.galleryWidget .next span,
+.galleryWidget .prev span {
+  position: absolute;
+  height:0;
+  width:9px;
+  padding-top:14px;
+  overflow:hidden;
+  top:43px;
+  left:10px;
+  background: url($asset_path_for+"/app_images/widgets/galleryNav.png") 0 0 no-repeat;
+}
+.galleryWidget .prev:hover span { background-position:-9px 0; }
+.galleryWidget .next span { background-position:-27px 0; }
+.galleryWidget .next:hover span { background-position:-36px 0; }
+.galleryWidget .prev.disabled span { background-position:-18px 0; }
+.galleryWidget .next.disabled span { background-position:-45px 0; }
+.galleryWidget .item { background:#FFF; width:75px; height:75px; margin: 0px 8px 8px 0px; opacity: 0.93}
+.galleryWidget .item:hover { background:#333;opacity: 1; }
+.galleryWidget .item .thumb {
+  display: block;
+  height: 75px;
+  overflow: hidden;
+  line-height: 0;
+  background: #DDD;
+  text-align: center;
+}
+.galleryWidget .item img.vert { width:100%; }
+.galleryWidget .item img.horiz { height:100%; }

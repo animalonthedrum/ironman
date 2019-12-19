@@ -1,0 +1,28 @@
+// # Clears
+
+// Just used to construct other clear-* mixins
+@mixin clear-pseudo {
+  clear: both;
+  content: '';
+  display: table;
+  overflow: hidden;
+}
+
+@mixin clear-before {
+  &::before {
+    @include clear-pseudo;
+  }
+}
+
+@mixin clear-after {
+  &::after {
+    @include clear-pseudo;
+  }
+}
+
+@mixin clear-both {
+  &::before,
+  &::after {
+    @include clear-pseudo;
+  }
+}

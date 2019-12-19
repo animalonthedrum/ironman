@@ -1,0 +1,69 @@
+// # Detailed options
+// Shows a list of radio or checkbox inputs with details
+
+.pl-detailed-option__input {
+  left: -9999px;
+  position: absolute;
+}
+
+.pl-detailed-option__label {
+  @extend %pl-option__label;
+  align-items: center;
+  border: 1px solid $gray-light;
+  display: flex;
+  padding: .2857rem .5714rem; // 4px / 14px, 8px / 14px
+  position: relative;
+
+  .pl-detailed-option + .pl-detailed-option & {
+    margin-top: -1px;
+  }
+
+  .pl-detailed-option:first-child & {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+
+  .pl-detailed-option:last-child & {
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+
+  // Checked state
+  .pl-detailed-option__input:checked + & {
+    background-color: $color-highlight-light;
+    border-color: $color-highlight;
+    z-index: $z-detailed-option--checked;
+  }
+
+  // Hover state
+  .pl-detailed-option__input:not([disabled]) + &:hover {
+    border-color: $gray;
+    z-index: $z-detailed-option;
+  }
+
+  // Focus state
+  .pl-detailed-option__input:focus + &:not(:hover) {
+    z-index: $z-detailed-option--focus;
+  }
+
+  // Disabled state
+  .pl-detailed-option__input[disabled] + & {
+    border-color: $color-content-xxlight;
+  }
+}
+
+.pl-detailed-option__icon {
+  flex-shrink: 0;
+  margin-right: .5714rem; // 8px / 14px
+}
+
+.pl-detailed-option__heading {
+  @include font-medium;
+  margin-bottom: .1429rem; // 2px / 14px
+}
+
+.pl-detailed-option__detail {
+  & + & {
+    margin-left: .5714rem; // 8px / 14px
+  }
+}

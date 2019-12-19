@@ -1,0 +1,219 @@
+/* Weather Element Styles */
+
+// 1. Global Styles
+// 2. 5 Day Forecast
+// 3. Accomodations for Small Columns and Mobile Views
+
+// 1. Global Styles
+.weatherElement {
+  padding: 20px 0;
+  font-family:$font-secondary;
+  color:$bodyCopyColorTwo;
+  border-top-color: $borderColor;
+  border-bottom-color: $borderColor;
+  border-width: 3px 0 3px 0;
+  border-image: repeating-linear-gradient(-72deg, #AAA 0px, transparent 1px, transparent 3px, #AAA 4px) 3 3;
+  &.weather-noForecast {
+    .weather-currentConditions {
+      width: 100%;
+      border: none;
+      .weather-range {
+        display: block;
+      }
+    }
+  }
+  .weather-5dayForecast {
+    li {
+      width: 100%;
+      padding: 0;
+      font-size: rem(18);
+      height: 34px;
+      .clearfix {
+        width: initial;
+        float: right;
+        clear: none;
+      }
+      b{
+        float: left;
+        display:inline;
+        clear: none;
+        width: 42px;
+        font-size: rem(16);
+        float: left;
+        font-weight: 700;
+        line-height: 32px;
+      }
+      img {
+        float: left;
+        display: inline;
+        clear: none;
+        width: 30px;
+        float: left;
+        margin-left: 0;
+        margin-top: 5px;
+      }
+    }
+    .weather-high, .weather-low {
+      display: inline;
+    }
+  }
+  .weather-currentConditions {
+    text-align: right;
+    background: transparent;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    text-shadow: none;
+    padding: 15px;
+    border: none;
+    width: 55%;
+    float: left;
+    .weather-icon {
+      float: left;
+      margin: 0 0 0 -5px;
+      width: 33%;
+      max-width: 180px;
+      img {
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        opacity: .7;
+      }
+    }
+    .weather-temperature {
+      font-family:$font-primary;
+      font-size:rem(52);
+      font-weight:700;
+      color:$bodyCopyColorTwo;
+      line-height:1;
+      margin: 0;
+    }
+    .weather-description {
+      font-family:$font-secondary;
+      font-size:rem(18);
+      color:$bodyCopyColorTwo;
+    }
+    .weather-range {
+      font-size:rem(32);
+      margin: 0;
+    }
+    .weather-location {
+      font-size:rem(12);
+      line-height: 1em;
+    }
+    p {
+      &.weather-range { display: none; }
+      &.weather-location { margin: 0; line-height: 1.4; }
+    }
+  }
+}
+
+// 2. 5 Day Forecast
+.weather-5dayForecast {
+  border: 0;
+  clear: none;
+  width: 45%;
+  margin: 0;
+  padding: 5px 15px;
+  font-size: rem(16);
+  float: right;
+  border-left: $borderWidth solid $borderColor;
+  ul {
+    border-radius: 0;
+    font-weight: 400;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .weather-high {
+    line-height: 32px;
+    margin-right: 10px;
+  }
+  .weather-low {
+    line-height: 32px;
+  }
+}
+
+// 3. Accomodations for Small Columns and Mobile Views
+@media only screen and (min-width: 768px) {
+  .col-md-3,
+  .col-md-4,
+  .col-md-6 {
+    .weather-currentConditions {
+      text-align:left;
+      width: 100%;
+      border: 0;
+      .weather-temperature {
+        font-size: rem(42);
+        padding-left: 35%;
+      }
+      .weather-description,
+      .weather-range,
+      .weather-location {
+        padding-left: 35%;
+      }
+    }
+    .weather-5dayForecast {
+      width: 100%;
+      border-left: none;
+    }
+  }
+  .col-md-3 {
+    .weather-currentConditions {
+      .weather-icon {
+        width: 100%;
+      }
+      .weather-temperature {
+        font-size: rem(36);
+        padding-left:0;
+      }
+      .weather-description {
+        font-size: rem(16);
+        padding-left:0;
+      }
+      .weather-location {
+        font-size: rem(10);
+        padding-left:0;
+      }
+      .weather-range {
+        padding-left:0;
+      }
+    }
+    .weather-5dayForecast {
+      width: 100%;
+      border-left: none;
+    }
+  }
+}
+@media (max-width: 1024px) {
+  .col-md-4,
+  .col-md-3 {
+    .weatherElement{
+      .weather-5dayForecast {
+        li{
+          font-size:rem(14);
+          b{
+            width:36px;
+          }
+          img{
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width:1000px) and (min-width:768px) {
+  .layout-25-50-25 .col-md-3 .weather-currentConditions .weather-icon { float: none; }
+}
+@media only screen and (max-width: 540px) {
+  .weatherElement {
+    .weather-currentConditions {
+      width: 100%;
+      border: 0;
+    }
+    .weather-5dayForecast {
+      width: 100%;
+      border-left: none;
+    }
+  }
+}

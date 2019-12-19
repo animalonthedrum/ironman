@@ -1,0 +1,173 @@
+// 1. From Theme
+// 2. From Breakpoints
+// 3. Default Styles
+
+// 1. From Theme
+.pageEl {
+  .tabbedElement {
+    ul.contentTabs {
+      border: none;
+
+      li {
+        span {
+          a {
+            display: block;
+          }
+        }
+      }
+    }
+
+    .tabContainer {
+      .current {
+        // There is an inline width set here.
+        // Need to uddate tabElement to remove.
+        width: 100% !important;
+      }
+    }
+  }
+}
+
+// Edit Mode Fixes
+.edit_mode {
+  .contentTabs.rapidTabsConstruction {
+    li span a {
+      color: #666;
+      background: transparent;
+      border-right: none;
+    }
+
+    .selected span a {
+      background: #fccd22;
+      color: #333;
+    }
+  }
+}
+
+
+// 2. From Breakpoints
+@media only screen and (max-width: 1024px) {
+  .tabbedElement {
+    ul.contentTabs {
+      li {
+        width: 33%;
+        padding: 2px;
+
+        span {
+          a {
+            width: 100%;
+            display: block;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .tabbedElement {
+    ul.contentTabs li {
+      width: 50%;
+      padding: 2px;
+
+      span a {
+        width: 100%;
+        display: block;
+        text-align: center;
+      }
+    }
+  }
+}
+
+
+// 3. Default Styles
+.contentTabs {
+  display: block;
+  list-style-type: none;
+  text-align: left;
+  width: 100%;
+  margin: 10px 0;
+  border-bottom: 3px solid #ececec;
+
+  &:after { clear: both; }
+
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+
+  li {
+    @include content-tab-item;
+
+    span {
+      background-repeat: no-repeat;
+      background-position: bottom left;
+      text-decoration: none;
+      display: block;
+
+      a {
+        @include content-tab;
+
+        span { display: inline; }
+      }
+    }
+
+    &:hover,
+    &.selected { border-bottom: 5px solid $link-color; }
+  }
+
+  &.rapidTabsConstruction a.tabLink {
+    padding-top: 4px;
+    padding-left: 8px;
+    display: inline-block;
+    background: none;
+  }
+}
+
+.pageElementAdmin .rosterPlayerStatElement .contentTabs { margin: 0; }
+
+.dataTable .disabled {
+  color: #000;
+  text-decoration: none;
+
+  &:hover { text-decoration: underline; }
+}
+
+
+/* Loading Tab Animation
+-------------------------------------------------------------------- */
+#contentTabsLoader {
+  text-align: center;
+  clear: both;
+  padding: 25px;
+}
+
+
+/* Rapid Tabs Construction
+-------------------------------------------------------------------- */
+.rapidTabsConstruction {
+  background: #FDDD40;
+  margin-bottom: 0;
+  border-top: solid 1px #DDA301;
+  padding: 0 0 1px;
+
+  li {
+    border-right: solid 1px #DDA301;
+    padding-right: 0;
+
+    a { font-size: 14px; }
+
+    span {
+      background: none;
+      padding-left: 0;
+
+      a {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+    }
+  }
+
+  .selected { background: #FDE872; }
+}

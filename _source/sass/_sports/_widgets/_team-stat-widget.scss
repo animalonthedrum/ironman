@@ -1,0 +1,35 @@
+// Table controls should not be enabled
+// in the first place (don't run the js)
+.NginTableControls { display: none; }
+
+[id^="widget_team_stats_widget_"] {
+  .sportTableLabel {
+    @include sport-table-label;
+    position: relative;
+  }
+
+  .statTable {
+    td:first-child,
+    tr:nth-child(2) th:first-child { text-align: center; }
+  }
+}
+
+@media(min-width: 768px) {
+  .col-md-3,
+  .col-md-4 {
+    [id^="widget_team_stats_widget_"] {
+      .sportTableLabel { @include sport-table-label-short; }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 999px) {
+  .layout-25-50-25 {
+    .col-md-3,
+    .col-md-6 {
+      [id^="widget_team_stats_widget_"] {
+        .sportTableLabel { @include sport-table-label-short; }
+      }
+    }
+  }
+}

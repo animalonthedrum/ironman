@@ -1,0 +1,119 @@
+.select2-container--default {
+  @import "config";
+  @import "single";
+  @import "multiple";
+
+  .select2-dropdown {
+    border: 0;
+    border-radius: $select2--radius;
+    box-shadow: $select2-results--shadow;
+    margin: 2px 0;
+    overflow: hidden;
+  }
+
+  .select2-dropdown--above {
+    margin: -2px 0;
+  }
+
+  .select2-dropdown__help {
+    color: $color-content-xlight;
+    font-size: $font-xsmall;
+    padding: $select2-result--padding;
+  }
+
+  .select2-search--dropdown {
+    padding: $select2-search--padding;
+    .select2-search__field {
+      @include select2-border;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .select2-search--inline {
+    .select2-search__field {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      outline: 0;
+    }
+  }
+
+  .select2-results > .select2-results__options {
+    max-height: 200px;
+    overflow-y: auto;
+  }
+
+
+  .select2-results__option--highlighted[aria-selected] {
+    background-color: $gray-xlight;
+
+    &[aria-selected=true] {
+      background-color: $color-highlight-dark;
+    }
+  }
+
+  .select2-results__option {
+    padding: $select2-result--padding;
+
+    &[role=group] {
+      padding: 0;
+    }
+
+    &[aria-disabled=true] {
+      color: #999;
+    }
+
+    &[aria-selected=true] {
+      display: none; // we filter these out in code to keep results message in sync, but this prevents a flash
+    }
+
+    .select2-results__option {
+      padding-left: 1em;
+
+      .select2-results__group {
+        padding-left: 0;
+      }
+
+      .select2-results__option {
+        margin-left: -1 * $select2-result--indent;
+        padding-left: 2 * $select2-result--indent;
+
+        .select2-results__option {
+          margin-left: -2 * $select2-result--indent;
+          padding-left: 3 * $select2-result--indent;
+
+          .select2-results__option {
+            margin-left: -3 * $select2-result--indent;
+            padding-left: 4 * $select2-result--indent;
+
+            .select2-results__option {
+              margin-left: -4 * $select2-result--indent;
+              padding-left: 5 * $select2-result--indent;
+
+              .select2-results__option {
+                margin-left: -5 * $select2-result--indent;
+                padding-left: 6 * $select2-result--indent;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .select2-results__group {
+    cursor: default;
+    display: block;
+    padding: 6px;
+  }
+
+  .select2-results__message {
+    color: $color-content-xlight;
+    font-size: $font-xsmall;
+    position: relative;
+    text-align: center;
+  }
+}

@@ -1,0 +1,232 @@
+// # Layout
+// Page layout
+
+
+// ## Gray background for apps like Payments
+.pl-layout--on-gray {
+  background: $gray-xlight;
+}
+.pl-layout--on-gray-xxlight {
+  background: $gray-xxlight;
+}
+
+
+// ## Content container
+.pl-page-content {
+  // Offset content on desktop to make room when side-nav is present
+  .pl-has-side-nav & {
+    @media (min-width: $media-small + $side-nav-width) {
+      margin-left: $side-nav-width;
+    }
+  }
+}
+
+
+// ## Centered container
+
+%pl-centered-content {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  @include clear-after;
+  padding-left: $layout-spacing-large;
+  padding-right: $layout-spacing-large;
+}
+
+%pl-centered-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  @include clear-after;
+  @include media-small {
+    padding-left: $layout-spacing-large;
+    padding-right: $layout-spacing-large;
+  }
+}
+
+
+.pl-centered-content {
+  @extend %pl-centered-content;
+  width: $layout-width;
+}
+
+.pl-centered-content--small {
+  @extend %pl-centered-content;
+  width: $layout-width-small;
+}
+
+.pl-centered-content--large {
+  @extend %pl-centered-content;
+  width: $layout-width-large;
+}
+
+.pl-centered-content--auto {
+  @extend %pl-centered-content;
+  width: auto !important;
+}
+
+.pl-centered-container {
+  @extend %pl-centered-container;
+  width: $layout-width;
+}
+
+.pl-centered-container--small {
+  @extend %pl-centered-container;
+  width: $layout-width-small;
+}
+
+.pl-centered-container--large {
+  @extend %pl-centered-container;
+  width: $layout-width-large;
+}
+
+.pl-centered-container--auto {
+  @extend %pl-centered-container;
+  width: auto !important;
+}
+
+// ## Centered section
+%centered-section {
+  margin-bottom: $layout-spacing-large;
+  margin-top: $layout-spacing-large;
+}
+
+.pl-centered-section {
+  @extend %centered-section;
+  background: #fff;
+  border-color: $gray-light;
+  border-style: solid;
+  border-width: 1px 0;
+  // Add left and right borders at larger window widths
+  @include media-small {
+    border-radius: 2px;
+    border-width: 1px;
+  }
+}
+
+
+// ## Subsection
+.pl-centered-section + .pl-subsection {
+  margin-top: -$layout-spacing-large;
+}
+
+.pl-subsection,
+%subsection {
+  padding: $layout-spacing-large $layout-spacing-medium;
+  @include media-small {
+    padding: $layout-spacing-large;
+  }
+}
+
+.pl-subsection--border,
+%pl-subsection--border {
+  @extend %subsection;
+  &:not(:last-child) {
+    border-bottom: 1px solid $gray-light;
+  }
+}
+
+.pl-subsection--border-before {
+  @extend %subsection;
+  &:not(:first-child) {
+    border-top: 1px solid $gray-light;
+  }
+}
+
+%subsection--divider {
+  background: $gray-light;
+  content: '';
+  display: block;
+  height: 1px;
+  position: relative;
+  width: 100%;
+}
+
+.pl-subsection--divider {
+  @extend %subsection;
+  &:not(:last-child)::after {
+    @extend %subsection--divider;
+    bottom: -$layout-spacing-medium;
+    @include media-small {
+      bottom: -$layout-spacing-large;
+    }
+  }
+}
+
+.pl-subsection--divider-before {
+  @extend %subsection;
+  &:not(:first-child)::before {
+    @extend %subsection--divider;
+    top: -$layout-spacing-medium;
+    @include media-small {
+      top: -$layout-spacing-large;
+    }
+  }
+}
+
+.pl-subsection--background,
+%pl-subsection--background {
+  @extend %pl-subsection--border;
+  background: $gray-xxlight;
+  &::before {
+    @extend %subsection--divider;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: -1px;
+  }
+}
+
+.pl-subsection--background-condensed {
+  @extend %pl-subsection--background;
+  // !important overrides default padding for sections for @media-small
+  padding-bottom: $layout-spacing-small !important;
+  padding-top: $layout-spacing-small !important;
+}
+
+// Prevent edge case where two borders/dividers would meet
+.pl-subsection--border,
+.pl-subsection--divider {
+  + .pl-subsection--border-before {
+    border-top: 0;
+  }
+  + .pl-subsection--divider-before::before {
+    display: none;
+  }
+}
+
+
+// ## Split containers
+$split-half-width: calc(50% - .5em);
+.pl-split__container {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.pl-split--full {
+  width: 100%;
+}
+.pl-split--half,
+%split--half {
+  width: $split-half-width;
+}
+.pl-split--half\@small {
+  @include media-small {
+    width: $split-half-width;
+  }
+}
+
+@for $i from 1 through 12 {
+  $multiplier: $i / 12;
+  $grid-gutter: .5em;
+  $split-width: calc(100% * #{$multiplier} - #{$grid-gutter} * (1 - #{$multiplier}));
+  .pl-split--#{$i}of12 {
+    width: $split-width;
+  }
+  .pl-split--#{$i}of12\@small {
+    @include media-small {
+      width: $split-width;
+    }
+  }
+}

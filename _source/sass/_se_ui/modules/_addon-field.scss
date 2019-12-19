@@ -1,0 +1,77 @@
+// # Addon Field
+// Markup pattern to visually attatch arbitrary icons and labels to text fields.
+
+.pl-addon-field,
+%pl-addon-field {
+  align-items: center;
+  border: 1px solid $color-content-xlight;
+  border-radius: $input-border-radius;
+  color: $color-content;
+  display: inline-flex;
+  font-family: $font-default;
+  font-weight: $font-regular;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+
+  &::placeholder {
+    color: $color-content-xlight;
+  }
+  &:hover {
+    border-color: $color-content-light;
+    z-index: 2;
+  }
+  &.pl-has-focus {
+    border-color: $color-highlight;
+    border-radius: $input-border-radius;
+    box-shadow: 0 0 0 1px $color-highlight;
+    outline: none;
+    z-index: 3;
+  }
+  &.pl-has-error {
+    border-color: $color-alert;
+    &.pl-has-focus {
+      box-shadow: 0 0 0 1px $color-alert;
+    }
+    &:not(.pl-has-focus) {
+      z-index: 1;
+    }
+  }
+}
+
+.pl-addon-field__input {
+  border: 0;
+  flex: 1 1 auto;
+  padding: $input-vertical-padding $input-horizontal-padding;
+  width: 100%;
+  &::-ms-clear {
+    display: none;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+.pl-addon-field__icon {
+  background: $gray-xlight;
+  border-right: 1px solid $color-content-xlight;
+  flex: 0 0 auto;
+  padding: $input-vertical-padding $input-horizontal-padding / 2;
+}
+
+.pl-addon-field__label {
+  color: $color-content-xlight;
+  cursor: text;
+  flex: 0 0 auto;
+  padding-right: $input-horizontal-padding;
+
+  .pl-icon {
+    cursor: pointer;
+    margin-right: 0;
+  }
+}
+
+.pl-addon-field--large {
+  @extend %pl-addon-field;
+  @include font-large;
+}

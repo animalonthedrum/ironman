@@ -1,0 +1,391 @@
+/* News Slideshow Styles */
+// 1. Global Styling
+// 2. Thumbnails
+// 3. Controls
+// 4. Buttons
+// 5. Aspect Ratio Adjustments
+// 6. Accomidations for Small Columns & Mobile Views
+
+// Variables
+$control-height: 2.5rem;
+
+// 1. Global Styling
+.drag .newsSlideShow { cursor: pointer; }
+
+.newsSlideShow-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  margin-bottom: 1rem;
+  padding-bottom: $control-height;
+}
+
+.newsSlideShow-article {
+  display: none;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% - #{$control-height});
+  border: 2px solid $borderColor;
+  background-color: #fff;
+
+  &.current {
+    z-index: 1;
+  }
+
+  img { position: absolute; }
+}
+
+.newsSlideShow-headline {
+  position: absolute;
+  bottom: .25rem;
+  z-index: 1;
+  width: 100%;
+  margin: 0;
+
+  h1 {
+    position: relative;
+    display: block;
+    width: calc(96% - 7px);
+    margin: 0 0 2px 7px;
+    padding: 20px;
+    font-size: rem(18);
+    background-color: rgba(0,0,0,0.75);
+    text-transform: none;
+
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: -7px;
+      height: 100%;
+      width: 5px;
+      background-color: $accent_color;
+    }
+
+    &:after {
+      content: "";
+      clear: both;
+    }
+
+    a {
+      display: block;
+      width: 100%;
+      color: #fff;
+      font-size: rem(32);
+      line-height: 1.2;
+      text-decoration: none;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      -o-text-overflow: ellipsis;
+
+      // Sadly, `line-clamp` doesn't work in non-webkit browsers, so we need
+      // to restrict it with this hack. `white-space: nowrap` serves as a
+      // fallback for other browsers with one line of text instead of two.
+      @media screen and (-webkit-min-device-pixel-ratio:0) {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        white-space: normal;
+
+        .col-md-3 & {
+          -webkit-line-clamp: 1;
+        }
+      }
+    }
+  }
+
+  p {
+    @extend %clearfix;
+    display: block;
+    width: 96%;
+    padding-left: 7px;
+    margin: 0 0 2px 0;
+    line-height: 1.5em;
+    font-size: rem(12);
+    font-style: italic;
+
+    span {
+      display: block;
+      float: left;
+      width: auto;
+      max-width: calc(100% - 142px);
+      height: 2.25rem;
+      padding-right: 10px;
+      line-height: 2.25rem;
+      color: #fff;
+      background-color: rgba(0,0,0,0.75);
+      text-indent: 10px;
+      overflow: hidden;
+      @include truncate-text;
+
+      &:empty { display:none; }
+    }
+
+    a {
+      float: left;
+      width: 140px;
+      margin: 0;
+      height: 2.25rem;
+      line-height: 2.25rem;
+    }
+  }
+}
+
+// 2. Thumbnails
+.newsSlideShow-thumbnails {
+  position: absolute;
+  z-index: 10;
+  left: 50%;
+  bottom: 0;
+  width: calc(100% - 5rem); // Subtract width of left/right arrows
+  height: $control-height;
+  box-shadow: 0 -2px $borderColor;
+  list-style-type: none;
+  line-height: 1;
+  text-align: center;
+  background-color: #fff;
+  cursor: default;
+  transform: translateX(-50%);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+
+  .col-md-3 & {
+    font-size: .5em;
+  }
+
+  @media only screen and (max-width: 450px) {
+    font-size: .5em;
+  }
+
+  li {
+    display: inline-block;
+  }
+
+  a {
+    display: block;
+    padding: 4px;
+
+    .col-md-3 & {
+      padding: 6px;
+    }
+
+    @media only screen and (max-width: 450px) {
+      padding: 6px;
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      width: .75em;
+      height: .75em;
+      border-radius: 100%;
+      background-color: $link_color;
+      transition:
+        transform .1s ease-in-out,
+        background-color .1s ease-in-out;
+    }
+
+    &:hover,
+    &.current {
+      &:before {
+        background-color: $accent_color;
+        transform: scale(1.375,1.375);
+      }
+    }
+  }
+
+  img {
+    display: none;
+    width: 100%;
+  }
+}
+
+// 3. Controls
+.newsSlideShow-controls {}
+
+.newsSlideShow-prev.pill-small-left,
+.newsSlideShow-next.pill-small-right {
+  position: absolute;
+  z-index: 10;
+  bottom: 0;
+  overflow: hidden;
+  width: $control-height;
+  height: $control-height;
+  padding: 0;
+  background-color: #fff;
+  box-shadow: 0 -2px $borderColor;
+  font-size: 1em;
+  text-align: center;
+  color: $link-color;
+
+  &:hover {
+    color: $accent_color;
+    background-color: #fff;
+
+    &:before {
+      transform: scale(1.375);
+    }
+  }
+
+  &:before {
+    line-height: 2.5;
+    content: '\f060'; // fa-arrow-right
+    display: block;
+    color: inherit;
+    font-family: 'fontawesome';
+    transition:
+      transform .1s ease-in-out,
+      color .1s ease-in-out;
+  }
+}
+
+.newsSlideShow-prev.pill-small-left {
+  left: 0;
+}
+
+.newsSlideShow-next.pill-small-right {
+  right: 0;
+}
+
+.newsSlideShow-next.pill-small-right:before {
+  content: '\f061'; // fa-arrow-left
+}
+
+.newsSlideShow-empty {
+  text-align: center;
+
+  > p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+  }
+}
+
+// 4. Buttons
+.newsSlideShow-more.button-small {
+  display: block;
+  position: relative;
+  background-color: $link_color;
+  color: #fff;
+  font-family: $fontOne;
+  font-size: rem(16);
+  font-style: normal;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-indent: -20px;
+  text-align: center;
+  border: 0;
+  transition: background-color $transition-standard;
+
+  &:after{
+    content: "\f061"; // fa-arrow-left
+    font-family: FontAwesome;
+    font-size: rem(14);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: 56px;
+    color: $accent_color;
+    transition: color $transition-standard;
+  }
+
+  &:hover{
+    background-color: $link-color-darken-15;
+    border: 0;
+
+    &:after{
+      color: #fff;
+    }
+  }
+}
+
+.newsSlideShow-stop,
+.newsSlideShow-play { display: none !important; }
+
+// 5. Aspect Ratio Adjustments
+.aspect_ratio_original,
+.aspect_ratio_1_1,
+.aspect_ratio_4_3,
+.aspect_ratio_16_9,
+.aspect_ratio_2_1,
+.aspect_ratio_3_1,
+.aspect_ratio_4_1,
+.aspect_ratio_8_5 { height: initial !important; }
+
+.aspect_ratio_original { @include aspect-ratio(16,9); }
+.aspect_ratio_1_1 { @include aspect-ratio(1,1); }
+.aspect_ratio_4_3 { @include aspect-ratio(4,3); }
+.aspect_ratio_16_9 { @include aspect-ratio(16,9); }
+.aspect_ratio_2_1 { @include aspect-ratio(2,1); }
+.aspect_ratio_3_1 { @include aspect-ratio(3,1); }
+.aspect_ratio_4_1 { @include aspect-ratio(4,1); }
+.aspect_ratio_8_5 { @include aspect-ratio(8,5); }
+
+// 6. Accommodations for Small Columns & Mobile Views
+@media only screen and (min-width: 767px) {
+  .col-md-3,
+  .col-md-4 {
+    .newsSlideShow-headline {
+      h1 a {
+        font-size: rem(18);
+      }
+      p {
+        display: none;
+      }
+    }
+  }
+  .col-md-3,
+  .col-md-4,
+  .col-md-6,
+  .col-md-8 {
+    .aspect_ratio_4_1,
+    .aspect_ratio_3_1,
+    .aspect_ratio_2_1 {
+      .newsSlideShow-headline {
+        padding-bottom: 2em;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 450px) {
+  .newsSlideShow-headline {
+    .aspect_ratio_4_1 &,
+    .aspect_ratio_3_1 &,
+    .aspect_ratio_2_1 & {
+        padding-bottom: 2em;
+    }
+    h1 a {
+      font-size: rem(18);
+    }
+    p {
+      display: none;
+    }
+  }
+}
+@media only screen and (max-width: 350px) {
+  .newsSlideShow-headline {
+    p {
+      display: none;
+    }
+  }
+}

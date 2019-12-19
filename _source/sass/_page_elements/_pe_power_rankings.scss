@@ -1,0 +1,100 @@
+/* Power Rankings Element */
+
+// 1. General Styles
+// 2. Table Styles
+// 3. Team Logo & Position Movement Icons 
+
+
+// 1. General Styles
+.rankingsElement {
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  > h3 {
+    @include special-header;
+    margin-left: $table-cell-spacing;
+  }
+}
+
+// 2. Table Styles
+.rankingsElement .statTable {
+  .expandedView { display: table-cell; }
+
+  td, th {
+    &.name { text-align: left; }
+  }
+
+  th {
+    &:nth-child(1) { width: 5%; }  // Rank column
+    &.logoLink { width: 0%; }      // Logo column (shrinks to fit)
+    &.name { width: 65%; }         // Team column
+    &:nth-child(4) { width: 10%; } // Record column
+    &:nth-child(5) { width: 10%; } // Prev column
+    &:nth-child(6) { width: 10%; } // Move column
+  }
+
+  td {
+    &:nth-child(1) { font-weight: bold; }
+
+    &.name a {
+      min-width: 180px;
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &.logoLink {
+      padding: 0;
+
+      .teamLogo-large_square { @include table-team-logo; }
+    }
+  }
+}
+  
+// 3. Team Logo & Position Movement Icons  
+.rankingsElement {  
+  .logoLink .teamLogo-medium {
+    float: none;
+    margin: 0 auto;
+  }
+
+  .up,
+  .down,
+  .noChange {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    background: transparent;
+    text-align: center;
+
+    &:after {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      font-family: FontAwesome;
+      font-size: rem(14);
+    }
+  }
+
+  .up:after {
+    content: "\f062"; // fa-arrow-up
+    color: #2ac258;
+  }
+
+  .down:after {
+    content: "\f063"; // fa-arrow-down
+    color: #c22a2a;
+  }
+
+  .noChange:after {
+    content: "\f07e";
+    color: #666;
+  }
+}

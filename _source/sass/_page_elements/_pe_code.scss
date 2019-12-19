@@ -1,0 +1,56 @@
+// From Theme
+@media only screen and (max-width: 767px) {
+  .codeElement {
+    object,
+    embed,
+    iframe {
+      width: 100%;
+    }
+  }
+}
+
+/* Code Element */
+.codeElement {
+  object,
+  embed,
+  iframe {
+    max-width: 100%;
+  }
+
+  code {
+    color: inherit;
+    background-color: inherit;
+  }
+}
+
+.displayCodeElement pre {
+  padding: 10px;
+  border: solid 1px #333;
+  background: #666;
+  color: #fff;
+}
+
+.pageElementAdmin .codeElement {
+  pre {
+    padding: 10px;
+    border: solid 1px #333;
+    background: #666;
+    color: #fff;
+  }
+
+  .codeErrorMessage {
+    margin: 5px 0 0;
+    padding: 5px 10px;
+    background-color: #c51515;
+    font-weight: 600;
+    font-size: 0.875em;
+    color: #fff;
+  }
+
+  &.codeError {
+    background-color: #fdd9d9;
+    border: 1px solid #c51515;
+    padding: 10px;
+    color: #333;
+  }
+}

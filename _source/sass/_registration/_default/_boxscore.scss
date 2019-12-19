@@ -1,0 +1,147 @@
+@mixin boxscore-narrow {
+  tr > *:not(.team):not(.score-final) { display: none; }
+}
+// above 999 - 25%
+// 768-999 - 33%, all columns in 25-50-25
+@mixin boxscore-collapse-team {
+  .teamLogo-small { display: none; }
+}
+
+%boxscore-table {
+  width: 100%;
+  @include table;
+
+  th {
+    @include table-th;
+    @include table-th-text;
+  }
+
+  td {
+    @include table-td;
+    white-space: nowrap;
+  }
+
+  td, th {
+    &.team { text-align: left; }
+    &:not(.team) {
+      padding-left: 6px;
+      padding-right: 6px;
+    }
+  }
+
+  @media only screen and (min-width: 1000px) {
+    .col-md-3 & {
+      @include boxscore-narrow;
+      @include boxscore-collapse-team;
+    }
+  }
+
+  // DESKTOP/TABLET
+  @media only screen and (min-width: 768px) {
+    .col-md-3 &,
+    .col-md-4 & { @include boxscore-narrow; }
+  }
+
+  // TABLET
+  @media only screen and (min-width: 768px) and (max-width: 999px) {
+    .layout-50-50 .col-md-6 & { @include boxscore-narrow; }
+
+    .col-md-4 &,
+    .layout-25-50-25 & {
+      @include boxscore-narrow;
+      @include boxscore-collapse-team;
+    }
+  }
+
+  // PHONE
+  @media only screen and (max-width: 400px) {
+    @include boxscore-narrow;
+  }
+}
+
+.boxscore-container {
+
+  #tab_boxscores_content & { margin-top: 30px; }
+
+  .team { white-space: nowrap; }
+
+  .teamName {
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .table-wrapper-scroll {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .teamLogo-small {
+    border-radius: 0;
+    @include table-team-logo;
+    margin: 2px 6px 2px 0;
+  }
+
+  table.boxscore {
+    @extend %boxscore-table;
+  }
+
+  .boxscore-inner-container { clear: both; }
+
+  .boxscore-extras {
+    font-size: 11px;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    @include line-pattern-border($pos:bottom);
+
+    .datetime { margin-right: 6px; }
+    .time { white-space: nowrap; }
+
+    .location,
+    .game-id {
+      display: inline-block;
+      margin-right: 6px;
+    }
+
+    .game-show-link {
+      @include link-with-arrow;
+      font-size: inherit;
+      float: right;
+    }
+  }
+}
+
+
+// Tourney Element
+.sn-table-game-highlight {
+  @include table;
+
+  th {
+    @include table-th;
+    @include table-th-text;
+  }
+
+  tbody td { @include table-td; }
+  tfoot {
+    background: none;
+
+    td {
+      font-size: 11px;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      @include line-pattern-border($pos:bottom);
+
+      > div { display: inline-block; }
+    }
+
+    // Summary link
+    a {
+      @include link-with-arrow;
+      font-size: inherit;
+      float: right;
+    }
+  }
+}
+

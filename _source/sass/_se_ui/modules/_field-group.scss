@@ -1,0 +1,39 @@
+// # Field Group
+// Conjoin multiple text fields together.
+
+.pl-field-group {
+  display: flex;
+  position: relative;
+  z-index: 0;
+
+  > * {
+    background: #fff; // prevent double border
+    flex: 1 1 auto;
+  }
+
+  > :not(:first-child) {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    margin-left: -1px;
+  }
+
+  > :not(:last-child) {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  .pl-field-group__item--shrink {
+    flex: 0 1 auto;
+  }
+
+  .pl-field-group__item--expand {
+    flex: 10 1 auto;
+  }
+
+  @each $field-group-width in (25, 33.333, 50, 66.666, 75, 100) {
+    .pl-field-group__item--#{floor($field-group-width)} {
+      flex: 1 1 #{ 1% * $field-group-width };
+      width: #{ 1% * $field-group-width };
+    }
+  }
+}

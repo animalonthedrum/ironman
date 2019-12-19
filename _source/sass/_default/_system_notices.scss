@@ -1,0 +1,387 @@
+/*  Flash and Error Notices
+-------------------------------------------------------------------- */
+
+#flashNotice, #flashError, #errorExplanation, .formError, .registration_lookup_not_found {
+	//background-image: url($asset_path_for+"/app_images/flashBack.jpg");
+	background-repeat: repeat-x;
+	background-color: #FFF6C6;
+	clear: both;
+	margin-top:15px;
+}
+
+#flashNotice, #flashError, #errorExplanation{
+	border: 1px solid #FDE045;
+	margin-bottom: 15px;
+}
+
+#displayBodyContent .mailSubscribeElement #errorExplanation{
+	margin: 0;
+}
+
+#lbContent #flashNotice, #lbContent #flashError, #lbContent #errorExplanation{
+	margin: 10px 0;
+	background-color: #C60005;
+	border: 1px solid #FFF;
+	background-image: none;
+	h2{
+  	color: #fff;
+	}
+}
+
+#errorExplanation, .registration_lookup_not_found{
+	padding: 10px 10px 15px 10px;
+}
+
+#flashNotice span, .flashNotice span{
+	background-image: url($asset_path_for+"/app_images/noticeIcon.gif");
+}
+
+#flashError span, #flashNotice span, .flashNotice span{
+	display: block;
+	padding: 15px 10px 15px 45px;
+	background-position: 10px 12px;
+	background-repeat: no-repeat;
+	background-size: 25px;
+}
+
+#flashNotice span, .flashNotice span{
+	background-image: url($asset_path_for+"/app_images/noticeIcon.gif");
+}
+
+#flashError span{
+	background-image: url($asset_path_for+"/app_images/errorIcon.gif");
+}
+
+#flashRichMessage span{
+  display: block;
+  padding: 15px 10px 15px 45px;
+  background-position: 10px 50%;
+  background-repeat: no-repeat;
+  background-image: url($asset_path_for+"/app_images/featureCheckmark.png");
+}
+
+#errorExplanation h2, .registration_lookup_not_found span{
+	background-image: url($asset_path_for+"/app_images/errorIcon.gif");
+	background-repeat: no-repeat;
+	padding: 5px 0 5px 45px;
+}
+
+#flashNotice h2, #errorExplanation h2, #flashError h2, .flashNotice h2{
+  font-size: 16px;
+  line-height: 120%;
+  color: #867000;
+  font-weight: normal;
+  text-transform: capitalize;
+}
+
+#flashError, #errorExplanation{
+	color: #C60005;
+	font-weight: bold;
+}
+
+#flashRichMessage{
+  background-color: #b5e2af;
+}
+
+#lbContent #flashError, #lbContent #flashNotice, #lbContent #errorExplanation{
+	color: #FFF;
+}
+
+#errorExplanation p{
+	margin-top: 5px;
+}
+
+#errorExplanation ul{
+	margin: 5px 0 0 75px;
+}
+
+.draftNotice{
+  color: #666;
+  font-style: italic;
+  font-weight: normal;
+}
+
+.miniAlert {
+  background: #ffd url($asset_path_for+"/app_images/alert.png") 5px 4px no-repeat;
+  background: rgba(255,255,204,0.5) url($asset_path_for+"/app_images/alert.png") 5px 4px no-repeat;
+  border: 1px solid #ff9;
+  border: 1px solid rgba(255,255,153,0.65);
+
+  border-radius: 2px;
+  padding: 5px 5px 5px 25px;
+}
+
+/* Form Error Messages
+-------------------------------------------------------------------- */
+
+.formError.formElement h4{
+	color: #C60005;
+	font-size: 12px;
+	background-image: url($asset_path_for+"/app_images/errorIconMini.gif");
+	background-repeat: no-repeat;
+	padding: 4px 0 15px 26px;
+}
+
+
+/* No Data has been previously entered
+-------------------------------------------------------------------- */
+
+.noEntry{
+	color: #666;
+	text-align: center;
+	margin-top: 15px;
+	font-size: 12px;
+	line-height: 120%;
+	padding: 10px;
+	border-top: solid 1px #DDDDDD;
+	background-color: #EFEFEF;
+	font-style: italic;
+	font-weight: bold;
+}
+
+.rapidContentConstruction .noEntry,
+.constructionLightbox .noEntry{
+    color: #DDA301;
+    background: #FFF3B0;
+    border-top: solid 1px #DDA301;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+}
+
+/* User Actions Pane
+-------------------------------------------------------------------- */
+
+.userActionsPane{
+	margin-top: 15px;
+	width: 100%;
+	list-style-type: none;
+	line-height: 140%;
+}
+
+.userActionsPane li{
+    background-color: #FFF6C6;
+    background-image: url($asset_path_for+"/app_images/flashBack.jpg");
+    background-repeat: repeat-x;
+    border: 1px solid #FDE045;
+    border-top: none;
+    display: block;
+    line-height: 120%;
+    padding: 10px;
+    margin: 0 0 15px;
+}
+
+.userActionsPane h5{
+    font-size: 18px;
+    line-height: 120%;
+    margin-bottom: 7px;
+}
+
+.userActionsPane p{
+    margin-bottom: 10px;
+}
+
+/* Loading Animation
+-------------------------------------------------------------------- */
+
+.loadingAnimation{
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* SPORT NGIN LIVE Notice
+-------------------------------------------------------------------- */
+
+.snlNotice{
+  background:#FDE872 url($asset_path_for+"/app_images/cmsTabFooter.gif") repeat-x scroll left bottom;
+  text-align: center;
+}
+
+.snlNotice .snlText{
+  background: url($asset_path_for+"/logo_images/live.png") no-repeat center 6px;
+  font-size: 14px;
+  line-height: 120%;
+  padding: 45px 10px 15px;
+  text-align:center;
+  overflow:hidden;
+}
+.snlNotice .snlText.notLive {
+  background: url($asset_path_for+"/logo_images/logo_237x34.png") no-repeat center 6px;
+}
+
+.snlScoringOptions {
+  display:inline-block; zoom:1; *display:inline;
+  list-style:none;
+  padding:0 2px;
+  border:3px solid #FFF;
+  background:#EEE;
+  border-radius:8px;
+  box-shadow:inset 3px 3px 10px -5px #000;
+}
+
+.snlScoringOptions li {
+  font-size:11px;
+  float:left;
+  width:180px;
+  padding:8px;
+  margin:0 -1px 0 1px;
+  border-left:1px solid #FFF;
+  border-left-color: rgba(255,255,255,.7);
+  border-right:1px solid #DDD;
+  border-right-color: rgba(0,0,0,.1);
+  min-height:10.5em;
+}
+.snlScoringOptions li:first-child {
+  border-left:none;
+  border-radius:2px 0 0 2px;
+  margin-left:-1px;
+}
+.snlScoringOptions li:last-child {
+  border-right:none;
+  border-radius:0 2px 2px 0;
+}
+.snlScoringOptions li.disabled {
+  background:#DDD;
+  background:rgba(0,0,0,.05);
+}
+
+.snlScoringOptions li.quickScore {
+
+}
+
+.snlScoringOptions li.liveScore {
+  width:320px;
+}
+
+.snlScoringOptions li.editStats {
+
+}
+
+.snlScoringOptions li p {
+  padding: 0 10px;
+  font-size:11px;
+  color:#AAA;
+  text-align:left;
+}
+
+p.snlStatWarning strong { color: #FF0000; }
+p.snlStatWarning a { color:#000; }
+
+.snlScoringOptions .button-large {
+  display:block;
+  background-color:#666;
+  background-image: linear-gradient(to bottom,  rgba(255,255,255,0.3) 0%,rgba(255,255,255,0) 100%);
+  text-transform: uppercase;
+  font-weight:bold;
+  font-size:12px;
+  margin-bottom:15px;
+}
+.snlScoringOptions .button-large:hover {
+  color:#FFF;
+  background-color:#333;
+}
+.snlScoringOptions .button-large:active {
+  background-image: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.3) 100%);
+}
+
+.snlScoringOptions li.liveScore .button-large {
+  background-color:#111;
+  font-size:18px;
+}
+
+.snlScoringOptions li.disabled .button-large,
+.snlScoringOptions li.disabled .button-large:hover {
+  cursor:default;
+  background-color:#CCC;
+  color:#EEE;
+  box-shadow:none;
+  text-shadow:none;
+}
+
+/* SPORT NGIN LIVE Notice with Scorekeeper
+-------------------------------------------------------------------- */
+.ice_hockey .snlNotice .snlText {
+  background: none;
+  padding: 30px 10px;
+}
+
+.ice_hockey .snlScoringOptions {
+  padding: 0;
+  width: 848px;
+  height: 258px;
+  border: 4px solid #FFF;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.ice_hockey .snlScoringOptions li {
+  margin: 0;
+  padding: 12px;
+  width: 210px;
+  border-left: 0;
+  border-right: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.ice_hockey .snlScoringOptions li.liveScore {
+  width: 420px;
+}
+
+.ice_hockey .snlScoringOptions li.scorekeeper {
+  background: #000 url($asset_path_for+"/app_images/live/scorekeeper-hockey-bg.jpg") no-repeat center top;
+  padding: 0;
+  width: 420px;
+  height: 250px;
+}
+
+.snlScoringOptions .scorekeeper a {
+  background: transparent;
+  width: 420px;
+  height: 250px;
+  display: block;
+  margin: 0 auto;
+  text-indent: -9999px;
+}
+
+/* Maintenance Message
+-------------------------------------------------------------------- */
+#maintenanceMessage {
+  background:       #fde045 url($asset_path_for+"/app_images/constructionBG.gif") 50% 50% repeat;
+  background-image: linear-gradient(to bottom, rgba(252,205,34,0) 0%, rgba(252,205,34,0.5) 100%), url($asset_path_for+"/app_images/constructionBG.png");
+
+  color: #333;
+  padding: 15px;
+  position: absolute;
+  left: 35%;
+  right: 35%;
+  top: 50px;
+  text-align: left;
+  z-index: 999;
+
+  box-shadow: 0 10px 50px #000;
+
+  border-radius: 10px;
+}
+
+#maintenanceMessage div {
+  background: #f2f2f2;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%);
+
+  padding: 10px;
+
+  box-shadow:         0 1px 2px rgba(0,0,0,0.15);
+
+  border-radius:          3px;
+}
+
+#maintenanceMessage h2      { border-bottom: 1px solid #e5e5e5; padding: 0 0 10px; text-shadow: 0 1px 1px #fff; }
+#maintenanceMessage p       { border-top: 1px solid #fff; padding: 5px 0 15px; }
+
+
+/* Tool Settings Success/Error message
+-------------------------------------------------------------------- */
+.form-notice { margin: 0 5px; }

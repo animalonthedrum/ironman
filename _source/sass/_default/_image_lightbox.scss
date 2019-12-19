@@ -1,0 +1,22 @@
+// Allow lightbox to be responsive
+// (it is otherwise a fixed 800px)
+#lightbox {
+  width: 800px;
+  min-width: initial !important;
+  max-width: 100%;
+
+  .galleryLightbox {
+    .galleryItemWrapper { width: 100% !important; }
+
+    #lightboxBody {
+      margin: 0 auto;
+      max-width: 800px;
+    }
+
+    .commentStreamContainer {
+      margin: 10px 0 15px;
+
+      &.noComments p { margin: 0; }
+    }
+  }
+}

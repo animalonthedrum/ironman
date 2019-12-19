@@ -1,0 +1,433 @@
+$bracket-primary-font: bold 14px $font-secondary;
+$bracket-secondary-font: normal 12px $font-secondary;
+$bracket-border-width: 1px;
+$bracket-border: $bracket-border-width solid #CCC;
+
+$bracket-round-width: 230px;
+$bracket-round-max-width: 330px;
+$bracket-spacing-horiz: 10px;
+$bracket-team-spacing-vert: 10px;
+$bracket-team-spacing-horiz: 6px;
+$bracket-team-logo-spacing: 2px;
+$bracket-game-spacing: 15px;
+$bracket-game-hover-color: #EEE;
+$bracket-team-height: 30px;
+
+// list style
+$bracket-list-game-border: 1px solid #EEE;
+
+// computed
+$bracket-team-logo-cell-width: $bracket-team-height + $bracket-team-logo-spacing;
+$bracket-node-height: $bracket-team-height * 3 + $bracket-team-spacing-vert + $bracket-game-spacing * 2 + $bracket-border-width * 2;
+$bracket-game-offset: ($bracket-team-height + $bracket-team-spacing-vert) / 2;
+
+/* Old class name, but I'm not sure all the places it's rendered */
+.bracket-container {
+  margin: 0;
+  overflow: auto;
+  position: relative;
+  text-align: center;
+  background: #FFF;
+}
+
+.theme-bracket {
+  display: inline-table;
+  table-layout: fixed;
+  text-align: left;
+  font: $bracket-primary-font;
+}
+
+.theme-bracket-round {
+  display: table-cell;
+  min-width: $bracket-round-width;
+  max-width: $bracket-round-max-width;
+}
+
+.theme-bracket-round-title {
+  text-align: center;
+  text-transform: uppercase;
+  padding: $bracket-spacing-horiz;
+}
+
+.theme-bracket-nodes {
+  list-style: none;
+  padding: 1px 0; // fixes an issue where vertical align was slightly off in chrome (rounding?)
+}
+
+@function bracket_power($base, $exponent) {
+  $value: $base;
+  @if $exponent > 1 {
+    @for $i from 2 through $exponent {
+      $value: $value * $base;
+    }
+  }
+  @if $exponent < 1 {
+    @return $value / $base;
+  }
+  @return $value;
+}
+
+
+@for $i from 1 through 9 {
+  .theme-bracket-depth-#{$i} {
+    .theme-bracket-node,
+    .theme-bracket-gap { line-height: $bracket-node-height * bracket_power(2, ($i - 1)); }
+  }
+}
+
+.theme-bracket-node {
+  position: relative;
+  padding: 0 $bracket-spacing-horiz;
+
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: $bracket-game-spacing + $bracket-spacing-horiz;
+    top: 50%;
+    right: 0;
+    border-top: $bracket-border;
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: $bracket-game-spacing + $bracket-spacing-horiz - $bracket-team-logo-spacing;
+    left: 100%;
+    margin-left: 0 - $bracket-border-width;
+    border-left: $bracket-border;
+  }
+}
+
+.theme-bracket-node-upper:after,
+.theme-bracket-compressible .theme-bracket-node-lower:after {
+  top: 50%;
+  border-bottom: $bracket-border;
+  bottom: $bracket-game-offset - $bracket-border-width;
+}
+
+.theme-bracket-node-lower:after,
+.theme-bracket-compressible .theme-bracket-node-upper:after {
+  bottom: 50%;
+  border-top: $bracket-border;
+  top: $bracket-game-offset + $bracket-border-width;
+}
+
+.theme-bracket-compressible {
+
+  .theme-bracket-node-lower:after {
+    border-top: none;
+    bottom: auto;
+    height: $bracket-game-offset;
+  }
+
+  .theme-bracket-node-upper:after {
+    border-bottom: none;
+    top: auto;
+    height: $bracket-game-offset;
+  }
+}
+
+.theme-bracket-node-leaf:before,
+.theme-bracket-node-leaf:after { display: none; }
+
+.theme-bracket-game {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
+  margin: -1px 0; // fixes an issue where vertical align was slightly off in chrome (rounding?)
+  color: inherit;
+  line-height: 1.2;
+  font: $bracket-primary-font;
+  text-decoration: none !important;
+  padding: $bracket-game-spacing $bracket-game-spacing;
+  transition: background-color $transition-standard;
+
+  &:hover {
+    color: inherit;
+    background-color: $bracket-game-hover-color;
+
+    .theme-bracket-team-slot,
+    .theme-bracket-team-slot > * {
+      border-color: $bracket-game-hover-color;
+      transition: background-color $transition-standard;
+    }
+  }
+}
+
+.theme-bracket-team-slot {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  margin: 0;
+
+  ~ .theme-bracket-team-slot {
+    padding-top: $bracket-team-spacing-vert;
+    border-right: $bracket-border;
+    transition: background-color $transition-standard;
+  }
+
+  > * {
+    display: table-cell;
+    vertical-align: middle;
+    line-height: $bracket-team-height;
+    border-bottom: $bracket-border;
+    overflow: hidden;
+    transition: background-color $transition-standard;
+  }
+
+  &.winner {
+
+    .theme-bracket-team,
+    .theme-bracket-score,
+    .theme-bracket-team-name {
+      color: #FFF;
+      background: $link-color;
+    }
+  }
+}
+
+.theme-bracket-team-logo {
+  width: $bracket-team-logo-cell-width;
+  border-bottom: none;
+
+  img {
+    display: block;
+    height: $bracket-team-height;
+    width: $bracket-team-height;
+    background: #DDD;
+  }
+}
+
+.theme-bracket-seed {
+  display: inline-block;
+  width: 1.2em;
+  font: $bracket-secondary-font;
+}
+
+.theme-bracket-team {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-left: $bracket-team-spacing-horiz;
+  padding-right: $bracket-team-spacing-horiz;
+}
+
+.theme-bracket-team-name {
+  color: $link-color;
+
+  .tbd-team & {
+    color: inherit;
+    font-weight: normal;
+  }
+}
+
+.theme-bracket-score {
+  width: 2em;
+  padding-right: $bracket-team-spacing-horiz;
+  text-align: right;
+}
+
+.theme-bracket-game-details {
+  font: $bracket-secondary-font;
+  font-size: 11px;
+  display: table;
+  table-layout: fixed;
+  height: $bracket-team-height;
+  line-height: 1.2;
+  width: 100%;
+
+  > * {
+    display: block;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 0 $bracket-team-spacing-horiz 0 ($bracket-team-logo-cell-width);
+
+    &:first-child { padding-top: $bracket-team-spacing-vert/2; }
+    &:only-child {
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+}
+
+
+// Collapse bracket into list for small screens
+
+@media only screen and (max-width: 450px) {
+
+  .theme-bracket { display: block; }
+
+  .theme-bracket-round {
+    display: block;
+    max-width: initial;
+    min-width: initial;
+
+    + .theme-bracket-round .theme-bracket-round-title {
+      margin-top: $bracket-spacing-horiz;
+    }
+  }
+
+  .theme-bracket-node {
+    padding: 0;
+    line-height: initial !important;
+
+    &:last-child .theme-bracket-game { @include line-pattern-border($pos:bottom); }
+  }
+
+  .theme-bracket-game { @include line-pattern-border($pos:top); }
+
+  .theme-bracket-team-slot {
+    &, > * { border-width: 0 !important; }
+  }
+
+  .theme-bracket-node:before,
+  .theme-bracket-node:after,
+  .theme-bracket-gap { display: none; }
+
+}
+
+// OLDER STYLES PORTED FROM SPORTS DEFAULTS
+
+/* Bracket Select Tag */
+.descendant_bracket {
+  margin: 0 15px 15px;
+}
+
+/* Tooltip */
+.prototip .darkgrey .content p {
+  color: #ccc;
+}
+
+/* Lightbox */
+#bracket-seed-list-container {
+   float: right;
+   margin: 10px 0;
+   text-align: right;
+}
+#bracket-teams-container {
+  float: left;
+  margin: 10px 0;
+}
+#seed-status {
+  color: #666;
+  float: left;
+  font-size: 10px;
+  font-weight: normal;
+}
+#seed-status b {
+   color: #333;
+   font-size: 11px;
+}
+#bracket-seed-list,
+#bracket-teams {
+  background: #fef4c0;
+  border: 1px solid #fef1af;
+  margin: 10px 0;
+  padding: 10px;
+  width: 250px;
+  text-align: left;
+}
+#bracket-seed-list {
+  background: #fef4c0;
+  padding: 10px 10px 10px 35px;
+}
+
+#bracket-teams {
+  list-style: none;
+}
+
+#bracket-seed-list li {
+  background: url($asset_path_for+"/app_images/bracketing/lightbox-team-selected-bottom.png") 0 100% no-repeat;
+  cursor: move;
+  margin: 0 0 2px;
+  padding: 0 0 3px;
+}
+
+#bracket-seed-list li p {
+  background: url($asset_path_for+"/app_images/bracketing/lightbox-team-selected-top.png") 0 0 no-repeat;
+  color: #000;
+}
+
+#bracket-teams li {
+  background: url($asset_path_for+"/app_images/bracketing/lightbox-team-bottom.png") 0 100% no-repeat;
+  cursor: move;
+  padding: 0 0 3px;
+}
+
+#bracket-teams li p {
+  background: url($asset_path_for+"/app_images/bracketing/lightbox-team-top.png") 0 0 no-repeat;
+  color: #a5954c;
+}
+
+#bracket-seed-list p, #bracket-teams p {
+  padding: 5px 5px 2px 10px;
+  line-height: 18px;
+  margin: 1px 0 !important;
+}
+
+/* Seed Links */
+#bracket-teams p a.seed,
+#bracket-seed-list a.unseed {
+  color: #bfb27b;
+  cursor: pointer;
+  display: inline;
+  float: right;
+  font-size: 9px;
+  line-height:18px;
+  padding: 0 5px;
+  text-decoration: underline;
+  border-radius: 2px;
+}
+
+#bracket-teams p a.seed:hover,
+#bracket-seed-list a.unseed:hover {
+  background: #fef7d0;
+  color: #40391d;
+}
+
+#bracket-seed-list a.seed,
+#bracket-teams p a.unseed {
+  display: none;
+}
+
+/* Hover */
+#bracket-teams li:hover {
+  background-image: url($asset_path_for+"/app_images/bracketing/lightbox-team-selected-bottom.png");
+}
+
+#bracket-teams li:hover p {
+  background-image: url($asset_path_for+"/app_images/bracketing/lightbox-team-selected-top.png");
+}
+
+/* Seed States */
+.needsMore #seed-status {
+  color: #666;
+}
+
+.needsMore #bracket-seed-list {
+  background: #fef4c0 url($asset_path_for+"/app_images/bracketing/bracket-lightbox-seed-bg.png") 100% 100% no-repeat;
+  padding-bottom: 35px;
+}
+
+.tooMuch #bracket-seed-list {
+  background: #e7b794;
+  border: 1px solid #b93d41;
+}
+
+.tooMuch #seed-status,
+.tooMuch #seed-status b{
+  color: #a20012;
+}
+
+.ready #bracket-seed-list {
+  background: #fef9dc;
+  border: 1px solid #339933;
+}
+
+.ready #seed-status{
+  color: #339933;
+}

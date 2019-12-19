@@ -1,0 +1,290 @@
+// # Forms
+// Default, generic styles for form elements
+
+
+// ## Variables
+$input-border-radius: 2px;
+$input-vertical-padding: .2857em;
+$input-horizontal-padding: .75rem; // 4px / 14px
+
+
+// ## Field
+// Single-line text inputs
+%pl-field {
+  border: 1px solid $color-content-xlight;
+  border-radius: $input-border-radius;
+  color: $color-content;
+  font-family: $font-default;
+  font-weight: $font-regular;
+  padding: $input-vertical-padding $input-horizontal-padding;
+
+  &:hover {
+    border-color: $color-content-light;
+  }
+  &:focus {
+    border-color: $color-highlight;
+    box-shadow: 0 0 0 1px $color-highlight;
+    outline: none;
+  }
+  &::placeholder {
+    color: $color-content-xlight;
+  }
+  &::-ms-clear {
+    display: none;
+  }
+  &.pl-has-error {
+    border-color: $color-alert;
+
+    &:focus {
+      box-shadow: 0 0 0 1px $color-alert;
+    }
+  }
+}
+.pl-field {
+  @extend %pl-field;
+  @include font-small;
+}
+.pl-field--full {
+  @extend %pl-field;
+  @include font-small;
+  width: 100%;
+}
+.pl-field--large {
+  @extend %pl-field;
+  @include font-large;
+}
+
+
+// ## Field containers
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+.pl-field__container {
+  margin-top: 1.4286rem; // 20px / 14px
+}
+
+
+// ## Field labels
+
+%pl-required-indicator {
+  color: $color-alert;
+  content: ' * ';
+  font-weight: $font-semibold;
+}
+
+.pl-required-help::before {
+  @extend %pl-required-indicator;
+}
+
+label[for] {
+  cursor: pointer;
+}
+.pl-field__label,
+%field__label {
+  color: $color-content-light;
+  display: block;
+  padding-bottom: .2857em; // 4px / 14px
+}
+.pl-field__label--offscreen {
+  left: -9999em;
+  position: absolute;
+}
+.pl-field__label--required {
+  @extend %field__label;
+
+  &::after {
+    @extend %pl-required-indicator;
+  }
+}
+
+
+// ## Field help text
+.pl-field__help,
+%field__help {
+  color: $color-content-light;
+  margin-top: .2857em; // 4px / 14px
+}
+.pl-field__help--alert {
+  @extend %field__help;
+  color: $color-alert;
+}
+
+
+// ## Select
+$select-arrow: url('#{$shared-image-path}/chevron-down.svg');
+
+%select {
+  appearance: none;
+  background-image: $select-arrow, linear-gradient(#fff, $gray-xlight);
+  background-position: right .5em top 50%;
+  background-repeat: no-repeat, repeat-x;
+  border: solid 1px $color-content-xlight;
+  border-radius: $input-border-radius;
+  cursor: pointer;
+  outline: none;
+  padding: $input-vertical-padding calc(1em + 10px) $input-vertical-padding .5em;
+
+  &:focus:not(:active):not([disabled]) {
+    border-color: $color-highlight;
+    box-shadow: 0 0 0 1px $color-highlight;
+  }
+  &:hover:not([disabled]) {
+    background-image: $select-arrow, linear-gradient($gray-xlight, #fff);
+    border-color: $color-content-light;
+  }
+  &[disabled] {
+    background-color: #fff;
+    background-image: $select-arrow;
+    border-color: $color-content-xxlight;
+    color: $color-content-xxlight;
+    cursor: default;
+  }
+  // Removes blue highlight on focused selects in IE 10 & 11
+  &:focus::-ms-value {
+    background-color: transparent;
+    color: black;
+  }
+  // Hides default select arrow in IE 10 & 11
+  &::-ms-expand {
+    display: none;
+  }
+}
+.pl-select {
+  @extend %select;
+  @include font-small;
+}
+.pl-select--full {
+  @extend %select;
+  @include font-small;
+  width: 100%;
+}
+.pl-select--large {
+  @extend %select;
+  @include font-large;
+}
+
+
+// ## Form actions
+.pl-form-actions,
+%pl-form-actions {
+  align-items: center;
+  background: rgba(255, 255, 255, .8); // for when it's sticky
+  border-top: 1px solid $gray-light;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: $layout-spacing-small / 2;
+
+  [class*='pl-subsection--'] + & {
+    margin-top: -1px; // prevent double border
+  }
+
+  > * {
+    padding: $layout-spacing-small / 2;
+  }
+
+  @include media-small {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    // combined with "cell" spacing, this results in "large" spacing orund the inner elements
+    padding: $layout-spacing-large - $layout-spacing-small / 2;
+  }
+}
+.pl-form-actions--condensed {
+  @extend %pl-form-actions;
+  padding: $layout-spacing-medium / 2;
+
+  > * {
+    padding: $layout-spacing-medium / 2;
+  }
+
+  @include media-small {
+    padding: ($layout-spacing-medium / 2) ($layout-spacing-large - $layout-spacing-medium / 2);
+  }
+}
+.pl-form-actions__info {
+  flex: 1 1 100;
+
+  @include media-small {
+    flex: 1 100 auto;
+  }
+}
+.pl-form-actions__button-container {
+  flex: 1 1 100%;
+
+  @include media-small {
+    flex: 100 0 auto;
+    text-align: right;
+  }
+}
+.pl-form-actions__button {
+  font-size: $font-large;
+  padding-bottom: $button-padding-vertical-large;
+  padding-top: $button-padding-vertical-large;
+  width: 100%;
+
+  &:not(:first-child) {
+    margin: $layout-spacing-small 0 0;
+  }
+
+  @include media-small {
+    font-size: $font-xsmall;
+    margin-left: .8571rem;  // 12px / 14px
+    margin-top: 0;
+    padding-bottom: $button-padding-vertical;
+    padding-top: $button-padding-vertical;
+    width: auto;
+
+    &:not(:first-child) {
+      margin: 0 0 0 $layout-spacing-small;
+    }
+  }
+}
+
+// ## Field icon
+.pl-field-icon__container {
+  display: flex;
+  flex-direction: row;
+}
+.pl-field-icon__button,
+%pl-field-icon__button {
+  background: transparent;
+  border: 0;
+  margin-left: .2857rem; // 4px / 14px
+  padding: 0;
+}
+.pl-field-icon__button--large {
+  @extend %pl-field-icon__button;
+  @include font-large;
+}
+
+// ## Search Field
+$search-radius: 120px;
+
+.pl-search-field {
+  display: block;
+  position: relative;
+}
+
+.pl-search-field__icon,
+.pl-search-field__clear {
+  @extend %pl-icon;
+  position: absolute;
+  right: 7px;
+  top: 7px;
+}
+
+.pl-search-field__clear {
+  cursor: pointer;
+}
+
+.pl-search-field__input {
+  @extend %pl-field;
+  border-radius: $search-radius;
+  padding-left: 16px;
+  padding-right: 28px;
+  width: 100%;
+}

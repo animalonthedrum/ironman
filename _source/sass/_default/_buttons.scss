@@ -1,0 +1,377 @@
+/* Button Styles */
+// 1. Legacy & Platform Buttons (Edit carefully -- or not at all)
+// 2. Theme Overrides
+
+// 1. Legacy & Platform Buttons
+.button-small, .pill-small-left, .pill-small-middle, .pill-small-right {
+    background-color: #333333;
+    background-position: center top;
+    border: 0 solid #000;
+    color: #e5e5e5;
+    cursor: pointer;
+    display: inline-block;
+    font: 9px/20px $font-primary;
+    outline: medium none;
+    padding: 0 8px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+}
+.button-medium, .pill-medium-left, .pill-medium-middle, .pill-medium-right {
+    background-color: #333333;
+    background-position: center top;
+    border: 0 solid #000;
+    color: #e5e5e5;
+    cursor: pointer;
+    display: inline-block;
+    font: 12px/30px $font-primary;
+    outline: medium none;
+    padding: 0 12px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+}
+.button-large, .pill-large-left, .pill-large-middle, .pill-large-right {
+    background-color: #333333;
+    background-position: center top;
+    border: 0 solid #000;
+    color: #e5e5e5;
+    cursor: pointer;
+    display: inline-block;
+    font: 16px/40px $font-primary;
+    outline: medium none;
+    padding: 0 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+}
+.button-small:hover, .pill-small-left:hover, .pill-small-middle:hover, .pill-small-right:hover, .button-medium:hover, .pill-medium-left:hover, .pill-medium-middle:hover, .pill-medium-right:hover, .button-large:hover, .pill-large-left:hover, .pill-large-middle:hover, .pill-large-right:hover {
+    background-color: #4c4c4c;
+    background-position: center top;
+    color: #fff;
+    text-decoration: none !important;
+}
+.button-small:active, .pill-small-left:active, .pill-small-middle:active, .pill-small-right:active, .button-medium:active, .pill-medium-left:active, .pill-medium-middle:active, .pill-medium-right:active, .button-large:active, .pill-large-left:active, .pill-large-middle:active, .pill-large-right:active {
+    background-color: #191919;
+    background-position: center top;
+    color: #fff;
+    text-decoration: none !important;
+}
+.button-small:focus, .pill-small-left:focus, .pill-small-middle:focus, .pill-small-right:focus, .button-medium:focus, .pill-medium-left:focus, .pill-medium-middle:focus, .pill-medium-right:focus, .button-large:focus, .pill-large-left:focus, .pill-large-middle:focus, .pill-large-right:focus {
+    text-decoration: none !important;
+}
+.pill-small-left, .pill-medium-left, .pill-large-left {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+}
+.pill-small-right, .pill-medium-right, .pill-large-right {
+    border-top-left-radius: 0;
+}
+.button-shell-small {
+    display: inline-block;
+    padding: 0;
+    position: relative;
+}
+.button-shell-medium {
+    display: inline-block;
+    padding: 0;
+    position: relative;
+}
+.button-shell-large {
+    display: inline-block;
+    padding: 0;
+    position: relative;
+}
+a.button-small img {
+    vertical-align: middle;
+}
+.pill-small-left .button-image-left, .pill-small-middle .button-image-left, .pill-small-right .button-image-left, .button-shell-small .button-image-left, .button-small .button-image-left {
+    display: block;
+    height: 16px;
+    left: 2px;
+    margin: 0;
+    position: absolute;
+    top: 2px;
+    width: 16px;
+    z-index: 1;
+}
+.pill-small-left .button-image-right, .pill-small-middle .button-image-right, .pill-small-right .button-image-right, .button-shell-small .button-image-right, .button-small .button-image-right {
+    display: block;
+    height: 16px;
+    margin: 0;
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    width: 16px;
+    z-index: 1;
+}
+.pill-small-left .button-image-left ~ .button-content, .pill-small-right .button-image-left ~ .button-content, .pill-small-middle .button-image-left ~ .button-content, .button-small .button-image-left ~ .button-content {
+    padding-left: 12px;
+}
+.button-shell-small .button-image-left ~ input.pill-small-left, .button-shell-small .button-image-left ~ input.pill-small-middle, .button-shell-small .button-image-left ~ input.pill-small-right, .button-shell-small .button-image-left ~ input.button-small {
+    padding-left: 20px;
+}
+.pill-small-left .button-image-right ~ .button-content, .pill-small-right .button-image-right ~ .button-content, .pill-small-middle .button-image-right ~ .button-content, .button-small .button-image-right ~ .button-content {
+    padding-right: 12px;
+}
+.button-shell-small .button-image-right ~ input.pill-small-left, .button-shell-small .button-image-right ~ input.pill-small-middle, .button-shell-small .button-image-right ~ input.pill-small-right, .button-shell-small .button-image-right ~ input.button-small {
+    padding-right: 20px;
+}
+a.button-medium img {
+    vertical-align: middle;
+}
+.pill-medium-left .button-image-left, .pill-medium-middle .button-image-left, .pill-medium-right .button-image-left, .button-shell-medium .button-image-left, .button-medium .button-image-left {
+    display: block;
+    height: 24px;
+    left: 3px;
+    margin: 0;
+    position: absolute;
+    top: 3px;
+    width: 24px;
+    z-index: 1;
+}
+.pill-medium-left .button-image-right, .pill-medium-middle .button-image-right, .pill-medium-right .button-image-right, .button-shell-medium .button-image-right, .button-medium .button-image-right {
+    display: block;
+    height: 24px;
+    margin: 0;
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    width: 24px;
+    z-index: 1;
+}
+.pill-medium-left .button-image-left ~ .button-content, .pill-medium-right .button-image-left ~ .button-content, .pill-medium-middle .button-image-left ~ .button-content, .button-medium .button-image-left ~ .button-content {
+    padding-left: 18px;
+}
+.button-shell-medium .button-image-left ~ input.pill-medium-left, .button-shell-medium .button-image-left ~ input.pill-medium-middle, .button-shell-medium .button-image-left ~ input.pill-medium-right, .button-shell-medium .button-image-left ~ input.button-medium {
+    padding-left: 30px;
+}
+.pill-medium-left .button-image-right ~ .button-content, .pill-medium-right .button-image-right ~ .button-content, .pill-medium-middle .button-image-right ~ .button-content, .button-medium .button-image-right ~ .button-content {
+    padding-right: 18px;
+}
+.button-shell-medium .button-image-right ~ input.pill-medium-left, .button-shell-medium .button-image-right ~ input.pill-medium-middle, .button-shell-medium .button-image-right ~ input.pill-medium-right, .button-shell-medium .button-image-right ~ input.button-medium {
+    padding-right: 30px;
+}
+a.button-large img {
+    vertical-align: middle;
+}
+.pill-large-left .button-image-left, .pill-large-middle .button-image-left, .pill-large-right .button-image-left, .button-shell-large .button-image-left, .button-large .button-image-left {
+    display: block;
+    height: 32px;
+    left: 4px;
+    margin: 0;
+    position: absolute;
+    top: 4px;
+    width: 32px;
+    z-index: 1;
+}
+.pill-large-left .button-image-right, .pill-large-middle .button-image-right, .pill-large-right .button-image-right, .button-shell-large .button-image-right, .button-large .button-image-right {
+    display: block;
+    height: 32px;
+    margin: 0;
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    width: 32px;
+    z-index: 1;
+}
+.pill-large-left .button-image-left ~ .button-content, .pill-large-right .button-image-left ~ .button-content, .pill-large-middle .button-image-left ~ .button-content, .button-large .button-image-left ~ .button-content {
+    padding-left: 26px;
+}
+.button-shell-large .button-image-left ~ input.pill-large-left, .button-shell-large .button-image-left ~ input.pill-large-middle, .button-shell-large .button-image-left ~ input.pill-large-right, .button-shell-large .button-image-left ~ input.button-large {
+    padding-left: 42px;
+}
+.pill-large-left .button-image-right ~ .button-content, .pill-large-right .button-image-right ~ .button-content, .pill-large-middle .button-image-right ~ .button-content, .button-large .button-image-right ~ .button-content {
+    padding-right: 26px;
+}
+.button-shell-large .button-image-right ~ input.pill-large-left, .button-shell-large .button-image-right ~ input.pill-large-middle, .button-shell-large .button-image-right ~ input.pill-large-right, .button-shell-large .button-image-right ~ input.button-large {
+    padding-right: 42px;
+}
+.button-image-left ~ .button-content:empty {
+    padding-left: 1px !important;
+}
+.button-image-right ~ .button-content:empty {
+    padding-right: 1px !important;
+}
+button.button-small::-moz-focus-inner, input.button-small::-moz-focus-inner, input.pill-small-left::-moz-focus-inner, input.pill-small-middle::-moz-focus-inner, input.pill-small-right::-moz-focus-inner, button.pill-small-left::-moz-focus-inner, button.pill-small-middle::-moz-focus-inner, button.pill-small-right::-moz-focus-inner, button.button-medium::-moz-focus-inner, input.button-medium::-moz-focus-inner, input.pill-medium-left::-moz-focus-inner, input.pill-medium-middle::-moz-focus-inner, input.pill-medium-right::-moz-focus-inner, button.pill-medium-left::-moz-focus-inner, button.pill-medium-middle::-moz-focus-inner, button.pill-medium-right::-moz-focus-inner, button.button-large::-moz-focus-inner, input.button-large::-moz-focus-inner, input.pill-large-left::-moz-focus-inner, input.pill-large-middle::-moz-focus-inner, input.pill-large-right::-moz-focus-inner, button.pill-large-left::-moz-focus-inner, button.pill-large-middle::-moz-focus-inner, button.pill-large-right::-moz-focus-inner {
+    border: 0 none;
+    padding: 0;
+}
+.button-cancel {
+    background-color: #cc0000;
+    background-position: center top;
+    color: #e5e5e5;
+}
+.button-cancel:hover {
+    background-color: #e50000;
+    background-position: center top;
+    color: #fff;
+}
+.button-cancel:active {
+    background-color: #191919;
+    background-position: center top;
+    color: #fff;
+}
+.button-edit {
+    background-color: #fccd22;
+    background-position: center top;
+    color: #333;
+}
+.button-edit:hover {
+    background-color: #fde045;
+    background-position: center top;
+    color: #1a1a1a;
+}
+.button-edit:active {
+    background-color: #fccd22;
+    background-position: center top;
+    color: #fff;
+}
+.button-construction {
+    background: #fccd22 url("/app_images/cmsTabFooter.gif") repeat-x scroll 0 50%;
+    border: 1px solid #dda301;
+    color: #807540;
+}
+.button-construction:hover {
+    background: #fccd22 url("/app_images/cmsTabFooter.gif") repeat-x scroll 0 50%;
+    color: #594100;
+}
+.button-construction:active {
+    background-color: #fccd22;
+    background-position: center top;
+    color: #594100;
+}
+.button-siteColor {
+    background-color: #0b478d;
+    background-position: center top;
+    color: #e5e5e5;
+}
+.button-siteColor:hover {
+    background-color: #0b478d;
+    background-position: center top;
+    color: #fff;
+}
+.button-siteColor:active {
+    background-color: #0b478d;
+    background-position: center top;
+    color: #fff;
+}
+.button-subtle {
+    background-color: transparent;
+    background-position: center top;
+    border: 1px solid #ccc;
+    color: #777;
+}
+.button-subtle:hover, .button-subtle:active {
+    background-color: transparent;
+    background-position: center top;
+    color: #888;
+}
+.button-subtle:active {
+    background-position: center top;
+}
+.button-commentCount .button-image-right {
+    background: rgba(0, 0, 0, 0) url("/app_images/pageElements/newsAggregator/icon.png?1432043856") no-repeat scroll 0 50%;
+    top: 1px;
+}
+.button-open {
+    background: transparent none repeat scroll 0 0;
+    color: #1a1a1a;
+}
+.button-open:hover {
+    background: transparent none repeat scroll 0 0;
+    color: #262626;
+}
+.button-open:active {
+    background: transparent none repeat scroll 0 0;
+    color: #000;
+}
+.button-open .button-content {
+    text-decoration: underline;
+}
+.button-small.button-disabled, .button-small[disabled], .button-small.button-disabled:hover, .button-small[disabled]:hover, .button-small.button-disabled:active, .button-small[disabled]:active, .button-medium.button-disabled, .button-medium[disabled], .button-medium.button-disabled:hover, .button-medium[disabled]:hover, .button-medium.button-disabled:active, .button-medium[disabled]:active, .button-large.button-disabled, .button-large[disabled], .button-large.button-disabled:hover, .button-large[disabled]:hover, .button-large.button-disabled:active, .button-large[disabled]:active {
+    background: #e5e5e5 linear-gradient(rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0)) repeat scroll 0 0;
+    color: #b3b3b3 !important;
+    cursor: default;
+}
+.button-tool {
+    background-color: #f1f1f1;
+    background-position: center top;
+    border: 1px solid #ccc;
+    color: #333 !important;
+    z-index: 1;
+}
+.button-tool:hover {
+    background-color: #ffffff;
+    background-position: center top;
+    border: 1px solid #999;
+    color: #333 !important;
+    z-index: 2;
+}
+.button-tool:active {
+    background-color: #d8d8d8;
+    background-position: center top;
+    color: #333 !important;
+    z-index: 2;
+}
+.button-tool.pill-medium-middle, .button-tool.pill-medium-right {
+    margin-left: -1px;
+}
+.button-cancel {
+    background-color: #cc0000;
+    background-position: center top;
+    color: #e5e5e5;
+}
+.button-cancel:hover {
+    background-color: #e50000;
+    background-position: center top;
+    color: #fff;
+}
+.button-cancel:active {
+    background-color: #191919;
+    background-position: center top;
+    color: #fff;
+}
+.football-real-time-button-score-live {
+    border: 1px solid rgba(251, 203, 34, 0);
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    width: 248px;
+}
+.football-real-time-button-score-live:hover {
+    background-color: rgb(253, 232, 114);
+    background-position: center top;
+    border: 1px solid rgba(251, 203, 34, 0.5);
+    color: #000;
+}
+.football-real-time-button-quick-score, .football-real-time-button-edit-stats {
+    background-position: center top;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    width: 115px;
+}
+.button-football-offline {
+    padding-bottom: 0.3em;
+}
+#sport-header ~ .layoutContainer .readMore .button-small, #sport-header ~ .layoutContainer .readMore .pill-small-left, #sport-header ~ .layoutContainer .readMore .pill-small-middle, #sport-header ~ .layoutContainer .readMore .pill-small-right, #sport-header ~ .layoutContainer .readMore .button-medium, #sport-header ~ .layoutContainer .readMore .pill-medium-left, #sport-header ~ .layoutContainer .readMore .pill-medium-middle, #sport-header ~ .layoutContainer .readMore .pill-medium-right, #sport-header ~ .layoutContainer .readMore .button-large, #sport-header ~ .layoutContainer .readMore .pill-large-left, #sport-header ~ .layoutContainer .readMore .pill-large-middle, #sport-header ~ .layoutContainer .readMore .pill-large-right {
+    color: #e5e5e5;
+}
+#sport-header ~ .layoutContainer .commentCount .button-small, #sport-header ~ .layoutContainer .commentCount .pill-small-left, #sport-header ~ .layoutContainer .commentCount .pill-small-middle, #sport-header ~ .layoutContainer .commentCount .pill-small-right, #sport-header ~ .layoutContainer .commentCount .button-medium, #sport-header ~ .layoutContainer .commentCount .pill-medium-left, #sport-header ~ .layoutContainer .commentCount .pill-medium-middle, #sport-header ~ .layoutContainer .commentCount .pill-medium-right, #sport-header ~ .layoutContainer .commentCount .button-large, #sport-header ~ .layoutContainer .commentCount .pill-large-left, #sport-header ~ .layoutContainer .commentCount .pill-large-middle, #sport-header ~ .layoutContainer .commentCount .pill-large-right {
+    color: #595959;
+}
+
+// 2. Theme Overrides
+.topNav,
+.siteContainer {
+    [class*="button-"] {
+      @include global-link-style;
+      @include global-link-container;
+      @include global-link-text;
+    }
+}
+.button-add:hover, .button-remove:hover {
+    border:none;
+    border:1px solid #fdea88;
+}

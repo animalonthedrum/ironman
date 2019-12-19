@@ -1,0 +1,18 @@
+// # Sticky
+// These classes are added by the `sticky` Angular directive.
+// They allow us to control how sticky headers and footers appear.
+
+.pl-sticky--top-off {
+  position: relative;
+  z-index: $z-sticky--top-off;
+}
+.pl-sticky--bottom-off {
+  position: relative;
+  z-index: $z-sticky--bottom-off;
+}
+.pl-sticky--top-on {
+  z-index: $z-sticky--top-on;
+}
+.pl-sticky--bottom-on {
+  z-index: $z-sticky--bottom-on;
+}

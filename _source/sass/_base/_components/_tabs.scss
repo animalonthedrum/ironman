@@ -1,0 +1,197 @@
+// Content Tabs
+$element-tabs-item-padding: 10px 15px !default;
+$element-tabs-item-text-color: $color-black !default;
+$element-tabs-item-text-color-hover: $color-primary !default;
+$element-tabs-item-background-color: null !default;
+$element-tabs-item-background-color-hover: null !default;
+$element-tabs-item-text-case: null !default;
+$element-tabs-item-font-family: null !default;
+$element-tabs-item-font-weight: 600 !default;
+$element-tabs-item-font-size: 14px !default;
+$element-tabs-item-text-line-height: 1.2 !default;
+$element-tabs-item-border-size: 3px !default;
+$element-tabs-item-border-position: bottom !default;
+$element-tabs-item-border-color: transparent !default;
+$element-tabs-item-border-color-hover: $color-primary !default;
+
+// Tab States
+@mixin element-tab-state-base(){
+  color: $element-tabs-item-text-color;
+  background-color: $element-tabs-item-background-color;
+  // border-#{$element-tabs-item-border-position}-style: solid;
+  // border-#{$element-tabs-item-border-position}-width: $element-tabs-item-border-size;
+  // border-#{$element-tabs-item-border-position}-color: $element-tabs-item-border-color;
+  border: 1px solid $element-tabs-item-border-color;
+  border-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0px;
+  margin-left: 0;
+  margin-right: 0px;
+  transition:
+    background-color $transition-linear,
+    color $transition-linear;
+    @media screen and (max-width: $breakpoint-sm-max){
+      margin-right: 0;
+    }
+
+}
+
+@mixin element-tab-state-hover(){
+  background-color: $element-tabs-item-background-color-hover;
+  color: $element-tabs-item-text-color-hover;
+}
+
+@mixin element-tab-state-selected(){
+  background-color: $element-tabs-item-background-color-hover;
+  color: $element-tabs-item-text-color-hover;
+}
+
+// Page Element Tabs: Layout
+.contentTabs:not(.rapidTabsConstruction) {
+  list-style: none;
+  display: flex;
+  flex-flow: row wrap;
+  .pageEl.center & {
+    justify-content: center;
+  }
+  li{
+    .pageEl.fill & {
+      flex: 1 1;
+    }
+    @media screen and (max-width: $breakpoint-sm-max){
+      flex-basis: 100%;
+    }
+    @include tablet {
+      flex: 1 1 auto;
+  }
+
+  }
+}
+
+
+// Page Element Tabs: Tab Styles
+.contentTabs:not(.rapidTabsConstruction){
+  a{
+    @include element-tab-state-base;
+    display: block;
+    text-align: center;
+    white-space: nowrap;
+    padding: $element-tabs-item-padding;
+    text-transform: $element-tabs-item-text-case;
+    font-family: $element-tabs-item-font-family;
+    font-weight: $element-tabs-item-font-weight;
+    font-size: $element-tabs-item-font-size;
+    line-height: $element-tabs-item-text-line-height;
+  }
+  a:hover{
+    @include element-tab-state-hover;
+  }
+  .selected a{
+    @include element-tab-state-selected;
+  }
+}
+
+
+
+// Edit Mode Tabs (Rapid Tabs)
+
+$edit-mode-black-1: #333;
+$edit-mode-black-2: #444;
+$edit-mode-yellow-1: #FDDD40;
+$edit-mode-yellow-2: #DDA301;
+$edit-mode-yellow-3: #FDE872;
+$edit-mode-yellow-4: #fccd22;
+
+$edit-mode-tabs-container-background-color: $edit-mode-yellow-1;
+$edit-mode-tabs-container-border: null;
+
+$edit-mode-tabs-item-background-color: transparent;
+$edit-mode-tabs-item-background-color-hover: $edit-mode-yellow-3;
+
+$edit-mode-tabs-item-seperator: 1px solid $edit-mode-yellow-2;
+$edit-mode-tabs-item-padding: 10px 30px;
+
+$edit-mode-tabs-item-text-color: $edit-mode-black-2;
+$edit-mode-tabs-item-text-color-hover: $edit-mode-black-1;
+
+$edit-mode-tabs-item-text-case: null;
+$edit-mode-tabs-item-font-family: null;
+$edit-mode-tabs-item-font-weight: 600;
+$edit-mode-tabs-item-font-size: 14px;
+$edit-mode-tabs-item-text-line-height: 1.2;
+
+@mixin edit-mode-tab-state-base(){
+  color: $edit-mode-tabs-item-text-color;
+  background-color: $edit-mode-tabs-item-background-color;
+  transition:
+    background-color $transition-linear,
+    color $transition-linear;
+}
+
+@mixin edit-mode-tab-state-hover(){
+  background-color: $edit-mode-tabs-item-background-color-hover;
+  color: $edit-mode-tabs-item-text-color-hover;
+}
+
+@mixin edit-mode-tab-state-selected(){
+  background-color: $edit-mode-tabs-item-background-color-hover;
+  color: $edit-mode-tabs-item-text-color-hover;
+}
+
+.rapidTabsConstruction{
+  list-style: none;
+  display: flex;
+  flex-flow: row wrap;
+  background-color: $edit-mode-tabs-container-background-color;
+  border-top: $edit-mode-tabs-container-border;
+  li{
+    border-right: $edit-mode-tabs-item-seperator;
+  }
+  a{
+    @include edit-mode-tab-state-base;
+    display: block;
+    text-align: center;
+    white-space: nowrap;
+    padding: $edit-mode-tabs-item-padding;
+    text-transform: $edit-mode-tabs-item-text-case;
+    font-family: $edit-mode-tabs-item-font-family;
+    font-weight: $edit-mode-tabs-item-font-weight;
+    font-size: $edit-mode-tabs-item-font-size;
+    line-height: $edit-mode-tabs-item-text-line-height;
+  }
+  a:hover{
+    @include edit-mode-tab-state-hover;
+  }
+  .selected a{
+    @include edit-mode-tab-state-selected;
+  }
+}
+
+
+// I don't know what these are for
+.pageElementAdmin .rosterPlayerStatElement .contentTabs { margin: 0; }
+.dataTable .disabled {
+  color: #000;
+  text-decoration: none;
+
+  &:hover { text-decoration: underline; }
+}
+
+// Loading Tab Animation
+#contentTabsLoader {
+  text-align: center;
+  clear: both;
+  padding: 25px;
+}
+
+.tabContainer {
+  background-color: white;
+  padding-top: 10px;
+  padding-right: $content-area-padding;
+  padding-bottom: 0;
+  padding-left: $content-area-padding;
+  border: 1px solid $color-gray;
+  @include tablet {
+    margin-right: 1px;
+  }
+}

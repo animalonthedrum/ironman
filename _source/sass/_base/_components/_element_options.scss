@@ -1,0 +1,106 @@
+// Element Options
+// 1. Settings
+// 2. Page Element Options
+// 3. Page Options
+// 4. Sharing icons
+
+// 1. Settings
+$element-options-flex-justification: flex-end !default;
+$element-options-font-size: 12px !default;
+$element-options-text-wieght: 600 !default;
+$element-options-text-color: #333 !default;
+$element-options-text-color-hover: tomato !default;
+$element-options-font-family: $font-secondary !default;
+$element-options-icon-margin: .7ch !default;
+$element-options-icon-text-space: 1.5ch !default;
+
+// Reset for icon styling dound in _link_icons. Remove this when .icon is refactored
+@mixin option-item-icon{
+  .icon{
+    background-image: none;
+    background-repeat: no-repeat;
+    padding: 0;
+    &:before{
+      position: inherit;
+      top: auto;
+      left: auto;
+      font-size: inherit;
+    }
+  }
+}
+
+// 2. Page Element Options
+.extendedOptions{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: $element-options-flex-justification;
+  font-family: $element-options-font-family;
+  font-size: $element-options-font-size;
+  font-weight: $element-options-text-wieght;
+  @include page-element-margin;
+  @include option-item-icon;
+  a{
+    margin: 0 $element-options-icon-text-space;
+    color: $element-options-text-color;
+    &:hover{ color: $element-options-text-color-hover; }
+    &:first-child{ margin-left: 0; }
+    &:last-child{ margin-right: 0; }
+    &:before{ margin-right: $element-options-icon-margin; }
+  }
+  .pageElement > &:last-child{
+    margin-bottom: 0;
+  }
+}
+
+// 3. Page Options
+.pageOptions{
+  display: flex !important;
+  flex-flow: row wrap;
+  justify-content: $element-options-flex-justification;
+  font-family: $element-options-font-family;
+  font-size: $element-options-font-size;
+  font-weight: $element-options-text-wieght;
+  list-style: none;
+  @include page-element-margin;
+  @include option-item-icon;
+  a{
+    color: $element-options-text-color;
+    &:hover{ color: $element-options-text-color-hover; }
+    &:before{ margin-right: $element-options-icon-margin; }
+  }
+  li{
+    + li{
+      margin-left: $element-options-icon-text-space;
+      &:before{
+        content: "|";
+        margin-right: $element-options-icon-text-space;
+      }
+    }
+  }
+}
+
+
+// 4. Sharing icons
+.sharingOptions{
+  @include page-element-padding;
+  text-align: center;
+  border-top: $global-ui-border-size solid $global-ui-border-color;
+}
+.sn-share-icons{
+  display: inline-block;
+  width: 100%;
+  > div {
+    display: inline-flex;
+    padding: 5px 0 0 5px;
+    vertical-align: middle;
+    flex-flow: row wrap;
+  }
+  .sn-share-text{
+    padding: 0;
+    &:before{
+      content: "\f1e0";
+      font-family: "FontAwesome";
+      margin-right: $element-options-icon-margin;
+    }
+  }
+}

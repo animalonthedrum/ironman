@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.6.1 (26313) - http://www.bohemiancoding.com/sketch -->
+    <title>one-circle</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="one-circle" fill="#000000">
+            <path d="M8,2 C4.688,2 2,4.688 2,8 C2,11.312 4.688,14 8,14 C11.312,14 14,11.312 14,8 C14,4.688 11.312,2 8,2 Z M8.77531242,10.7109375 L7.85734367,10.7109375 L7.85734367,7.0234375 C7.85734367,6.58333113 7.86776024,6.23437629 7.88859367,5.9765625 C7.82869754,6.03906281 7.75513057,6.10807254 7.66789055,6.18359375 C7.58065053,6.25911496 7.28833574,6.4986959 6.79093742,6.90234375 L6.32999992,6.3203125 L8.00968742,5 L8.77531242,5 L8.77531242,10.7109375 Z"></path>
+        </g>
+    </g>
+</svg>

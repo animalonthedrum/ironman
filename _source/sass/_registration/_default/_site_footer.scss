@@ -1,0 +1,85 @@
+// 5. Site Footer
+.snFooterContainer {
+  width: 100%;
+  max-width: $maxWidth;
+  margin: 0 auto;
+  background-color: #eee;
+}
+
+#siteFooter {
+  @extend %clearfix;
+  display: block;
+  margin: auto;
+  padding: 10px 20px;
+  position: relative;
+  vertical-align: bottom;
+  width: 100%;
+  font-size: .8em;
+  clear: both;
+
+  > ul {
+    padding: 0;
+    @include displayCenter($maxWidth);
+
+    li {
+      display: inline-block;
+      padding: 0 .2em;
+      min-height: 20px;
+
+      a {
+        display: inline-block;
+      }
+
+      &:hover {
+        display: inline-block;
+      }
+    }
+  }
+}
+
+#siteFooter li#poweredByNGIN {
+  a {
+    display: block;
+    width: 120px;
+    height: 20px;
+    position: relative;
+
+    &:after {
+      content: url($asset-path-for+'/logo_images/logo_black.svg');
+      display: block;
+      position: absolute;
+      top: 4px;
+      left: 0;
+      width: 100%;
+    }
+
+    img {
+      display: none;
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  #siteFooter {
+    li {
+      min-height: 0;
+    }
+  }
+
+  #siteFooter li#poweredByNGIN {
+    padding: 10px 0;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  #siteFooter {
+    li {
+      min-height: 0;
+    }
+  }
+
+  #siteFooter li#poweredByNGIN {
+    padding: 10px 0;
+  }
+}

@@ -1,0 +1,245 @@
+// Sub Navigation: Breadcrumbs
+// 1. Settings
+// 2. General Structure
+// 3. Sub and Dropdown Styles
+// 4. Sub and Dropdown States
+// 5. Dropdown Structure/Behavior
+
+$site-logo-offset: 200px !default;
+
+$sub-nav-hide-on-home: true !default;
+$sub-nav-more-plus-buffer: true !default;
+$sub-nav-font-family: null !default;
+$sub-nav-font-size: 16px !default;
+$sub-nav-text-color: darken(mediumaquamarine, 30%) !default;
+$sub-nav-text-color-hover: darken(mediumaquamarine, 30%) !default;
+$sub-nav-text-color-disabled: slategrey !default;
+$sub-nav-item-background-color-disabled: rgba(lightgray, .5) !default;
+$sub-nav-band-background-color: mediumaquamarine !default;
+$sub-nav-height: 30px !default;
+$sub-nav-height-fixed: 25px !default;
+$sub-nav-item-background-color: transparent !default;
+$sub-nav-item-background-color-hover: indigo !default;
+$sub-nav-item-text-case: none !default;
+$sub-nav-item-text-weight: normal !default;
+$sub-nav-item-padding: 10px !default;
+$sub-nav-flex-alignment: flex-start !default;
+
+$sub-nav-title-font-family: null !default;
+$sub-nav-title-font-size: $sub-nav-font-size !default;
+$sub-nav-title-height: $sub-nav-height !default;
+$sub-nav-title-text-case: capitalize !default;
+$sub-nav-title-text-weight: bold !default;
+$sub-nav-title-background-color: transparent !default;
+$sub-nav-title-text-color: indigo !default;
+$sub-nav-title-padding: 10px !default;
+$sub-nav-title-divider-content: '\f105' !default;
+$sub-nav-title-divider-font: 'fontawesome' !default;
+
+$sub-nav-dropdown-padding: $sub-nav-item-padding !default;
+$sub-nav-dropdown-font-family: null !default;
+$sub-nav-dropdown-font-size: 16px !default;
+$sub-nav-dropdown-text-case: none !default;
+$sub-nav-dropdown-line-height: 1.2 !default;
+$sub-nav-dropdown-min-width: 200px !default;
+$sub-nav-dropdown-min-height: 35px !default;
+$sub-nav-dropdown-transition-distance: 20px !default;
+$sub-nav-dropdown-container-background-color: $sub-nav-band-background-color !default;
+$sub-nav-dropdown-container-border: 0 !default;
+$sub-nav-dropdown-text-align: left !default;
+
+
+@mixin sub-nav-item-hover-state(){
+  & .theme-nav-link{
+    background-color: $sub-nav-item-background-color;
+    transition: color $transition-linear, background-color $transition-linear;
+  }
+  &:hover .theme-nav-link,
+  &.dropdown-open .theme-nav-link {
+    color: $sub-nav-text-color-hover;
+    background-color: $sub-nav-item-background-color-hover;
+  }
+}
+@mixin sub-nav-item-selected-state(){
+  &.selected .theme-nav-link {
+    color: $sub-nav-text-color-hover;
+    background-color: $sub-nav-item-background-color-hover;
+  }
+}
+@mixin sub-nav-item-disabled-state(){
+  &.disabled .theme-nav-link,
+  &.private .theme-nav-link {
+    color: $sub-nav-text-color-disabled;
+    background-color: $sub-nav-item-background-color-disabled;
+  }
+}
+@mixin sub-nav-more(){
+  .theme-nav-link{
+    &:after{
+      content: "+";
+      margin-left: .7ch;
+    }
+  }
+}
+@mixin sub-nav-dropdown-item-hover-state-1(){
+  @include sub-nav-item-hover-state;
+  @include sub-nav-item-selected-state;
+  @include sub-nav-item-disabled-state;
+}
+
+
+
+.theme-sub-nav{
+  position: relative;
+  color: $sub-nav-text-color;
+  background-color: $sub-nav-band-background-color;
+  display:flex;
+  box-shadow:0 -2px 0 0 $color-primary;
+  @if ($sub-nav-hide-on-home == true){
+    .home.user_mode &{
+      display: none !important;
+    }
+    .racePage & {
+      display: none!important;
+    }
+  }
+
+    // Site Logo Adjustments
+  .has-site-logo & .theme-nav{
+    padding-left: $site-logo-offset;
+    transition: padding $transition-linear, line-height $transition-linear;
+  }
+  .nav-fixed .has-site-logo & .theme-nav{
+    padding-left: $site-logo-offset-fixed;
+  }
+  @if $sub-nav-more-plus-buffer == true {
+    .has-site-logo & .theme-nav{
+      padding-right: 0;
+    }
+    .nav-fixed .has-site-logo & .theme-nav{
+      padding-right: $site-logo-offset - $site-logo-offset-fixed;
+    }
+  }
+
+  // Shared Sub/Dropdown Navigation Styles
+  .theme-nav-item{
+    position: relative;
+    height: 100%;
+    &.theme-nav-more{
+      @include sub-nav-more;
+    }
+  }
+  .theme-nav-link{
+    background-color: $sub-nav-item-background-color;
+    color: $sub-nav-text-color;
+    padding: 0 $sub-nav-item-padding;
+    transition: color $transition-linear;
+    width: 100%;
+    display: block; // inline-block; inline ads an extra pixel to this component for some reason :/ - Ben
+  }
+
+  // Sub Navigation Styles
+  .theme-nav{
+    max-width: $content-area-width;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: $sub-nav-flex-alignment;
+    list-style: none;
+    line-height: $sub-nav-height;
+    transition: line-height $transition-linear;
+    .theme-nav-link{
+      white-space: nowrap;
+      font-family: $sub-nav-font-family;
+      font-size: $sub-nav-font-size;
+      text-transform: $sub-nav-item-text-case;
+      font-weight: $sub-nav-item-text-weight;
+    }
+  }
+
+  // Sub Navigation Title Styles
+  .theme-nav-title{
+    display: flex;
+  }
+  .theme-nav-title a{
+    background-color: $sub-nav-title-background-color;
+    color: $sub-nav-title-text-color;
+    font-family: $sub-nav-title-font-family;
+    font-size: $sub-nav-title-font-size;
+    font-weight: $sub-nav-title-text-weight;
+    text-transform: $sub-nav-title-text-case;
+    padding: 0 $sub-nav-title-padding;
+    display: block; // inline-block; inline ads an extra pixel to this component for some reason :/ - Ben
+    white-space: nowrap;
+  }
+  .theme-nav-title:after{
+    content: $sub-nav-title-divider-content;
+    font-family: $sub-nav-title-divider-font;
+    font-size: $sub-nav-title-font-size;
+    font-weight: $sub-nav-title-text-weight;
+    color: $color-primary;
+  }
+}
+
+// Navigation and Dropdown styles
+.theme-sub-nav{
+  .theme-nav-dropdown{
+    // Shared Dropdown Container Styles (all levels)
+    background-color: $sub-nav-dropdown-container-background-color;
+    border-top: $sub-nav-dropdown-container-border;
+    text-align: $sub-nav-dropdown-text-align;
+    // Dropdown Item Styles
+    .theme-nav-link{
+      font-family: $sub-nav-dropdown-font-family;
+      font-size: $sub-nav-dropdown-font-size;
+      line-height: $sub-nav-dropdown-line-height;
+      text-transform: $sub-nav-dropdown-text-case;
+      padding: 0 $sub-nav-dropdown-padding;
+    }
+  }
+
+  // Sub and Dropdown Navigation States
+  // Sub Navigation
+  [data-nav-level="1"] .theme-nav-item{
+    @include sub-nav-item-hover-state;
+    @include sub-nav-item-selected-state;
+    @include sub-nav-item-disabled-state;
+    padding: 0 $sub-nav-dropdown-padding;
+    .theme-nav-link {
+      padding:0;
+    }
+  }
+  // Dropdown level 1
+  [data-nav-level="2"] .theme-nav-item{
+    @include sub-nav-dropdown-item-hover-state-1;
+  }
+}
+
+
+// Dropdown Navigation Structure
+.theme-sub-nav{
+  // Dropdown Shared
+  .theme-nav-dropdown{
+    min-width: $sub-nav-dropdown-min-width;
+    transition: opacity $transition-linear, margin $transition-linear;
+    width: 100%;
+    position: absolute;
+    display: none;
+    z-index: 1;
+    // Dropdown Level 1
+    &[data-nav-level="2"]{
+      &.dropdown-opening {
+        display: block;
+        opacity: 0;
+        margin-top: -$sub-nav-dropdown-transition-distance;
+      }
+      &.dropdown-open {
+        display: block;
+        opacity: 1;
+        margin: 0;
+      }
+    }
+  }
+}

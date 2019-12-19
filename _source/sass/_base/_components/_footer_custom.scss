@@ -1,0 +1,264 @@
+// Global Footer
+.snFooterContainer {
+  background-color: $color-secondary;
+  margin-top: 50px;
+  position: relative;
+  &:before {
+    content: '';
+    background-image: url('../images/M.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    display: block;
+    z-index: 0;
+    position:absolute;
+    bottom:0;
+    left: -25%;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+    @include mobile {
+      background-size: cover;
+      background-position: center center;
+      left: -40%;
+    }
+  }
+  @media screen and (max-width: 1024px) {
+    background-position: left;
+  }
+  @include touch-device {
+    margin-top: 25px;
+  }
+}
+.custom-footer{
+  z-index: 2;
+  max-width: $content-area-width;
+  margin-left: auto;
+  margin-right:auto;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding-top: 45px;
+  padding-bottom: 45px;
+  @media screen and (max-width: 1024px) {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer-nav-logo, .footer-nav-items {
+    display: flex;
+  }
+
+    .footer-left {
+      width: 33%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      position: relative;
+      @include touch-device {
+        width: 100%;
+        margin-bottom: 0px;
+    }
+      .footer-nav-logo {
+        max-width: 248px;
+        svg {
+          width: 100%;
+          height: auto;
+          .IMREG, .IMTEXT {
+            fill: $color-white;
+          }
+          
+        }
+      }
+      .footer-button{
+        .linkElement {
+          min-width: 200px;
+          margin-top:30px;
+          margin-bottom: 30px;
+          h4 a {
+            background-color: $color-off-white!important;
+            color:$color-secondary!important;
+            transition: background-color $transition-linear, color $transition-linear;
+            &:after {
+              color: $color-primary;
+            }
+            &:hover {
+              background-color: $color-hover-primary!important;
+              color:$color-white!important;
+              &:after {
+                color: $color-white;
+              }
+            }
+          }
+        }
+      }
+      .sn-social-media-list {
+        margin-top: 0;
+        margin-bottom: 0;
+        @include touch-device {
+          margin-bottom: 30px;
+        }
+        .sn-social-media-icon {
+          background-color: transparent !important;
+          color: $color-primary;
+          transition: color $transition-linear;
+          &:hover {
+            color: $color-white;
+          }
+        }
+      }
+    }
+  
+  .footer-nav-items {
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex: 1 1 auto;
+    z-index: 3;
+    padding-left:100px;
+    @include touch-device {
+      padding-left: 0;
+    }
+    .topLevel {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      @include touch-device {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      >li {
+          padding-top: 30px;
+          padding-bottom: 30px;
+          @include touch-device {
+            padding-top: 0;
+            padding-bottom:0;
+            line-height: 2;
+          }
+      }
+ 
+      .firstNavElement {
+        display: none;
+      }
+      list-style: none;
+      li {
+        flex:unset;
+        flex-basis: 25%;
+        &.private, &.disabled, &.assetsPage, &.promotionsPage {
+          display: none;
+        }
+        &.hasChild{
+          
+          @include touch-device {
+
+          }
+        }
+    
+        a {
+          font-family: $font-primary;
+          font-weight: 700;
+          font-size: 18px;
+          color: $color-white;
+          line-height: 1.5;
+          text-transform: uppercase;
+          position: relative;
+          &:hover {
+            border-bottom: 3px solid $color-primary;
+          }
+        }
+      }
+ 
+    }
+    .secondLevel {
+      list-style: none;
+      @include touch-device {
+        display:none;
+      }
+      li {
+        a {
+          font-family: $font-secondary;
+          font-weight: 400;
+          font-size: 12px;
+          color: $color-gray-md-2;
+          line-height: 2;
+          text-transform: none;
+          &:hover {
+            text-decoration: underline;
+            border-bottom:0;
+          }
+        }
+      }
+
+    }
+    .thirdLevel {
+      display: none;
+    }
+  }
+}
+.im-legal-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: transparent;
+  padding-top: 30px;
+  padding-bottom:30px;
+  z-index: 3;
+  position: relative;
+  .legal-footer-links {
+    .pageElement {
+      margin-top: 0;
+      margin-bottom: 0;
+      ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        list-style:none;
+        list-style: none;
+        list-style-image: none;
+        margin-block-start: 0;
+        margin-block-end: 0;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        padding-inline-start:0;
+        margin-left: 0;
+        li {
+            list-style-image: none;
+            padding-left: 20px;
+            .has-mobile-nav & {
+              padding-left: 0;
+            }
+           
+        }
+        @include touch-device {
+          flex-direction: column;
+      }
+        li {
+          a {
+            font-family: $font-secondary;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 1.25;
+            color: $color-white;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+
+  }
+}
+// Edit mode UI
+.custom-footer-extra{
+  @include edit_ui_element($padding: 10px);
+  &:empty{ display: none; }
+}
+
+#siteFooter{
+  z-index: 3;
+  position: relative;
+}

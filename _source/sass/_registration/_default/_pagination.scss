@@ -1,0 +1,110 @@
+/* Pagination
+-------------------------------------------------------------------- */
+
+.paginationElement, .directorySearchElement, .filterElement{
+	background: #CCC url($asset-path-for+"/app_images/pageOptionsBody.jpg") repeat-x;
+	padding: 5px 0;
+	border-bottom: solid 1px #CCCCCC;
+}
+
+.paginationElement, .filterElement{
+	background-position: 0 -80px;
+}
+
+.filterElement{
+	padding: 5px 15px;
+}
+
+.paginationElement h4{
+	float: left;
+	padding-left: 10px;
+}
+
+.paginationNav{
+	float: right;
+	padding-right: 10px;
+}
+
+.paginationNav .current, .paginationNav em{
+	padding: 0 3px 1px 3px;
+}
+
+.paginationNav .disabled{
+	display: none;
+}
+
+.paginationElement .results{
+	clear: both;
+	margin-left: 10px;
+	padding-top: 2px;
+}
+
+/* Tool Pagination
+--------------------------------------------*/
+
+.tool_pagination {
+  cursor:default;
+  padding:10px;
+  border-top:1px solid #DDD;
+  line-height:11px;
+  font-size:11px;
+  color:#999;
+  text-align:right;
+  white-space:nowrap;
+}
+
+.tool_pagination a,
+.tool_pagination span,
+.tool_pagination em {
+  text-decoration:none;
+  font-weight:bold;
+  color:#999;
+  border:1px solid transparent;
+  display:inline-block;
+  vertical-align:middle;
+  padding:5px 0;
+  width:21px;
+  text-align:center;
+  border-radius:4px;
+}
+.tool_pagination a:hover {
+  color:#333;
+  background:#EEE;
+  background: linear-gradient(to bottom,  rgba(255,255,255,0.1) 50%,rgba(0,0,0,0.1) 51%,rgba(0,0,0,0) 100%);
+  border-color:#999;
+  box-shadow:0 1px 1px rgba(255,255,255,.7);
+}
+.tool_pagination em {
+  font-style:normal;
+  background:#DDD;
+  background: linear-gradient(to bottom,  rgba(0,0,0,0.1) 0%,rgba(0,0,0,0) 100%);
+  border-color:#BBB;
+  box-shadow:0 1px 1px rgba(255,255,255,.7);
+}
+.tool_pagination .previous_page,
+.tool_pagination .next_page {
+  padding: 5px 10px;
+  width: auto;
+}
+
+/* Pulldown Menu
+-------------------------------------------------------------------- */
+
+.pulldownSelectMenu{
+  padding:15px 10px 10px;
+  font-size: 0.875em;
+  text-align: right;
+}
+
+.rapidContentConstruction .pulldownSelectMenu{
+    padding: 5px 0px;
+    background: none;
+}
+
+.pulldownSelectMenu span{
+    float: left;
+    text-align: left;
+    strong{
+      font-weight: 500;
+    }
+}

@@ -1,0 +1,158 @@
+$enable-global-font-smoothing: true !default;
+
+$core-font-family: $font-secondary !default;
+$core-font-size: 16px !default;
+$core-line-height: 2 !default;
+$core-font-weight: 400 !default;
+$core-font-color: $color-gray-dk !default;
+
+$core-paragraph-font-size: 1em !default;
+$core-paragraph-margin-bottom: 30px !default;
+
+$core-headers-font: $font-primary !default;
+$core-headers-line-height: 1.125 !default;
+
+$core-link-color: $color-primary !default;
+$core-table-font-size: 12px !default;
+
+
+// Global Type Styles >>> WARNING! These will affect ALL UI elements
+@if ($enable-global-font-smoothing == true){
+  html{
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+// Body
+html, body {
+  font-family: $core-font-family;
+  font-size: $core-font-size;
+  line-height: $core-line-height;
+  font-weight: $core-font-weight;
+  color: $core-font-color;
+}
+body{
+  font-size: 100%;
+  text-rendering: optimizeLegibility; // for WebKit. FF is on by default. IE? probably doesn't support it.
+}
+
+// Paragraphs
+p {
+  font-size: $core-paragraph-font-size;
+  margin-bottom: $core-paragraph-margin-bottom;
+  color: $core-font-color;
+}
+
+// Headers
+h1, h2, h3, h4, h5, h6{
+  font-family: $core-headers-font;
+  line-height: $core-headers-line-height;
+}
+h1{font-size: 48px;}
+h2{font-size: 32px;}
+h3{font-size: 24px;}
+h4{font-size: 18px;}
+h5{font-size: 16px;}
+h6{font-size: 16px;}
+
+// Lists
+ul{
+  list-style-type: disc;
+}
+
+// Inline
+b, strong { font-weight: bold; }
+i, em { font-style: italic; }
+small { font-size: .75em; }
+mark { background-color: yellow; }
+s, strike, del { text-decoration: line-through; }
+u { text-decoration: underline; }
+code{
+  padding: 2px 4px;
+  font-size: .75em;
+  color: #c7254e;
+  background-color: #f9f2f4;
+  border-radius: 4px;
+}
+
+// Blockquotes
+blockquote {
+  $border-color: $color-primary;
+  $border-width: 5px;
+  $offset-width: $border-width + 25px;
+  font-family: $font-primary;
+  font-size: 20px;
+  line-height: 1.4;
+  color: $color-gray-md;
+  background: $color-off-white url(../images/quote.svg) calc(100% - 50px) 35px no-repeat;
+  background-size: 83px auto;
+  box-shadow: inset $border-width 0px $border-color, 0 0 10px rgba(black,.1);
+  padding-top: 50px;
+  padding-bottom: 55px;
+  padding-left: 50px;
+  padding-right: 45px;
+  margin-left: 0;
+  margin-right: 0;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  @media only screen and (min-width: 768px) {
+    width: 100%;
+    left: -30px;
+    margin-right: 0;
+    transform: translateX(0);
+  }
+  @media only screen and (min-width: 1440px) {
+    width: 100%;
+    left: -50px;
+  }
+
+  p{display: inline;} // Revisit when liquid
+}
+
+// Code/Pre-formatted
+code,
+kbd,
+pre,
+samp {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+pre {
+  display: block;
+  padding: .5em 1em;
+  margin: 0 0 1rem 0;
+  font-size: .75em;
+  color: $core-font-color;
+  word-break: break-all;
+  word-wrap: break-word;
+  white-space: pre-wrap; /* css-3 */
+  white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+  white-space: -pre-wrap; /* Opera 4-6 */
+  white-space: -o-pre-wrap; /* Opera 7 */
+  background-color: #f5f5f5;
+  border: 1px solid $global-ui-border-color;
+  border-radius: 4px;
+}
+
+// Rules
+hr {
+  background-color: $color-gray-md;
+  height: $global-ui-border-size;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: none;
+}
+
+// Anchors
+a {
+  color: $core-link-color;
+  text-decoration: none;
+}
+
+// Tables
+table{
+  font-size: $core-table-font-size;
+}
+

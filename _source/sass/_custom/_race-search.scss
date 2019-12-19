@@ -1,0 +1,1128 @@
+//search form
+html {
+  scroll-behavior: smooth;
+}
+* {
+  scroll-behavior: smooth;
+}
+.mobile-filter-menu-open {
+  overflow-y: hidden;
+  height: 100%;
+  position: fixed;
+  .user-options {
+    display: flex;
+    margin-top: 0;
+    overflow: scroll;
+    box-shadow: 0;
+    border-bottom: 0;
+  }
+}
+.mobileFilterMenuContainer {
+  position: fixed;
+  // top: $mobile-nav-height + 60px;
+  top: 0;
+  left:0;
+  width: 100%;
+  z-index: 10000;
+  background-color:$color-white;
+  overflow: scroll;
+  will-change: transform;
+}
+.showAll {
+  @include global-link-container;
+  @include global-link-style;
+  @include global-link-text;
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: $content-area-padding-mobile;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  display: none;
+  @include mobile {
+    display: flex;
+  }
+}
+.close-container {
+  display: none;
+  align-items: center;
+  background-color: $color-white;
+  position: sticky;
+  top:0;
+  z-index: 10;
+  .mobile-filter-menu-open & {
+    display: flex;
+  }
+  .select-filters {
+    display: flex;
+    align-items: center;
+    font-family: $font-primary;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 2;
+    margin-bottom: 0;
+    color: $color-gray-md;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  button.close-filters {
+    background-color: transparent;
+    border: 0;
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    right: 15px;
+    background-image: url('../images/closeIcon.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+}
+.user-options {
+    max-width: $content-area-width;
+    background: $color-white;
+    border: 1px solid $color-gray-lt;
+    box-shadow: $box-shadow;
+    flex-direction: column;
+    justify-content: center;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: -105px;
+    position: relative;
+    @include mobile {
+      padding-left: $mobile-padding;
+      padding-right: $mobile-padding;
+      display: none;
+    }
+    @include tablet {
+      margin-top: 0;
+      padding-left: $mobile-padding;
+      padding-right: $mobile-padding;
+    }
+    @include tablet-lg {
+      padding-left: $mobile-padding;
+      padding-right: $mobile-padding;
+    }
+    @media only screen and (max-width:1319px){
+      padding-left: $mobile-padding;
+      padding-right: $mobile-padding;
+    }
+    .custom-search-form {
+        display: flex;
+        align-items: center;
+        height: 100px;
+        border-bottom: 1px solid $color-gray-lt;
+        padding-left: 30px;
+     @include mobile {
+       flex-direction: column;
+       height: 100%;
+       padding-left: 0;
+       border-bottom: 0;
+     }
+     .keyword-container {
+       display: flex;
+       width: 100%;
+       align-items: center;
+     }
+        #custom-search-keyword {
+          border-radius: 0;
+          -webkit-appearance: none;
+          border: 1px solid $color-gray-lt;
+          width: 100%;
+          max-width: 576px;
+          max-height: 50px;
+          font-family: $font-primary;
+          font-size: 16px;
+          font-weight: 400;
+          padding-top: 13px;
+          padding-bottom: 13px;
+          padding-left: 20px;
+          &::placeholder {
+            font-style: italic;
+            font-weight: 400;
+          }
+          &:focus {
+            outline: 0;
+          }
+          &.active {
+            box-shadow: $box-shadow-hover;
+          }
+        }
+        .custom-search-submit {
+          border:1px solid $color-gray-lt;
+          border-radius: 0;
+          border-left: 0;
+          -webkit-appearance: none;
+          width:50px;
+          height: 50px;
+          padding-left: 20px;
+          padding-right: 20px;
+          background-color: $color-off-white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-right: 30px;
+          @include mobile {
+            margin-right:0;
+          }
+          &.active {
+            box-shadow: $box-shadow-hover;
+          }
+          &:before {
+            content:'\f002';
+            font-family: 'fontawesome';
+            font-size: 12px;
+            color: $color-primary;
+            width: 100%;
+            display: block;
+          }
+
+        }
+        .custom-filters {
+          display: flex;
+          justify-content: flex-end;
+          width:100%;
+          height: 100%;
+          @include mobile {
+            display: flex;
+            justify-content: flex-end;
+            flex-direction: column;
+          }
+          div {
+            font-family: $font-primary;
+            font-size: 18px;
+            font-weight: 400;
+            display: flex;
+            flex: 1 1 auto;
+            align-items: center;
+            justify-content: space-around;
+            color: $color-gray-md;
+            height: 100%;
+            border-left: 1px solid $global-ui-border-color;
+            position: relative;
+            @include mobile {
+              width: 100%;
+              flex-direction: column;
+              align-items: flex-start;
+              text-indent: 15px;
+              padding-top: 5px;
+              padding-bottom: 5px;
+              border-left: 1px solid $global-ui-border-color;
+              border-right: 1px solid $global-ui-border-color;
+              border-bottom: 1px solid $global-ui-border-color;
+            }
+            &:after {
+              content:'\f107';
+              display: inline-block;
+              font-family: 'fontawesome';
+              font-size: inherit;
+              color: $color-primary;
+              transition: transform $transition-standard;
+              @include mobile {
+                position: absolute;
+                top: 5px;
+                right: 15px;
+              }
+            }
+            .regionOptions, .seriesOptions, .monthOptions {
+              display: block;
+              height: 0;
+              opacity: 0;
+              list-style: none;
+              width: 0;
+              max-height: 300px;
+              overflow: scroll;
+              position: absolute;
+              top:100%;
+              left:0;
+              padding-top: 20px;
+              padding-bottom: 20px;
+              padding-left: 30px;
+              padding-right: 30px;
+              background-color: $color-off-white;
+              border: 1px solid $color-gray;
+              box-shadow: $box-shadow-active;
+              z-index: -1;
+              transition: height .6s ease-in, opacity $transition-standard, width .6s ease-in;
+              @include mobile {
+                display: none;
+                list-style: none;
+                width: 100%;
+                max-height: auto;
+                overflow: auto;
+                position: inherit;
+                top:unset;
+                left:unset;
+                min-width: unset;
+                border:0;
+                box-shadow:none;
+              }
+              @include tablet {
+                right: 0;
+                left: unset;
+              }
+              ul {
+                overflow:scroll;
+              }
+            }
+            &.active {
+              &:after {
+                transform: rotate(180deg);
+                @include mobile {
+                  transform: none;
+                  content:'\f106';
+                }
+              }
+              ul {
+                display: block;
+                opacity: 1;
+                height: auto;
+                width: 100%;
+                min-width: 275px;
+                z-index: 10;
+                &:hover{
+                  cursor: pointer;
+                }
+                li {
+                  font-family: $font-primary;
+                  font-weight: 400;
+                  font-size: 16px;
+                  line-height: 2;
+                  color: $color-gray-md;
+                  transition: color $transition-standard;
+                  text-indent: 0;
+                  &:hover {
+                    color: $color-primary;
+                    cursor: pointer;
+                  }
+                  &.selected {
+                    color: $color-primary;
+                  }
+                }
+              }
+            }
+            .regionOptions{
+              ul {
+                list-style: none;
+                li {
+                  text-transform: none;
+                  font-family: $font-primary;
+                  font-weight: 400;
+                  font-size: 16px;
+                  line-height: 2;
+                  color: $color-gray-md;
+                  padding-left: 5px;
+                  transition: color $transition-standard;
+                }
+                .continentTitle {
+                  font-family: $font-primary;
+                  font-weight: 600;
+                  line-height: 2;
+                  color: $color-secondary;
+                  padding-left: 0;
+                  text-transform: uppercase;
+                }
+              }
+            }
+          }
+        }
+
+    }
+    .custom-search-utilities {
+      display: flex;
+      align-items: center;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      padding-left: 30px;
+      padding-right: 30px;
+      @include mobile {
+        flex-direction: column;
+      }
+      .user-selected-filters {
+        display: flex;
+        p {
+          margin-bottom: 0;
+          display: flex;
+          word-wrap: none;
+          font-family: $font-secondary;
+          font-size: 12px;
+          font-weight: 400;
+          color: $color-gray-md;
+        }
+        .regionCrumb, .dateCrumb {
+          padding-left: 3px;
+        }
+      }
+      .clear-all {
+        display: flex;
+        justify-content: flex-end;
+        flex: 1 1 auto;
+        button {
+          border: 0;
+          -webkit-appearance: none;
+          color: $color-primary;
+          font-family: $font-primary;
+          font-size: 14px;
+          font-weight: 400;
+          background-color: transparent;
+          &:focus {
+            outline: 0;
+          }
+        }
+      }
+    }
+}
+
+.race-count {
+  max-width: $content-area-width;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0px;
+  margin-top:50px;
+  display: flex;
+  .mobile-filter-menu-open & {
+    display: none;
+  }
+  @include mobile {
+    padding-left: $mobile-padding;
+    padding-right: $mobile-padding;
+  }
+  @include tablet {
+    padding-left: $mobile-padding;
+    padding-right: $mobile-padding;
+  }
+  @media only screen and (max-width:1319px){
+    padding-left: $mobile-padding;
+    padding-right: $mobile-padding;
+  }
+  p {
+    font-family: $font-primary;
+    font-weight: 700;
+    font-size: 12px;
+    color: $color-gray-md;
+    line-height: 1.58;
+    flex:1;
+    margin-bottom: 0;
+    &.paginationView {
+      text-align: right;
+    }
+  }
+}
+.no-results {
+  max-width:$content-area-width;
+  margin-left: auto;
+  margin-right:auto;
+  margin-top: 30px;
+  margin-bottom: 0;
+  h3 {
+    font-family: $font-primary;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 1.53;
+    color:$color-secondary;
+  }
+  p {
+    font-family: $font-secondary;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 2;
+    color: $color-gray-md;
+  }
+  button {
+    @include global-link-container;
+    @include global-link-style;
+    @include global-link-text;
+    @include global-link-icon-style;
+    @include global-link-icon-character;
+    display: inline-flex;
+    font-size: 18px;
+    font-weight: 700;
+
+  }
+  @include touch-device {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+.noResultsFound {
+  .paginationView,.paginationButtons {
+    display: none;
+  }
+}
+
+.race-results {
+    padding-left: 0;
+    padding-right:0;
+    @include mobile {
+      padding-left: $mobile-padding;
+      padding-right: $mobile-padding;
+    }
+    @include tablet {
+      padding-left: $mobile-padding;
+      padding-right: $mobile-padding;
+    }
+    @media only screen and (max-width:1319px){
+      padding-left: $mobile-padding;
+      padding-right: $mobile-padding;
+    }
+    .column {
+        padding-left: 0;
+        padding-right:0; 
+    }
+    .pageElement {
+      margin-top:0;
+      margin-bottom:0;
+    }
+}
+
+.race-card {
+  min-height: 325px;
+  box-shadow: $box-shadow;
+  display: flex;
+  margin-bottom: 30px;
+  transition: box-shadow $transition-standard, transform $transition-standard;
+  background-color: $color-white;
+  @include mobile {
+    flex-direction: column;
+  }
+  @include tablet {
+    position: relative;
+    min-height: 100%;
+    height: 262px;
+    max-height: 262px;
+  }
+  &:hover {
+    box-shadow:$box-shadow-hover;
+    transform: translateY(-5px);
+    .race-image img {
+      transform: scale(1.15);
+    }
+    .race-info .race-details-right a {
+      background: $color-primary;
+      &:after {
+        color: $color-white;
+      }
+    }
+  }
+  .race-image {
+    max-width: 325px;
+    width:100%;
+    overflow: hidden;
+    @include mobile {
+      max-width: 100%;
+    }
+    @include tablet {
+      max-width: 200px;
+      max-height: 200px;
+    }
+    img {
+      transition: transform $transition-standard;
+      &.defaultImage {
+        background-image: url('../images/race-icons/default-image.jpg');
+        background-size:cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+    }
+    .race-date {
+      background-color: $color-primary;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 87px;
+      height: 97px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding-top: 10px;
+      padding-bottom:10px;
+      @include tablet {
+        height: 94px;
+        width: 81px;
+      }
+      p {
+        font-family: $font-primary;
+        color: $color-white;
+        margin-bottom:0;
+        margin-top: 0;
+        font-weight: 400;
+      }
+      .race-month {
+        font-size: 14px;
+        line-height: 1.5;
+        @include tablet {
+          font-size: 12px;
+        }
+      }
+      .race-day {
+        font-size: 42px;
+        font-weight: 700;
+        line-height: 1;
+        @include tablet {
+          font-size: 36px;
+        }
+      }
+      .race-year {
+        font-size: 12px;
+        line-height: 1.58;
+        
+      }
+    }
+  }
+  [style*="--aspect-ratio"] > :first-child {
+    width: 100%;
+  }
+  [style*="--aspect-ratio"] > img {  
+    height: auto;
+  } 
+  @supports (--custom:property) {
+    [style*="--aspect-ratio"] {
+      position: relative;
+    }
+    [style*="--aspect-ratio"]::before {
+      content: "";
+      display: block;
+      padding-bottom: calc(100% / (var(--aspect-ratio)));
+    }  
+    [style*="--aspect-ratio"] > :first-child {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }  
+  }
+  .race-info {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    @include mobile {
+      flex-direction: column;
+    }
+    @include tablet {
+      height: calc(100% - 62px);
+    }
+    .race-info-details {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      padding-left: 50px;
+      padding-right: 50px;
+      margin-top: auto;
+      @include mobile {
+        padding-left: $mobile-padding;
+        padding-right: $mobile-padding;
+        padding-top: $content-area-padding-mobile;
+        padding-bottom: $content-area-padding-mobile;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      @include tablet {
+        flex-wrap: nowrap;
+        margin-top: 0;
+        padding-left:25px;
+        padding-right: 25px;
+      }
+    }
+    .details-left {
+      display: flex;
+      flex-direction: column;
+      @include tablet {
+        max-width: 55%;
+      }
+      p {
+        font-family: $font-secondary;
+        font-size: 14px;
+        font-weight: 400;
+        color: $color-gray-md;
+        line-height: 1.2;
+        margin-bottom: 10px;
+        @include mobile {
+          font-size: 10px;
+        }
+        @include tablet {
+          font-size:12px;
+        }
+      }
+      .race-title-sponsor {
+        font-weight: 700;
+        @include mobile {
+          font-size: 12px;
+        }
+      }
+      h3 {
+        font-family: $font-primary;
+        font-size:36px;
+        font-weight: 600;
+        line-height: 1;
+        color: $color-secondary;
+        margin-bottom: 10px;
+        max-width: 600px;
+        @include mobile {
+          font-size: 22px;
+        }
+        @include tablet{
+          font-size: 24px;
+        }
+      }
+      .race-location {
+        font-weight: 700;
+        color:$color-primary;
+        text-transform: uppercase;
+      }
+    }
+    .race-details-right {
+      @include mobile {
+        margin-top: $content-area-padding-mobile;
+      }
+      p {
+        font-family: $font-secondary;
+        font-size: 12px;
+        font-weight:700;
+        color:$color-gray-md;
+        line-height: 1.25;
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 0;
+        @include mobile{
+          text-align:  left;
+        }
+        &.soldOut {
+          color:$color-primary;
+        }
+      }
+      a {
+        @include global-link-container;
+        @include global-link-style;
+        @include global-link-text;
+        @include global-link-icon-style;
+        @include global-link-icon-character;
+        font-size: 18px;
+        font-weight: 700;
+      }
+    }
+  }
+  .race-info-icons {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    align-self: flex-end;
+    @include mobile {
+      display: none;
+    }
+    @include tablet {
+      flex-wrap: nowrap;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+    > div {
+      flex: 1 1 auto;
+      flex-grow: auto;
+      display: flex;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      align-items: center;
+      height: 70px;
+      border: 1px solid $color-gray-lt;
+      @include tablet {
+        height: 62px;
+      }
+      p {
+        font-family: $font-secondary;
+        font-size: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        height: 100%;
+        margin-bottom: 0;
+        color: $color-secondary;
+        line-height: 1.5;
+        @include tablet {
+          font-size: 11px;
+          .page-manager-visible & {
+            font-size: 10px;
+          }
+        }
+
+      }
+      b {
+          text-transform: uppercase;
+          font-size: 18px;
+          font-weight: 700;
+          line-height: 1;
+          @include tablet {
+            font-size: 13px;
+            .page-manager-visible & {
+              font-size: 11px;
+            }
+          }
+      }
+      &:before {
+        content: "";
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: block;
+        height: 35px;
+        width: 35px;
+        margin-right: 10px;
+        @include tablet {
+          height: 30px;
+          width: 30px;
+        }
+      }
+    }
+  }
+  &#worldChampionship {
+    min-height: 440px;
+    @include tablet {
+      min-height: 309px;
+    }
+    .race-image {
+      max-width:50%;
+      @include mobile {
+        max-width: 100%;
+      }
+      @include tablet {
+        max-width: 50%;
+        max-height: calc(100% - 62px);
+      }
+    }
+    .race-date {
+      background-color: $color-gray;
+      p {
+        color: $color-secondary;
+      }
+    }
+    .race-info-details {
+      flex-wrap: nowrap;
+      @include tablet {
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+      }
+      @include mobile {
+        flex-wrap: wrap;
+      }
+      .details-left {
+        max-width: 310px;
+      }
+    }
+    .race-info-icons > div {
+      flex-basis: calc(100%/3);
+    }
+  }
+}
+.paginationButtons {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  button {
+    background-color: transparent;
+    border: 0;
+    -webkit-appearance: none;
+  }
+  .nextPageButton, .prePageButton{
+    outline: 0;
+    font-family: $font-primary;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.5;
+    color: $color-gray-md;
+    display: flex;
+    flex: 1;
+    border: none;
+    -webkit-appearance: none;
+    transition: color $transition-linear;
+    &:hover {
+      color: $color-hover-primary;
+      cursor: pointer;
+    }
+  
+  }
+  .nextPageButton{
+    justify-content: flex-end;
+    &:after{
+      content:'\f105';
+      font-family: 'fontawesome';
+      font-size: inherit;
+      display: block;
+      color: inherit;
+      z-index: 1;
+      position: relative;
+      margin-left: 5px;
+    }
+    &.hidden {
+      opacity: 0.3;
+      z-index: -1;
+      position: relative;
+    }
+  }
+  .prePageButton{
+    justify-content: flex-start;
+    &:before {
+      content:'\f104';
+      font-family: 'fontawesome';
+      font-size: inherit;
+      display: block;
+      color: inherit;
+      z-index: 1;
+      position: relative;
+      margin-right: 5px;
+    }
+    &.hidden {
+      opacity: 0.3;
+      z-index: -1;
+      position: relative;
+    }
+  }
+  .pageButtons {
+    display: flex;
+    flex-wrap: wrap;
+    div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height:24px;
+      width:24px;
+      font-family: $font-primary;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.5;
+      color: $color-gray-md;
+      margin-right: 12px;
+      transition: background-color $transition-standard, color $transition-standard;
+      &:hover, &.selected {
+        cursor: pointer;
+        background-color: $color-primary;
+        color:$color-white;
+      }
+    }
+  }
+}
+.mobileFilterButton {
+  border-bottom: 1px solid $color-gray-lt;
+  border-top: 1px solid $color-gray-lt;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  @include mobile {
+    display:flex;
+  }
+  p {
+    font-family: $font-primary;
+    font-size: 16px;
+    line-height: 2;
+    color: $color-gray-md;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+    &::before {
+      content:'';
+      display: inline-block;
+      background-image: url('../images/filterIcon.svg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 25px;
+      height: 25px;
+      margin-right: 15px;
+    }
+  }
+}
+
+
+.ironman {
+  .series-logo {
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    bottom: 0;
+    right: -1px;
+    background-image: url("../images/race-icons/IRONMANTag.svg");
+    background-position: 0 10px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    @include tablet {
+      height: 45px;
+      width: 50px;
+      background-position: 4px 4px;
+    }
+  }
+}
+.ironman-half {
+  .series-logo {
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    bottom: 0;
+    right: -1px;
+    background-image: url("../images/race-icons/IRONMAN703Tag.svg");
+    background-position: 0 10px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    @include tablet {
+      height: 45px;
+      width: 50px;
+      background-position: 4px 4px;
+    }
+  }
+}
+.short-course, .triathlon-series {
+  .series-logo {
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    bottom: 0;
+    right: -1px;
+    background-image: url("../images/race-icons/shortCourse.svg");
+    background-position: 0 10px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    @include tablet {
+      height: 45px;
+      width: 50px;
+      background-position: 4px 4px;
+    }
+  }
+}
+
+@mixin flat {
+  background-image: url("../images/race-icons/flat.svg");
+
+}
+@mixin hilly {
+  background-image: url("../images/race-icons/hilly.svg");
+
+}
+@mixin steep {
+  background-image: url("../images/race-icons/steep.svg");
+
+}
+@mixin river {
+  background-image: url("../images/race-icons/river.svg");
+
+}
+@mixin lake {
+  background-image: url("../images/race-icons/lake.svg");
+}
+@mixin ocean {
+  background-image: url("../images/race-icons/ocean.svg");
+
+}
+@mixin reservoir {
+  background-image: url("../images/race-icons/reservoir.svg");
+}
+@mixin waterTemp {
+  background-image: url("../images/race-icons/water-temp.svg");
+}
+@mixin airTemp {
+  background-image: url("../images/race-icons/air-temp.svg");
+}
+@mixin airport {
+  background-image: url("../images/race-icons/airport.svg");
+}
+@mixin bay {
+  background-image: url("../images/race-icons/bay.svg");
+}
+
+.rolling {
+  &:before {
+    @include hilly;
+  }
+}
+.hilly {
+  &:before {
+    @include steep;
+  }
+}
+.steep {
+  &:before {
+    @include steep;
+  }
+}
+.flat {
+  &:before {
+    @include flat;
+  }
+}
+.river {
+  &:before {
+    @include river;
+  }
+}
+.lake {
+  &:before {
+    @include lake;
+  }
+}
+.ocean {
+  &:before {
+    @include ocean;
+  }
+}
+.reservoir {
+  &:before {
+    @include reservoir;
+  }
+}
+.bay {
+  &:before {
+    @include bay;
+  }
+}
+.waterTemp {
+  &:before {
+    @include waterTemp;
+  }
+}
+.airTemp {
+  &:before {
+    @include airTemp;
+  }
+}
+.airport {
+  &:before {
+    @include airport;
+  }
+}
+
+.user_mode {
+  .hero-video {
+    .heroPhotoElement {
+      display: none;
+    }
+    .search-video {
+      .pageElement {
+        margin-top:0;
+        margin-bottom:0;
+      }
+    }
+    @include mobile {
+      .search-video {
+        display: none;
+      }
+      .heroPhotoElement {
+        display: block;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+

@@ -1,0 +1,183 @@
+$search-modal-width: 600px;
+$search-modal-background: #fff;
+$search-modal-spacing: 24px;
+$search-modal-border: 1px solid #d4d9dc;
+$search-modal-border-radius: 4px;
+$search-modal-color: #23282b;
+$search-modal-color-secondary: #b8c0c5;
+
+$search-modal-title-size: 22px;
+$search-modal-close-size: 44px;
+$search-modal-close-color: #9ca8af;
+
+$search-modal-box-font-size: 16px;
+$search-modal-box-font-spacing: 12px;
+$search-modal-box-color: #666;
+$search-modal-box-background: $link-color;
+$search-modal-box-size: 44px;
+$search-modal-box-border-width: 0;
+$search-modal-box-border-color: transparent;
+
+$search-modal-result-spacing: 6px;
+$search-modal-result-size: 44px;
+$search-modal-result-border: 1px solid #d4d9dc;
+$search-modal-result-background-hover: #f0f1f2;
+
+.theme-search-overlay {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,.5);
+}
+
+.theme-search-modal {
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  left: 50%;
+  margin-left: $search-modal-width / -2;
+  width: $search-modal-width;
+  background: $search-modal-background;
+  border: $search-modal-border;
+  border-radius: $search-modal-border-radius;
+
+  @media only screen and (max-width: $search-modal-width + 50) {
+    width: 100%;
+    margin-left: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 0;
+    border: none;
+  }
+
+  // Generate modal title, since the actual title is in the kill link
+  .theme-search-title {
+    display: block;
+    font-size: $search-modal-title-size;
+    line-height: $search-modal-title-size;
+    color: $search-modal-color;
+    padding: $search-modal-spacing;
+    padding-right: $search-modal-spacing + $search-modal-close-size;
+  }
+
+  .theme-search-close {
+    position: absolute;
+    text-decoration: none;
+    text-align: center;
+    top: 0;
+    right: 0;
+    width: $search-modal-close-size;
+    height: $search-modal-close-size;
+    line-height: $search-modal-close-size;
+
+    &:before {
+      content: "✕";
+      color: $search-modal-close-color;
+      font-family: FontAwesome;
+      font-size: 14px;
+    }
+  }
+
+  .theme-search-box {
+    position: relative;
+    line-height: $search-modal-box-size;
+    padding: 0 $search-modal-spacing;
+    background: $search-modal-box-background;
+    border-top: $search-modal-box-border-width solid $search-modal-box-border-color;
+    border-bottom: $search-modal-box-border-width solid $search-modal-box-border-color;
+    height: $search-modal-box-size + $search-modal-box-border-width * 2;
+    font-size: 12px;
+  }
+
+  $search-input-height: $search-modal-box-font-size + ($search-modal-box-size - $search-modal-box-font-size) / 2;
+
+  .theme-search-input {
+    color: $search-modal-box-color;
+    vertical-align: middle;
+    font-size: $search-modal-box-font-size;
+    line-height: $search-input-height;
+    padding: 0 $search-input-height 0 $search-modal-box-font-size/2;
+    border: $search-modal-box-border-width solid $search-modal-box-border-color;
+    background: $search-modal-background;
+    margin-top: -1px;
+    width: 100%;
+
+    &::-ms-clear { display: none; }
+    &:focus { outline: none; }
+  }
+
+  .theme-search-clear {
+    position: absolute;
+    top: ($search-modal-box-size - $search-input-height) / 2;
+    right: $search-modal-spacing;
+    cursor: pointer;
+    height: $search-input-height;
+    line-height: $search-input-height;
+    width: $search-input-height;
+    text-align: center;
+    color: $link-color;
+
+    &:before {
+      content: "✕";
+      color: #9ca8af;
+      font-family: FontAwesome;
+      font-size: 14px;
+    }
+  }
+
+  .theme-search-status {
+    color: $search-modal-color-secondary;
+    display: block;
+    font-size: 12px;
+    text-align: center;
+    margin-top: -$search-modal-spacing/2;
+    margin-bottom: $search-modal-spacing/2;
+  }
+
+  .theme-search-results {
+    position: absolute;
+    top: $search-modal-spacing * 2 + $search-modal-title-size + $search-modal-box-size + $search-modal-box-border-width * 2;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: $search-modal-spacing;
+    overflow: auto;
+    list-style: none;
+    border-radius: 0 0 $search-modal-border-radius $search-modal-border-radius;
+  }
+
+  .theme-search-result {
+    cursor: pointer;
+    display: table;
+    line-height: 1.2;
+    width: 100%;
+    border-top: $search-modal-result-border;
+
+    &:last-child { border-bottom: $search-modal-result-border; }
+
+  }
+
+  .theme-search-result-info {
+    text-decoration: none !important;
+    display: table-cell;
+    vertical-align: middle;
+    padding: $search-modal-result-spacing;
+    height: $search-modal-result-size;
+
+    &:hover {
+      background: $search-modal-result-background-hover;
+    }
+  }
+
+  .theme-search-result-primary { display: block; }
+
+  .theme-search-result-secondary {
+    display: block;
+    font-size: 70%;
+    color: $search-modal-color-secondary;
+  }
+}

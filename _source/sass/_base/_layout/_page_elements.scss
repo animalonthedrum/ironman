@@ -1,0 +1,21 @@
+// Page Elements
+
+.pageElement {
+  width: 100%;
+  @include page-element-margin;
+}
+.pageEl {
+  @extend %clearfix;
+  > .pageElement{
+    float: left;
+    clear: both;
+  }
+}
+
+// Eliminate this if possible
+.pageElement{
+  .pageElement{
+    margin-left: 0;
+    margin-right: 0;
+  }
+}

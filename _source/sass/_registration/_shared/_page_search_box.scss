@@ -1,0 +1,82 @@
+// SEARCH BOX
+$page-search-box-height: 30px;
+$page-search-box-spacing: 10px;
+$page-search-box-border-width: 0;
+$page-search-box-clear-color: #9ca8af;
+$page-search-box-input-font-size: 16px;
+$page-search-box-input-color: #666;
+$page-search-box-input-border-color: transparent;
+$page-search-box-input-background: #FFF;
+$page-search-box-input-background-focus: #FFF;
+$page-search-box-submit-color: #fff;
+$page-search-box-submit-border-color: transparent;
+$page-search-box-submit-background: #CECECE;
+$page-search-box-submit-background-focus: #CECECE;
+$page-search-box-submit-font-size: 12px;
+$page-search-box-submit-width: 65px;
+
+// SEARCH
+#PageSearchBox {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  padding: $page-search-box-spacing;
+  position: relative;
+  display: block;
+  overflow: hidden;
+
+  .theme-search-input,
+  .theme-search-submit {
+    float: left;
+    height: $page-search-box-height;
+    line-height: $page-search-box-height;
+    transition: background $transition-standard;
+  }
+
+  .theme-search-input,
+  .theme-search-close { font-size: $page-search-box-input-font-size; }
+
+  .theme-search-input {
+    width: calc(100% - #{$page-search-box-submit-width});
+    background: $page-search-box-input-background;
+    border: $page-search-box-border-width solid $page-search-box-input-border-color;
+    border-right: none;
+    padding: 0 ($page-search-box-height - $page-search-box-border-width * 2) 0 $page-search-box-spacing;
+
+    &::-ms-clear { display: none; }
+    &:focus {
+      outline: none;
+      background: $page-search-box-input-background-focus;
+    }
+  }
+
+  .theme-search-submit {
+    text-align: center;
+    width: $page-search-box-submit-width;
+    cursor: pointer;
+    color: $page-search-box-submit-color;
+    font-size: $page-search-box-submit-font-size;
+    border: $page-search-box-border-width solid $page-search-box-submit-border-color;
+    padding: 0 $page-search-box-spacing;
+    background: $page-search-box-submit-background;
+
+    &:focus,
+    &:hover { background: $page-search-box-submit-background-focus; }
+  }
+
+  .theme-search-clear {
+    position: absolute;
+    text-decoration: none;
+    text-align: center;
+    top: $page-search-box-spacing;
+    right: $page-search-box-spacing + $page-search-box-submit-width;
+    width: $page-search-box-height;
+    height: $page-search-box-height;
+    line-height: $page-search-box-height;
+
+    &:before {
+      content: "✕";
+      color: $page-search-box-clear-color;
+      font-family: FontAwesome;
+      font-size: $page-search-box-input-font-size;
+    }
+  }
+}

@@ -1,0 +1,117 @@
+.select2-selection--multiple {
+  @include select2-border;
+  background-color: white;
+  min-height: 0;
+  cursor: text;
+
+  &:hover {
+    @include select2-border--hover;
+  }
+
+  // add dropdown arrow when no items are selected
+  .select2-search--inline:first-child:after {
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0.5em;
+    width: 1.2em;
+    background: $select2--arrow center center no-repeat;
+    background-size: contain;
+  }
+
+  .select2-selection__rendered {
+    box-sizing: border-box;
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0 $select2-tag--spacing $select2-tag--spacing;
+    width: 100%;
+
+    li {
+      list-style: none;
+    }
+  }
+
+  .select2-selection__placeholder {
+    color: $gray;
+    margin-top: $select2-tag--spacing;
+    float: left;
+  }
+
+  .select2-selection__clear {
+    cursor: pointer;
+    float: right;
+    font-weight: bold;
+    margin-top: $select2-tag--spacing;
+    margin-right: $select2-tag--spacing;
+  }
+
+  .select2-selection__choice {
+    background: linear-gradient(#fff, $gray-xlight);
+    border: 1px solid $gray-light;
+    border-radius: $select2--radius;
+    cursor: default;
+    float: left;
+    margin:$select2-tag--spacing $select2-tag--spacing 0 0;
+    padding: 0 $select2-tag--spacing;
+  }
+
+  .select2-selection__choice__remove {
+    color: $color-content-xlight;
+    cursor: pointer;
+    float: right;
+    margin: 0 0 0 $select2-tag--spacing;
+  }
+}
+
+&[dir="rtl"] {
+  .select2-selection--multiple {
+    .select2-selection__choice, .select2-selection__placeholder, .select2-search--inline {
+      float: right;
+    }
+
+    .select2-selection__choice {
+      float: left;
+      margin: $select2-tag--spacing 0 0 $select2-tag--spacing;
+    }
+
+    .select2-selection__choice__remove {
+      margin: 0 $select2-tag--spacing 0 0;
+    }
+  }
+}
+
+&.select2-container--focus,
+&.select2-container--open {
+  .select2-selection--multiple {
+    @include select2-border--focus;
+  }
+}
+
+&.pl-has-error {
+  .select2-selection--multiple {
+    @include select2-border--error;
+  }
+}
+
+&.pl-has-error {
+  &.select2-container--focus,
+  &.select2-container--open {
+    .select2-selection--multiple {
+      @include select2-border--error-focus;
+    }
+  }
+}
+
+&.select2-container--disabled {
+  .select2-selection--multiple {
+    background-color: $gray-xlight;
+    cursor: default;
+  }
+
+  .select2-selection__choice__remove {
+    display: none;
+  }
+}

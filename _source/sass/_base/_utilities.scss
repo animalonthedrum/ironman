@@ -1,0 +1,106 @@
+$utility-padding-desktop: 40px !default;
+$utility-padding-mobile: 20px !default;
+$utility-padding-large-desktop: 80px !default;
+$utility-padding-large-mobile: 40px !default;
+$utility-padding-small-desktop: 20px !default;
+$utility-padding-small-mobile: 10px !default;
+
+@mixin utility-padding($desktop, $mobile, $size: null){
+  @if ($size !=null) { $size: '-'+$size; }
+  .padding#{$size}{
+    padding-top: $desktop;
+    padding-bottom: $desktop;
+    @media screen and (max-width: $breakpoint-sm-max){
+      padding-top: $mobile;
+      padding-bottom: $mobile;
+    }
+    &-mobile {
+      @media screen and (max-width: $breakpoint-sm-max) {
+        padding-top: $mobile;
+        padding-bottom: $mobile;
+      }
+    }
+    &-top {
+      padding-top: $desktop;
+      @media screen and (max-width: $breakpoint-sm-max){
+        padding-top: $mobile;
+      }
+      &-mobile {
+        @media screen and (max-width: $breakpoint-sm-max){
+          padding-top: $mobile;
+        }
+      }
+    }
+    &-bottom {
+      padding-bottom: $desktop;
+      @media screen and (max-width: $breakpoint-sm-max){
+        padding-bottom: $mobile;
+      }
+      &-mobile {
+        @media screen and (max-width: $breakpoint-sm-max){
+          padding-bottom: $mobile;
+        }
+      }
+    }
+  }
+}
+
+// Apply class to: Layout Containers
+// Adds padding top/bottom to layout containers
+@include utility-padding($utility-padding-desktop, $utility-padding-mobile);
+@include utility-padding($utility-padding-large-desktop, $utility-padding-large-mobile, 'large');
+@include utility-padding($utility-padding-small-desktop, $utility-padding-small-mobile, 'small');
+
+// Apply class to: Layout Containers
+// Removes padding from columns
+.padding-collapse-x{
+  &.layoutContainer,
+  > .column{
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+.padding-collapse-y{
+  &.layoutContainer,
+  > .column{
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+// Apply class to: Layout Containers or Page Elements
+// Removes margin top/bottom from element(s)
+.compact {
+  &.pageEl .pageElement,
+  .pageEl .pageElement {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  &-top {
+    &.pageEl .pageElement,
+    .pageEl .pageElement {
+      margin-top: 0;
+    }
+  }
+  &-bottom {
+    &.pageEl .pageElement,
+    .pageEl .pageElement {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// Apply class to: Layout Containers or Page Elements
+// Hides content on mobile/desktop
+.user_mode{
+  .hidden-on-mobile{
+    @media screen and (max-width: $breakpoint-sm-max){
+      display: none;
+    }
+  }
+  .hidden-on-desktop{
+    @media screen and (min-width: $breakpoint-md-min) {
+      display: none;
+    }
+  }
+}

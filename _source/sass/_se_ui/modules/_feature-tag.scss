@@ -1,0 +1,26 @@
+%pl-feature-tag {
+  border-radius: 2px;
+  display: inline-block;
+  font-size: $font-xsmall;
+  font-weight: $font-regular;
+  margin: -2px 0;
+  padding: 2px 4px;
+}
+
+.pl-feature-tag--alpha {
+  @extend %pl-feature-tag;
+  background: $color-alert;
+  color: $color-content-inverse;
+}
+
+.pl-feature-tag--beta {
+  @extend %pl-feature-tag;
+  background: $color-warn;
+  color: $color-content-inverse;
+}
+
+.pl-feature-tag--new {
+  @extend %pl-feature-tag;
+  background: $color-highlight;
+  color: $color-content-inverse;
+}

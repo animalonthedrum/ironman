@@ -1,0 +1,270 @@
+body:not(.logged_in){
+  #form_div{
+    form{
+      position: relative;
+/*
+      &:before{
+        content: '';
+        display: block;
+        background: $lightGrey;
+        position: absolute;
+        left: 0;
+        top:0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+      }
+*/
+    }
+  }
+}
+
+#login-options {
+  background: #fff;
+  max-width: 768px;
+  box-shadow:0 0 8px 0 rgba(0,0,0,.1);
+  border: 1px solid $gray-light;
+  position: relative;
+  z-index: 2;
+  margin: 30px auto;
+  select, label, input, textarea{
+    width: 100% !important;
+  }
+  //
+  &.login-options-twoOptions .login-option{
+    width: 50%;
+    padding: 15px;
+    p{
+      margin: auto !important;
+    }
+  }
+  &.login-options-threeOptions{
+    .login-options-header{
+
+    }
+    .login-options-body{
+      .login-option{
+        min-height: 195px;
+      }
+    }
+    .login-options-footer{
+      .login-option{
+        min-height: 120px;
+        &.login-option-login{
+          a{
+            margin-top: 10px;
+          }
+        }
+      }
+    }
+    .login-option{
+      width: 33.333%;
+      padding: 15px;
+      &.login-option-login{
+        border-right: 1px solid $borderColor;
+      }
+      &.login-option-signup{
+        border-right: 1px solid $borderColor;
+       img{
+        display: none;
+       }
+      }
+      &.login-option-continue{
+        //border-right: 1px solid $borderColor;
+        a{
+          @extend %button;
+          width: auto;
+          height: auto;
+          text-indent: 0px;
+        }
+      }
+    }
+  }
+  .login-options-header{
+    background: #fff;
+    text-shadow: none;
+    border-radius: 4px;
+    .login-option{
+      border-bottom: 1px solid $borderColor;
+
+      &.login-option-login{
+        border-right: 1px solid $borderColor;
+        h4{
+          img{
+
+          }
+        }
+      }
+      &.login-option-signup{
+        h4{
+          img{
+
+          }
+        }
+      }
+    }
+  }
+  .login-options-body{
+    .login-option-login{
+      border-right: 1px solid $borderColor;
+      img{
+        display: none;
+      }
+    }
+  }
+  .login-options-footer{
+    padding: 0px;
+    .login-option{
+      &.login-option-login{
+        border-right: 1px solid $borderColor;
+        a{
+          //font:normal 11px/1.5em $fontOne;
+          @extend %button;
+          @extend %facebook;
+        }
+        button{
+          @include pl-button--primary();
+        }
+      }
+      &.login-option-signup{
+        a{
+          @extend %button;
+          width: auto;
+          height: auto;
+          text-indent: 0px;
+        }
+      }
+      button{
+        @extend %button;
+        width: auto;
+        height: auto;
+        text-indent: 0px;
+        vertical-align: top;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1024px) {
+  #login-options{
+    max-width: 100%;
+    margin-left:15px;
+    margin-right: 15px;
+  }
+}
+@media only screen and (min-width: 920px) and (max-width: 1024px) {
+  #login-options.login-options-threeOptions .login-options-footer .login-option.login-option-login a{
+    margin-top: 0px;
+  }
+}
+@media only screen and (max-width: 920px) {
+  #login-options.login-options-threeOptions .login-options-footer .login-option.login-option-login a{
+    margin-top: 10px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  #login-options {
+    max-width: 400px;
+    margin-left:auto;
+    margin-right: auto;
+    input{
+      width: 100%;
+    }
+    &.login-options-twoOptions, &.login-options-threeOptions{
+      .login-option{
+        width: 100%;
+        min-height: auto !important;
+
+      }
+    }
+    &.login-options-threeOptions{
+      .login-option{
+        &.login-option-login, &.login-option-signup{
+          border-right: 0px;
+        }
+      }
+    }
+    .login-options-header{
+      .login-option{
+        border-bottom: 1px solid $borderColor;
+        &.login-option-login{
+          border-right: 0px;
+          h4{
+            img{
+
+            }
+          }
+        }
+        &.login-option-signup{
+          display: none;
+          h4{
+            img{
+
+            }
+          }
+        }
+        &.login-option-continue{
+          display: none;
+        }
+      }
+    }
+    .login-options-body{
+      .login-option-login{
+        border-right: 0px;
+        h4{
+          text-align: center;
+          img{
+            text-align: center;
+            float: none;
+          }
+        }
+      }
+      .login-option-signup{
+        display: none;
+      }
+      .login-option-continue{
+        display:none;
+      }
+    }
+    .login-options-footer{
+      .login-option{
+        &.login-option-login{
+          border-right: 0px;
+          padding: 0px 15px 15px 15px;
+          font-size: 0em;
+          a{
+            margin-top:15px;
+            width: 100%;
+            text-align: center;
+          }
+        }
+        &.login-option-signup{
+          padding: 0px 15px 15px 15px;
+          a{
+            width: 100%;
+            text-align: center;
+          }
+        }
+        &.login-option-continue{
+          padding-top: 0px;
+          a{
+            width: 100%;
+            display: block;
+            text-align: center;
+          }
+        }
+        button{
+          width: 100%;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 400px) {
+  #login-options {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}

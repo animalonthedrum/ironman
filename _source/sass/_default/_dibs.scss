@@ -1,0 +1,350 @@
+/* Dib Aggregator */
+
+.aggregatorElement.dibAggregatorElement .vevent {
+  .dateImage,
+  .dateImage img {
+    background: none;
+    border: none;
+  }
+}
+
+.dibAggregatorElement {
+  .vevent {
+    border-top: 2px solid #ddd;
+    padding: 26px 0px;
+
+    &:first-of-type {
+      border-top: none;
+    }
+  }
+
+  .dateImage {
+    width: 75px;
+    float: left;
+    margin-right: 10px;
+    list-style-type: none;
+  }
+
+  .summary,
+  .details {
+    padding-left: 85px;
+  }
+
+  .details li { list-style: none; }
+
+  .date { display: inline; }
+
+  .time {
+    font-size: .75em;
+    font-weight: 600;
+    color: $bodyCopyColorTwo;
+  }
+
+  .credits {
+    color: #999;
+    float: right;
+    font-size: 18px;
+    letter-spacing: -1px;
+    padding: 10px 0;
+    text-align: center;
+    width: 40px;
+    text-transform: uppercase;
+    margin: 0 0 10px 0;
+    line-height: 10px;
+
+    span { font-size: 9px; }
+  }
+}
+
+/* Dib Session */
+
+.dibSession {
+  padding: 1em;
+  background: #EFEFEF;
+  margin: .5em 0 1em 0;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    background: url("/app_images/icon-dibs-hero-light.svg") center center no-repeat;
+    background-size: contain;
+    padding: 1em;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  h3 {
+    display: inline-block;
+    font-size: 1.125em;
+    margin: 0 0 0 2.5rem;
+  }
+
+  > ul {
+    margin: 0 0 0 2.5rem;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  .creditStatus {
+    font-size: .75em;
+    color: #666;
+
+    strong { text-decoration: underline; }
+  }
+
+  .description { clear: both; }
+
+  li {
+    display: block;
+    list-style-type: none;
+    margin: 0;
+
+    p { margin: 0; }
+  }
+}
+
+#tab_dib_items_user_content {
+  padding-top: .75em;
+  clear: both;
+}
+
+
+/* Dib Table */
+
+@mixin dib-item-link {
+  vertical-align: middle;
+
+  strong {
+    // Make name column wider, and add ellipsis
+    // to long names rather than wrapping
+    text-align: left;
+    display: inline-block;
+    width: 180px;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: middle;
+    text-overflow: ellipsis;
+  }
+}
+
+#dib_items_table {
+  overflow-x: scroll;
+
+  input[type="checkbox"] { margin: 0; }
+
+  // Hide sort images because we are using font icons
+  .ajax_sort > img { display: none; }
+
+  td { white-space: nowrap; }
+}
+
+// User Mode
+.user_mode #dib_items_table {
+  .ajax_sort:first-child { text-align: left; }
+
+  td:first-child { @include dib-item-link; }
+}
+
+// Edit mode adds a checkbox column for mass edit,
+// which breaks the user mode :first-child selectors
+.edit_mode #dib_items_table {
+  .ajax_sort:nth-child(2) { text-align: left; }
+
+  td:nth-child(2) { @include dib-item-link; }
+}
+
+#dib_items_div { // Re-style when liquid data is available.
+  .actionLinks {
+    height: auto;
+    margin: 1em 0;
+    font-size: 0.875em;
+
+    a { color: #333; }
+    span { float: none; }
+    .linkSet1 { margin-right: 1em; }
+
+    .linkSet2 .icon {
+      display: inline-block;
+      margin-left: 0;
+      margin-right: 1em;
+    }
+  }
+
+  // Edit mode fix. Re-style when liquid data is available.
+  // form acts as table scroll wrapper
+  form#dib_item_form {
+    overflow-x: scroll;
+    position: relative;
+    clear: both;
+  }
+}
+
+
+/* Dib Item */
+
+.dibItem {
+  .vevent {
+    width: 60%;
+    float: left;
+
+    ul { margin-bottom: 10px; }
+  }
+
+  .summary {
+    font-size: 1.5em;
+    padding: 0;
+    margin-left: 1.25em;
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      background: url("/app_images/icon-dibs-hero-light.svg") center center no-repeat;
+      background-size: contain;
+      padding: .75em;
+      top: 50%;
+      left: -1.5em;
+      transform: translateY(-50%);
+    }
+  }
+
+  .details {
+    $border-color: #ccc;
+
+    width: 30%;
+    float: right;
+    border: solid 1px $border-color;
+    border-bottom: none;
+    background: #EFEFEF;
+    list-style-type: none;
+
+    li {
+      display: block;
+      padding: 10px;
+      border-bottom: solid 1px $border-color;
+    }
+
+    label { font-weight: bold; }
+  }
+}
+
+
+/* Dibs Calendar Mods */
+#tab_dib_item_month_content #monthViewCalendar .today {
+  background: #EEE;
+
+  a { color: $link-color; }
+}
+
+
+/* Dib Layout Mods */
+
+#dibsTool #pageContentContainer #displayBodyContent {
+  background: url(#{'<%= asset_path_for("/app_images/dibs_header.jpg") %>'}) repeat-x top center;
+  padding-top: 100px;
+}
+
+#dibsTool {
+  #panelOne { display: none; }
+
+  #siteContainer2 {
+    #panelTwo { width: 100%; }
+    #displayBodyHeader { display: none; }
+  }
+}
+
+
+/* Dib Item Filter */
+
+.dibsFilter {
+  @include display-flex;
+  @include flex-wrap;
+  padding-bottom: 15px;
+
+  // Stop clearfix from misaligning contents
+  &:before {
+    display: block;
+  }
+
+  label {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 900;
+  }
+  input {
+    font-size: 12px;
+    font-family: inherit;
+    &[type="checkbox"] {
+      margin: 0 3px 0 0;
+      width: auto;
+    }
+    // Mimicking theme text input style (actual theme styles broke text baseline)
+    &[type="text"] {
+      border: 1px solid $borderColor;
+      margin-bottom: -4px;
+      padding: 3px 5px;
+      transition: border-color .1s ease;
+      &:hover {
+        border-color: $bodyCopyColorTwo;
+      }
+      &:focus {
+        border-color: $link-color;
+        outline: 0;
+      }
+    }
+  }
+  select {
+    // Desaturate select element
+    border: 1px solid #ddd;
+    padding-right: 4px;
+    // Prevent select from breaking flex layout
+    max-width: 130px;
+    white-space: nowrap;
+  }
+  small {
+    font-size: 12px;
+  }
+
+  .filter-column {
+    @include flex-grow;
+    padding: 0 20px 7px 0;
+    &:nth-last-child(2) {
+      padding-right: 0;
+    }
+  }
+
+  // Force button to wrap to its own line
+  .filter-button {
+    width: 100%;
+  }
+
+  // Line up date inputs
+  .filter-dates label {
+    min-width: 3em;
+  }
+
+  #credits {
+    margin-right: 3px;
+    max-width: 4em;
+  }
+
+  @media (max-width: 880px) {
+    // Three columns
+    .filter-column {
+      @include flex-basis(33.3%);
+      @include flex-grow(0);
+    }
+    .filter-button {
+      padding-top: 5px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    // Two columns
+    .filter-column {
+      @include flex-basis(50%);
+    }
+  }
+
+}

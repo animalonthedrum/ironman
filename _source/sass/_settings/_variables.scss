@@ -1,0 +1,626 @@
+/* Variables */
+// 1. Imports
+// 2. Functions
+// 3. Defaults
+// 4. Colors
+// 5. Mixins
+// 6. Animations
+
+//ADDED
+$asset-path-for: "https://app-assets1.sportngin.com";
+
+// 1. Colors
+$accent-color: $color-primary;
+$background-color: #000;
+$link-color: $color-secondary;
+
+// layout
+$page-element-margin: 15px;
+
+
+$link-color-opacity: rgba($link-color,0.7);
+
+// Link colors
+$link-color-darken-5: darken($link-color, 5%);
+$link-color-darken-10: darken($link-color, 10%);
+$link-color-darken-15: darken($link-color, 15%);
+$link-color-darken-20: darken($link-color, 20%);
+$link-color-darken-25: darken($link-color, 25%);
+$link-color-darken-30: darken($link-color, 30%);
+$link-color-darken-35: darken($link-color, 35%);
+$link-color-darken-40: darken($link-color, 40%);
+$link-color-darken-45: darken($link-color, 45%);
+$link-color-darken-50: darken($link-color, 50%);
+
+$link-color-lighten-5: lighten($link-color, 5%);
+$link-color-lighten-10: lighten($link-color, 10%);
+$link-color-lighten-15: lighten($link-color, 15%);
+$link-color-lighten-20: lighten($link-color, 20%);
+$link-color-lighten-25: lighten($link-color, 25%);
+$link-color-lighten-30: lighten($link-color, 30%);
+$link-color-lighten-35: lighten($link-color, 35%);
+$link-color-lighten-40: lighten($link-color, 40%);
+$link-color-lighten-45: lighten($link-color, 45%);
+$link-color-lighten-50: lighten($link-color, 50%);
+
+// Background colors
+$background-color-darken-5: darken($background-color, 5%);
+$background-color-darken-10: darken($background-color, 10%);
+$background-color-darken-15: darken($background-color, 15%);
+$background-color-darken-20: darken($background-color, 20%);
+$background-color-darken-25: darken($background-color, 25%);
+$background-color-darken-30: darken($background-color, 30%);
+$background-color-darken-35: darken($background-color, 35%);
+$background-color-darken-40: darken($background-color, 40%);
+$background-color-darken-45: darken($background-color, 45%);
+$background-color-darken-50: darken($background-color, 50%);
+
+$background-color-lighten-5: lighten($background-color, 5%);
+$background-color-lighten-10: lighten($background-color, 10%);
+$background-color-lighten-15: lighten($background-color, 15%);
+$background-color-lighten-20: lighten($background-color, 20%);
+$background-color-lighten-25: lighten($background-color, 25%);
+$background-color-lighten-30: lighten($background-color, 30%);
+$background-color-lighten-35: lighten($background-color, 35%);
+$background-color-lighten-40: lighten($background-color, 40%);
+$background-color-lighten-45: lighten($background-color, 45%);
+$background-color-lighten-50: lighten($background-color, 50%);
+
+// Accent colors
+$accent-color-darken-5: darken($accent-color, 5%);
+$accent-color-darken-10: darken($accent-color, 10%);
+$accent-color-darken-15: darken($accent-color, 15%);
+$accent-color-darken-20: darken($accent-color, 20%);
+$accent-color-darken-25: darken($accent-color, 25%);
+$accent-color-darken-30: darken($accent-color, 30%);
+$accent-color-darken-35: darken($accent-color, 35%);
+$accent-color-darken-40: darken($accent-color, 40%);
+$accent-color-darken-45: darken($accent-color, 45%);
+$accent-color-darken-50: darken($accent-color, 50%);
+
+$accent-color-lighten-5: lighten($accent-color, 5%);
+$accent-color-lighten-10: lighten($accent-color, 10%);
+$accent-color-lighten-15: lighten($accent-color, 15%);
+$accent-color-lighten-20: lighten($accent-color, 20%);
+$accent-color-lighten-25: lighten($accent-color, 25%);
+$accent-color-lighten-30: lighten($accent-color, 30%);
+$accent-color-lighten-35: lighten($accent-color, 35%);
+$accent-color-lighten-40: lighten($accent-color, 40%);
+$accent-color-lighten-45: lighten($accent-color, 45%);
+$accent-color-lighten-50: lighten($accent-color, 50%);
+
+
+// 1. Imports
+@import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i|Titillium+Web:200,200i,300,300i,400,400i,600,600i,700,700i,900&display=swap');
+//
+@import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i|Titillium+Web:200,200i,300,300i,400,400i,600,600i,700,700i,900&display=swap');
+
+// 2. Functions
+@function em($target) {
+  @return $target * 1px;
+}
+@function rem($target) {
+  @return $target * 1px;
+}
+
+// 3. Defaults
+$sports-page-heading-font: bold 38px/1.25 $font-primary;
+
+$base-padding: rem(25);
+$base-padding-sm: rem(10);
+
+$bodyCopyColorTwo:#666;
+$bodyCopyColorThree:#999;
+
+$borderColor:#ddd;
+$borderWidth:2px;
+
+$table-body-background: #eee;
+$table-cell-spacing: 2px;
+$table-header-padding-vertical: 3px;
+$table-header-padding-horizontal: 12px;
+$table-cell-padding-vertical: 2px;
+$table-cell-padding-horizontal: 12px;
+$table-sort-icon-size: 14px;
+$table-sort-icon-padding: $table-sort-icon-size + 4px;
+$table-row-min-height: 30px;
+
+
+// 5. Mixins
+/// Remove the unit of a length
+/// @param {Number} $number - Number to remove unit from
+/// @return {Number} - Unitless number
+@function strip-unit($number) {
+  @if type-of($number)=='number'and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+  @return $number;
+}
+
+// Page Element Breakpoints
+// Mixin for any page element that lives within the bootstrap columns.
+// To use pass the pixel value of the breakpoint(s) below 768 that you want to target.
+// This will generate the neccessary media queries for all possible column scenarios,
+// and will ignore any that don't need to be used.
+$page-element-break-desktop-padding: strip-unit($desktop-padding);
+$page-element-break-mobile-padding: strip-unit($mobile-padding);
+
+@mixin page-element-break($break){
+  // Map defining column sizes within the "md" bootstrap range
+  $columns: (
+    9: (($break/.75) + ($page-element-break-desktop-padding * 2)),
+    8: (($break/.66666666666) + ($page-element-break-desktop-padding * 2)),
+    6: (($break/.50) + ($page-element-break-desktop-padding * 2)),
+    4: (($break/.3333333333) + ($page-element-break-desktop-padding * 2)),
+    3: (($break/.25) + ($page-element-break-desktop-padding * 2))
+  );
+  // Initial breakpoint (typically within the "sm" bootstrap range)
+  // Note: Inital breakpoint also includes the panel padding, so any value you pass into $break will have the panel padding added to it.
+  @media only screen and (max-width: (($break + ($page-element-break-mobile-padding * 2)) * 1px)) {
+    @content;
+  }
+  // Cycle through columns map checking if values are within the "md" range and exporting media queries for those that match
+  @each $column, $value in $columns {
+    @if $value > 768 and $value < 1025 {
+      @media only screen and (min-width: 768px) and (max-width: ($value * 1px)){
+        .col-md-#{$column}{
+          @content;
+        }
+      }
+    }
+    @if $value > 1025 { // Need to find a way to lopp these into one chained selector, not multiple media queries.
+      @media only screen and (min-width: 768px){
+        .col-md-#{$column}{
+          @content;
+        }
+      }
+    }
+  }
+}
+
+@mixin displayCenter($content-area-width) {
+  position: relative;
+  display: block;
+  margin: auto;
+  max-width: $content-area-width;
+  width: 100%;
+}
+@mixin aspect-ratio($ratio-or-width, $height: null) {
+  $padding: if($height, percentage($height/$ratio-or-width), percentage(1/$ratio-or-width));
+  &:before { content:''; float: left; padding-bottom: $padding;  }
+  &:after  { content:''; display: table; clear: both;  }
+}
+@mixin move-to-bottom{
+  top: initial;
+  bottom: 0;
+  transform: translateY(-10%);
+}
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+@mixin truncate-text{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+@function dynamic-text-color($color) {
+  @if (lightness($color) > 50) {
+    @return #000000; // Lighter background, return dark color
+  } @else {
+    @return #ffffff; // Darker background, return light color
+  }
+}
+@mixin line-pattern($line-color:$global-ui-border-color, $gap-color:transparent) {
+  background-color: $global-ui-border-color;
+}
+@mixin line-pattern-border($height:$global-ui-border-size, $pos:top, $line-color:$global-ui-border-color, $gap-color:transparent) {
+  border-style: solid;
+  border-width: 0; // start by knocking out all the borders
+  border-#{$pos}-color: $global-ui-border-color;
+  border-#{$pos}-width: ($global-ui-border-size) !important;
+}
+@mixin special-header {
+  @include page-element-header;
+}
+@mixin content-tab-item() {}
+@mixin content-tab() {}
+
+@mixin table-team-logo {
+  position: relative;
+  display: inline-block;
+  float: none;
+  background-size: cover !important;
+  width: 30px !important;
+  vertical-align: middle;
+  background: #fff;
+  background-size: 100% auto;
+  background-position: 50% 50%;
+  margin: 2px 6px;
+  border: none;
+}
+@mixin button-style{
+  background: $link-color;
+  border-bottom: 3px solid $link-color-darken-20;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  font-family: $font-primary;
+  font-size: 16px;
+  transition: border-bottom $transition-standard, background-color $transition-standard;
+  -webkit-appearance: none;
+  &:hover{
+    background:$link-color-darken-20;
+  }
+}
+@mixin text-field-style{
+  height:28px;
+  padding: 5px;
+  margin-top: 5px;
+  font-family:$font-secondary;
+  font-size:.75em;
+  background:#fff;
+  border: 1px solid $borderColor;
+  border-radius: 0;
+  -webkit-appearance: none;
+  transition: all .1s ease;
+  &:hover{
+    box-shadow:inset 0 1px 3px $borderColor;
+    border: 1px solid $bodyCopyColorTwo;
+  }
+  &:focus{
+    box-shadow:inset 0 1px 3px $borderColor;
+    border: 1px solid $link-color;
+    outline:0;
+  }
+}
+@mixin dropdown-style{
+  height:28px;
+  font-family:$font-secondary;
+  font-size:.75em;
+  background:#fff;
+  border: 1px solid $borderColor;
+  transition: all .1s ease;
+  white-space: normal;
+  &:hover{
+    box-shadow:0 1px 3px $borderColor;
+    border: 1px solid $bodyCopyColorTwo;
+  }
+  &:focus{
+    box-shadow:0 1px 3px $borderColor;
+    border: 1px solid $link-color;
+    outline:0;
+  }
+}
+@mixin caption-style {
+  color: $bodyCopyColorTwo;
+  font-size: rem(12);
+  font-style: italic;
+}
+@mixin list-item {
+  padding: $base-padding 0;
+  @include line-pattern-border();
+  &:nth-of-type(1){border:none;}
+}
+@mixin link-icon-left {
+  position:absolute;
+  font-family: FontAwesome;
+  font-size:rem(14);
+  top:0;
+  left:5px;
+}
+@mixin sport-table-label {
+  @include special-header;
+  position: relative;
+  $icon-size: 20px;
+  $icon-spacing: 10px;
+
+  .teamLogo-tiny {
+    left: 14px;
+    position: absolute;
+    top: 14px;
+  }
+
+  * { color: inherit; }
+
+  h4.teamName {
+    font-size: 24px;
+    margin: 0;
+    padding-left: $icon-size + $icon-spacing;
+  }
+
+  .seasonDisplay,
+  .expandedView {
+    display: block;
+    font-size: 12px;
+    font-weight: normal;
+    text-transform: none;
+  }
+
+  .linkText { display: block; }
+  .season-separator { display: none; }
+}
+@mixin sport-table-label-short {
+  max-width: 100%;
+  padding-left: 10px;
+
+  .teamLogo-tiny { display: none; }
+
+  h4 > * {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+@mixin link-with-arrow() {
+  color: $accent_color;
+  font-size: 13px;
+  text-transform: uppercase;
+
+  &:after {
+    color: $link_color;
+    content: '\f061'; // fa-arrow-right
+    display: inline-block;
+    font-family: 'FontAwesome';
+    margin: -.1em 0 0 .4em;
+    font-size: .9em;
+  }
+}
+%clearfix {
+  *zoom: 1;
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+@mixin word-wrap() {
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
+@mixin font-smoothing(){
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// 6. Animations
+@-webkit-keyframes dropdown-season {
+  0% {
+    opacity: 0;
+    top: 90%;
+  }
+  100% {
+    opacity: 1;
+    top: 100%;
+  }
+}
+@keyframes dropdown-season {
+  0% {
+    opacity: 0;
+    top: 90%;
+  }
+  100% {
+    opacity: 1;
+    top: 100%;
+  }
+}
+
+//ADMIN
+// MIXINS
+
+@mixin no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
+// ICONS
+@mixin fa-icon {
+  font: normal normal normal 14px/1 FontAwesome;
+}
+@mixin fa-icon-lg {
+  @include fa-icon;
+  font-size: 1.33333333em;
+}
+@mixin fa-icon-2x {
+  @include fa-icon;
+  font-size: 2em;
+}
+@mixin fa-icon-3x {
+  @include fa-icon;
+  font-size: 3em;
+}
+@mixin fa-icon-4x {
+  @include fa-icon;
+  font-size: 4em;
+}
+@mixin fa-icon-5x {
+  @include fa-icon;
+  font-size: 5em;
+}
+
+
+// FONTS - just guessing until we have Whitney
+$sn-font-weight-light: 100;
+$sn-font-weight-normal: 300;
+$sn-font-weight-medium: 500;
+$sn-font-weight-heavy: 700;
+
+$sn-font-size-xs: 10px;
+$sn-font-size-sm: 12px;
+$sn-font-size-md: 14px;
+$sn-font-size-lg: 16px;
+$sn-font-size-xl: 18px;
+
+@mixin sn-default-font {
+  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; // temp until we get Whitney installed
+}
+
+// SHADOWS
+
+
+// GRADIENTS
+
+@mixin sn-clickable {
+  cursor: pointer;
+  background: linear-gradient(white, #f1f3f4);
+  border: 1px solid #b9c1c6;
+}
+
+@mixin sn-clickable-hover {
+  background: linear-gradient(#f1f3f4, white);
+  border-color: #808f98;
+}
+
+@mixin sn-clickable-active {
+  @include sn-clickable-bg-hover;
+  box-shadow: 0 0 8px rgba(0,0,0,0.5);
+}
+
+@mixin sn-clickable-disabled {
+  cursor: default;
+  color: #d5dadd;
+  background: #ffffff;
+  border-color: #d5dadd;
+}
+
+// //
+// $account-nav-height-desktop: 40px;
+// $account-nav-height-mobile: 44px;
+// $account-nav-background: #23282b;
+// $account-nav-color: #FFF;
+// $account-nav-z-index: 399;
+// $account-nav-icon-width: 32px;
+//
+// // SEARCH BOX
+// $site-search-height: 26px;
+// $site-search-spacing: 8px;
+// $site-search-border-width: 1px;
+// $site-search-input-font-size: 14px;
+// $site-search-input-color: #666;
+// $site-search-input-border-color: rgba(255,255,255,0.1);
+// $site-search-input-background: rgba(255,255,255,0.8);
+// $site-search-input-background-focus: rgba(255,255,255,1);
+// $site-search-submit-color: #fff;
+// $site-search-submit-border-color: rgba(255,255,255,0.1);
+// $site-search-submit-background: $link-color-darken-10;
+// $site-search-submit-background-focus: $link-color-darken-20;
+// $site-search-submit-font-size: 12px;
+//
+// // STIE TAGLINE
+// $site-tagline-text-color :#fff;
+// $site-tagline-color: $link-color;
+// $site-tagline-spacing: 15px;
+// $site-tagline-separator-size: 1px;
+// $site-tagline-separator: $site-tagline-separator-size solid rgba(255,255,255,0.1);
+// $site-tagline-height: 40px;
+// $site-tagline-height-fixed: .01px; // hide it (0px does not animate)
+//
+// // MAIN NAV
+// $main-nav-font-size: 18px;
+// $main-nav-text-color: #fff;
+// $main-nav-selected: rgba(255,255,255,0.15);
+// $main-nav-hover-color: $link-color;
+// $main-nav-text-disabled: #999;
+// $main-nav-text-disabled-hover: #CCC;
+// $main-nav-color: rgba(0,0,0,0.75);
+// $main-nav-spacing: 15px;
+// $main-nav-separator: 1px solid rgba(0,0,0,0.1);
+// $main-nav-item-separator: 1px solid rgba(255,255,255,0.2);
+// $main-nav-height: 55px;
+// $main-nav-height-fixed: 45px;
+//
+// // SUB NAV
+// $sub-nav-font-size: 16px;
+// $sub-nav-title-color: #666;
+// $sub-nav-color: #e6e4e4;
+// $sub-nav-selected: #EEE;
+// $sub-nav-hover-color: #cccccc;
+// $sub-nav-text-color: $link-color;
+// $sub-nav-text-disabled: #AAA;
+// $sub-nav-text-disabled-hover: #999;
+// $sub-nav-title-spacing: 15px;
+// $sub-nav-spacing: 10px;
+// $sub-nav-separator: none;
+// $sub-nav-item-separator: 1px solid rgba(255,255,255,0.2);
+// $sub-nav-height: 40px;
+// $sub-nav-height-fixed: 35px;
+//
+// // MAIN/SUB NAV DROPDOWNS
+// $dropdown-font-size: 16px;
+// $dropdown-text-color: #fff;
+// $dropdown-text-disabled: #999;
+// $dropdown-text-disabled-hover: #CCC;
+// $dropdown-color: rgba(0,0,0,0.9);
+// $dropdown-selected: rgba(255,255,255,0.1);
+// $dropdown-border: 1px solid rgba(255,255,255,0.2);
+// $dropdown-width: 200px;
+// $dropdown-spacing: 12px;
+// $dropdown-item-height: 35px;
+// $dropdown-shift-horiz: 20px;
+// $dropdown-shift-vert: 20px;
+//
+// // SITE LOGO
+// $site-logo-size: $site-tagline-height + $main-nav-height + $sub-nav-height + 3;
+// $site-logo-size-fixed: $site-tagline-height-fixed + $main-nav-height-fixed + $sub-nav-height-fixed + 3;
+//
+// // MISC
+// $nav-placeholder-height: $site-tagline-height + $main-nav-height + $sub-nav-height + 2;
+// $nav-placeholder-height-fixed: $site-tagline-height-fixed + $main-nav-height-fixed + $sub-nav-height-fixed + 2;
+// $nav-item-before-size: 12px;
+
+// SLIDE NAV CONFIG
+$slide-nav-width: 250px;
+$slide-nav-tablet-width: 400px;
+$slide-nav-font-size: 16px;
+$slide-nav-background: white;
+$slide-nav-background-collapsed: white;
+
+$slide-nav-content-spacing: 10px;
+$slide-nav-content-background: $link_color;
+
+$slide-nav-toggle-background: transparent;
+$slide-nav-toggle-color: $color-primary;
+$slide-nav-toggle-background-collapsed: transparent;
+$slide-nav-toggle-color-collapsed: $color-primary;
+
+$slide-nav-title-color: $color-gray-md;
+$slide-nav-title-background: $color-off-white;
+$slide-nav-title-border: 1px solid $color-gray-lt;
+$slide-nav-title-height: $mobile-nav-height;
+
+$slide-nav-back-icon: "\f104";
+$slide-nav-back-color: $color-primary;
+$slide-nav-back-background: transparent;
+$slide-nav-back-background-hover: $color-nav-hover;
+$slide-nav-back-border: 0; // seems to double up when transparent
+
+$slide-nav-forward-icon: "\f105";
+$slide-nav-forward-color: $color-primary;
+$slide-nav-forward-background: transparent;
+$slide-nav-forward-background-hover: $color-nav-hover;
+$slide-nav-forward-border: 1px solid $color-off-white;; // seems to double up when transparent
+
+$slide-nav-menu-background: transparent;
+
+$slide-nav-item-color: $color-secondary;
+$slide-nav-item-color-disabled: #999;
+$slide-nav-item-background: transparent;
+$slide-nav-item-background-hover: $color-nav-hover;
+$slide-nav-item-background-selected: rgba(255,255,255,0.15);
+$slide-nav-item-background-disabled: transparent;
+$slide-nav-item-background-disabled-hover: $color-nav-hover;
+$slide-nav-item-background-disabled-selected: rgba(255,255,255,0.1);
+$slide-nav-item-border: 1px solid $color-off-white;
+$slide-nav-item-height: $mobile-nav-height;

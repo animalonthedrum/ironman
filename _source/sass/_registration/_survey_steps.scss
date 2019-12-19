@@ -1,0 +1,166 @@
+body#survey_steps {
+  padding-bottom: 30px !important;
+}
+#survey_steps {
+  background: $lightGrey;
+  a { color: $link-color; }
+
+  .dragTwo .handle,
+  .drag .handle {
+    height: auto;
+  }
+
+  .siteContainer {
+    max-width: 100%;
+    width: 100%;
+    display: block;
+    margin: auto;
+
+    #accountNav {
+      margin: auto;
+      padding: 0px;
+      background: #23282b;
+    }
+
+    #surveyNameHeader {
+      h1 {
+/*
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+*/
+        background-color: transparent;
+        width: 100%;
+        max-width: 45%;
+        display: inline-block;
+        font:normal 18px/1.5em $fontOne;
+        text-align: left;
+        padding: 0px 15px 25px 15px;
+        color: #444;
+
+/*
+        @media only screen and (min-width: 421px) and (max-width: 767px) {
+          padding-left: 180px;
+          text-align: right;
+        }
+*/
+
+        @media only screen and (max-width: 420px) {
+          background-image: none !important;
+        }
+      }
+    }
+
+    #pageContentContainer {
+    clear: both;
+    background: #fff;
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+      #panelOne {
+        width: 100%;
+        max-width: 20%;
+        display: inline-block;
+        float: left;
+        background: #fff;
+        border-right: 1px solid $border-color;
+        margin-right: -1px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+      }
+      #panelTwo {
+        width: 100%;
+        max-width: 80%;
+        display: inline-block;
+        float: left;
+        background: #fff;
+        border-left:1px solid $border-color;
+        #yieldContent{
+          max-width: 100%;
+          width: 100%;
+          display: block;
+          margin: auto;
+          .layoutContainer{
+            max-width: $maxWidth;
+            width: 100%;
+            padding-left: 0px;
+          }
+        }
+      }
+    }
+  }
+  .textBlockElement{
+    .miniPersona + &{margin-top: 1em;}
+    .pageElement{
+      .resultsTable{
+        margin: .5em 0 1.5em 0;
+        width:100%;
+        tr{
+          border:none;
+          border:1px solid #CCC;
+        }
+        th, td{
+          background: none;
+          color: #333;
+          border: none;
+          text-align: left;
+          padding: .45em .75em;
+        }
+        th{
+          width: 35%;
+          border-right: 1px solid #CCC;
+        }
+      }
+    }
+  }
+  #siteFooter {
+    max-width: 100%;
+    background-color: $account-nav-background;
+    padding: 15px;
+    text-align: center;
+    display: none;
+
+    a {
+      color:#fff;
+      text-decoration: none;
+      margin-right: 10px;
+      opacity: 0.9;
+      font: 100 .9em/1.5em $fontOne;
+    }
+
+    a:hover { opacity: 1; }
+  }
+}
+
+#survey_steps.edit_mode {
+
+  .rapidTabsConstruction {
+    border-top:0px;
+  }
+
+  .contentTabs.rapidTabsConstruction {
+
+    a,
+    a:hover {
+      background-color: #e1af10;
+      color: #666;
+    }
+
+    .selected {
+
+      a {
+        background-color: #fde771;
+        color:#000;
+      }
+
+      a:hover {
+        background-color: #F7CE29;
+        color:#666;
+      }
+    }
+
+    li span a {
+      margin-right: 0px;
+    }
+  }
+}

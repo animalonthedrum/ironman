@@ -1,0 +1,21 @@
+// 1. Variable defaults
+// 2. Base Styles
+
+// Variables
+$page-element-margin: 15px !default;
+
+// Base Styles
+.pageEl {
+  @extend %clearfix;
+}
+.pageElement {
+  width: 100%;
+  margin: $page-element-margin 0;
+  float: left;
+  clear: both;
+  .pageElement{
+    // unsure why this is neccessary, but including it in case
+    margin-left: 0;
+    margin-right: 0;
+  }
+}

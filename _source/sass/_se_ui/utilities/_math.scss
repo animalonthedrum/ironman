@@ -1,0 +1,32 @@
+// # Math
+// Math functions
+
+// Square root (maintains unit)
+// https://www.antimath.info/css/sass-sqrt-function/
+@function sqrt($r) {
+  $unit: unit($r);
+  $r: strip-unit($r);
+
+  $x0: 1;
+  $x1: $x0;
+
+  @for $i from 1 through 10 {
+    $x1: $x0 - ($x0 * $x0 - abs($r)) / (2 * $x0);
+    $x0: $x1;
+  }
+
+  @return $x1 * (1 + $unit);
+}
+
+// Calculate the hypotenuse (returns with unit of first value)
+@function hypotenuse($side, $side2: $side) {
+  @return sqrt($side * strip-unit($side) + strip-unit($side2) * strip-unit($side2));
+}
+
+// Strip unit for doing maths
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+  @return $number;
+}

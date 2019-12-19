@@ -1,0 +1,247 @@
+$game-header-crest-width: 106px;
+$game-header-spacing: 15px;
+$game-header-score-font-size: 36px;
+$game-header-title-font-size: 16px;
+$game-header-team-font-size: 20px;
+$game-header-abbrev-font-size: 14px;
+$game-header-status-font-size: 14px;
+$game-header-center-width: 11em;
+$game-header-small-spacing: 8px;
+
+.game-header {
+  @include flex-box(row);
+  text-align: center;
+  position: relative;
+
+  @mixin game-header-medium {
+    .team-name { display: none; }
+    .team-abbrev { display: block; }
+    .team-crest { @include flex(0, 1, $game-header-crest-width); }
+  }
+
+  @mixin game-header-small {
+    padding-top: calc(36% +
+      #{$game-header-abbrev-font-size} +
+      #{$game-header-small-spacing});
+
+    &.has-title {
+      padding-top: calc(36% +
+        #{$game-header-title-font-size * 1.5} +
+        #{$game-header-abbrev-font-size} +
+        #{$game-header-small-spacing});
+        
+        .team-crest { top: $game-header-title-font-size * 1.5; }
+    }
+
+    .game-header-center {
+      @include flex(0, 0, 100%);
+      padding: 0;
+    }
+
+    .team-abbrev { display: block; }
+    .team-name { display: none; }
+    .team-crest {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: calc(50% - #{$game-header-small-spacing / 2});
+      height: auto;
+
+      ~ .team-crest {
+        left: auto;
+        right: 0;
+      }
+    }
+
+    .game-title {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      font-size: $game-header-title-font-size;
+    }
+
+    .scores {
+      overflow: hidden;
+      bottom: $game-header-status-font-size + $game-header-small-spacing;
+
+      .home,
+      .away {
+        display: block;
+        float: left;
+        width: calc(50% - #{$game-header-small-spacing / 2});
+      }
+
+      .home { float: right; }
+
+      .separator { display: none; }
+    }
+
+    // hide the status/datetime if there is a table after this (since it's also included there)
+    &:not(:last-child) {
+      .datetime,
+      .status { display: none; }
+    }
+  }
+
+  .game-title {
+    display: block;
+    line-height: 1;
+  }
+
+  .datetime {
+    display: block;
+    font-size: $game-header-status-font-size;
+    border-top: 1px solid #ccc;
+    padding-top: .3em;
+    line-height: 1.2;
+
+    * {
+      display: inline-block;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+  }
+
+  .team-abbrev,
+  .team-name {
+    color: $link-color;
+    font-family: $font-primary;
+    font-weight: 700;
+  }
+
+  .team-abbrev {
+    font-size: $game-header-abbrev-font-size;
+    text-transform: uppercase;
+    display: none;
+    line-height: 1;
+    margin-top: $game-header-small-spacing;
+  }
+
+  .team-name {
+    @include flex(1, 1, 50%);
+    text-align: right;
+    padding: 0 $game-header-spacing 0 0;
+    font-size: $game-header-team-font-size;
+    line-height: 1.2;
+    max-height: 2.4em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    ~ .team-name {
+      padding: 0 0 0 $game-header-spacing;
+      text-align: left;
+    }
+  }
+
+  .vs,
+  .scores {
+    display: block;
+    overflow: hidden;
+    font: $game-header-score-font-size/#{1} $font-primary;
+    font-weight: 900;
+  }
+
+  .scores .separator {
+    font-weight: 600;
+    margin: 0 -0.1em;
+  }
+
+  .status {
+    font-size: $game-header-status-font-size;
+    display: block;
+    border-top: 1px solid #ccc;
+  }
+
+  $stripe-width: 4px;
+  $stripe-spacing: 2px;
+  $stripe-offset: $stripe-width + $stripe-spacing;
+
+  .team-logo {
+    padding-bottom: 75%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+
+    &:before {
+      content: '';
+      width: $stripe-width;
+      height: 100%;
+      display: block;
+      position: absolute;
+    }
+  }
+
+  .team-crest {
+    @include flex(0, 0, $game-header-crest-width);
+
+    &.away .team-logo {
+      margin-right: $stripe-offset;
+      &:before { right: -$stripe-offset; }
+    }
+
+    &.home .team-logo {
+      margin-left: $stripe-offset;
+      &:before { left: -$stripe-offset; }
+    }
+  }
+
+  .game-header-center {
+    @include flex(0, 0, $game-header-center-width);
+    padding: 0 $game-header-spacing;
+  }
+
+  ~ .boxscore-inner-container { margin-top: $game-header-small-spacing; }
+
+  // SMALL COLUMN SIZES
+
+  // DESKTOP
+  @media only screen and (min-width: 1000px) {
+    .layout-66-33 .column-1 &,
+    .layout-33-66 .column-2 &,
+    .layout-50-25-25 .column-1 &,
+    .layout-25-50-25 .column-2 &,
+    .layout-25-25-50 .column-3 &,
+    .layout-50-50 & {
+      @include game-header-medium;
+    }
+
+    .layout-33-66 .column-1 &,
+    .layout-66-33 .column-2 &,
+    .layout-33-33-33 &,
+    .layout-50-25-25 .column:not(.column-1) &,
+    .layout-25-50-25 .column:not(.column-2) &,
+    .layout-25-25-50 .column:not(.column-3) & {
+      @include game-header-small;
+    }
+  }
+
+  // TABLET
+  @media only screen and (min-width: 768px) and (max-width: 999px) {
+    .layout-33-33-33 &,
+    .layout-33-66 .column-1 &,
+    .layout-66-33 .column-2 &,
+    .layout-25-50-25 & {
+      @include game-header-small;
+    }
+
+    .layout-33-66 .column-2 &,
+    .layout-66-33 .column-1 &,
+    .layout-50-50 &,
+    .layout-25-25-50 .column:not(.column-3) &,
+    .layout-50-25-25 .column:not(.column-1) & {
+      @include game-header-medium;
+    }
+  }
+
+  // TABLET/PHABET
+  @media only screen and (max-width: 767px) {
+    @include game-header-medium;
+  }
+
+  // PHONE
+  @media only screen and (max-width: 400px) {
+    @include game-header-small;
+  }
+}

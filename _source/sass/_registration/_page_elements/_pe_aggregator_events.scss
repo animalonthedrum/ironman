@@ -1,0 +1,362 @@
+/* Event Aggregators */
+// 1. Global Styles
+// 2. List Views
+// 3. List Views - Media Queries
+// 4. Five Day View
+// 5. Five Day View - Media Queries
+
+
+// 1. Global Styles
+.eventAggregatorElement {
+  .aggHeader {
+    @include special-header;
+  }
+}
+
+// 2. List Views
+.eventAggregatorElement {
+  .vevent {
+    position: relative;
+    padding: $base-padding 0;
+    ~ .vevent { @include line-pattern-border; }
+
+    &.odd,
+    &.even {
+      background-color: transparent;
+    }
+  }
+  .summary,
+  .details {
+    list-style: none;
+    padding-left: 95px;
+  }
+  .summary {
+    font-family: $fontTwo;
+    font-weight: 500;
+    text-transform: none;
+  }
+  .time,
+  .location {
+    display: inline-block;
+    margin-right: .5em;
+    font-size: em(12);
+  }
+  .location {
+
+    &, > a {
+      font-family: $fontOne;
+      font-weight: 600;
+      color: $link_color;
+      text-transform: uppercase;
+    }
+  }
+  .tags { font-size: 12px; }
+  .description {
+    margin-top: em(12);
+  }
+  .dateImage {
+    display: block;
+    list-style: none;
+    background: #EEE;
+    padding: .5em;
+    position: relative;
+    float: left;
+    width: 80px;
+    box-sizing: border-box;
+    &:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translate(45%, -50%) rotate(45deg);
+      background: inherit;
+      width: .75em;
+      height: .75em;
+    }
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: $fontOne;
+    .month {
+      font-size: .75em;
+      font-weight: 600;
+      letter-spacing: .5px;
+      color: $link_color;
+    }
+    .date {
+      font-size: 3em;
+      font-weight: 900;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  }
+  .formElement {
+    padding: 10px 0; // This should be better defined in global form styles (or removed from there to be styled per element)
+    [id$="_start_date_day"],
+    [id$="_end_date_day"] {
+      width: 8em;
+    }
+  }
+}
+
+// 3. List Views - Media Queries
+@include page-element-break(330) {
+  .eventAggregatorElement {
+    .dateImage {
+      float: none;
+      margin-bottom: 1em;
+      &:after {
+        bottom: 0;
+        left: 50%;
+        top: initial;
+        right: initial;
+        transform: translate(-50%, 45%) rotate(45deg);
+      }
+    }
+    .summary,
+    .details {
+      padding-left: 0;
+    }
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 999px) {
+  .layout-25-25-50,
+  .layout-50-25-25 {
+    .col-md-6,
+    .col-md-3 {
+      .eventAggregatorElement {
+        .dateImage {
+          position: absolute;
+          margin-bottom: 0;
+          &:after {
+            top: 50%;
+            right: 0;
+            bottom: initial;
+            left: initial;
+            transform: translate(45%, -50%) rotate(45deg);
+          }
+        }
+        .summary,
+        .details {
+          padding-left: 95px;
+        }
+      }
+    }
+  }
+  .layout-25-50-25 {
+    .col-md-6,
+    .col-md-3 {
+      .eventAggregatorElement {
+        .dateImage {
+          position: relative;
+          margin-bottom: 1em;
+          &:after {
+            bottom: 0;
+            left: 50%;
+            top: initial;
+            right: initial;
+            transform: translate(-50%, 45%) rotate(45deg);
+          }
+        }
+        .summary,
+        .details {
+          padding-left: 0;
+        }
+      }
+    }
+  }
+}
+
+// 4. Five Day View
+.eventPreview {
+  text-align: left;
+  width: 100%;
+  table-layout: fixed;
+  th {
+    @include table-th;
+    @include table-th-text;
+    word-break: break-word;
+    a {
+      color:#FFF;
+      font-weight: 600;
+    }
+  }
+  td {
+    font-size: 12px;
+    padding: 10px;
+    background: #eee;
+    vertical-align: top;
+    word-break: break-word;
+    &:before {
+      content: attr(data-week-view-date)'';
+      display: none;
+      width: 100%;
+      position: relative;
+      box-sizing: border-box;
+      padding: 7px 12px;
+      border-bottom: $table-cell-spacing solid #FFF;
+      background: $link_color;
+      color: #fff;
+      text-transform: uppercase;
+      font-family: $fontOne;
+      font-size: 1em;
+      line-height: 1.1;
+      font-weight: 600;
+    }
+  }
+  td,
+  th {
+    border: $table-cell-spacing solid #FFF;
+    &:first-child {
+      border-left: 0;
+    }
+    &:last-child {
+      border-right: 0;
+    }
+  }
+  .event + .event {
+    padding-top: 10px;
+  }
+  .noentry {
+    word-break:normal;
+  }
+}
+
+// 5. Five Day View - Media Queries
+@include page-element-break(430) {
+  .eventPreview {
+    border-top: $table-cell-spacing solid #FFF;
+    &,
+    tbody,
+    tr,
+    td {
+      display: block;
+    }
+    thead {
+      display: none;
+    }
+    td {
+      border: 0;
+      padding: 0;
+      margin-bottom: $table-cell-spacing;
+      word-break: word-break;
+      &:before {
+        display: block;
+      }
+    }
+    .event {
+      padding: 10px;
+      & + .event {
+        padding-top: 0;
+      }
+    }
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 999px) {
+  .layout-25-25-50,
+  .layout-50-25-25 {
+    .col-md-6 {
+      .eventPreview {
+        display: table;
+        border-top: 0;
+        thead {
+          display: table-header-group;
+        }
+        tbody {
+          display: table-row-group;
+        }
+        tr {
+          display: table-row;
+        }
+        td,
+        th {
+          display: table-cell;
+        }
+        td {
+          padding: 10px;
+          margin-bottom: none;
+          word-break: word-break;
+          &:before {
+            display: none;
+          }
+        }
+        .event {
+          padding: 0;
+        }
+      }
+    }
+  }
+  .layout-25-50-25 {
+    .col-md-6 {
+      .eventPreview {
+        border-top: $table-cell-spacing solid #FFF;
+        &,
+        tbody,
+        tr,
+        td {
+          display: block;
+        }
+        thead {
+          display: none;
+        }
+        td {
+          border: 0;
+          padding: 0;
+          margin-bottom: $table-cell-spacing;
+          word-break: word-break;
+          &:before {
+            display: block;
+          }
+        }
+        .event {
+          padding: 10px;
+          & + .event {
+            padding-top: 0;
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (min-width: 891px) and (max-width: 999px) {
+  .layout-25-25-50,
+  .layout-50-25-25 {
+    .col-md-3 {
+      .eventPreview {
+        display: table;
+        border-top: 0;
+        thead {
+          display: table-header-group;
+        }
+        tbody {
+          display: table-row-group;
+        }
+        tr {
+          display: table-row;
+        }
+        td,
+        th {
+          display: table-cell;
+        }
+        td {
+          padding: 10px;
+          margin-bottom: none;
+          word-break: word-break;
+          border: $table-cell-spacing solid #FFF;
+          &:first-child {
+            border-left: 0;
+          }
+          &:last-child {
+            border-right: 0;
+          }
+          &:before {
+            display: none;
+          }
+        }
+        .event {
+          padding: 0;
+        }
+      }
+    }
+  }
+}

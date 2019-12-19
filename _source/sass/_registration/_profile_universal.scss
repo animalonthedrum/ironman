@@ -1,0 +1,454 @@
+/* Profile Tokens
+-------------------------------------------------------------------- */
+
+/* Tokens and MiniTokens */
+
+.profileToken, .profileMiniToken{
+    background: #444;
+}
+
+.pageElementAdmin .profileToken{
+    margin-top: -1px;
+}
+
+.profileToken img, .profileMiniToken img, #profileAvatarDisplay img{
+     _margin-bottom: -2px;
+}
+
+.profileMiniToken{
+    height: auto;
+    padding:8px;
+    margin-bottom:10px;
+}
+
+.profileToken .image, .profileMiniToken .image{
+    position:relative;
+    float: left;
+    margin: 0 10px 0 5px;
+    width:30px;
+    height:30px;
+    border:2px solid #DDD;
+    overflow:hidden;
+    border-radius: 50%;
+    img{
+	    display:block;
+	    top:-1%;
+	    left:-1%;
+	    width:103%;
+    }
+}
+
+.profileToken .info{
+    height: 70px;
+    float: left;
+    list-style-type: none;
+}
+
+.subPanelA .profileToken .info .profileName{
+    width: 200px;
+}
+
+.profileMiniToken .info{
+    list-style-type: none;
+    text-align:right;
+}
+
+.profileToken .info li{
+    display: block;
+}
+
+.info .profileName, .info .profileName a{
+    line-height: 120%;
+    font-weight: bold;
+    margin-top: 2px;
+}
+
+.profileToken .info .profileName{
+    font-size: 20px;
+    color: #FFF;
+}
+
+.profileMiniToken .info .profileName{
+    font-size: 1em;
+    line-height: 30px;
+    float: left;
+    margin-top: 0;
+    color: #FFF;
+}
+
+.profileMiniToken .info .profileName a{
+    color: #FFF;
+}
+
+.profileToken .info .profileName .type, .miniPersona .type{
+    font-size: 11px;
+    font-weight: normal;
+    color: #666;
+    padding: 8px;
+}
+
+.info .profileName a:hover{
+    text-decoration: underline;
+}
+
+.profileToken .info .networkLabel, .profileMiniToken .info .networkLabel{
+    color: #CCC;
+    font-size: 10px;
+    line-height: 120%;
+    font-weight: bold;
+}
+
+.profileToken .info .networkLabel a{
+    color: #FFF;
+}
+
+.profileMiniToken .info .networkBadges{
+    float: right;
+    margin: 5px 5px 0 0;
+}
+
+.info .networkBadges img{
+    padding: 1px;
+    background: #666;
+}
+
+.profileToken .tokenActions{
+    background: url($asset_path_for+"/app_images/profile_token_actions.jpg") no-repeat top right;
+    width: 100%;
+    height: 100%;
+}
+.profileMiniToken .info .tokenActions{
+	display:inline-block;
+	padding:1px 5px;
+}
+.profileMiniToken .tokenActions a{
+    color: #fff;
+    font-size:0.8em;
+	padding-left:22px;
+}
+
+.profileToken .tokenHierarchy{
+    background: url($asset_path_for+"/app_images/profile_token_hierarchy.jpg") no-repeat 400px 0;
+    width: 100%;
+    height: 100%;
+}
+
+.profileToken .actions{
+    float: right;
+    text-align: right;
+    list-style-type: none;
+    padding: 3px 3px 0 0;
+    color: #CCC;
+}
+
+.profileToken .actions a{
+    color: #CCC;
+}
+
+.profileToken .actions a:hover{
+    color: #FFF;
+}
+
+#survey_steps .profileToken .actions {
+  color: #666;
+}
+
+.profileTokenAction{
+    text-align: center;
+}
+
+.profileTokenAction a{
+    display: block;
+    font-size: 14px;
+    margin-top: 25px;
+}
+
+#new_full_name { display: block; text-align: left; margin-left: 66px; }
+
+
+@media only screen and (max-width: 900px) {
+	.profileMiniToken .info{
+		text-align:left;
+		.tokenActions{
+			width:100%;
+			padding:10px 5px;
+		}
+	}
+}
+
+
+/* Owner */
+
+.profileMiniToken .owner .profileName{
+    padding-right: 17px;
+    margin-right: 7px;
+    background: url($asset_path_for+"/app_images/mini_token_hierarchy.jpg") no-repeat top right;
+}
+
+.profileMiniToken .owner .image{
+    margin: 0;
+}
+
+.profileMiniToken .owner img{
+    width: 20px;
+    height: 20px;
+    margin: 5px 7px 5px 5px;
+}
+
+.profileMiniToken .owner .profileName{
+    line-height: 25px;
+    height: 30px;
+}
+
+.profileMiniToken .owner .profileName a{
+    color: #CCC;
+    font-size: 12px;
+}
+
+/* Master Token */
+
+.masterProfile .masterProfileToken{
+    border: none;
+}
+
+/* Sub Tokens */
+
+.subProfileToken{
+    background: #b2b2b2 url($asset_path_for+"/app_images/profile_token_back_sub.jpg") repeat-x;
+    border: solid 2px #BABABA;
+    overflow: hidden;
+}
+
+.subProfileToken .image img, .profileToken .image img{
+    display:inline-block;
+    width: 70px;
+    height: 70px;
+}
+
+.subProfileToken .tokenActions{
+    background: url($asset_path_for+"/app_images/profile_token_actions_sub.jpg") no-repeat top right;
+}
+
+.subProfileToken .info .profileName, .subProfileToken .info .profileName a{
+    font-size: 14px;
+}
+
+.subProfileToken .info .profileName{
+    color: #000;
+}
+
+.subProfileToken .actions{
+    font-size: 11px;
+}
+
+.subProfileToken .actions a{
+    color: #666;
+}
+
+.subProfileToken .actions a:hover{
+    color: #333;
+}
+
+.subProfileToken .info .networkLabel{
+    color: #666;
+}
+
+.subProfileToken .info{
+    width: 50%;
+}
+
+.subProfileToken .info .networkBadges{
+    margin: 3px 0 0;
+}
+
+.subProfileToken .info .networkBadges img{
+    border-color: #666;
+}
+
+.transferOptions{
+    margin: -2px 0 2px;
+    padding: 2px 0 5px;
+    text-align: center;
+    background: #CCC;
+}
+
+/* miniPersona
+-------------------------------------------------------------------- */
+#form_div{
+  .miniPersona{
+    .profilePic, .name{
+      //float: right;
+    }
+    .name{
+  
+    }
+    input{
+      
+    }
+  }
+}
+#survey_steps .siteContainer .miniPersona input[type="radio"]{
+  //margin-top: 3px;
+}
+.miniPersona{
+    padding: 15px;
+    float: left;
+    display:block;
+    clear: both;
+    &.selected{
+     
+    }
+    input{
+      margin: 8px 10px 0 8px;
+      float: left;
+    }
+    span{
+      float: left;
+    }
+    .toggle_membership {
+      margin: 5px 5px 0 0;
+      float: right;
+    }
+    label{
+      display:block;
+      line-height: 13px;
+    }
+    .profilePic{
+      
+    }
+    img{
+      width: 30px;
+      height: 30px;
+      border-radius: 100%;
+    }
+    .name{
+      font:normal 14px/1.5em $fontOne;
+      margin-left: 10px;
+      padding-top: 5px;
+      input{
+        margin: 0;
+        float: none;
+      }
+      a {
+        color: #900;
+        float: right;
+        padding-right: 10px;
+        &:hover{
+          color: #f00;
+        }
+      }
+    }
+    &.pending{
+        background: #EFEFEF;
+        border-color: #CCC;
+    }
+    
+    &.owner .name{
+        line-height: 110%;
+    }
+    
+    &.pending .name{
+        font-size: 11px;
+        line-height: 150%;
+        padding-top: 2px;
+    }
+    em{
+        margin-left: 5px;
+        color: #666;
+        font-style: italic;
+        line-height: 120%;
+    }
+    .required em {
+      font-style: normal;
+      font-weight: bold;
+      color: #ff0000;
+    }
+    
+    ul{
+        list-style-type: none;
+    }
+}
+.miniPersonaForm {
+  clear:both;
+  //background:#f2f2f2;
+  //border:1px solid #CCC;
+  padding:10px 20px;
+  position:relative;
+  //top:-4px;
+  //border-radius:0 0 4px 4px;
+  .formElement {
+    background-color:transparent !important;
+  }
+}
+.miniPersona.selected + .miniPersonaForm {
+  //border-color:#999; 
+  
+}
+
+.resultsTable .miniPersona{
+    margin-bottom: 0;
+}
+
+.dataTable .miniPersona{
+    border: none;
+    border-bottom: solid 2px #FFF;
+}
+
+.dataTable .miniPersona td{
+    padding: 2px;
+    border: none;
+    vertical-align: top;
+}
+
+.dataTable .miniPersona .moreInfo{
+    width: 50%;
+    text-align: right;
+    vertical-align: middle;
+    padding: 3px 5px 3px 2px;
+}
+
+/* New Communication Email
+-------------------------------------------------------------------- */
+
+.newCommunicationEmail{
+    font-size: 13px;
+    padding-bottom: 5px;
+
+}
+
+/* Member Directory View
+--------------------------------------------------------------------- */
+
+.profileToken .adminOptions { float:right; text-align:right; padding:8px; }
+.profileToken .adminOptions a { position:relative; top:-2px; }
+.profileToken .adminOptions .assume_user { margin-left:8px; }
+
+/* Member Status */
+.profilePicker .status a { position:relative; top:-2px; }
+.profilePicker .status a.help img { float:right; }
+.profilePicker .status {
+  text-align:center;
+  background:#999 url($asset_path_for+"/app_images/user/button_bg.png") left center;
+  border:1px solid #999;
+  padding:7px 6px 2px;
+  color:#FFF;
+  font-size:16px;
+  box-shadow: inset 1px 1px 4px rgba(0,0,0,.4);
+  border-radius: 10px;
+}
+.profilePicker .help img {
+  vertical-align: middle;
+  background: #333;
+  background: rgba(0,0,0,.3);
+  padding: 7px 7px 6px 5px;
+  margin: -7px -6px -7px 1px;
+  border-radius: 0 9px 9px 0;
+}
+
+.profilePicker .status.active { background-color:#090; }
+.profilePicker .status.blacklisted { background-color:#900; }
+.profilePicker .status.active-incomplete { background-color:#696; }
+.profilePicker .status.approval-needed { background-color:#970; }
+.profilePicker .status.processing {
+	background-image:url( $asset_path_for+"/app_images/processing_bg.gif");
+}

@@ -1,0 +1,63 @@
+//Contact Page Element
+.contactElement {
+  img {
+    float: left;
+    margin-bottom: 10px;
+    margin-right: 20px;
+    max-width: 50px;
+    max-height: 100px;
+    // Apply these styles only if img is present
+    + div {
+      max-width: calc(100% - 70px); // Assumes 50px img
+      h3 {
+        margin-top: -3px; // Align h3 with image
+      }
+    }
+  }
+  h3 {
+    color: $link-color;
+    font-size: 1.2em;
+    font-weight: 600;
+    text-transform: none;
+    margin-bottom: 5px;
+  }
+  p {
+    color: $bodyCopyColorTwo;
+    font-size: 12px;
+    font-weight: inherit;
+    line-height: 1.5em;
+    margin-bottom: 5px;
+    text-align: left;
+    &:last-of-type {
+      margin-bottom: 9px;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .title {
+    border: none;
+    padding: 0;
+  }
+  a.icon{
+    font-size: 36px;
+    &:before{
+      color: #fff;
+    }
+    &:hover{
+      background: #000;
+    }
+  }
+}
+
+.contact-element-first-name {
+  display: block;
+  font: normal 20px/1.5em $fontOne;
+  color:#000;
+}
+
+.contact-element-last-name {
+  display: block;
+  font: normal 14px/1.5em $fontOne;
+  color: #666;
+}

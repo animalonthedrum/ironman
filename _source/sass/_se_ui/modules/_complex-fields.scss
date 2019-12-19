@@ -1,0 +1,16 @@
+// # Complex Fields
+// Fields with extra properties.
+
+
+// ## Toggle edit field
+.pl-toggle-edit-field {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+.pl-toggle-edit-field__value {
+  @include font-large;
+  flex-grow: 1;
+  font-weight: $font-semibold;
+  margin: 0;
+}

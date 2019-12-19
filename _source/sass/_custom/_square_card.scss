@@ -1,0 +1,153 @@
+.square-card {
+    transition: transform $transition-standard;
+    &:hover {
+        transform: translateY(-10px);
+        cursor: pointer;
+    }
+    .pageElement {
+        position: relative;
+        .user_mode & {
+            > h3 {
+                display: none;
+                span{
+                    display: none;
+                }
+            }
+        }
+        .edit_mode & {
+            > h3 {
+                &:after {
+                    content:'This sets custom button title, default = "Find a Race"';
+                    display: block;
+                    font-size: 16px;
+                    font-family: $font-secondary;
+                    font-weight: 600;
+                    background-color: rgba(white, 0.4);
+                    color: $color-secondary;
+                    border: 1px dashed #DDA301;
+                    text-align: center;
+                }
+            }
+        }
+
+        .leftTextImage,.originalTextImage {
+            position: relative;
+            margin-left: 0;
+            margin-right: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+            float: unset;
+            a {
+                @include aspect-ratio-image(1,1);
+            }
+        }
+        .text {
+            .user_mode & {
+                p {
+                    display: none;
+                }
+            }
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            z-index: 10;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-left: 60px;
+            padding-right: 60px;
+            text-align: center;
+            color: $color-white;
+            @include touch-device {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+            img {
+                width: 248px;
+            }
+            p {
+                width: 248px;
+            }
+            a {
+                @include global-link-container;
+                @include global-link-style;
+                @include global-link-text;
+                @include global-link-icon-style;
+                @include global-link-icon-character;
+                min-width: 175px;
+            }
+            .textTop, .textBottom {
+                display: flex;
+                width: 100%;
+                height: calc(50% - 15px);
+                justify-content: center;
+            }
+            .textTop {
+                margin-bottom: 15px;
+                align-items: flex-end;
+                img {
+                    height: auto!important;
+                    width: 100%;
+                    margin-top: 0;
+                    margin-bottom: 0;
+                    margin-left: 0;
+                    margin-right: 0;
+                }
+                h3 {
+                    color: $color-white!important;
+                    font-family: $font-primary;
+                    font-size:36px;
+                    line-height: 1;
+                    font-weight: 700;
+                    margin-bottom: 0;
+                    padding-left: 30px;
+                    padding-right: 30px;
+                    max-width: 300px;
+                    @include tablet {
+                        font-size: 24px;
+                        padding-left: 0;
+                        padding-right: 0;
+                    }
+                }
+            }
+            .textBottom {
+                margin-top: 15px;
+                align-items: flex-start;
+            }
+        }
+    }
+}
+
+
+.secondary-color-background {
+    background-image: linear-gradient(135deg, $color-secondary 0%, black 100%);
+    padding-top: 75px;
+    padding-bottom: 35px;
+    @include touch-device {
+        padding-top: 50px;
+        padding-bottom: 25px;
+    }
+    .pageElement {
+        > h3 span {
+            color: $color-white;
+        }
+        .text {
+            color: $color-white;
+            h1,h2,h3,h4,h5,p,a, b {
+                color: $color-white;
+            }
+        }
+    }
+    & .pageElement .text p{
+        color: $color-white!important;
+    }
+}
+
+.layoutContainer [class*=section-title-hor].secondary-color-background-start{
+    .pageElement .text p{
+        color: $color-white!important;
+    }
+}

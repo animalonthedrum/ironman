@@ -1,0 +1,791 @@
+// Config
+// Global Layout
+// Page Manager
+// Page Title
+
+
+// Colors
+$color-primary: #E51937;
+$color-secondary: #2F373B;
+$color-black: #333;
+$color-gray-dk: #3E474D;
+$color-gray-md: #68767F;
+$color-gray-md-2: #A7B3BA;
+$color-gray: #DFE4E6;
+$color-gray-lt: #EDF0F1;
+$color-white:#ffffff;
+$color-off-white:#F8F9F9;
+$color-hover-primary:#C9122D;
+$color-nav-hover: #ECF0F1;
+
+
+// Fonts
+$font-primary: 'Titillium Web', sans-serif;
+$font-secondary: 'Lato', sans-serif;
+$enable-global-font-smoothing: true;
+
+
+// Transitions
+$transition-standard: .3s ease-in-out;
+$transition-linear: .2s linear;
+
+
+// Variables
+$desktop-padding: 15px;
+$mobile-padding: 15px;
+
+$content-area-width: 1320px;
+$content-area-padding: ($desktop-padding * 2);
+$content-area-padding-mobile: ($mobile-padding * 2);
+$content-area-background: transparent;
+
+$content-container-margin: 30px;
+$enable-full-width-layout: true;
+$include-page-title-in-content-area-background: true;
+
+$breakpoint-sm-max: 767px;
+$breakpoint-md-min: 768px;
+$breakpoint-intermediate-min: 768px;
+$breakpoint-intermediate-max: 999px;
+$breakpoint-lg-tablet:1024px;
+
+// UI Elements
+$global-ui-border-size: 1px;
+$global-ui-border-color: $color-gray-lt;
+$box-shadow: 1px 1px 10px 0 rgba(black, 0.05);
+$box-shadow-hover: 0px 0px 30px 0 rgba(black, 0.20);
+$box-shadow-active:0px 0px 10px 0px rgba(black, 0.1);
+
+// Utilities
+$utility-padding-desktop: 40px;
+$utility-padding-mobile: 20px;
+$utility-padding-large-desktop: 80px;
+$utility-padding-large-mobile: 40px;
+$utility-padding-small-desktop: 20px;
+$utility-padding-small-mobile: 10px;
+
+
+// Global Layout
+@mixin mobile(){
+  @media only screen and (max-width:$breakpoint-sm-max) {
+    @content
+  }
+}
+
+@mixin tablet-sm(){
+  @media only screen and (min-width:$breakpoint-intermediate-min) and (max-width:$breakpoint-intermediate-max) {
+    @content
+  }
+}
+
+@mixin tablet-lg(){
+  @media only screen and (min-width:$breakpoint-intermediate-max) and (max-width:$breakpoint-lg-tablet) {
+    @content
+  }
+}
+
+@mixin tablet(){
+  @media only screen and (min-width:$breakpoint-intermediate-min) and (max-width:$breakpoint-lg-tablet) {
+    @content
+  }
+}
+@mixin touch-device(){
+  @media only screen and (min-width:0) and (max-width:$breakpoint-lg-tablet) {
+    @content
+  }
+}
+
+
+@mixin adjust-margin-x($multiplier: 1, $responsive: true){
+  margin-left: $desktop-padding * $multiplier;
+  margin-right: $desktop-padding * $multiplier;
+  @if $responsive == true {
+    @media screen and (max-width: $breakpoint-sm-max){
+      margin-left: $mobile-padding * $multiplier;
+      margin-right: $mobile-padding * $multiplier;
+    }
+  }
+}
+@mixin page-element-padding(){
+  padding-top: $desktop-padding;
+  padding-bottom: $desktop-padding;
+  @media screen and (max-width: $breakpoint-sm-max){
+    padding-top: $mobile-padding;
+    padding-bottom: $mobile-padding;
+  }
+}
+@mixin page-element-margin(){
+  margin-top: $desktop-padding;
+  margin-bottom: $desktop-padding;
+  @media screen and (max-width: $breakpoint-sm-max){
+    margin-top: $mobile-padding;
+    margin-bottom: $mobile-padding;
+  }
+}
+@mixin column-padding(){
+  padding-left: $desktop-padding;
+  padding-right: $desktop-padding;
+  @media screen and (max-width: $breakpoint-sm-max){
+    padding-left: $mobile-padding;
+    padding-right: $mobile-padding;
+  }
+}
+@mixin content-container-padding($multiplier: 1, $responsive: true){
+  padding-left: $desktop-padding * $multiplier;
+  padding-right: $desktop-padding * $multiplier;
+  @if $responsive == true {
+    @media screen and (max-width: $breakpoint-sm-max){
+      padding-left: $mobile-padding * $multiplier;
+      padding-right: $mobile-padding * $multiplier;
+    }
+  }
+}
+@mixin content-container-padding-vert($multiplier: 1, $responsive: true){
+  // padding-top: $desktop-padding * $multiplier;
+  // padding-bottom: $desktop-padding * $multiplier;
+  padding-top: 0;
+  padding-bottom: 0;
+  @if $responsive == true {
+    @media screen and (max-width: $breakpoint-sm-max){
+      // padding-top: $mobile-padding * $multiplier;
+      // padding-bottom: $mobile-padding * $multiplier;
+      padding-top:0;
+      padding-bottom: 0;
+    }
+  }
+}
+@mixin content-area-width{
+  width: 100%;
+  max-width: $content-area-width;
+  margin-left: auto;
+  margin-right: auto;
+}
+@mixin content-area-container-style{
+  background-color: $content-area-background;
+}
+@mixin global-link-style($bg:$color-primary, $hoverBg:$color-gray-md, $color:$color-white, $hoverColor:$color-white){
+  background-color: $bg;
+  transition: background-color $transition-standard, color $transition-standard;
+  -webkit-appearance: none;
+  text-decoration: none;
+  color: $color;
+  position: relative;
+  z-index: 1;
+  &:before {
+    content:'';
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(135deg, transparent 0%, rgba(black, 0.2) 100%);
+    z-index: -1;
+  }
+
+  &:focus,
+  &:hover{
+    background-color: $hoverBg;
+    color: $hoverColor;
+  }
+}
+@mixin global-link-container($padding: 20px 30px){
+  display: block;
+  padding: $padding;
+}
+@mixin global-link-text($align: center){
+  font-family: $font-secondary;
+  font-size: 16px;
+  line-height: 1.19;
+  font-weight: 400;
+  text-align: $align;
+  @include tablet-sm {
+    font-size: 14px;
+  }
+  @include mobile {
+    font-size: 14px;
+  }
+}
+@mixin global-link-icon-style($align: center, $color: $color-white, $hover: $color-primary){
+  display: flex;
+  flex-flow: row;
+  justify-content: $align;
+  align-items: center;
+  &:after{
+    color: $color;
+    display: inline-block;
+    margin-left: 1ch;
+    transition: color $transition-standard;
+  }
+  &:hover:after{
+    color: $hover;
+  }
+}
+@mixin global-link-icon-character($character: "\f0da", $font: FontAwesome){
+  &:after{
+    content: $character;
+    font-family: $font;
+    font-size: inherit;
+  }
+}
+
+
+// Page Element Header
+@mixin page-element-header() {
+  font-family: $font-primary;
+  font-size: 36px;
+  line-height: 1.156;
+  font-weight: 600;
+  text-transform: none;
+  margin-bottom: 20px;
+  color: $color-secondary;
+  @include mobile {
+    font-size:32px;
+    margin-bottom: 15px;
+  }
+}
+
+@mixin hero-banner-overlay {
+  content:'';
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top:0;
+  left: 0;
+  background-image: linear-gradient(135deg, $color-secondary 0%, black 100%);
+  z-index: 1;
+  opacity: 0.1;
+}
+
+
+
+
+
+// Page Manager
+$page-manager-width: 60px;
+
+// Page Title
+$page-title-full-width: true;
+$page-title-full-width-text: false;
+$page-title-container-background: 100%;
+$page-title-text-color: $color-white;
+$page-title-font-size: 60px;
+$page-title-text-case: uppercase;
+$page-title-font-weight: 700;
+$page-title-text-align: center;
+
+@mixin page-title-container{
+  position: relative;
+  &:after {
+    @include hero-banner-overlay;
+  }
+  // site page title container css here
+}
+@mixin page-title-text{
+  border-bottom: 0;
+  font-family:$font-primary;
+  font-size:$page-title-font-size;
+  font-weight:$page-title-font-weight;
+  text-align:$page-title-text-align;
+  color:$page-title-text-color;
+  @include mobile {
+    font-size: 22px;
+  }
+  @include tablet {
+    font-size: 42px;
+  }
+
+  // site page title text css here
+}
+@mixin page-title-image-container{
+  height: 400px!important;
+  display: flex;
+  align-items: center;
+  position: relative;
+  background-size: cover;
+  &:after {
+    @include hero-banner-overlay;
+  }
+}
+
+// Account Navigation Options
+$account-nav-bottom: false;
+$account-nav-mobile-bottom: true;
+$account-nav-background: #23282b;
+$account-nav-color: #FFF;
+$account-nav-secondary-color: $account-nav-color;
+$account-nav-secondary-color-hover: darken($account-nav-color, 20%);
+$account-nav-font-size: 14px;
+$account-nav-height-desktop: 40px;
+$account-nav-height-mobile: 44px;
+$account-nav-z-index: 399;
+$account-nav-icon-width: 32px;
+
+$site-tagline-spacing: 15px; // Need this for "_source/sass/_navigation/_network_nav_bar.scss" —— Try to phase this out
+
+
+// General Navigation
+$pages-hidden-in-user-mode: 'home'; // Example: "teams", "about us", "home";
+
+
+// Title Bar Options
+$nav-title-bar-height: 0px;
+$nav-title-bar-height-fixed: .01px;
+$nav-title-bar-band-background-color: seashell;
+$nav-title-bar-text-color: #333;
+$nav-title-bar-font-family: null;
+$nav-title-bar-font-size: 14px;
+$nav-title-bar-line-height: 1;
+$nav-title-bar-text-case: uppercase;
+$nav-title-bar-text-weight: 700;
+
+
+// Main Navigation Options
+$main-nav-width-max: $content-area-width;
+$main-nav-height: 100px;
+$main-nav-height-fixed: 100px;
+$main-nav-band-background-color: $color-white;
+$main-nav-flex-alignment: center;
+$main-nav-item-padding: 10px;
+
+$main-nav-cascade-styles: true;
+$main-nav-child-indicator: false;
+$main-nav-child-indicator-cascade-styles: false;
+$main-nav-more-plus-buffer: true;
+$main-nav-font-family: $font-secondary;
+$main-nav-font-size: 16px;
+$main-nav-text-case: uppercase;
+$main-nav-text-align: center;
+$main-nav-text-weight: 700;
+$main-nav-text-color: $color-secondary;
+$main-nav-text-color-hover: $color-primary;
+$main-nav-text-color-selected: $main-nav-text-color-hover;
+$main-nav-text-color-disabled: $color-gray-md-2;
+$main-nav-item-background-color: transparent;
+$main-nav-item-background-color-hover: transparent;
+$main-nav-item-background-color-selected: $main-nav-item-background-color-hover;
+$main-nav-item-background-color-disabled: transparent;
+
+
+// Dropdown Navigation Options
+$dropdown-nav-min-width: 200px;
+$dropdown-nav-min-height: 35px;
+$dropdown-nav-transition-distance: 20px;
+$dropdown-nav-item-padding: $main-nav-item-padding;
+
+$dropdown-nav-cascade-styles: true;
+$dropdown-nav-child-indicator: true;
+$dropdown-nav-child-indicator-cascade-styles: true;
+$dropdown-nav-container-background-color: $color-white;
+$dropdown-nav-container-border-size: 5px;
+$dropdown-nav-container-border: 0;
+$dropdown-nav-text-align: left;
+$dropdown-nav-text-case: none;
+$dropdown-nav-text-weight: 600;
+$dropdown-nav-font-family: $main-nav-font-family;
+$dropdown-nav-font-size: 16px;
+$dropdown-nav-line-height: 1.2;
+$dropdown-nav-text-color: $main-nav-text-color;
+$dropdown-nav-text-color-hover: $main-nav-text-color-hover;
+$dropdown-nav-text-color-selected: $dropdown-nav-text-color-hover;
+$dropdown-nav-text-color-disabled: $main-nav-text-color-disabled;
+$dropdown-nav-item-background-color: transparent;
+$dropdown-nav-item-background-color-hover: $main-nav-item-background-color-hover;
+$dropdown-nav-item-background-color-selected: $dropdown-nav-item-background-color-hover;
+$dropdown-nav-item-background-color-disabled: $main-nav-item-background-color-disabled;
+
+$dropdown-nav-2-container-background-color: $dropdown-nav-container-background-color;
+$dropdown-nav-2-container-border-size: null;
+$dropdown-nav-2-container-border: null;
+$dropdown-nav-2-text-align: null;
+$dropdown-nav-2-text-case: null;
+$dropdown-nav-2-text-weight: null;
+$dropdown-nav-2-font-family: null;
+$dropdown-nav-2-font-size: null;
+$dropdown-nav-2-line-height: null;
+$dropdown-nav-2-text-color: null;
+$dropdown-nav-2-text-color-hover: null;
+$dropdown-nav-2-text-color-selected: null;
+$dropdown-nav-2-text-color-disabled: null;
+$dropdown-nav-2-item-background-color: null;
+$dropdown-nav-2-item-background-color-hover: null;
+$dropdown-nav-2-item-background-color-selected: null;
+$dropdown-nav-2-item-background-color-disabled: null;
+
+
+// Sub Navigation Options
+$sub-nav-hide-on-home: true;
+$sub-nav-more-plus-buffer: true;
+$sub-nav-font-family: $main-nav-font-family;
+$sub-nav-font-size: 14px;
+$sub-nav-text-color: $color-gray-md;
+$sub-nav-text-color-hover: $sub-nav-text-color;
+$sub-nav-text-color-disabled: $color-gray;
+$sub-nav-item-background-color-disabled: transparent;
+$sub-nav-band-background-color: $color-white;
+$sub-nav-height: 50px;
+$sub-nav-height-fixed: 40px;
+$sub-nav-item-background-color: transparent;
+$sub-nav-item-background-color-hover: $sub-nav-item-background-color;
+$sub-nav-item-text-case: none;
+$sub-nav-item-text-weight: 400;
+$sub-nav-item-padding: 10px;
+$sub-nav-flex-alignment: flex-start;
+
+// Sub Navigation Title Options
+$sub-nav-title-font-family: $main-nav-font-family;
+$sub-nav-title-font-size: $sub-nav-font-size;
+$sub-nav-title-height: $sub-nav-height;
+$sub-nav-title-text-case: capitalize;
+$sub-nav-title-text-weight: 700;
+$sub-nav-title-background-color: transparent;
+$sub-nav-title-text-color:$sub-nav-text-color ;
+$sub-nav-title-padding: 10px;
+$sub-nav-title-divider-content: '\f105';
+$sub-nav-title-divider-font: 'fontawesome';
+
+// Sub Navigation Dropdown Options
+$sub-nav-dropdown-padding: $sub-nav-item-padding;
+$sub-nav-dropdown-font-family:$main-nav-font-family ;
+$sub-nav-dropdown-font-size: 14px;
+$sub-nav-dropdown-text-case: none;
+$sub-nav-dropdown-line-height: 1.2;
+$sub-nav-dropdown-min-width: 300px;
+$sub-nav-dropdown-min-height: 40px;
+$sub-nav-dropdown-transition-distance: 20px;
+$sub-nav-dropdown-container-background-color:$sub-nav-band-background-color;
+$sub-nav-dropdown-container-border: 0;
+$sub-nav-dropdown-text-align: left;
+
+
+// Search (Desktop) Options
+$site-search-height: 26px;
+$site-search-spacing: 8px;
+$site-search-border-width: 1px;
+$site-search-input-font-size: 14px;
+$site-search-input-color: #666;
+$site-search-input-border-color: rgba(255,255,255,0.1);
+$site-search-input-background: rgba(255,255,255,0.8);
+$site-search-input-background-focus: rgba(255,255,255,1);
+$site-search-submit-color: #fff;
+$site-search-submit-border-color: rgba(255,255,255,0.1);
+$site-search-submit-background: darken($color-primary, 10%);
+$site-search-submit-background-focus: darken($color-primary, 20%);
+$site-search-submit-font-size: 12px;
+
+
+// Desktop Navigation Sizes
+$desktop-nav-height: $nav-title-bar-height + $main-nav-height + $sub-nav-height;
+$desktop-nav-height-fixed: $nav-title-bar-height-fixed + $main-nav-height-fixed + $sub-nav-height-fixed;
+$desktop-nav-height-no-subnav: $nav-title-bar-height + $main-nav-height;
+$desktop-nav-height-no-subnav-fixed: $nav-title-bar-height-fixed + $main-nav-height-fixed;
+$nav-placeholder-height: $desktop-nav-height; // Remove after replacing these in code base
+$nav-placeholder-height-fixed: $desktop-nav-height-fixed; // Remove after replacing these in code base
+
+
+// Site Logo Options
+$site-logo-size: 100px;  // Remove after replacing these in code base
+$site-logo-size-fixed: 100px;  // Remove after replacing these in code base
+$site-logo-width-desktop: 176px;
+$site-logo-height-desktop: 100px;
+$site-logo-width-desktop-fixed: 176px;
+$site-logo-height-desktop-fixed: 100px;
+$site-logo-width-mobile: 114px;
+$site-logo-height-mobile: 29px;
+$site-logo-padding: 0px;
+$site-logo-offset: $site-logo-width-desktop;
+$site-logo-offset-fixed: $site-logo-width-desktop-fixed;
+
+// Mobile Nav Bar
+$mobile-nav-background-color: #FFF;
+$mobile-nav-toggle-right: true;
+$mobile-nav-toggle-width: 44px;
+$mobile-nav-toggle-height: 44px;
+$mobile-nav-toggle-position: right;
+$mobile-nav-open-toggle-position-default: true;
+$mobile-nav-height: 50px;
+$mobile-nav-align: center;
+$mobile-nav-justification: left;
+
+
+// Footer Colophon
+$footer-colophon-se-logo-black-color: false;
+$footer-colophon-se-logo-white-color: true;
+$footer-colophon-se-logo-white: false;
+$footer-colophon-max-width: $content-area-width;
+$footer-colophon-band-background-color: rgba(0,0,0,0.1);
+$footer-colophon-content-background-color: transparent;
+$footer-colophon-item-padding: 10px;
+$footer-colophon-flex-justification: flex-start;
+$footer-colophon-flex-align: center;
+$footer-colophon-font-size: 12px;
+$footer-colophon-line-height: 1.75;
+$footer-colophon-text-case: none;
+$footer-colophon-text-color: $color-gray;
+$footer-colophon-link-color: $color-gray;
+$footer-colophon-link-color-hover: $color-gray;
+
+
+// Site Background
+$site-background-image-full-height: false;
+
+
+// Page Banner
+$site-banner-full-width: true;
+$site-banner-full-width-text: false;
+
+$site-banner-padding: 15px;
+$site-banner-fixed-min-height: 100px;
+$site-banner-font-size: 20px;
+$site-banner-font-size-min: 20px;
+$site-banner-font-size-max: 60px;
+$site-banner-text-color: $color-white;
+$site-banner-font-family: $font-primary;
+$site-banner-line-height: 1.52;
+$site-banner-font-weight: 700;
+$site-banner-text-case: uppercase;
+$site-banner-text-align: center;
+
+@mixin site-banner-container{
+  height: 400px;
+  position: relative;
+  @include mobile {
+    height: 95px!important;
+  }
+  @include tablet {
+    height: 200px!important;
+  }
+  &:after {
+    @include hero-banner-overlay;
+  }
+  // site banner container css here
+}
+
+$site-banner-headline-text-color: $color-white;
+$site-banner-headline-font-size: 60px;
+$site-banner-headline-font-family: $font-primary;
+$site-banner-headline-line-height: 1.52;
+$site-banner-headline-font-weight: 700;
+$site-banner-headline-text-case: uppercase;
+$site-banner-headline-text-align: center;
+$site-banner-title-text-color: $color-white;
+$site-banner-title-font-size: 60px;
+$site-banner-title-font-family: $font-primary;
+$site-banner-title-line-height: 1.52;
+$site-banner-title-font-weight: 700;
+$site-banner-title-text-case: uppercase;
+$site-banner-title-text-align: center;
+$site-banner-tagline-text-color: $color-white;
+$site-banner-tagline-font-size: 20px;
+$site-banner-tagline-font-family: $font-secondary;
+$site-banner-tagline-line-height: 1.6;
+$site-banner-tagline-font-weight: 700;
+$site-banner-tagline-text-case: none;
+$site-banner-tagline-text-align: center;
+
+
+// Element Options
+$element-options-flex-justification: flex-end;
+$element-options-font-size: 12px;
+$element-options-text-wieght: 400;
+$element-options-text-color: $color-gray-md;
+$element-options-text-color-hover: $color-hover-primary;
+$element-options-font-family: $font-secondary;
+$element-options-icon-margin: .7ch;
+$element-options-icon-text-space: 1.5ch;
+
+
+// Tabs
+$element-tabs-item-padding: 10px 15px;
+$element-tabs-item-text-color: $color-secondary;
+$element-tabs-item-text-color-hover: white;
+$element-tabs-item-background-color: white;
+$element-tabs-item-background-color-hover: $color-primary;
+$element-tabs-item-text-case: null;
+$element-tabs-item-font-family: null;
+$element-tabs-item-font-weight: 400;
+$element-tabs-item-font-size: 16px;
+$element-tabs-item-text-line-height: 1.5;
+$element-tabs-item-border-size: 1px;
+$element-tabs-item-border-position: bottom;
+$element-tabs-item-border-color: $color-gray;
+$element-tabs-item-border-color-hover: $element-tabs-item-border-color;
+
+
+// Content Typography (WYSIWYG editor content)
+@mixin content-typography-headers(){
+  h1, h2, h3, h4, h5, h6{
+    font-family: $font-primary;
+  }
+  h1{
+    font-size: 60px;
+    line-height: 1;
+    font-weight: 700;
+    color: $color-secondary;
+  }
+  h2{
+    font-size: 42px;
+    line-height: 1;
+    font-weight: 600;
+    color: $color-secondary;
+  }
+  h3{
+    font-size: 36px;
+    line-height: 1.36;
+    font-weight: 600;
+    color: $color-secondary;
+    margin-bottom: 0;
+    @include mobile {
+      font-size: 22px;
+      line-height: 1.59;
+    }
+  }
+  h4{
+    font-size: 24px;
+    line-height: 1.33;
+    font-weight: 600;
+    color: $color-secondary;
+    @include mobile {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+  }
+  h5{
+    font-size: 22px;
+    line-height: 1.27;
+    font-weight: 600;
+    color: $color-secondary;
+  }
+  h6{
+    font-size: 20px;
+    line-height: 1.4;
+    font-weight: 600;
+    color: $color-secondary;
+  }
+}
+
+@mixin content-typography-anchors(){
+  a {
+    color: $color-primary;
+    font-family: $font-secondary;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color $transition-linear;
+    &:hover {
+      color: $color-hover-primary;
+    }
+  }
+}
+
+@mixin content-typography-blockquote(){
+  blockquote {
+    font-weight: 600;
+    font-size: 20px;
+    color: $color-gray-md;
+    @media only screen and (min-width: 768px) {
+      font-size: 22px;
+    }
+    @media only screen and (min-width: 1440px) {
+      font-size: 24px;
+    }
+  }
+}
+
+@mixin content-typography-other(){
+  // catchall for anything else you need
+}
+
+
+// Legacy Itasca Table Variables
+// Used elsewhere: Calendar, event aggs, etc...
+$table-body-background: #fff; // legacy, not used in base tables
+$table-cell-spacing: 1px; // legacy, not used in base tables
+
+// Core Table Padding (needs a bit more refactoring)
+$core-table-header-padding-vertical: 3px;
+$core-table-header-padding-horizontal: 12px;
+$core-table-cell-padding-vertical: 2px;
+$core-table-cell-padding-horizontal: 12px;
+
+// Core Table Borders
+$core-table-cell-border-size: 1px;
+$core-table-cell-border-color: $color-gray-lt;
+$core-table-cell-border-width: 1px;
+$core-table-cell-border: 0 $core-table-cell-border-width $core-table-cell-border-width 0;
+$core-table-border-left-width: $core-table-cell-border-width;
+$core-table-border-right-width: $core-table-cell-border-width;
+$core-table-border-top-width: $core-table-cell-border-width;
+$core-table-border-bottom-width: $core-table-cell-border-width;
+
+// Core Table Body Typography
+$core-table-body-font-family: $font-primary;
+$core-table-body-font-size: 14px;
+$core-table-body-line-height: 1.2;
+$core-table-body-font-weight: 400;
+$core-table-body-font-color: null;
+
+// Core Table Body Layout
+$core-table-body-min-height: 40px;
+$core-table-body-background-color: white;
+$core-table-body-background-color-odd: $core-table-body-background-color;
+$core-table-body-background-color-even: $color-gray-lt;
+$core-table-body-hightlight-color-odd: darken($core-table-body-background-color-odd, 3%);
+$core-table-body-hightlight-color-even: darken($core-table-body-background-color-even, 3%);
+
+// Core Table Header Typography
+$core-table-header-font-family: $font-primary;
+$core-table-header-font-size: 14px;
+$core-table-header-line-height: 1.2;
+$core-table-header-font-weight: 400;
+$core-table-header-font-color: white;
+
+// Core Table Header Layout
+$core-table-header-min-height: 50px;
+$core-table-header-background-color: $color-primary;
+$core-table-header-hightlight-color: darken($core-table-header-background-color, 5%);
+
+// Core Table Sorting
+$core-table-sort-hover-color: rgba($core-table-header-font-color, .7);
+$core-table-sort-icon-default: '\f0dc';
+$core-table-sort-icon-up: '\f0de';
+$core-table-sort-icon-down: '\f0dd';
+$core-table-sort-icon-size: $core-table-header-font-size;
+$core-table-sort-icon-padding: $core-table-sort-icon-size+4px;
+$core-table-sort-icon-offset: $core-table-header-padding-horizontal+$core-table-sort-icon-padding;
+
+
+// Mixins/Functions
+@mixin responsive-font($responsive, $min, $max: false, $fallback: false) {
+  $responsive-unitless: $responsive / ($responsive - $responsive + 1);
+  $dimension: if(unit($responsive) == 'vh', 'height', 'width');
+  $min-breakpoint: $min / $responsive-unitless * 100;
+
+  @media (max-#{$dimension}: #{$min-breakpoint}) {
+    font-size: $min;
+  }
+
+  @if $max {
+    $max-breakpoint: $max / $responsive-unitless * 100;
+
+    @media (min-#{$dimension}: #{$max-breakpoint}) {
+      font-size: $max;
+    }
+  }
+
+  @if $fallback {
+    font-size: $fallback;
+  }
+
+  font-size: $responsive;
+}
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@function aspect-to-percent($target, $container) {
+  @return ($container / $target) * 100%;
+}

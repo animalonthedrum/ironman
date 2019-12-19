@@ -1,0 +1,127 @@
+#rosterPlayerConnections-search,
+.rosterPlayerToConnect                    { background: #fdf4bc; border: 1px solid #fde686; margin: 10px 0; padding: 10px; }
+.rosterPlayerToConnect img                { float: left; height: 50px; margin: 0 5px 0 0; width: 50px; }
+.rosterPlayerToConnect h2                 { margin: 0 0 5px 0; }
+.rosterPlayerToConnect h3                 { margin: 5px 0; }
+#lightboxBody .rosterPlayerConnections p  { line-height: 140%; margin-bottom: 10px; }
+
+.rosterPlayerConnection-header            { padding: 5px 0 0; }
+.rosterPlayerConnection-header img        { margin: -5px 10px 0 0; height: 70px; width: 70px; }
+
+.rosterPlayerToConnect .rosterPlayerConnections { border-top: 1px dotted #fde686; margin: 10px 0 -10px; padding: 10px 0 0; }
+
+.rosterPlayerConnections                  { clear: both; line-height: 18px; }
+.rosterPlayerConnections p,
+.rosterPlayerConnections h3               { clear: both; }
+.rosterPlayerConnections p strong         { font-size: 13px; }
+.rosterPlayerConnections p img            { float: left; height: 50px; margin: 0 10px 0 0; width: 50px; }
+
+#rosterPlayerConnections-search h3,
+#rosterPlayerConnections-search-results h3 { margin-bottom: 5px; }
+
+#rosterPlayerConnections-search-results   { margin: 0 10px; }
+#rosterPlayerConnections-search-results i { background: url($asset_path_for+"/app_images/miniLoader.gif") 0 50% no-repeat; padding-left: 20px; }
+
+.rosterPlayerInfoElement-template{
+  margin-bottom: 10px;
+  position: relative;
+  display: block;
+  margin: auto;
+  width: 100%;
+}
+
+.rosterPlayerConnection-checked, .rosterPlayerConnection-unchecked { border-radius: 4px; margin: 0 5px 0 0; padding: 2px 3px; }
+.rosterPlayerConnection-checked    { background: #fcf0ab; border: 1px solid #fde686; }
+.rosterPlayerConnection-unchecked  { background: #fbe98b; border: 1px solid #fccd22; }
+
+
+.defaultPlayerInfo h3 {
+  padding-top: 31px;
+}
+
+#rosterPlayerConnections-button {
+  background: #fff;
+  color: #333;
+  cursor: pointer;
+  font-size: 12px;
+  line-height: normal;
+  padding: 5px 0 5px 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  .teamLogo-tiny {
+    display: inline-block;
+    margin-right: 3px;
+    vertical-align: middle;
+  }
+  i {
+    display: inline-block;
+    margin-left: 4px;
+    margin-top: -2px;
+    vertical-align: middle;
+    &:after {
+      border-radius: 20px;
+      border: 1px solid #777;
+      content: "\f078";
+      display: inline-block;
+      font: 12px/1em FontAwesome;
+      padding: 4px;
+      text-align: center;
+    }
+  }
+  &.rpc-open i:after {
+    content: "\f077";
+  }
+}
+
+#rosterPlayerConnections-dropdown {
+  box-shadow: none;
+  font-size: 12px;
+  > div {
+    background: #fff;
+    border: 1px solid #777;
+    padding: 8px 10px;
+    position: absolute;
+    top: 31px;
+  }
+  h3 {
+    font: inherit;
+    float: none;
+    margin: 0;
+    padding: 0 0 2px;
+    width: auto;
+  }
+  li {
+    list-style: none;
+    padding: 5px 0 0;
+  }
+  .teamLogo-tiny {
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+}
+
+@media (max-width: 499px) {
+  .defaultPlayerInfo h3 {
+    padding-top: 0;
+  }
+  #rosterPlayerConnections-button {
+    position: static;
+    display: block;
+    margin-top: 10px;
+  }
+  #rosterPlayerConnections-dropdown {
+    left: 0;
+    position: absolute;
+    text-align: left;
+    width: 100%;
+    > div {
+      display: table;
+      left: 50%;
+      position: relative;
+      top: 100%;
+      transform: translatex(-50%);
+    }
+  }
+}

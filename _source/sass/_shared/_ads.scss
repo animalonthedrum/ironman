@@ -1,0 +1,52 @@
+
+$ad-spacing: 15px !default;
+$right-ad-column-breakpoint: 800px !default;
+
+.ad-wrapper {
+  overflow: hidden;
+  text-align: center;
+  clear: both;
+
+  *:not(.pageElement) > & {
+    margin: 0 $ad-spacing;
+    padding: $ad-spacing 0;
+  }
+
+  img {
+    display: block;
+    margin: auto;
+  }
+
+  > * { transform-origin: 0 0; }
+
+}
+
+// RIGHT AD COLUMN
+
+.right-column-ad-wrapper {
+  @extend %clearfix;
+}
+
+// Hide ads while tab content is loading
+#contentTabsLoader:not([style*="display:none"]):not([style*="display: none"]) ~ .right-column-ad-wrapper .right-column-ads { display: none; }
+
+.right-column-ad-content {
+  width: 66.666%;
+  float: left;
+
+  @media only screen and (max-width: #{$right-ad-column-breakpoint}) { width: 100%; }
+}
+
+.right-column-ads {
+  width: 33.333%;
+  float: right;
+
+  @media only screen and (max-width: #{$right-ad-column-breakpoint}) { width: 100%; }
+
+  @media only screen and (min-width: #{$right-ad-column-breakpoint + 1}) {
+    .ad-wrapper {
+      margin-right: 0;
+      padding-bottom: 0;
+    }
+  }
+}

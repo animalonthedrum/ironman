@@ -1,0 +1,282 @@
+// From Theme
+@media only screen and (max-width: 480px) {
+  .teamLogo-medium, .teamLogor-medium{width:70px !important; height:23px !important;}
+}
+
+/* Sport/League/Level/Team Name
+-------------------------------------------------------------------- */
+#sport-header {
+  .sport-colors {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: $base-padding $base-padding $base-padding/2;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+
+    .team-logo-wrapper {
+      display: block;
+      height: 75px;
+      width: 75px;
+      margin-right: 20px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+
+      @media only screen and (max-width: 769px) {
+        width: 44px;
+        height: 44px;
+      }
+
+      &,
+      &:hover {
+        color:#ccc;
+      }
+
+      &.nologo{
+        &:after{
+          content: '';
+          display: block;
+          width: 7px;
+          height: 100%;
+          margin: auto;
+          border-left-width: 8px;
+          border-right-width: 8px;
+          border-left-style: solid;
+          border-right-style: solid;
+          background: transparent;
+
+          @media only screen and (max-width: 768px) {
+            width: 3px;
+            border-right-width: 4px;
+            border-left-width: 4px;
+          }
+        }
+      }
+    }
+
+    h2 {
+      width: 100%;
+      max-width: 75%;
+      font: $sports-page-heading-font;
+
+      @media only screen and (max-width: 768px) {
+        font: bold 1.3em/1.4em $font-primary;
+      }
+
+      a {
+        display: inline-block;
+        text-decoration: none;
+      }
+    }
+    div.player_photo {
+      border: 3px solid $link_color;
+      background-color: $link_color;
+      left: 10px;
+      top: 10px;
+      height: 70px;
+      width: 70px;
+    }
+    .teamLogo-small {
+      font-size: 18px;
+    }
+  }
+
+  .abs0,
+  .abs0r { position: absolute; overflow: hidden; width: 0; height: 0;}
+  .abs0  { left: 0; }
+  .abs0r { right: 0; }
+
+  /* Team Colors
+  -------------------------------------------------------------------- */
+  /* .color[0,1,2][r][-sm,-m,-l,-xl] (defaults to left, large) */
+
+  /* Borders -> */           /* Top */                      /* Right */                                         /* Left */                                       /* Bottom */
+
+  /* Separator Color */
+  .color0-sm,  .color0-m   { border-top: 12px solid #fff;   border-right: 36px  solid transparent !important;   border-left: 36px  solid #fff;                    border-bottom: 12px solid transparent !important; display: none; }
+  .color0,     .color0-l   { border-top: 22px solid #fff;   border-right: 66px  solid transparent !important;   border-left: 66px  solid #fff;                    border-bottom: 22px solid transparent !important; display: none; }
+  .color0-xl               { border-top: 32px solid #fff;   border-right: 96px  solid transparent !important;   border-left: 96px  solid #fff;                    border-bottom: 32px solid transparent !important; display: none; }
+  .color0r-sm, .color0r-m  { border-top: 12px solid #fff;   border-right: 36px  solid #fff;                     border-left: 36px  solid transparent !important;  border-bottom: 12px solid transparent !important; display: none; }
+  .color0r,    .color0r-l  { border-top: 22px solid #fff;   border-right: 66px  solid #fff;                     border-left: 66px  solid transparent !important;  border-bottom: 22px solid transparent !important; display: none; }
+  .color0r-xl              { border-top: 32px solid #fff;   border-right: 96px  solid #fff;                     border-left: 96px  solid transparent !important;  border-bottom: 32px solid transparent !important; display: none; }
+
+  /* Primary Color */
+  .color1-sm,  .color1-m   { border-top: 10px solid #fff;   border-right: 30px  solid transparent !important;   border-left: 30px  solid #fff;                    border-bottom: 10px solid transparent !important; display: none; }
+  .color1,     .color1-l   { border-top: 20px solid #fff;   border-right: 60px  solid transparent !important;   border-left: 60px  solid #fff;                    border-bottom: 20px solid transparent !important; display: none; }
+  .color1-xl               { border-top: 30px solid #fff;   border-right: 90px  solid transparent !important;   border-left: 90px  solid #fff;                    border-bottom: 30px solid transparent !important; display: none; }
+  .color1r-sm, .color1r-m  { border-top: 10px solid #fff;   border-right: 30px  solid #fff;                     border-left: 30px  solid transparent !important;  border-bottom: 10px solid transparent !important; display: none; }
+  .color1r,    .color1r-l  { border-top: 20px solid #fff;   border-right: 60px  solid #fff;                     border-left: 60px  solid transparent !important;  border-bottom: 20px solid transparent !important; display: none; }
+  .color1r-xl              { border-top: 30px solid #fff;   border-right: 90px  solid #fff;                     border-left: 90px  solid transparent !important;  border-bottom: 30px solid transparent !important; display: none; }
+
+
+  /* Secondary Color */
+  .color2-sm,  .color2-m   { border-top: 15px solid #fff;   border-right: 45px  solid transparent !important;   border-left: 45px  solid #fff;                    border-bottom: 15px solid transparent !important; display: none; }
+  .color2,     .color2-l   { border-top: 25px solid #fff;   border-right: 75px  solid transparent !important;   border-left: 75px  solid #fff;                    border-bottom: 25px solid transparent !important; display: none; }
+  .color2-xl               { border-top: 35px solid #fff;   border-right: 105px solid transparent !important;   border-left: 105px solid #fff;                    border-bottom: 35px solid transparent !important; display: none; }
+  .color2r-sm, .color2r-m  { border-top: 15px solid #fff;   border-right: 45px  solid #fff;                     border-left: 45px  solid transparent !important;  border-bottom: 15px solid transparent !important; display: none; }
+  .color2r,    .color2r-l  { border-top: 25px solid #fff;   border-right: 75px  solid #fff;                     border-left: 75px  solid transparent !important;  border-bottom: 25px solid transparent !important; display: none; }
+  .color2r-xl              { border-top: 35px solid #fff;   border-right: 105px solid #fff;                     border-left: 105px solid transparent !important;  border-bottom: 35px solid transparent !important; display: none; }
+
+
+  /* Edging
+  -------------------------------------------------------------------- */
+  .edge {
+    background: transparent url($asset_path_for+"/app_images/sport-header/edge.png") 0 0 repeat-x;
+    height: 12px;
+    width: 100%;
+  }
+  .edge-tools {
+    background: transparent url($asset_path_for+"/app_images/sport-header/tools-edge.png") 0 0 repeat-x;
+    height: 12px;
+    width: 100%;
+  }
+}
+
+/* Team Logo
+-------------------------------------------------------------------- */
+
+/*
+  Logo sizes are...
+  20 x 20 - tiny
+  60 x 20 - small
+  90 x 30 - medium
+  120 x 40 - large
+  150 x 50 - extra large
+  300 x 100 - print
+*/
+
+/*Shape*/
+.teamLogo,
+.teamLogo-tiny,
+.teamLogo-small,
+.teamLogo-medium,
+.teamLogo-large,
+.teamLogo-extra_large,
+.teamLogo-print,
+.teamLogor,
+.teamLogor-tiny,
+.teamLogor-small,
+.teamLogor-medium,
+.teamLogor-large,
+.teamLogor-extra_large,
+.teamLogor-print {
+  display: block;
+  text-decoration: none;
+}
+
+/*Size*/
+.teamLogo-tiny,
+.teamLogor-tiny {
+  background: url($asset_path_for+"/app_images/team_logos/team-tiny.png") 50% 50% no-repeat;
+  height: 20px !important;
+  width: 20px !important;
+}
+
+.teamLogo-small,
+.teamLogor-small {
+  background: url($asset_path_for+"/app_images/team_logos/team-small.png") 50% 50% no-repeat;
+  height: 20px !important;
+  width: 20px !important;
+}
+
+.teamLogo-medium,
+.teamLogor-medium {
+  background: url($asset_path_for+"/app_images/team_logos/team-medium.png") 50% 50% no-repeat;
+  height: 30px !important;
+  width: 90px !important;
+  border: 1px solid #ddd;
+  background-color: #fafafa;
+}
+
+.teamLogo,
+.teamLogo-large,
+.teamLogor,
+.teamLogor-large {
+  background: url($asset_path_for+"/app_images/team_logos/team-large.png") 50% 50% no-repeat;
+  height: 40px !important;
+  width: 120px !important;
+}
+
+.teamLogo-extra_large,
+.teamLogor-extra_large {
+  background: url($asset_path_for+"/app_images/team_logos/team-extra_large.png") 50% 50% no-repeat;
+  height: 50px !important;
+  width: 150px !important;
+}
+
+.teamLogo-print,
+.teamLogor-print {
+  background: url($asset_path_for+"/app_images/team_logos/team-print.png") 50% 50% no-repeat;
+  height: 100px !important;
+  width: 300px !important;
+}
+
+/*Orientation*/
+.sport-colors {
+  .teamLogo,
+  .teamLogo-medium,
+  .teamLogo-large,
+  .teamLogo-extra_large,
+  .teamLogo-print {
+    left: 15px;
+    top: 10px;
+  }
+
+  .teamLogor,
+  .teamLogor-medium,
+  .teamLogor-large,
+  .teamLogor-extra_large,
+  .teamLogor-print {
+    left: auto;
+    right: 15px;
+    top: 10px;
+  }
+
+  .teamLogo-small {
+    left: 5px;
+    top: 5px;
+  }
+
+  .teamLogor-small {
+    left: auto;
+    right: 5px;
+    top: 5px;
+  }
+}
+
+/* In Tables */
+table,
+.sportTableLabel {
+  .teamLogo,
+  .teamLogo-tiny,
+  .teamLogo-small,
+  .teamLogo-medium,
+  .teamLogo-large,
+  .teamLogo-extra_large,
+  .teamLogo-print {
+    margin-right: 10px;
+    vertical-align: middle;
+    display: inline-block;
+    background-color: #fff;
+
+    // Stretch team logos to fit, but not the placeholder flag icon
+    &:not([style*="background-image:url(/app_images/team_logos/team-tiny.png);"]) {
+      background-size: 100% auto;
+    }
+  }
+
+  .teamLogor,
+  .teamLogor-tiny,
+  .teamLogor-small,
+  .teamLogor-medium,
+  .teamLogor-large,
+  .teamLogor-extra_large,
+  .teamLogor-print {
+    float: right;
+    margin-left: 5px;
+  }
+}

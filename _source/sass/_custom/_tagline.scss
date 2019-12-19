@@ -1,0 +1,123 @@
+.user_mode {
+  .hero-home {
+    padding: 0;
+
+    .column {
+      height: 100%;
+
+      @include touch-device {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+        flex-direction: column;
+      }
+
+      .tagline-container {
+        position: absolute;
+        z-index: 1;
+        background-color: white;
+        right: 0;
+        max-width: 450px;
+        height: 190px;
+        overflow: hidden;
+        bottom: -95px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        padding-left: 65px;
+        padding-right: 65px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include mobile {
+          bottom:-200px;
+        }
+
+        .textBlockElement {
+          display: flex;
+          justify-content: center;
+
+          .text {
+            text-align: center;
+
+            p {
+              padding: 0;
+              margin: 0;
+              font-size: 14px;
+              line-height: 1.4;
+              font-family: $font-secondary;
+              color: $color-gray-md-2;
+
+              @include mobile {
+                font-size: 12px;
+              }
+
+              u {
+                font-size: 20px;
+                color: $color-primary;
+                font-weight: 600;
+                text-decoration: none;
+                font-family: $font-primary;
+
+                @include mobile {
+                  font-size: 18px;
+                }
+              }
+            }
+
+            ol,
+            ul {
+              display: flex;
+              justify-content: space-around;
+              margin: 0;
+              font-family: $font-primary;
+              text-align: left;
+
+              li {
+                list-style: none;
+                padding: 0;
+                width: 33%;
+
+              }
+
+            }
+
+            ol {
+              font-size: 14px;
+              color: $color-gray-md-2;
+            }
+
+            ul {
+              font-size: 36px;
+              color: $color-secondary;
+              font-weight: 600;
+              margin-bottom: 20px;
+
+              li {
+                font-size: 16px;
+                line-height: .5;
+
+                strong {
+                  font-size: 36px;
+                }
+              }
+            }
+          }
+        }
+
+        @include touch-device {
+          position: relative;
+          width: 100%;
+          max-width: 100%;
+          display: flex;
+          left: 0;
+          height: 50%;
+          padding-left: 15px;
+          padding-right: 15px;
+        }
+      }
+    }
+  }
+
+}

@@ -1,0 +1,157 @@
+// # Alerts
+
+// ## Alert Panels
+.pl-alert-panel,
+%pl-alert-panel {
+  background-color: $color-highlight-light;
+  border-color: currentColor;
+  border-style: solid;
+  border-width: 1px 0;
+  box-sizing: border-box;
+  color: $color-highlight;
+  margin-bottom: $layout-spacing-large;
+  margin-top: $layout-spacing-large;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  @include media-small {
+    border-width: 1px;
+  }
+}
+
+// Using nested div for padding allows us to animate the hiding of the outer div
+.pl-alert-panel__inner {
+  padding: $layout-spacing-large $layout-spacing-medium;
+}
+
+
+// ### Alert states
+.pl-alert-panel--is-closed {
+  margin-bottom: 0;
+  margin-top: 0;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height $duration ease-in-out, opacity $duration, margin $duration, visibility 0s $duration;
+  visibility: hidden; // remove content from flow (note that this is delayed)
+}
+
+
+// ### Alert levels
+.pl-alert-panel--success {
+  @extend %pl-alert-panel;
+  background-color: $color-success-light;
+  color: $color-success;
+}
+
+.pl-alert-panel--warn {
+  @extend %pl-alert-panel;
+  background-color: $color-warn-light;
+  color: $color-warn;
+}
+
+.pl-alert-panel--alert {
+  @extend %pl-alert-panel;
+  background-color: $color-alert-light;
+  color: $color-alert;
+}
+
+
+// ### Other alert elements
+.pl-alert-panel__icon {
+  @extend %pl-icon;
+  font-size: 1.75em;
+}
+
+.pl-alert-panel__title {
+  color: $color-content;
+  margin-bottom: $layout-spacing-small;
+}
+
+.pl-alert-panel__content {
+  color: $color-content-light;
+  margin-top: $layout-spacing-small;
+}
+
+.pl-alert-panel__list {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+.pl-alert-panel__close {
+  @extend %pl-close;
+  position: absolute;
+  right: 1em;
+  top: 1em;
+}
+
+
+// ### Global Popup Alerts
+
+$alert-popup-width: 30em;
+$alert-popup-spacing: 1rem;
+$alert-popup-icon-size: 2rem;
+
+.pl-alert-popup__group {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: $z-alerts;
+}
+
+%pl-alert-popup {
+  border: 1px solid currentColor;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .15);
+  clear: right;
+  float: right;
+  margin: $alert-popup-spacing / 2 $alert-popup-spacing / 2 0 0;
+  max-width: $alert-popup-width;
+  padding: $alert-popup-spacing $alert-popup-spacing * 2 + $close-icon-size $alert-popup-spacing $alert-popup-spacing * 1.5 + $alert-popup-icon-size;
+  position: relative;
+}
+
+.pl-alert-popup--info {
+  @extend %pl-alert-popup;
+  background-color: $color-highlight-light;
+  color: $color-highlight;
+}
+
+.pl-alert-popup--success {
+  @extend %pl-alert-popup;
+  background-color: $color-success-light;
+  color: $color-success;
+}
+
+.pl-alert-popup--warn {
+  @extend %pl-alert-popup;
+  background-color: $color-warn-light;
+  color: $color-warn;
+}
+
+.pl-alert-popup--alert {
+  @extend %pl-alert-popup;
+  background-color: $color-alert-light;
+  color: $color-alert;
+}
+
+.pl-alert-popup__icon {
+  fill: currentColor;
+  height: 100%;
+  left: $alert-popup-spacing;
+  max-height: $alert-popup-icon-size + $alert-popup-spacing * 2;
+  position: absolute;
+  top: 0;
+  width: $alert-popup-icon-size;
+}
+
+.pl-alert-popup__close {
+  @extend %pl-close;
+  position: absolute;
+  right: $alert-popup-spacing;
+  top: $alert-popup-spacing;
+}
+
+.pl-alert-popup__message {
+  color: $color-content;
+}

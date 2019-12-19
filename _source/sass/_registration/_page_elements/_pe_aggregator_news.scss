@@ -1,0 +1,268 @@
+/* News Aggregator */
+// MAKE LIQUID!!!!
+// 1. Mixins
+// 2. Global Styles
+// 3. Expanded View
+// 4. Condensed View
+// 5. Comment Count and Read More
+
+// 1. Mixins (Remove when liquid)
+@mixin newsagg-header{
+  font-size: em(16);
+  font-weight: 700;
+  text-transform: none;
+  line-height: 1.35;
+}
+@mixin newsagg-image{
+  display: inline-block;
+  float: left;
+  padding: 3px 15px 7px 0px;
+  img{
+    width: auto;
+    display: block;
+  }
+}
+@mixin newsagg-date-author{
+  color: #666;
+  font-size: em(12);
+  line-height: 1.25;
+  display: inline-block;
+  margin-right: .5em;
+}
+@mixin newsagg-teaser{
+  font-family: $fontTwo;
+  font-size: em(14);
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 1.25;
+  color: $bodyCopyColorTwo;
+  margin: .75em 0;
+}
+
+// 2. Global styles
+.newsAggregatorElement{
+  .item{ @include list-item(); }
+  .dateAuthor{line-height: 1;}
+  .newsAuthor, .newsDate {
+    @include newsagg-date-author;
+  }
+  .articleHasImage{
+    > h4, .newsText, .commentsAndMore, .newsItemHeader{
+      padding-left: 90px;
+    }
+    .newsItemHeader{
+      position: relative;
+      > a{
+        position: absolute;
+        top: -2px;
+        left: 0;
+      }
+    }
+  }
+}
+
+// 
+.aggHeader{
+  @include special-header;
+}
+
+// 3. Expanded Previews
+.expanded{
+  .newsItemHeader > a{
+    @include newsagg-image;
+  }
+  .newsItemElement{
+    h4{ @include newsagg-teaser; }
+  }
+  .newsItemHeader{ 
+    h2 { @include newsagg-header; }
+  }
+  .newsText{
+    clear: both;
+    margin-top: 1em;
+    h1, h2, h3, h4, h5, h6 {
+      text-transform: none;
+      font-weight: 600;
+      font-size: 1em;
+      letter-spacing: normal;
+      margin: 0 0 .5em 0;
+      padding: 0;
+    }
+    ul{
+      list-style-type: disc;
+    }
+  }
+}
+
+// 4. Condensed Previews
+.condensed{
+  li {line-height: 1;}
+  > a{
+    .newsAggregatorElement &{ @include newsagg-image; }
+  }
+  .teaser{ @include newsagg-teaser; }
+  .details, > ul {
+    list-style-type: none;
+    h4{ @include newsagg-header; }
+  }
+  .details{
+    padding-left: 90px;
+  }
+}
+
+// 5. Read more and comments
+.commentCount {
+  .button-commentCount {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    line-height: 1;
+    &:hover{background: none;}
+    .button-image-right {
+      display: none;
+    }
+    .button-content {
+      margin: 0;
+      padding: 0;
+      position: relative;
+      border: none;
+      background: none;
+      color: $link-color;
+      font-weight: 600;
+      top: 2px;
+      transition: all $transition-standard;
+      &:hover {
+        background: none;
+        border: none;
+        color: $hover-color;
+      }
+      &:before {
+        content: "";
+        display: inline-block;
+        position: relative;
+        font-family: FontAwesome;
+        line-height:1;
+        content: "\f0e5";
+        top: -1px;
+        right: 0px;
+        padding-right: .25em;
+      }
+    }
+  }
+}
+.commentsAndMore{
+  line-height: 1;
+  margin: 5px 0 0 0;
+  .readMore{
+    display: inline-block;
+    margin-right: .5em;
+    a{margin: 0;}
+  }
+}
+
+// 7. Responsive
+@include page-element-break(400){
+  .newsAggregatorElement{
+    .articleHasImage{
+      > h4, .newsText, .commentsAndMore, .newsItemHeader{
+        padding-left: 0;
+      }
+      .newsItemHeader{
+        > a{
+          position: relative;
+          top: initial;
+          left: initial;
+        }
+      }
+    }
+    .item > a {
+      position: relative;
+      top: initial;
+      left: initial;    
+    }
+    .condensed .details{
+      padding-left: 0;
+    }
+  }
+}
+
+@include page-element-break(300){
+  .newsAggregatorElement{
+    .articleHasImage{
+      > h4, .newsText, .commentsAndMore, .newsItemHeader{
+        padding-left: 0;
+      }
+      .newsItemHeader{
+        > a{
+          position: relative;
+          float: none;
+        }
+      }
+    }
+    .item > a {
+      position: relative;
+      float: none;
+    }
+    .condensed .details{
+      padding-left: 0;
+    }
+  }
+}
+
+// Hoping to get rid of these gross mqs when we figure out our breakpoints and fully implement bootstrap
+// Until then, these edge cases will have to be defined outside of the "page-element-break" mixin
+@media only screen and (min-width: 769px) and (max-width: 999px){
+  .layout-25-25-50,
+  .layout-50-25-25{
+    .col-md-3, .col-md-6{
+      .newsAggregatorElement{
+        .articleHasImage{
+          > h4, .newsText, .commentsAndMore, .newsItemHeader{
+            padding-left: 90px;
+          }
+          .newsItemHeader{
+            > a{
+              position: absolute;
+              top: -2px;
+              left: 0;
+            }
+          }
+        }
+        .condensed > a {
+          display: inline-block;
+          float: left;
+          padding: 7px 15px 7px 0px;
+        }
+        .condensed .details{
+          padding-left: 90px;
+        }
+      }
+    }
+  }
+  .layout-25-50-25{
+    .col-md-3, .col-md-6{
+      .newsAggregatorElement{
+        .articleHasImage{
+          > h4, .newsText, .commentsAndMore, .newsItemHeader{
+            padding-left: 0;
+          }
+          .newsItemHeader{
+            > a{
+              position: relative;
+              display: block;
+              float: none;
+            }
+          }
+        }
+        .condensed > a {
+          display: block;
+          float: none;
+        }
+        .condensed .details{
+          padding-left: 0;
+        }
+      }
+    }
+  }
+}

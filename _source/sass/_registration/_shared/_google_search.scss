@@ -1,0 +1,25 @@
+// reset some global rules that screw things up
+.gsc-control-cse,
+.gsc-search-box {
+  line-height: initial;
+
+  &, * {
+    word-wrap: normal;
+    box-sizing: initial;
+  }
+}
+
+// update search box alignment in the modal
+.theme-search-modal {
+  
+  .gsc-search-box {
+    display: inline-block;
+    width: 100%;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    background: none;
+  }
+
+  .gsc-clear-button { display: none; }
+}

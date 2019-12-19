@@ -1,0 +1,104 @@
+/* Link Page Element */
+// All Styles - Specific .goToLink icon referenced in _link_icons
+
+// 1. Page Element Styles
+.linkElement{
+  //padding:10px 0px;
+  h4{
+    font-family: $fontOne;
+    font-size: rem(18);
+    font-weight: normal;
+    a{
+      background-color: #fff;
+      //box-shadow: 0 -3px $link-color-darken-10 inset;
+      display: block;
+      color: $link-color;
+      //padding: 10px 20px 10px 10px;
+      margin-bottom: 0px;
+      line-height: 1.3;
+      text-decoration: none;
+      transition: background-color .2s;
+      padding: 0px;
+      &:hover{
+        //background-color: $link-color-darken-10;
+      }
+    }
+  }
+  .goToLink,
+  .emailLink{
+    &:before{
+      display:none;
+    }
+    &:after{
+      color: #6f6f6f;
+      content: ""; // Right Arrow
+      background: url('../images/icons/icon-arrow-right.svg');
+      display:inline-block;
+      line-height: .8em;
+      width: 20px;
+      height: 20px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      margin:0 0 0 15px;
+      padding:0;
+      position: relative;
+      transition: color .2s;
+      vertical-align: middle;
+    }
+/*
+    &:hover:after {
+      color: #fff;
+    }
+*/
+  }
+  .emailLink {
+    &:after{
+      content: "\f003"; // envelope-o
+    }
+  }
+  .text{
+    font-size:rem(16);
+    line-height: 1.5em;
+    margin: auto;
+    color: #6f6f6f;
+    font-style: normal;
+    //background-color: #eee;
+  }
+}
+
+// 2. Admin Panel Styles
+.admin .linkElement{
+  h4{
+    font-family:$fontOne;
+    font-size:rem(18);
+    font-weight:700;
+    background:transparent;
+    padding:10px 0 5px 0;
+    &:hover{
+      background:transparent;
+    }
+    a{
+      display: inline;
+      color:$link-color;
+      padding: 0;
+      margin-bottom: 0px;
+      background:transparent;
+      text-decoration:none;
+      opacity: 1;
+      &:hover{
+        text-decoration:underline;
+      }
+    }
+  }
+  .goToLink{
+    &:before,
+    &:after{
+      display:none;
+    }
+  }
+  .text{
+    font-size:rem(13);
+    padding: 0 0 10px 0;
+    background-color: #fff;
+  }
+}

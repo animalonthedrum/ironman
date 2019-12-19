@@ -1,0 +1,73 @@
+
+// Search Styles
+.theme-search-box{ // Hides Search boxes while navigation is loading
+  display: none;
+  .has-mobile-nav &,
+  .has-main-nav &{
+    display: block;
+  }
+}
+
+.has-main-nav{
+  .theme-search-bar {
+    .theme-search-box {
+      @extend %clearfix;
+      ~ .theme-search-box {
+        margin-left: $site-search-spacing;
+      }
+    }
+
+    .theme-search-input,
+    .theme-search-submit,
+    .theme-search-clear {
+      float: left;
+      height: $site-search-height;
+      line-height: $site-search-height;
+      transition: background $transition-linear;
+    }
+
+    .theme-search-input,
+    .theme-search-clear { font-size: $site-search-input-font-size; }
+
+    .theme-search-input {
+      background: $site-search-input-background;
+      border: $site-search-border-width solid $site-search-input-border-color;
+      border-right: none;
+      padding: 0 ($site-search-height - $site-search-border-width * 2) 0 $site-search-spacing;
+
+      &::-ms-clear { display: none; }
+      &:focus {
+        outline: none;
+        background: $site-search-input-background-focus;
+      }
+    }
+
+    .theme-search-submit {
+      cursor: pointer;
+      color: $site-search-submit-color;
+      font-size: $site-search-submit-font-size;
+      border: $site-search-border-width solid $site-search-submit-border-color;
+      padding: 0 $site-search-spacing;
+      background: $site-search-submit-background;
+
+      &:focus,
+      &:hover { background: $site-search-submit-background-focus; }
+    }
+
+    .theme-search-clear {
+      float: left;
+      text-decoration: none;
+      text-align: center;
+      margin-left: 0 - $site-search-height - $site-search-border-width;
+      margin-right: $site-search-border-width;
+      width: $site-search-height;
+
+      &:before {
+        content: "✕";
+        color: #9ca8af;
+        font-family: FontAwesome;
+        font-size: $site-search-input-font-size;
+      }
+    }
+  }
+}

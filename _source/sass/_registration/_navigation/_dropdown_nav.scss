@@ -1,0 +1,479 @@
+// MODS FOR MOBILE NAV DISPLAY
+
+html.has-mobile-nav {
+  .theme-search-wrapper,
+  .theme-main-nav,
+  .theme-sub-nav,
+  #sn-site-logo,
+  #topNavPlaceholder { display: none; }
+}
+
+@mixin navItemBefore {
+  content: "\f0d7";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: $nav-item-before-size;
+  height: $nav-item-before-size;
+  line-height: $nav-item-before-size;
+  margin-left: $nav-item-before-size/-2;
+  margin-top: $nav-item-before-size/-2;
+  padding-top: 1.25em;
+  text-align: center;
+  font-family: FontAwesome;
+  font-size: $nav-item-before-size;
+  color: $highlight-color;
+  opacity: 0.5;
+  transition:
+    color $transition-linear,
+    top $transition-linear;
+}
+
+@mixin navItemBeforeHover {
+  top: 85%;
+  padding-top: 0;
+  color: $accent-color;
+  opacity: 1;
+}
+
+#topNav {
+  position: absolute;
+  min-width: 250px;
+  left: 0;
+  right: 0;
+  font-family: $fontOne;
+  z-index: 400;
+
+  .collapsed-mobile-nav & { top: $account-nav-height-mobile; }
+
+  // SEARCH BAR
+
+  .theme-search-bar {
+    box-sizing: content-box;
+    height: $site-tagline-height;
+
+    .theme-search-box {
+      position: relative;
+      display: inline-block;
+      margin: -$site-search-height 0;
+      overflow: hidden;
+      @include flex(0,0,auto);
+      height: $site-search-height;
+
+      ~ .theme-search-box { margin-left: $site-search-spacing; }
+    }
+
+    .theme-search-input,
+    .theme-search-submit,
+    .theme-search-clear {
+      float: left;
+      height: $site-search-height;
+      line-height: $site-search-height;
+      transition: background $transition-linear;
+    }
+
+    .theme-search-input,
+    .theme-search-clear { font-size: $site-search-input-font-size; }
+
+    .theme-search-input {
+      background: $site-search-input-background;
+      border: $site-search-border-width solid $site-search-input-border-color;
+      border-right: none;
+      padding: 0 ($site-search-height - $site-search-border-width * 2) 0 $site-search-spacing;
+
+      &::-ms-clear { display: none; }
+      &:focus {
+        outline: none;
+        background: $site-search-input-background-focus;
+      }
+    }
+
+    .theme-search-submit {
+      cursor: pointer;
+      color: $site-search-submit-color;
+      font-size: $site-search-submit-font-size;
+      border: $site-search-border-width solid $site-search-submit-border-color;
+      padding: 0 $site-search-spacing;
+      background: $site-search-submit-background;
+
+      &:focus,
+      &:hover { background: $site-search-submit-background-focus; }
+    }
+
+    .theme-search-clear {
+      float: left;
+      text-decoration: none;
+      text-align: center;
+      margin-left: 0 - $site-search-height - $site-search-border-width;
+      margin-right: $site-search-border-width;
+      width: $site-search-height;
+
+      &:before {
+        content: "✕";
+        color: #9ca8af;
+        font-family: FontAwesome;
+        font-size: $site-search-input-font-size;
+      }
+    }
+  }
+
+  // MAIN & SUB NAV SHARED STYLES
+
+  .theme-nav-style-dropdown,
+  .theme-nav-dropdown {
+    .paywall_image {
+      height: .75em;
+      margin-right: .1em;
+    }
+  }
+
+  .theme-nav-style-dropdown {
+
+    /* Level One */
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: block;
+
+    > .theme-nav-item,
+    > .theme-nav-title {
+      padding: 0;
+      float: left;
+      display: block;
+      height: 100%;
+    }
+
+    > .theme-nav-title a {
+      text-transform: uppercase;
+      color: $sub-nav-title-color;
+      font-weight: 600;
+      display: block;
+      padding: 0 $sub-nav-title-spacing*.7 0 $sub-nav-title-spacing;
+      text-decoration: none;
+
+      &:after {
+        content: '\f105';
+        font-family: FontAwesome;
+        font-size: 1.1em;
+        margin-left: $sub-nav-title-spacing;
+      }
+    }
+
+    > .theme-nav-item {
+      position: relative;
+      border-right: $main-nav-item-separator;
+      cursor: pointer;
+
+      &.hasChild > .theme-nav-link:before { @include navItemBefore; }
+      &.dropdown-open > .theme-nav-link:before { @include navItemBeforeHover; }
+
+      > .theme-nav-link {
+        display: inline-block;
+        background-color:rgba(0,0,0,0);
+
+        &:hover { text-decoration: none; }
+      }
+    }
+
+    // DROPDOWNS (mainnav & subnav)
+
+    .theme-nav-more > a:after {
+      content: "+";
+      margin-left: .3em;
+      display: inline-block;
+      position: relative;
+      top: -.1em;
+    }
+
+    .theme-nav-link {
+      transition:
+        color $transition-linear,
+        background-color $transition-linear;
+    }
+
+    ~ .theme-nav-dropdown {
+      font-size: $dropdown-font-size;
+    	display: none;
+      width: 100%;
+      min-width: $dropdown-width;
+    	position: absolute;
+    	text-align: left;
+    	background: $dropdown-color;
+    	border-top: $dropdown-border;
+    	border-bottom: 3px solid $accent-color;
+    	z-index: 200;
+      transition:
+        opacity $transition-linear,
+        margin-top $transition-linear;
+
+      &.loading:before {
+        content: "Loading...";
+        font-size: 10px;
+        display: block;
+        line-height: 20px;
+        opacity: 0.5;
+        padding: 0 $dropdown-spacing;
+      }
+
+    	> .theme-nav-item {
+      	display: table;
+    		position: relative;
+    		width: 100%;
+    		min-height: $dropdown-item-height;
+    		border-right: 0;
+    		border-bottom: $main-nav-item-separator;
+
+    		&:last-child { border-bottom: none; }
+
+        &.hasChild > .theme-nav-link {
+          padding-right: $dropdown-spacing * 2;
+
+          &:before {
+            content: "\f0da";
+            display: block;
+            position: absolute;
+            top: 50%;
+            right: 0;
+            margin-top: $nav-item-before-size / -2;
+            line-height: $nav-item-before-size;
+            width: $dropdown-spacing + $nav-item-before-size / 2;
+            text-align: left;
+            opacity: 0.5;
+            font-family: FontAwesome;
+            font-size: $nav-item-before-size;
+            color: $highlight-color;
+            transition: width $transition-linear;
+          }
+        }
+
+        &.dropdown-open > .theme-nav-link:before {
+          color: $accent-color;
+          width: $dropdown-spacing * 0.2 + $nav-item-before-size;
+          opacity: 1;
+        }
+
+      	> .theme-nav-link {
+          color: $dropdown-text-color;
+        	display: table-cell;
+          vertical-align: middle;
+        	padding: $dropdown-spacing/2 $dropdown-spacing;
+          font-weight: 400;
+      		line-height: 120%;
+      		vertical-align: middle;
+
+          &:not(x):hover { // :not() for specificity over selected state
+            text-decoration: none;
+            background: $link_color;
+          }
+      	}
+
+
+        &.selected > .theme-nav-link {
+          text-decoration: none;
+          background: $dropdown-selected;
+        }
+
+        &.disabled > .theme-nav-link {
+          color: $dropdown-text-disabled;
+
+          &:hover { color: $dropdown-text-disabled-hover; }
+        }
+      }
+
+      &[data-nav-level="2"] { margin-top: -$dropdown-shift-vert; }
+
+      &:not([data-nav-level="2"]) {
+        margin-top: -1px;  // ofset for 1px boder
+        margin-left: -$dropdown-shift-horiz;
+      }
+
+      &.dropdown-align-right:not([data-nav-level="2"]) { margin-left: $dropdown-shift-horiz; }
+
+      &.dropdown-opening {
+        display: block;
+        opacity: 0;
+      }
+
+      &.dropdown-open {
+        display: block;
+        opacity: 1;
+
+        &[data-nav-level="2"] { margin-top: 0; }
+        &:not([data-nav-level="2"]) { margin-left: 0; }
+      }
+    }
+  }
+
+  .theme-search-wrapper {
+    border-bottom: $site-tagline-separator;
+    color: $site-tagline-text-color;
+    background-color: $site-tagline-color;
+    overflow: hidden;
+    font-family: $fontOne;
+    font-size:em(12);
+  }
+
+  .site-tagline-text {
+    padding: 0 $site-tagline-spacing;
+    display: block;
+    overflow: auto;
+    white-space: nowrap;
+    @include flex(1,1,100%);
+  }
+
+  .theme-search-bar {
+    line-height: $site-tagline-height;
+    @include flex-box(row);
+
+    .theme-page-search { @include flex(0); }
+  }
+
+  .theme-main-nav {
+    position: relative;
+    font-size: $main-nav-font-size;
+    color: $main-nav-text-color;
+    background-color: $main-nav-color;
+    border-bottom: $site-tagline-separator;
+
+    .theme-nav {
+      line-height: $main-nav-height;
+
+      > .theme-nav-item {
+
+        > .theme-nav-link {
+          color: $main-nav-text-color;
+          text-transform: none;
+          padding: 0 $main-nav-spacing;
+
+          &:not(x):hover { background-color: $main-nav-hover-color; } // :not() for specificity over selected state
+        }
+
+        &.disabled {
+          > .theme-nav-link { color: $main-nav-text-disabled; }
+          &:hover > .theme-nav-link { color: $main-nav-text-disabled-hover; }
+        }
+
+        &.selected > .theme-nav-link { background-color: $main-nav-selected; }
+      }
+    }
+  }
+
+  .theme-sub-nav {
+    position: relative;
+    font-size: $sub-nav-font-size;
+    background-color: $sub-nav-color;
+    border-bottom: $site-tagline-separator;
+
+    .theme-nav {
+      line-height: $sub-nav-height;
+
+      > .theme-nav-item.disabled {
+        > .theme-nav-link { color: $sub-nav-text-disabled; }
+        &:hover > .theme-nav-link { color: $sub-nav-text-disabled-hover; }
+      }
+
+      > .theme-nav-item {
+
+        > .theme-nav-link {
+          color: $sub-nav-text-color;
+          text-transform: none;
+          padding: 0 $sub-nav-spacing;
+
+          &:not(x):hover { background-color: $sub-nav-hover-color; } // :not() for specificity over selected state
+        }
+
+        &.selected > .theme-nav-link { background-color: $sub-nav-selected; }
+      }
+
+    }
+
+    &:empty { display: none; }
+  }
+
+  .theme-search-wrapper,
+  .theme-main-nav,
+  .theme-sub-nav {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .theme-search-bar,
+  .theme-nav-style-dropdown {
+    position: relative;
+    margin: auto;
+    width: 100%;
+    max-width: $maxWidth;
+    transition:
+      max-width $transition-linear,
+      left $transition-linear,
+      height $transition-linear,
+      line-height $transition-linear;
+    @extend %clearfix;
+  }
+
+  &.has-site-logo {
+    .theme-search-bar,
+    .theme-nav-style-dropdown {
+      max-width: $maxWidth - $site-logo-size;
+      left: $site-logo-size/2;
+    }
+  }
+
+}
+
+// 3. Navigation and Logo
+#topNav.nav-fixed {
+  top: 0;
+  position: fixed;
+
+  .theme-search-bar {
+    line-height: $site-tagline-height-fixed;
+    height: $site-tagline-height-fixed;
+  }
+
+  .theme-main-nav {
+    .theme-nav { line-height: $main-nav-height-fixed; }
+
+    .theme-nav-style-dropdown > .theme-nav-item.hasChild > .theme-nav-link:before { height: 8px; }
+  }
+
+  .theme-sub-nav {
+    .theme-nav { line-height: $sub-nav-height-fixed; }
+  }
+
+  &.has-site-logo {
+    .theme-search-bar,
+    .theme-nav-style-dropdown { left: $site-logo-size-fixed - $site-logo-size / 2; }
+  }
+}
+
+// Placeholder styles for when top nav goes fixed. If there is no sub nav and no
+// banner graphic, this fills in the gap and visually blends with the page content.
+
+#topNavPlaceholder {
+  border-bottom: $sub-nav-height solid #fff;
+  max-width: $maxWidth;
+  margin: auto;
+  height: $nav-placeholder-height;
+  transition: height $transition-linear;
+
+  &.page-has-banner { border-color: transparent; }
+}
+
+#topNav.nav-fixed + #topNavPlaceholder {
+  height: $nav-placeholder-height-fixed;
+}
+
+// Add padding to html to accound for collapsing nav (and avoid flicker animation)
+html {
+  transition: padding-bottom $transition-linear;
+
+  &.nav-fixed { padding-bottom: $nav-placeholder-height - $nav-placeholder-height-fixed; }
+}
+
+// If subnav is not present, the site banner should slide up under the site logo.
+html.has-main-nav:not(.has-sub-nav) {
+  #siteHeader { margin-top: -$sub-nav-height; }
+  #topNav.nav-fixed ~ #siteHeader { margin-top: -$sub-nav-height-fixed; }
+}

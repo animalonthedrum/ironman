@@ -1,0 +1,106 @@
+/* Venue Status Page Element */
+// 1. Mixins
+// 2. Base Styles
+// 3. Breakpoints
+
+
+// 1. Base Styles
+@mixin table-venue-element-mini {
+  .venueElement .dataTable {
+    td {
+      border-right: none;
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .venue_name {
+      font-weight: bold;
+    }
+    .txt_open,
+    .txt_closed,
+    .txt_pending {
+      text-align: left;      
+    }
+  }
+}
+
+
+// 2. Base Styles
+.venueElement .dataTable {
+  $status-color-open: #02A218;
+  $status-color-closed: #E50000;
+  $status-color-pending: #929292;
+
+  .heading {
+    .title {
+      @include table-th-text;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      width: 100%;
+      white-space: normal;
+    }
+  }
+
+  .venue_heading {
+    margin-right: 5px;
+  }
+
+  td {
+    text-align: left;
+  }
+
+  .venue_name {
+    font-weight: bold;
+  }
+
+  .txt_open,
+  .txt_closed,
+  .txt_pending {
+    text-align: center;
+  }
+
+  .txt_open { color: $status-color-open; }
+  .txt_closed { color: $status-color-closed; }
+  .txt_pending { color: $status-color-pending; }
+
+  .img_open,
+  .img_closed,
+  .img_pending {
+    display: inline-block;
+    height: .6em;
+    width: .6em;
+    margin-right: .5em;
+    border-radius: 100%;
+    display: none;
+  }
+
+  .img_open { background-color: $status-color-open; }
+  .img_closed { background-color: $status-color-closed; }
+  .img_pending { background-color: $status-color-pending; }
+}
+
+
+// 3. Breakpoints
+@media (max-width: 480px) {
+  @include table-venue-element-mini;
+}
+
+@media (min-width: 768px) {
+  .col-md-3,
+  .col-md-4 {
+    @include table-venue-element-mini;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 999px) {
+  .layout-25-50-25 .column {
+    @include table-venue-element-mini;
+  }
+}

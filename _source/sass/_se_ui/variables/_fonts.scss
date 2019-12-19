@@ -1,0 +1,47 @@
+// # Typography
+// Variables for font-families, sizes, etc.
+
+
+// ## Fallback fonts
+$font-sans-serif: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+
+// ## Font families
+$font-default: 'Open Sans', $font-sans-serif;
+
+
+// ## Leading (line heights)
+// Rounded to four significant figures with trailing zeroes removed.
+$font-leading-small:         1.3333; // 16÷12
+$font-leading-body:          1.4286; // 20÷14
+$font-leading-subheading:    1.25;   // 20÷16
+$font-leading-title:         1.4;    // 28÷20
+$font-leading-headline:      1.3333; // 32÷24
+$font-leading-display:       1.2436; // 40÷32
+$font-leading-display-large: 1.131;  // 48÷42
+
+
+// ## Sizes
+// REM units used to respect our users’ default font size.
+// Based on musical pentatonic scale (aka "classic typographic scale").
+// Unused “notes” in the scale are commented out.
+// REM values are rounded to four significant figures.
+// Pixel values calculated with a base font-size of 16px | 14px.
+//              .7579rem;     12px | 11px
+$font-xsmall:   .8706rem;  // 14px | 12px
+$font-small:    1rem;      // 16px | 14px
+$font-medium:   1.1487rem; // 18px | 16px
+//              1.3195rem     21px | 18px
+$font-large:    1.5157rem; // 24px | 21px
+$font-xlarge:   1.7411rem; // 27px | 24px
+//              2rem          32px | 28px
+$font-xxlarge:  2.2974rem; // 37px | 32px
+//              2.639rem      42px | 37px
+$font-xxxlarge: 3.0314rem; // 48px | 42px
+//              3.4822rem     56px | 49px
+//              4rem          64px | 56px
+
+
+// ## Weights
+$font-regular:  400;
+$font-semibold: 600;

@@ -1,0 +1,219 @@
+.unlimitedHierarchy{
+    background: url($asset_path_for+"/app_images/hierarchyLines.gif");
+    margin-left: 5px;
+    display: block;
+    width: 95%;
+}
+
+.unlimitedHierarchy li{
+    display: block;
+    padding: 0 0 0 5px;
+    clear: both;
+    list-style: none;
+    background: url($asset_path_for+"/app_images/hierarchyAttach.gif") no-repeat 0 12px;    
+}
+
+.unlimitedHierarchy li li{
+    margin-left: 65px;
+}
+
+.unlimitedHierarchy li.selected > div h3 a{
+  border: 2px solid #FCCD22;
+  background: #FEEC8F;
+  font-weight: bold;
+  padding: 2px;
+  text-decoration: none;
+}
+
+.unlimitedHierarchy .nodeTitle{
+    margin-left: 5px;
+    line-height: 15px;
+    font-weight: bold;
+}
+
+.unlimitedHierarchy .subtle .nodeTitle{
+    font-weight: normal;
+    text-decoration: none;
+    color: #666;
+}
+
+.unlimitedHierarchy .subtle .nodeTitle:hover{
+    text-decoration: underline;
+}
+
+
+.unlimitedHierarchy .permissions span{
+    display: block;
+    float: left;
+    text-align: center;
+    margin-right: 2px;
+}
+
+.unlimitedHierarchy .permissions span .enabled{
+    cursor: pointer;
+    cursor: hand;
+}
+
+.unlimitedHierarchy li div{
+    background: #CCC;
+    padding: 5px;
+}
+
+.unlimitedHierarchy li .nodeAsset{
+    padding: 0 5px 4px 10px;
+    font-weight: bold;
+}
+
+.unlimitedHierarchy span{
+    vertical-align: top;
+}
+
+.unlimitedHierarchy .lastLi{
+    background: url($asset_path_for+"/app_images/hierarchyAttachLast.gif") no-repeat 0 12px;
+}
+
+.cmsAccess .private{
+    color: #CC0000;
+    padding-right: 16px;
+    background: url($asset_path_for+"/app_images/disabledPrivatePublicIcon.png") no-repeat right -116px;
+}
+
+.cmsAccess .disabled{
+    padding-right: 16px;
+    background: url($asset_path_for+"/app_images/disabledPrivatePublicIcon.png") no-repeat right 0;
+}
+
+.cmsAccess .public{
+    padding-right: 16px;
+    background: url($asset_path_for+"/app_images/disabledPrivatePublicIcon.png") no-repeat right -232px;
+}
+
+.unlimitedHierarchy .disabled, .unlimitedHierarchy .disabled a{
+    color: #777;
+    font-style: italic;
+}
+
+.cmsAccess .permissions .disabled{
+    padding: 0;
+    background: none;
+}
+
+.permissionsHeader{
+    font-size: 14px;
+    line-height: 140%;
+    clear: both;
+    margin: 10px 0 5px;
+    background: none;
+}
+
+/* Collector Tree */
+
+.collectorTree {
+    img{
+        display:none;
+    }
+    .item {
+        .info{
+            font-size: 12px;
+            font-weight: normal;
+        }
+    }
+    h4{
+        font-size: 1em;
+    }
+
+    li h4 a{
+        text-decoration: none;
+    }
+    a {
+      font-weight: 600;
+      font-size: 1em;
+    }
+}
+
+
+/* on white */
+
+.unlimitedHierarchyWhite{
+    background: url($asset_path_for+"/app_images/hierarchyLinesWhite.gif");
+}
+
+.unlimitedHierarchyWhite li div{
+    background: #FFF;
+}
+
+
+.unlimitedHierarchyWhite .lastLi{
+    background-image: url($asset_path_for+"/app_images/hierarchyAttachLastWhite.gif");
+}
+
+/* CMS tweaks */
+
+.rapidContentGeneral .editPermissions li div{
+    background: #fef7d0;
+}
+
+.rapidContentGeneral .editPermissions .unlimitedHierarchy{
+    background-image: url($asset_path_for+"/app_images/hierarchyLinesCMS.gif");
+}
+
+.rapidContentGeneral .editPermissions .unlimitedHierarchy li{
+    background-image: url($asset_path_for+"/app_images/hierarchyAttachCMS.gif");  
+}
+
+.rapidContentGeneral .editPermissions .unlimitedHierarchy .lastLi{
+    background-image: url($asset_path_for+"/app_images/hierarchyAttachLastCMS.gif");
+}
+
+#lightbox .nodePickerSlideBox{
+  border: solid 1px #FCCD22;
+  border-top: none;
+  height: 300px;
+  background: #FFF;
+}
+
+#lightbox .nodePickerSlideBox h3{
+  font-size: 10px;
+  font-weight: normal;
+}
+
+#lightbox .unlimitedHierarchy li div{
+  padding: 5px;
+  background: #fef7d0;
+}
+
+
+#lightbox .unlimitedHierarchy{
+    background: #fef7d0 url($asset_path_for+"/app_images/hierarchyLinesCMS.gif");
+}
+
+
+#lightbox .unlimitedHierarchy .lastLi{
+    background-image: url($asset_path_for+"/app_images/hierarchyAttachLastCMS.gif");
+}
+
+#lightbox .nodePickerSlideBox .unlimitedHierarchy li div{
+  padding: 5px;
+  background: #FFF;
+}
+
+
+#lightbox .nodePickerSlideBox .unlimitedHierarchy{
+    background: #FFF url($asset_path_for+"/app_images/hierarchyLinesWhite.gif");
+}
+
+
+#lightbox .nodePickerSlideBox .unlimitedHierarchy .lastLi{
+    background-image: url($asset_path_for+"/app_images/hierarchyAttachLastWhite.gif");
+}
+
+.permissionsHelp{
+    display: block;
+    clear: both;
+    background: no-repeat url($asset_path_for+"/app_images/permissionsHelp.png");
+    text-indent: 43px;
+    font-size: 11px;
+    line-height: 16px;
+    font-weight: normal;
+    margin-bottom: 5px;
+}

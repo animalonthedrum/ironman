@@ -1,0 +1,87 @@
+#payWall {
+  background: rgb(255,255,204);
+  border: solid 1px rgb(255,204,0);
+  border-radius: 4px;
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+#payWall h3 {
+  color: #000;
+}
+#payWall .layoutContainer { margin-right: 0; }
+#payWall > .layoutContainer > .column { padding: .05px 0; }
+#payWall > .layoutContainer > .column > .pageEl > .pageElement { margin:15px; }
+
+#payWall .login h3 { background: url($asset-path-for+"/app_images/alert-gold.png") no-repeat 0 5px; padding-left: 35px; }
+
+#payWall .subscribe { border-left: solid 1px rgb(255,204,0); overflow:hidden; }
+
+#payWall .subscribe .pricing { text-align: center; }
+#payWall .subscribe .pricing .pageElement { padding: 10px 0; color: rgb(102,102,102); }
+#payWall .subscribe .pricing p { display: block; font-size: 24px; font-weight: bold; margin:0; padding:0; width: 100%; }
+#payWall .subscribe .pricing .change { font-size: 16px;  vertical-align: top; }
+#payWall .subscribe .pricing .length { font-size: 12px; font-weight: normal; vertical-align: top; }
+#payWall .subscribe .pricing p b { background: url($asset-path-for+"/app_images/paywall-pricing.png") no-repeat 50% 50%; display: block; font-weight: bold; font-size: 9px; margin: 8px 0; width: 100%; }
+
+#payWall .button-large { display:block; margin-top:25px; }
+
+#payWall .subscribe .button-large {
+  background: rgb(255,221,58);
+  background-image: linear-gradient(to bottom,  rgb(255,221,58) 0%,rgb(255,204,0) 100%);
+  color: rgb(0,0,0);
+  text-shadow: 0px 1px 0px rgba(255,255,255,.75);
+}
+
+#payWall .subscribe .button-large:hover {
+  background: rgb(63,63,63);
+  background-image: linear-gradient(to bottom,  rgb(102,102,102) 0%,rgb(63,63,63) 100%);
+  color: rgb(255,255,255);
+  text-shadow: 0px -1px 0px rgb(0,0,0);
+}
+
+#payWall .subscribe .button-large:active {
+  background: rgb(76,76,76);
+  background-image: linear-gradient(to bottom,  rgb(38,38,38) 0%,rgb(76,76,76) 100%);
+  color: rgb(255,255,255);
+  text-shadow: 0px -1px 0px rgb(0,0,0);
+}
+
+/*.subNav li.paywalled a:before,
+.relatedSections li.paywalled a:before,
+#topNav a.paywalled:before {
+  content: url("../images/REPLACE.gif");
+  margin: -1px 2px 0 -11px;
+  float: left;
+}*/
+
+.collectorElement a.paywalled,
+.newsAggregatorElement a.paywalled {
+	 &:before{
+		 content:"";
+		 display:block;
+		 float:left;
+		 width:40px;
+		 height:1.5em;
+		 margin-right:.375em;
+		 background:url($asset-path-for+"/app_images/paywall-icon.svg") no-repeat center center;
+		 background-size:contain;
+		 -webkit-background-size:contain;
+	 }
+}
+
+#payWall .subscribe a {
+  background: rgb(255,204,0);
+  background-image: linear-gradient(to bottom,  rgb(255,221,58) 0%,rgb(255,204,0) 100%);
+  color: rgb(0,0,0);
+  text-shadow: 0px 1px 0px rgba(221,221,221,.5);
+  transition: none;
+}
+
+/* Logged In View */
+
+#payWall.logged-in .subscribe { margin-top: 0; }
+#payWall.logged-in .subscribe a { margin-top: 21px; }
+#payWall.logged-in .pricing { border-left: solid 1px #FC0; margin: 0 15px 15px 0; }

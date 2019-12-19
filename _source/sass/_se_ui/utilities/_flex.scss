@@ -1,0 +1,30 @@
+@mixin flex-box($dir, $inline: false, $align-items: 'center', $justify-content: 'center') {
+  align-items: $align-items;
+  box-sizing: border-box;
+  flex-direction: $dir;
+  // flex-wrap: wrap;
+  justify-content: $justify-content;
+
+  @if $inline {
+    display: inline-flex;
+  } @else {
+    display: flex;
+  }
+
+  > * {
+    @if $dir == 'row' {
+      height: 100%;
+    } @else {
+      width: 100%;
+    }
+  }
+}
+
+@mixin inline-flex-box($dir) {
+  @include flex-box($dir, true)
+}
+
+@mixin flex($flex: 1, $shrink: 0, $basis: auto) {
+  box-sizing: border-box;
+  flex: $flex $shrink $basis;
+}

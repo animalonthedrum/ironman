@@ -1,0 +1,155 @@
+@keyframes panel-from-right {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes panel-from-center {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes panel-from-bottom {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+    transform-origin: bottom;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    transform-origin: bottom;
+  }
+}
+
+// ## Split panels
+%pl-pane__container {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.pl-pane__container--vertical {
+  @extend %pl-pane__container;
+  @include flex-box(row);
+  > *:not(:last-child) {
+    border-right: 1px solid $gray-light;
+  }
+}
+
+.pl-pane__container--horizontal {
+  @extend %pl-pane__container;
+  @include flex-box(column);
+}
+
+// ## Panes
+%pl-pane,
+.pl-pane {
+  @include flex(1, 1, 100%);
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: $layout-spacing-large;
+  position: relative;
+  // -webkit-overflow-scrolling: touch; // this messes up fullscreen modals, but is necessary for tablet...?
+}
+
+.pl-pane--collapse {
+  @extend %pl-pane;
+  border: 0;
+}
+
+.pl-pane--shrink {
+  @extend %pl-pane;
+  @include flex(0);
+  overflow: visible;
+}
+
+.pl-pane--overflow {
+  // @todo .sn-overflow-pane
+  @extend %pl-pane;
+  overflow: visible;
+}
+
+.pl-pane--full-screen {
+  animation: panel-from-center $duration-slow ease-in-out;
+  background: #fff;
+  bottom: 0;
+  left: 0;
+  position: fixed; // full panel covers the ngin bar
+  right: 0;
+  top: 0;
+  z-index: 98;
+  &.with-ngin-bar {
+    top: $ngin-bar-height;
+    z-index: 97;
+  }
+}
+
+.pl-pane--medium {
+  animation: panel-from-right $duration-slow ease-in-out;
+  border-width: 0 0 0 1px;
+  left: auto;
+  right: 0;
+  width: 66.6666666666%;
+}
+
+@each $behavior, $spacing in (collapse: 0, condense: $layout-spacing-medium) {
+  .pl-pane--#{$behavior} {
+    padding: $spacing;
+  }
+
+  // Change #{'-'} to - below after fix: https://github.com/sasstools/sass-lint/issues/644
+  @each $side, $dir in (left: 'x', right: 'x', top: 'y', bottom: 'y') {
+    .pl-pane--#{$behavior}#{'-'}#{$dir},
+    .pl-pane--#{$behavior}#{'-'}#{$side} {
+      @extend %pl-pane;
+      #{'padding-'}#{$side}: $spacing;
+    }
+  }
+}
+
+@for $i from 0 through 12 {
+  .pl-pane--#{$i} {
+    @extend %pl-pane;
+    @include flex(0, 0, 100% * $i / 12);
+    transition: all $duration;
+
+    @if $i == 0 {
+      border-width: 0;
+      opacity: 0;
+      padding: 0;
+    }
+  }
+}
+
+.pl-pane__info {
+  @extend %pl-pane;
+  @include flex(0);
+  background: $gray-xxlight;
+  border-bottom: 1px solid $gray-light;
+  color: $color-content;
+}
+
+.pl-pane__header {
+  @extend %pl-pane;
+  @include flex(1, 1, 100%);
+  // padding: ($sn-spacing - 4) $sn-spacing;
+  border-bottom: 1px solid $gray-light;
+
+  .pl-tabs {
+    border-bottom: 0;
+  }
+}

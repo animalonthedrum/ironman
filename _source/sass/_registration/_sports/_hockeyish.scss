@@ -1,0 +1,754 @@
+/* Remove when current play is ready */
+body.hockeyish #FOP .current_play { display:none; }
+body.hockeyish #FOP .play_area { margin-top:0 !important; }
+body.hockeyish #FOP.view_3d .play_area { margin-top:-80px !important; }
+
+/* Remove when Power Plays status is implemented */
+body.hockeyish #GameShowScoreboard .possession { display: none; }
+
+/*///////////////////////
+///// SCOREBOARD ////////
+///////////////////////*/
+
+/* SHOTS ON GOAL */
+body.hockeyish #GameShowScoreboard li.sog { background-image: url($asset_path_for+"/app_images/scoreboard/li-sog.png"); background-repeat: no-repeat; background-position: 50% 50%; margin: 0 10px; text-align: center; width: 50px; }
+body.hockeyish #GameShowScoreboard li.sog span { font-size: 20px; }
+body.hockeyish #GameShowScoreboard li.sog div.sog { color: #fff; display: block; float: left; height: 26px; line-height: 26px; text-align: center; width: 24px;  }
+body.hockeyish #GameShowScoreboard li.sog div.logo-mini { border-radius: 2px; display: block; float: left; height: 16px; width: 16px; margin: 5px; }
+body.hockeyish #GameShowScoreboard li.sog div.logo-mini a { border: none; background-size: 16px; background-position: left top; display: block; width: 16px !important; height: 16px !important; }
+
+/* POSSESSION / POWER PLAY */
+body.hockeyish #GameShowScoreboard .away_team .posession .pp { background: none no-repeat 50% 50%; }
+body.hockeyish #GameShowScoreboard .home_team .posession .pp { background: none no-repeat 50% 50%; }
+
+/* TIME OUTS */
+body.hockeyish #GameShowScoreboard .timeoutsAway { background: url($asset_path_for+"/app_images/scoreboard/bg-timeouts-away.png") no-repeat 50% 50%; display: none; height: 76px; left: 110px; position: absolute; top: 100px; width: 164px; z-index: 113; } /* Switch to display:block when implemented */
+body.hockeyish #GameShowScoreboard .timeoutsHome { background: url($asset_path_for+"/app_images/scoreboard/bg-timeouts-home.png") no-repeat 50% 50%; display: none; height: 76px; right: 110px; position: absolute; top: 100px; width: 164px; z-index: 113; } /* Switch to display:block when implemented */
+body.hockeyish #GameShowScoreboard .timeoutsAway .timeouts-remaining { background: url($asset_path_for+"/app_images/scoreboard/timeouts-hockey.png") no-repeat 25px -1px; display: block; height: 50px; left: 25px; position: relative; top: 23px; width: 100px; }
+body.hockeyish #GameShowScoreboard .timeoutsHome .timeouts-remaining { background: url($asset_path_for+"/app_images/scoreboard/timeouts-hockey.png") no-repeat -75px -1px; display: block; height: 50px; right: -35px; position: relative; top: 23px; width: 100px; }
+body.hockeyish #GameShowScoreboard .timeoutsAway .timeouts-remaining.zero { background: url($asset_path_for+"/app_images/scoreboard/timeouts-hockey.png") no-repeat 25px -1px; }
+body.hockeyish #GameShowScoreboard .timeoutsHome .timeouts-remaining.zero { background: url($asset_path_for+"/app_images/scoreboard/timeouts-hockey.png") no-repeat -75px -1px; }
+body.hockeyish #GameShowScoreboard .timeoutsAway .timeouts-remaining.one { background: url($asset_path_for+"/app_images/scoreboard/timeouts-hockey.png") no-repeat 25px -51px; }
+body.hockeyish #GameShowScoreboard .timeoutsHome .timeouts-remaining.one { background: url($asset_path_for+"/app_images/scoreboard/timeouts-hockey.png") no-repeat -75px -51px; }
+
+/*///////////////////////
+///// FIELD OF PLAY /////
+///////////////////////*/
+
+/*////////// TIMELINE SLIDER ////////////*/
+
+#FOP-timeline-container {
+  height: 110px;
+  margin: -60px -25px 70px;
+  overflow:visible;
+  position:relative;
+  top:68px;
+  z-index:101;
+}
+#FOP-timeline {
+  background: #222;
+  border-top:solid 1px #000;
+  border-bottom:solid 1px #666;  height: 6px;
+  border-radius: 2px;
+  height: 8px;
+  margin:6px 100px;
+  position: relative;
+}
+#FOP-timeline .ui-slider-handle {
+  background: url($asset_path_for+"/app_images/field_of_play/hockeyish/slider-handle.png") no-repeat 50% bottom;
+  bottom:-6px;
+  display: block;
+  height: 35px;
+  overflow: visible;
+  position: absolute;
+  width: 30px;
+  z-index: 10;
+}
+#FOP-timeline .ui-slider-handle.left {
+  margin-left:-30px;
+}
+#FOP-timeline .ui-state-focus { outline: none; }
+#FOP-timeline .ui-slider-range  { background: #6c602d; height: 100%; margin: 0; position: absolute; }
+#FOP-timeline .ui-slider-pattern { background: url($asset_path_for+"/app_images/field_of_play/hockeyish/slider-pattern.png") repeat-x 50%; height:100%; position: absolute; width: 100%; }
+#FOP-timeline .ui-slider-pattern:before { content:url($asset_path_for+"/app_images/field_of_play/hockeyish/slider-grooves.png"); position: absolute; top:-3px; left:-70px; }
+#FOP-timeline .ui-slider-pattern:after { content:url($asset_path_for+"/app_images/field_of_play/hockeyish/slider-grooves.png"); position: absolute; top:-3px; right:-70px; }
+#FOP-timeline .interval {
+  background: url($asset_path_for+"/app_images/field_of_play/hockeyish/interval-divider.png") no-repeat 50%;
+  display: block;
+  width: 4px;
+  height: 100%;
+  position: relative;
+  float: left;
+  height: 10px;
+  margin-left: 33.3333333%;
+  top: -1px;
+  z-index: 5;
+  }
+/*/ Time Markers /*/
+#FOP-timeline-start,
+#FOP-timeline-stop  {
+  background: #ccc;
+  border-radius: 4px;
+  display: block;
+  font-size: 9px;
+  font-weight: bold;
+  margin:0;
+  padding: 2px;
+  position: relative;
+  text-align: center;
+  top: -30px;
+  width: 30px;
+}
+#FOP-timeline-start { margin-left:8px; }
+.ui-slider-handle.left .arrow,
+.ui-slider-handle.right .arrow {
+  border-color: #ccc transparent transparent transparent;
+  border-style: solid;
+  border-width: 5px;
+  display: block;
+  height: 0px;
+  margin: 0 0 0 20px;
+  position: relative;
+  top: -30px;
+  width: 0px;
+}
+.ui-slider-handle.right .arrow { margin-left:12px; }
+
+/*////////// PLAY MARKERS ////////////*/
+#FOP-timeline-markers {
+  position: relative;
+  height: 18px;
+  margin:0 100px;
+  padding-top:15px;
+  box-sizing: content-box;
+}
+
+/*////////// FILTERS ////////////*/
+#FOP-timeline-filters {
+  height: 51px;
+  line-height: 31px;
+  margin:-21px 50px 0;
+  text-align:center;
+  padding-top:21px;
+}
+#FOP-timeline-filters div { margin:auto; overflow: hidden; width: auto; display: inline-block;}
+#FOP-timeline-filters span.filters,
+#FOP-timeline-filters label {
+  font-family: $fontOne;
+  font-size: 14px;
+  line-height: 1.5em;
+  padding: 5px 10px;
+  display: inline-block;
+  float: left;
+  margin: auto;
+}
+
+#FOP-timeline-filters span.filters {
+  background: none;
+  color: #000;
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, .25);
+}
+
+#FOP-timeline-filters label {
+  background-repeat: repeat-x;
+  background-position: 50%;
+  color: #ccc;
+  cursor: pointer;
+  display: inline-block;
+  text-transform: uppercase;
+  border:1px solid #ccc;
+}
+
+#FOP-timeline-filters label.deselected {
+  background: #ddd;
+  color: #777;
+}
+
+#FOP-timeline-filters label.deselected:hover {
+  background: #fff;
+  color: #444;
+}
+
+#FOP-timeline-filters label span {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  width: 100%;
+}
+#FOP-timeline-filters label.homeTeam span,
+#FOP-timeline-filters label.awayTeam span {
+  height: 26px;
+}
+#FOP-timeline-filters label span.filterIcon {
+  height: 30px;
+}
+#FOP-timeline-filters label.homeTeam span a,
+#FOP-timeline-filters label.awayTeam span a {
+  margin: 0 auto;
+}
+
+#FOP-timeline-filters input[type=checkbox] {
+  position: absolute;
+  left: -999px;
+}
+
+/*/////// TIMELINE CAPS ////////*/
+#FOP-timeline-container .cap {
+  display:block;
+  height:100%;
+  position:absolute;
+  top:0;
+  width:84px;
+}
+#FOP-timeline-container .cap.left {
+  left:-5px;
+}
+#FOP-timeline-container .cap.right {
+  right:-9px;
+}
+#FOP-timeline-container .cap span {
+  display:block;
+  height:30px;
+  position:absolute;
+  width:80px;
+}
+#FOP-timeline-container .cap.right span {
+  right:0;
+}
+
+/*////////// PLAY AREA ////////////*/
+body.hockeyish #FOP a { text-decoration:none; }
+body.hockeyish #FOP {
+  padding: 24px 16px 0;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.1) 10%,rgba(0,0,0,0.2) 32%,rgba(0,0,0,0) 100%); /* W3C */
+  z-index: 100;
+  clear: both;
+}
+body.hockeyish #FOP .play_area {
+  border-radius: 50px;
+  height:452px;
+  margin:80px 0 0 0;
+  margin:0; /* temp until current play is added */
+  position:relative;
+  overflow:visible;
+  box-shadow: rgba(0, 0, 0, 0.699219) 0px 6px 8px -4px;
+}
+body.hockeyish #FOP .plays,
+body.hockeyish #FOP .texture2,
+body.hockeyish #FOP .texture1 { height:100%; width:100%; overflow:visible; position: absolute; z-index:1; display:block; margin:0; }
+body.hockeyish #FOP .plays { z-index:3; }
+body.hockeyish #FOP .texture2 { z-index:2; }
+body.hockeyish #FOP .sponsor { display:none; }
+
+/*////////// HOCKEY PLAY ICONS ////////////*/
+body.hockeyish #FOP #no_location.goal b { background-image: url($asset_path_for+"/app_images/field_of_play/ice_hockey/goal.png"); }
+body.hockeyish #FOP #no_location.shot b { background-image: url($asset_path_for+"/app_images/field_of_play/ice_hockey/shot.png"); }
+body.hockeyish #FOP #no_location.shotongoal b { background-image: url($asset_path_for+"/app_images/field_of_play/ice_hockey/shot.png"); }
+body.hockeyish #FOP #no_location.shotofftarget b { background-image: url($asset_path_for+"/app_images/field_of_play/lacrosse/missed-shot.png"); }
+body.hockeyish #FOP #no_location.blockedshot b { background-image: url($asset_path_for+"/app_images/field_of_play/ice_hockey/block.png"); }
+body.hockeyish #FOP #no_location.penalty b { background-image: url($asset_path_for+"/app_images/field_of_play/ice_hockey/penalty.png"); }
+body.hockeyish #FOP #no_location.hit b { background-image: url($asset_path_for+"/app_images/field_of_play/ice_hockey/hit.png"); }
+body.hockeyish #FOP #no_location.faceoff b { background-image: url($asset_path_for+"/app_images/field_of_play/ice_hockey/faceoff.png"); }
+body.hockeyish #FOP #no_location.looseball b { background-image: url($asset_path_for+"/app_images/field_of_play/lacrosse/loose-ball.png"); }
+body.hockeyish #FOP #no_location.turnover b { background-image: url($asset_path_for+"/app_images/field_of_play/ice_hockey/turnover.png"); }
+body.hockeyish #FOP #no_location.goaliechange b { background-image: url($asset_path_for+"/app_images/field_of_play/ice_hockey/goalie-change.png"); }
+body.hockeyish #FOP #no_location.goal b { padding-left:30px; }
+body.hockeyish #FOP #no_location {
+  padding:10px;
+  border:1px solid #666;
+  box-shadow:0 2px 10px rgba(0,0,0,.3);
+  position:absolute;
+  z-index:10;
+  top:45%;
+  width:200px;
+  left:50%;
+  margin-left:-110px;
+  border-radius:6px;
+  display:none;
+  text-align:center;
+  opacity:.8;
+}
+body.hockeyish #FOP #no_location b { padding:5px 0 5px 21px; background-repeat:no-repeat; background-position:left center; }
+
+/*////////// PERSPECTIVE ////////////*/
+html.csstransforms3d body.hockeyish #FOP {
+  -webkit-perspective: 700px;
+  -moz-perspective: 700px;
+  -o-perspective: 700;
+  -ms-perspective: 700;
+  perspective: 700;
+}
+
+html.csstransforms3d body.hockeyish #FOP .play.new .shadow {
+  opacity:0;
+}
+html.csstransforms3d body.hockeyish #FOP .play_area,
+html.csstransforms3d body.hockeyish #FOP .shadow {
+  transition: all 0.1s ease-in-out;
+}
+
+html.csstransforms3d body.hockeyish #FOP .play_area {
+  margin:0 0 -130px;
+  margin:-80px 0 -130px; /* temp until current play is added */
+  transform: rotateX(50deg) scale(.9) translate3d(0,-150px,-50px);
+}
+
+/*////////// FOP POP UPS ////////////*/
+.NGIN_tip.hockeyish_fop_popup .container { overflow:visible; }
+.hockeyish_fop_popup .NGIN_tip .close_tip {
+  font:11px bold Verdana, Arial, sans-ersif;
+  cursor:pointer;
+  display:block;
+  position:absolute;
+  top:-6px;
+  right:-6px;
+  width:12px;
+  height:12px;
+  border:2px solid #FFF;
+  background:#111;
+  color:#FFF;
+  font-weight:bold;
+  text-align:center;
+  line-height:10px;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,.25);
+  border-radius:10px;
+  box-sizing: content-box;
+}
+.hockeyish_fop_popup .close_tip span {
+  display: block;
+  padding: 10px;
+  margin: -10px;
+  border-radius: 15px;
+}
+.fopPopUp {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  background: #fff url($asset_path_for+"/app_images/game_show_3/diagonal_stripes.png") left bottom;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,.25);
+  color: #fff;
+  font-family: $fontOne;
+  overflow: hidden;
+  padding: 7px;
+  position: relative;
+  text-transform: uppercase;
+  margin: 20px 0;
+  width: 120px;
+}
+.fopPopUp.expanded { width: 350px; margin-left:-115px; }
+.fopPopUp .carrot-top,
+.fopPopUp .carrot-bottom {
+  border-width:0;
+  border-style:solid;
+  border-left-color:transparent;
+  border-right-color:transparent;
+  background:transparent;
+  display:block;
+  height: 0px;
+  left: 0;
+  margin: 0 auto;
+  position: relative;
+  top: 0;
+  width: 0;
+}
+.fopPopUp .carrot-top { border-bottom-color:transparent; }
+.fopPopUp .carrot-bottom { border-top-color:transparent; }
+.fopPopUp .playerName .carrot-bottom { border-width:2px 4px 4px 4px; }
+
+/*///// Play Details /////*/
+.fopPopUp .playInfo {
+  background-image: url($asset_path_for+"/app_images/game_show_3/stat_comparison-shine.png");
+  background-repeat: repeat-x;
+  background-position: center;
+  border-radius: 5px;
+  position: relative;
+  padding:0 4px 0 7px;
+  height:28px;
+  line-height:30px;
+}
+.fopPopUp .playInfo .playType { font-size: 18px; }
+.fopPopUp .timeStamp {
+  border-left: solid 1px #fff;
+  float:right;
+  font-family: $fontOne;
+  padding-left: 3px;
+  margin:7px 0 0 0;
+  text-align:left;
+}
+.fopPopUp .timeStamp .interval,
+.fopPopUp .timeStamp .clock { font-size: 8px; line-height: 8px; }
+.fopPopUp .timeStamp .interval { font-weight: bold; }
+.fopPopUp .backToPlay {
+  height:0;
+  background:#EEE;
+  text-align: center;
+  margin:0;
+  position: relative;
+  top: -4px;
+  border-radius: 5px;
+  margin: 0 3px 0 -3px;
+  box-shadow:inset 0 -1px 5px 2px rgba(255,255,255,.3), inset 0 0px 5px rgba(0,0,0,.3);
+  cursor:pointer;
+  font:9px normal $fontOne;
+  line-height:11px;
+}
+.fopPopUp .backToPlay:hover { background:#333; }
+.fopPopUp .backToPlay span {
+  text-transform:uppercase;
+  color: #999;
+  background: url($asset_path_for+"/app_images/field_of_play/ice_hockey/backToPlay.png") -2px 2px no-repeat;
+  padding-left:18px;
+}
+
+/* Two-Player Popups */
+.fopPopUp.two-player { width:247px; }
+.fopPopUp.two-player.expanded { width:350px; margin-left:-51px; }
+.fopPopUp.Faceoff .winner { background:url($asset_path_for+"/app_images/field_of_play/ice_hockey/faceOff-won.png") no-repeat 50%; float:left; height:26px; width:45px; }
+.fopPopUp.Faceoff .playInfo { text-align:center; }
+
+/* PLAYER CARD */
+.fopPopUp .playerCard {
+  border-radius: 0 0 11px 11px;
+  margin:0 -6px -6px;
+  border:6px solid #FFF;
+  border-top:none;
+  background-image:url($asset_path_for+"/app_images/field_of_play/ice_hockey/playerDetails-bg.png");
+  background-repeat:repeat-x;
+  overflow:visible;
+  float:left;
+  /* required for animation */
+  height:78px;
+  width:120px;
+}
+.fopPopUp .playerCard + .playerCard { margin-left:1px; margin-right:-50%; }
+.fopPopUp .playerCard.collapsed + .playerCard { margin-left:-6px; }
+.fopPopUp .playerCard > .playerName {
+  color:#222;
+  text-align:center;
+  font-size:12px;
+  line-height:12px;
+  background:#FFF;
+  height:18px;
+  padding:6px 6px 0;
+  margin:0 -6px;
+}
+.fopPopUp .playerInfo {
+  border-radius: 11px 11px 0 0;
+  margin:-6px;
+  border:6px solid #FFF;
+  border-bottom:none;
+  padding: 7px 7px 6px;
+  text-align:right;
+  line-height:20px;
+  min-width:106px;
+  height:41px;
+}
+.fopPopUp .playerInfo > .playerName {
+  float: left;
+  overflow:hidden;
+  white-space: nowrap;
+  width:0;
+  text-align:left;
+  text-indent:7px;
+}
+.fopPopUp .playerInfo > .playerName .firstName { display:block; font-size: 16px; }
+.fopPopUp .playerInfo > .playerName .lastName { display:block; font-size: 26px; }
+.fopPopUp .playerPhoto {
+  border-radius: 5px;
+  height: 40px;
+  width: 40px;
+  float: left;
+  background: #666 none center center;
+}
+.fopPopUp .playerInfo .teamLogo-small { display:inline-block; vertical-align:middle; border:none; }
+.fopPopUp .playerInfo .playerNumber {
+  font-size:53px;
+  line-height:43px;
+  height:40px;
+  text-indent:-50px;
+  overflow:hidden;
+  text-align:right;
+  float:right;
+  opacity:.5;
+}
+.fopPopUp .playerInfo .playerSpecs {
+  font-size:16px;
+  line-height:16px;
+  text-align:center;
+  overflow:hidden;
+  width:auto;
+  position:relative;
+  top:4px;
+}
+.fopPopUp .playerInfo .playerSpecs.small { width:60px; margin:0 0 0 auto; }
+.fopPopUp .playerInfo .playerSpecs.large {
+  text-align:right;
+  display:none;
+}
+
+/* Game Stats */
+.fopPopUp .playerStats {
+  height:0;
+}
+.fopPopUp .playerStatLine {
+  padding:7px 7px 0;
+  line-height: 26px;
+  white-space:nowrap;
+}
+.fopPopUp .gameStatsList {
+  border-radius: 3px;
+  background-color: #333;
+  background-color: rgba(0, 0, 0, .3);
+  width: 74%;
+}
+.fopPopUp .gameStatsList table { font-family: $fontOne; font-size:12px; width:100%; }
+.fopPopUp .gameStatsList td { padding:0 10px 0 0; color:#FFF; white-space:nowrap; }
+.fopPopUp .gameStatsList td.gameStats { padding:0; width:1%; }
+.fopPopUp .gameStatsList td.gameStats span {
+  display:block;
+  background:#000;
+  border-radius: 3px 0 0 3px;
+  padding:0 5px 0 10px;
+}
+.fopPopUp .gameStatsList td.separator span {
+  display:block;
+  height:0;
+  border-color:transparent transparent transparent #000;
+  border-width:13px 0 13px 7px;
+  border-style:solid;
+}
+.fopPopUp .gameStatsList .statCategory { vertical-align:middle; }
+.fopPopUp .gameStatsList .singleStat { vertical-align:middle; font-size:18px; }
+.fopPopUp .profileButton {
+  width:24%;
+  float:right;
+  font-size:12px;
+}
+.fopPopUp .profileButton a {
+  line-height:13px;
+  border-radius: 3px;
+  background-color:#333;
+  background-color: rgba(0, 0, 0, .3);
+  background-image: url($asset_path_for+"/app_images/field_of_play/ice_hockey/btn-out.png");
+  background-repeat: no-repeat;
+  background-position: right center;
+  display: block;
+  padding:7px;
+  color:#FFF;
+}
+.fopPopUp .profileButton a:hover { background-color:#333; background-color:rgba(0,0,0,.75); }
+
+/* Game Plays */
+.fopPopUp .gamePlays {
+  color:#FFF;
+  overflow:hidden;
+  background:#111;
+  margin-bottom:7px;
+}
+.fopPopUp .playList {
+  margin:0 7px;
+  height:0;
+}
+.fopPopUp .totalPlays { border-bottom: dotted 1px #666; font-size: 14px; padding:0 8px 4px; }
+.fopPopUp .singlePlay { border-bottom: dotted 1px #666; font-size: 14px; line-height: 30px; padding: 5px; }
+.fopPopUp .singlePlay .playType {
+  background: rgb(200,32,39);
+  background-image: url($asset_path_for+"/app_images/black.png");
+  display: inline-block;
+  border-radius: 4px;
+  text-align: center;
+  width: 90px;
+}
+.fopPopUp .singlePlay .role { margin-left: 10px; }
+.fopPopUp .singlePlay .time { float: right; margin-right: 10px; }
+
+/*/////////// EXPANDED ///////////*/
+
+.fopPopUp.noTransitions {
+  transition: none !important;
+}
+
+/* Transitions */
+.fopPopUp,
+.fopPopUp .playInfo,
+.fopPopUp .playerInfo2,
+.fopPopUp .playerInfo > .playerName,
+.fopPopUp .playerInfo .playerNumber,
+.fopPopUp .playerCard,
+.fopPopUp .playerCard > .playerName,
+.fopPopUp .playerStats,
+.fopPopUp .gamePlays,
+.fopPopUp .playList,
+.fopPopUp .backToPlay {
+  overflow:hidden;
+}
+
+/* Hiden When Expanded */
+.fopPopUp.expanded .playInfo,
+.fopPopUp.expanded .playerCard > .playerName {
+  height:0;
+  padding-top:0;
+  padding-bottom:0;
+  overflow:hidden;
+}
+.fopPopUp.expanded .playerInfo .playerSpecs.small { display:none; }
+
+.fopPopUp.expanded .playerCard {
+  width:350px;
+  height:255px;
+}
+.fopPopUp .playerCard.collapsed { width:0; height:0; }
+
+/* Visible When Expanded */
+.fopPopUp.expanded .playerStats { height: 40px; }
+.fopPopUp.expanded .gamePlays { height:auto; }
+.fopPopUp.expanded .playList { height:140px; overflow:auto; }
+.fopPopUp.expanded .playerInfo .playerSpecs.large { display:block; }
+.fopPopUp.expanded .playerInfo > .playerName { width:200px; margin-right:-200px; }
+.fopPopUp.expanded .playerInfo .playerNumber { text-indent:5px; }
+.fopPopUp.expanded .gamePlays .carrot-top,
+.fopPopUp.expanded .gamePlays .carrot-bottom {
+  border-width:5px;
+}
+.fopPopUp.expanded .backToPlay { height:12px; }
+
+/* HOVER STATE */
+.fopPopUp .playerCard.expandable:hover {
+  cursor:pointer;
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIzMiUiIHN0b3AtY29sb3I9IiNjNGM0YzQiIHN0b3Atb3BhY2l0eT0iMCIvPgogICAgPHN0b3Agb2Zmc2V0PSI2NyUiIHN0b3AtY29sb3I9IiNmZGZkZmQiIHN0b3Atb3BhY2l0eT0iMC40NiIvPgogICAgPHN0b3Agb2Zmc2V0PSI2OCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMC4yMyIvPgogICAgPHN0b3Agb2Zmc2V0PSI2OSUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMCIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZmZmZmZmIiBzdG9wLW9wYWNpdHk9IjAuMzYiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
+  background-image: linear-gradient(to bottom,  rgba(196,196,196,0) 32%,rgba(253,253,253,0.46) 67%,rgba(255,255,255,0.23) 68%,rgba(255,255,255,0) 69%,rgba(255,255,255,0.36) 100%); /* W3C */
+}
+.fopPopUp .playerCard.expandable:hover .playerInfo {
+  box-shadow: inset 0 0 15px 2px rgba(255,255,255,.6);
+}
+.fopPopUp.expanded .playerCard.expandable:hover {
+  cursor:default;
+  background-image: url($asset_path_for+"/app_images/field_of_play/ice_hockey/playerDetails-bg.png");
+}
+.fopPopUp.expanded .playerCard.expandable:hover .playerInfo {
+  box-shadow: none;
+}
+
+// # SVG and marker specific css
+html.csstransforms3d body.hockeyish #FOP .play {
+  position: absolute;
+  width: 35px;
+  // # Instant transition on plays (for hover and such).
+  transition: opacity 0ms linear;
+  // # This adjusts the translation to midpoint of the rasterized svg.
+  transform: translate3d(-17.5px,15px,1px);
+  transform-style: preserve-3d;
+  background: url($asset_path_for+"/app_images/live/hockey_icon_shadow.png") bottom no-repeat;
+}
+
+html.csstransforms3d body.hockeyish .svg-pin {
+  height: 48px;
+  transform-origin: 0 48px 0;
+  transform: rotateX(-90deg) translate3d(1px,0,-15px);
+}
+
+html.csstransforms3d body.hockeyish .svg-pin svg {
+  height: 48px;
+  width: 35px;
+}
+
+html.csstransforms3d body.hockeyish .svg-pin svg .position-pin {
+  stroke: #000;
+}
+
+html.csstransforms3d body.hockeyish .svg-pin.homeTeam, .svg-pin.awayTeam {
+  background-color: transparent;
+}
+
+/* Play Action Activation on SVG */
+body.hockeyish #FOP .play { cursor:pointer; display:none; }
+
+html.csstransforms3d body.hockeyish .play svg .action-icon {
+  opacity: 0;
+  fill: #fff;
+  stroke: #000;
+}
+
+#FOP-timeline-filters,
+.fopPopUp,
+.fopPopUp .playInfo,
+.fopPopUp .playerInfo,
+.fopPopUp .playerInfo2,
+.fopPopUp .playerInfo > .playerName,
+.fopPopUp .playerInfo .playerNumber,
+.fopPopUp .playerCard,
+.fopPopUp .playerCard > .playerName,
+.fopPopUp .playerStats,
+.fopPopUp .gamePlays,
+.fopPopUp .playList,
+.fopPopUp .backToPlay {
+  box-sizing: content-box;
+}
+
+html.csstransforms3d body.hockeyish #FOP .play.penalty svg .penalty,
+html.csstransforms3d body.hockeyish #FOP .play.hit svg .hit,
+html.csstransforms3d body.hockeyish #FOP .play.shot svg .shot,
+html.csstransforms3d body.hockeyish #FOP .play.blockedshot svg .block,
+html.csstransforms3d body.hockeyish #FOP .play.faceoff svg .faceoff,
+html.csstransforms3d body.hockeyish #FOP .play.turnover svg .turnover,
+html.csstransforms3d body.hockeyish #FOP .play.goal svg .goal {
+  opacity: 1.0;
+}
+
+//# animations
+html.csstransforms3d body.hockeyish #FOP .play.new .svg-pin {
+  transform-origin: 0 100px 100px;
+  opacity:0;
+}
+html.csstransforms3d body.hockeyish #FOP .play_area,
+html.csstransforms3d body.hockeyish #FOP .plays,
+html.csstransforms3d body.hockeyish #FOP .play {
+  transform-style: preserve-3d;
+}
+html.csstransforms3d body.hockeyish #FOP .play .shadow { display:none; }
+#FOP-timeline-markers .marker.filter_show.slider_show.team_show,
+body.hockeyish #FOP .play.filter_show.slider_show.team_show { display:block; }
+
+/* MARKERS */
+#FOP-timeline-markers .marker {
+  position: absolute;
+  width: 6px;
+  height: 24px;
+  bottom: 10px;
+  background: none;
+  margin-left: -3px;
+  overflow:visible;
+  display:none;
+}
+
+#liveGameSimple:hover .marker svg,
+#liveGameSimple.dim_plays .marker svg,
+body.hockeyish #liveGameSimple.dim_plays .play .svg-pin,
+body.hockeyish #liveGameSimple:hover .play .svg-pin {
+  opacity:.2;
+}
+body.hockeyish #liveGameSimple.dim_plays .play.active .svg-pin,
+body.hockeyish #liveGameSimple:hover .play .svg-pin:hover,
+body.hockeyish #liveGameSimple.dim_plays .marker.active {
+  opacity:1; z-index:499;
+}
+
+#FOP-timeline-markers .marker:hover svg,
+#FOP-timeline-markers .marker.active svg {
+  opacity: 1.0;
+}
+
+//# The following effectively hides the #FOP in all M$ browsers upto IE11
+#liveGameSimple.no-nested-3d-transforms {
+  display: none;
+}

@@ -1,0 +1,83 @@
+// Site Map
+
+//sitemap within collectors under tabs
+.contentTabs + .collectorTree.siteMapElement {
+    display: inline-block;
+    width: 100%;
+    border-top: 2px solid #fff;
+  a[href*="/document/"] + .info a.title {
+    position: relative;
+
+    &:before {
+      top: -.2em;
+      left: -20px;
+    }
+  }
+  a[href*="/photo_gallery/"] {
+    position:relative;
+
+    &:before {
+      top: -.2em;
+      left: -20px;
+    }
+  }
+}
+
+.siteMapElement {
+  background: #eee;
+
+  h3, h4 {
+    color: #666;
+    font-size: .875em;
+    font-weight: normal !important;
+    padding: 0;
+    margin: 0;
+    text-transform: none;
+  }
+
+  .unlimitedHierarchy {
+    $indent: 30px;
+    $offset: 5px;
+
+    margin-left: 0;
+    padding: 15px;
+    background: none;
+
+    li {
+      display: block;
+      position: relative;
+      list-style-type: none;
+      background: none;
+      margin-left: 0;
+      padding: 0;
+
+      div { background:none; }
+
+      li {
+        position: relative;
+        padding-left: $indent;
+
+        // point to item
+        &:before,
+        &:not(.lastLi):after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: $offset;
+          display: block;
+          width: $indent - $offset;
+          height: 100%;
+          border-left: 1px solid #CCC;
+        }
+
+        // continue line down to next item
+        &:before {
+          height: 1em;
+          border-bottom: 1px solid #CCC;
+        }
+      }
+    }
+
+    .lastLi { background:none; }
+  }
+}

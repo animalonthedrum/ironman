@@ -1,0 +1,67 @@
+.pl-form-result {
+  margin: 0 $layout-spacing-large;
+  overflow: hidden;
+}
+
+.pl-form-result__questions {
+  column-gap: $layout-spacing-large;
+  column-width: 25rem; // 350px @ 14px
+  margin-top: -1px;
+  transform: scale(1); // fix disappearing content in Safari
+
+  .pl-field__label,
+  .pl-field__label--required {
+    font-size: $font-xsmall;
+  }
+
+  // Prevents Chrome from cramming all items into the first column
+  // when the last item is larger than all the rest combined.
+  &::after {
+    content: '';
+    display: block;
+    height: 1px;
+    margin-bottom: -1px;
+  }
+}
+
+.pl-question {
+  @include pl-column-break-none;
+  border-top: 1px solid $gray-light;
+  display: block;
+  margin: 0;
+  padding: $layout-spacing-medium $layout-spacing-large * 2 $layout-spacing-medium $layout-spacing-large;
+  position: relative;
+  width: 100%;
+
+  textarea {
+    resize: none;
+  }
+
+  &.pl-is-editable {
+    cursor: pointer;
+  }
+}
+
+%pl-question__icon {
+  color: $gray-light;
+  padding: 0;
+  position: absolute;
+  right: $layout-spacing-medium;
+  top: $layout-spacing-medium;
+}
+
+.pl-question__lock {
+  @extend %pl-question__icon;
+}
+
+.pl-question__edit {
+  @extend %pl-question__icon;
+  &:hover {
+    color: $color-content-light;
+  }
+}
+
+.pl-question__answer {
+  white-space: pre-line;
+  word-wrap: break-word;
+}

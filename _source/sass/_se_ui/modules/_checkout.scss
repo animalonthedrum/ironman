@@ -1,0 +1,16 @@
+// # Checkout
+// Form styles specific to checkout forms
+
+// ## Payment Options
+.pl-payment-processors {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 1.4286rem; // 20px / 14px
+}
+
+.pl-payment-processors__logo,
+%pl-payment-processors__logo {
+  height: 3.1428rem; // 44px / 14px
+  margin: .2857rem; // 4px / 14px
+}

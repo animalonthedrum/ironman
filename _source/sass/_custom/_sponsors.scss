@@ -1,0 +1,165 @@
+.sponsor-50-50 {
+
+  .column {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .pageElement.textBlockElement {
+    margin-bottom: 5px;
+
+    &>h3:first-child {
+      font-size: 22px;
+      line-height: 1.6;
+    }
+  }
+
+  .heroPhotoElement {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    height: 170px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+    transition: filter $transition-linear;
+    filter: grayscale(100%);
+    position: relative;
+    z-index: 10;
+
+    &:hover {
+      filter: grayscale(0);
+      z-index: 100;
+    }
+
+    a {
+      overflow: hidden
+        /* needed for ie 11 */
+    }
+
+    img {
+      height: auto;
+      width: auto;
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    .cutline {
+      display: none;
+    }
+  }
+
+}
+
+@media only screen and (min-width: 768px) {
+
+  .sponsor-50-50 {
+
+    .column-1 {
+      width: 50%;
+      padding-right: 15px;
+    }
+    .column-2 {
+      padding-left: 15px;
+    }
+
+  }
+
+}
+
+.sponsor-row .column-1 {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  padding-left: 0;
+  padding-right: 0;
+
+  .pageEl {
+    width: calc(50% - 1px);
+    margin-right: 1px;
+    // flex: 1 1 auto;
+
+
+    &:first-of-type {
+      flex-basis: 100%;
+
+      .pageElement.textBlockElement {
+        margin-bottom: 5px;
+
+        &>h3:first-child {
+          font-size: 22px;
+          line-height: 1.6;
+        }
+      }
+    }
+
+    .heroPhotoElement {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      height: 100px;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      margin-top: 0;
+      margin-bottom: 1px;
+      transition: filter $transition-linear;
+      filter: grayscale(100%);
+      position: relative;
+      z-index: 10;
+
+      &:hover {
+        filter: grayscale(0);
+        z-index: 100;
+      }
+
+      //a{ overflow: hidden /* needed for ie 11 */ }
+
+      img {
+        height: auto;
+        width: auto;
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      .cutline {
+        display: none;
+      }
+
+    }
+  }
+
+}
+
+@media only screen and (min-width: 1024px) {
+
+  .sponsor-row .column-1 {
+
+    .pageEl {
+      width: calc(20% - 1px);
+
+      .heroPhotoElement {
+        height: 170px;
+
+        img {
+          max-height: 100%;
+        }
+      }
+    }
+
+  }
+
+}
+
+.sponsor-row {
+  .heroPhotoElement {
+    a {
+      height: 100%;
+    }
+  }
+}

@@ -1,0 +1,92 @@
+// Footer Colophon
+// 1. Settings
+// 2. Styles
+
+// External Variables (Un-comment these if you are having trouble with missing variables)
+// $page-element-margin: 15px !default;
+// $desktop-padding: 15px !default;
+// $content-area-padding: ($desktop-padding * 2) !default;
+// $content-area-width: 1000px !default;
+
+// 1. Settings
+$footer-colophon-se-logo-black-color: true !default;
+$footer-colophon-se-logo-white-color: false !default;
+$footer-colophon-se-logo-white: false !default;
+
+$footer-colophon-max-width: $content-area-width !default;
+$footer-colophon-band-background-color: gainsboro !default;
+$footer-colophon-content-background-color: transparent !default;
+$footer-colophon-item-padding: 10px !default;
+$footer-colophon-flex-justification: center !default;
+$footer-colophon-flex-align: center !default;
+
+$footer-colophon-font-size: 16px !default;
+$footer-colophon-line-height: 1.75 !default;
+$footer-colophon-text-case: none !default;
+$footer-colophon-text-color: black !default;
+$footer-colophon-link-color: tomato !default;
+$footer-colophon-link-color-hover: mediumaquamarine !default;
+
+
+// 2. Styles
+#siteFooter {
+  width: 100%;
+  @if $footer-colophon-band-background-color != "transparent" { background-color: $footer-colophon-band-background-color; }
+  > ul {
+    width: 100%;
+    max-width: $footer-colophon-max-width;
+    padding: $page-element-margin ($content-area-padding - ($footer-colophon-item-padding / 2));
+    margin: 0 auto;
+    @if $footer-colophon-content-background-color != "transparent" { background-color: $footer-colophon-content-background-color; }
+    list-style: none;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: $footer-colophon-flex-justification;
+    align-items: $footer-colophon-flex-align;
+    @if $footer-colophon-flex-justification == "center" { text-align: center; }
+    li {
+      font-size: $footer-colophon-font-size;
+      color: $footer-colophon-text-color;
+      text-transform: $footer-colophon-text-case;
+      line-height: $footer-colophon-line-height;
+      padding: 0 ($footer-colophon-item-padding / 2);
+      &:empty{
+        display: none;
+      }
+    }
+    a{
+      color: $footer-colophon-link-color;
+      &:hover{
+        color: $footer-colophon-link-color-hover;
+      }
+    }
+  }
+}
+
+#poweredByNGIN {
+  a {
+    position: relative;
+    display: block;
+    transform: translateY(18%);
+    &:after {
+      content: " ";
+      @if $footer-colophon-se-logo-black-color { background-image: url($asset-path-for+'/logo_images/logo_black.svg'); }
+      @if $footer-colophon-se-logo-white-color { background-image: url($asset-path-for+'/logo_images/logo.svg'); }
+      @if $footer-colophon-se-logo-white { background-image: url($asset-path-for+'/logo_images/white_logo.png'); }
+      background-position: center center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+  img {
+    display: block;
+    opacity: 0;
+    height: 1.25em;
+  }
+}

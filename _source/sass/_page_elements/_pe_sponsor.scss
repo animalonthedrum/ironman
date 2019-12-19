@@ -1,0 +1,78 @@
+//Sponsor Page Element
+.pageElementAdmin .sponsorElement{
+  padding-bottom: 10px;
+}
+.sponsorElement {
+  display: flex;
+  flex-flow: column;
+  border-top: none;
+  background-color: white;
+  padding-top: $content-area-padding;
+  padding-bottom: $content-area-padding;
+  padding-left: $content-area-padding;
+  padding-right: $content-area-padding;
+
+  .description {
+    display:flex;
+    flex-flow: column;
+    > h3{
+      text-transform: none;
+      text-align: center;
+      color: $color-secondary;
+      line-height: calc(32 / 24);
+      margin-top: $content-area-padding;
+      margin-bottom: $desktop-padding;
+    }
+    .goToLink {
+      order: 3;
+      @include global-link-style;
+      @include global-link-container;
+      @include global-link-text;
+      @include global-link-icon-style;
+      @include global-link-icon-character;
+      @include tablet { min-width: 0; width: 100%; max-width: 200px;}
+      font-size: 16px;
+      font-weight: 400;
+      min-width: 200px;
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: $content-area-padding;
+      &:before{
+        padding: 0;
+      }
+    }
+  }
+  .imageLink{
+    float: left;
+    text-align: center;
+    display: block;
+    img{
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  &.hasImage{
+    .description{
+      @include touch-device { padding-left:0; }
+      padding-left: 110px;
+    }
+    @media only screen and (min-width: 1000px){
+      .col-md-3 &{
+        .imageLink{float:none;}
+        .description{padding:0;}
+      }
+    }
+    @media only screen and (min-width: 769px){
+      .col-md-4 &{
+        .imageLink{float:none;}
+        .description{padding:0;}
+      }
+    }
+    @media only screen and (max-width: 350px){
+      .imageLink{float:none;}
+      .description{padding:0;}
+    }
+  }
+}

@@ -1,0 +1,31 @@
+#survey_steps{
+  .usMapElement{
+    .replaceMe{
+      ul{
+        &.map_regions{
+          li{
+            a{
+              padding: 15px 10px;
+              border-top: 1px solid #e5e5e5;
+              background:#fbfbfb;
+              color: #000;
+              &:hover{
+                background: #fff;
+                span{
+                  strong{
+                    font:bold 1em/1.5em $fontOne;
+                  }
+                }
+              }
+              span{
+                strong{
+                  font:normal 1em/1.5em $fontOne;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

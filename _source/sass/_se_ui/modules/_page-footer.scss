@@ -1,0 +1,20 @@
+// # Page footer
+
+.pl-page-footer {
+  color: $color-content;
+  padding: $layout-spacing-large;
+  text-align: center;
+  vertical-align: bottom;
+}
+.pl-page-footer__items {
+  display: inline-block;
+}
+.pl-page-footer__item {
+  display: inline-block;
+  list-style: none;
+  margin-left: $layout-spacing-medium;
+
+  .pl-page-footer__items:first-child > &:first-child {
+    margin-left: 0;
+  }
+}

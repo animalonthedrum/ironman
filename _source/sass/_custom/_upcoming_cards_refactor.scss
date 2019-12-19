@@ -1,0 +1,223 @@
+@mixin aspect-ratio-image($width, $height) {
+  position: relative;
+  display: block;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.user_mode {
+  .upcoming-card {
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    @include mobile {
+      margin-left: 0;
+      margin-right: 0;
+    }
+    .pageElement {
+      margin-top:0;
+      margin-bottom:0;
+      box-shadow: 0 0 10px 0 rgba(black, 0.1);
+      transition: box-shadow $transition-standard, transform $transition-standard;
+      .text {
+        position: relative;
+        box-shadow: inset 0 0 0 0.01px white;
+        &:before {
+          content: "\f0da";
+          font-family: "fontawesome";
+          font-size: 20px;
+          color: $color-white;
+          display: flex;
+          transition: color $transition-standard;
+          position: absolute;
+          transform: translateY(-50%);
+          top: 50%;
+          right: 20px;
+        }
+      }
+      &:hover {
+        box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.2);
+        transform: translateY(-10px);
+
+        .text {
+          box-shadow: inset 0px -5px 0 $color-primary;
+          &:before {
+            color: $color-primary;
+          }
+        }
+      }
+      .leftTextImage,
+      .originalTextImage {
+        float: unset;
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-left: 0;
+        margin-right: 0;
+        position: relative;
+        img {
+          width: 100%;
+        }
+        a {
+          @include aspect-ratio-image(16, 9);
+        }
+        .cutline {
+          width: auto;
+          margin: 0 auto;
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          background-color: $color-gray;
+          font-family: $font-primary;
+          font-weight: 700;
+          font-size: 14px;
+          font-style: normal;
+          line-height: 1.5;
+          color: $color-secondary;
+          text-transform: uppercase;
+          padding-left: 20px;
+          padding-right: 20px;
+          padding-top: 5px;
+          padding-bottom: 5px;
+        }
+      }
+      .text {
+        background-color: $color-white;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        p:first-of-type {
+          font-family: $font-primary;
+          font-size: 12px;
+          font-weight: 400;
+          color: $color-gray-md;
+          letter-spacing: 7.5px;
+          line-height: 1.58;
+          margin-bottom: 0;
+        }
+        p:nth-of-type(2) {
+          font-family: $font-secondary;
+          font-size: 14px;
+          font-weight: 400;
+          color: $color-gray-md;
+          letter-spacing: 0;
+          line-height: 1.2;
+          margin-bottom: 10px;
+        }
+        p:nth-of-type(3){
+          font-family: $font-secondary;
+          font-size: 16px;
+          font-weight: 400;
+          color: $color-secondary;
+          letter-spacing: 0;
+          line-height: 2;
+          margin-bottom: 0;
+        }
+        h3 {
+          font-family: $font-primary;
+          font-size: 24px;
+          font-weight: 600;
+          color: $color-secondary;
+          letter-spacing: 0;
+          line-height: 1.33;
+          margin-top: 5px;
+          margin-bottom: 5px;
+        }
+      }
+      .linkText {
+        max-width: 100%;
+        width: 100%;
+        a {
+          @include global-link-container;
+          @include global-link-style;
+          @include global-link-text;
+          @include global-link-icon-character;
+          @include global-link-icon-style;
+          font-size: 14px;
+          line-height: 1.2;
+        }
+      }
+    }
+  }
+
+  .layout-100.four-cards {
+    .column {
+      display: flex;
+      flex-wrap: wrap;
+
+      .upcoming-card {
+        flex: 1 1 calc(25% - 90px);
+        margin-bottom: 15px;
+        @include mobile {
+          flex: 1 1 auto;
+          margin-left: 0;
+          margin-right: 0;
+        }
+        @include tablet {
+          flex:1 1 calc(50% - 90px);
+        }
+
+        &:nth-of-type(1) {
+          margin-left: 0;
+        }
+
+        &:nth-of-type(4) {
+          margin-right: 0;
+        }
+
+        .pageElement {
+          .leftTextImage,
+          .originalTextImage {
+            a {
+              @include aspect-ratio-image(3, 2);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.edit_mode {
+  .upcoming-card {
+    .pageElement {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+.layout-33-33-33 {
+  .user_mode & {
+    .upcoming-card {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+}
+.layout-33-33-33 {
+  .edit_mode & {
+    .upcoming-card {
+      .pageElement {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+
+}

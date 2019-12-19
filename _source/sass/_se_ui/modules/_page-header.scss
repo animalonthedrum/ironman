@@ -1,0 +1,33 @@
+// # Page header
+// Includes the page title, and optionally a description or tabs for navigation
+
+.pl-page-header {
+  border-bottom: solid 1px $color-content-xxlight;
+  padding-left: .8571em; // 12px / 14px
+  padding-right: .8571em; // 12px / 14px
+  padding-top: 1.4286em; // 20px / 14px
+
+  @include media-small {
+    padding-left: 1.7143em; // 24px / 14px
+    padding-right: 1.7143em; // 24px / 14px
+  }
+}
+
+.pl-page-header__title {
+  @include font-large;
+  display: inline-block;
+
+  &:last-child {
+    margin-bottom: 1.1429rem; // 16px / 14px
+  }
+}
+
+.pl-page-header__description {
+  color: $color-content-light;
+  display: inline-block;
+  margin-left: .8571em; // 12px / 14px
+
+  &:last-child {
+    margin-bottom: 1.1429rem; // 16px / 14px
+  }
+}

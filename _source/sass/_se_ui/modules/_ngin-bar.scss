@@ -1,0 +1,16 @@
+// # Ngin bar
+// Displays at the top of every page. Contains navigation to user-specific
+// features like notifications and log-out.
+
+.pl-ngin-bar {
+  background-color: $gray-xdark;
+  color: #fff;
+  line-height: $ngin-bar-height;
+  padding: 0 1.7143rem; // 24px / 14px
+  position: relative;
+  z-index: 2; // Position above side-nav
+}
+.pl-ngin-bar__logo {
+  transform: translateY(.1428571429rem); // 2px / 14px
+  vertical-align: middle;
+}

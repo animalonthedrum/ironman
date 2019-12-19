@@ -1,0 +1,227 @@
+/* Tables */
+// 1. Structure
+// 2. Data Table
+// 3. Stat Table
+// 4. Sports Page Stat Tables
+// 5. Tournament Element Tables
+
+#lightboxBody .tableElement { _width: 660px; } // Show to IE
+
+.dataTable,
+.statTable,
+.stat_table{
+  * > { box-sizing: border-box; }
+}
+
+// 1. Structure
+.NginTableScroll,
+.tableElement .tableWrapper,
+.textBlockElement .text > .tableWrapper { overflow-x: auto; }
+
+.dataTable {
+  width: 100%;
+  position: relative;
+
+  th, td {
+    &:first-child { text-align: left; }
+  }
+  td {
+    text-align: left;
+
+    &:last-child {
+      text-align: right;
+    }
+  }
+}
+
+.default-text-align .dataTable td {
+  text-align: center;
+
+  &:first-child {
+    text-align: left;
+  }
+
+  &:last-child {
+    text-align: center;
+  }
+}
+
+
+$fixed-width-size: 140px;
+
+// 2. Data Table
+.dataTable {
+  tfoot {
+    // tfoot cannot have border-bottom itself
+    &:after {
+      content: '';
+      position: absolute;
+      display: block;
+      height: 0;
+      width: 100%;
+      border-bottom: 2px dotted #eee;
+    }
+
+    // Table builder generates empty tfoot so hide border
+    &:empty:after { display: none; }
+  }
+}
+
+
+// 3. Stat Table
+.statTable {
+  .condensedView { display: none; }
+
+  // Hide sort images because we are using font-icons
+  .sorted_img,
+  .sort-arrow { display: none; }
+
+  .name,
+  .statTeam,
+  .statPlayer {
+    span {
+      display: block;
+      text-align: left;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .scheduleListResult,
+  .scheduleListScore {
+    display: inline-block;
+  }
+
+  .scheduleListResult + .scheduleListScore {
+    margin-left: .5rem;
+  }
+
+  .winner {
+    background: url($asset_path_for+"/app_images/game_center/winnersNotch-statTable.png") no-repeat left 60%;
+  }
+
+  // Give tables without data name column a width
+  th {
+    &.name,
+    &.statTeam,
+    &.statPlayer {
+      span {
+        width: $fixed-width-size;
+        margin-left: -.5em; // hack to counter the &nbsp; in the html
+      }
+    }
+  }
+
+  td {
+    &.name,
+    &.statTeam,
+    &.statPlayer {
+      span {
+        width: $fixed-width-size;
+      }
+    }
+  }
+
+  .extra-space {
+    width: 100%;
+    padding: 0 !important;
+  }
+}
+
+// 4. Sports Page Stat Tables
+
+@mixin fixed-width-column($width) {
+  width: $width; // Acts as a min-width for the team name column
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+
+#TeamStatsDiv,
+#PlayerStatsDiv {
+  .statTable {
+    th > img { display: none; }
+    td { white-space: nowrap; }
+  }
+}
+
+#TeamStatsDiv {
+  .statTable {
+    // Fixed width team name column
+    th:first-child { width: $fixed-width-size; }
+    .teamName { @include fixed-width-column($fixed-width-size); }
+  }
+}
+
+#PlayerStatsDiv {
+  .statTable {
+    // Fixed width player and team name columns
+    th {
+      &:nth-child(2),
+      &:nth-child(3) {
+        text-align: left;
+        width: $fixed-width-size;
+      }
+    }
+
+    .jersey-number {
+      text-align: center;
+      font-weight: bold;
+    }
+
+    td {
+      &:nth-child(2) > a { @include fixed-width-column($fixed-width-size); }
+      .teamName { @include fixed-width-column($fixed-width-size); }
+      &.statPlayer { text-align: left; }
+    }
+  }
+}
+
+#TeamInstanceStatsDiv {
+  .theme-stat-table {
+    td { white-space: nowrap; }
+
+    th:first-child,
+    .statPlayer {
+      &:not(.jersey-number) { width: $fixed-width-size; }
+    }
+
+    th.statPlayer {
+      width: $fixed-width-size;
+      text-align: left;
+    }
+
+    .jersey-number {
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .teamName,
+    .statPlayer > a { @include fixed-width-column($fixed-width-size); }
+  }
+}
+
+
+// 5. Tournament Element Tables
+.playerStatLeaderElement th:first-child { width: 4em; }
+
+.standingsElement {
+  .sportTableLabel {
+    @include special-header;
+
+    h4 { color: #fff; }
+  }
+
+  .statTable {
+    th:first-child { width: 180px;}
+
+    th, td {
+      &:first-child { text-align: left; }
+    }
+  }
+
+  .NginTableWrapper:not(:last-child) { margin-bottom: 15px; }
+}

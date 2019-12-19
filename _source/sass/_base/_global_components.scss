@@ -1,0 +1,77 @@
+$global-component-title-background-color: #F2F3F5;
+$global-component-title-border-color: #DEE4E4; //#ACB1B4;
+$global-component-container-border-color: #C1C3C5;
+
+@mixin edit_ui_element($padding: -10px, $pseudo: after, $position: 'true', $parent-trigger: '.topNav'){
+  @at-root .edit_mode &{
+    @if ($position == 'true') {
+      position: relative;
+    }
+    &:#{$pseudo}{
+      content: "";
+      display: block;
+      z-index: 1;
+      position: absolute;
+      top: $padding;
+      bottom: $padding;
+      left: $padding;
+      right: $padding;
+      border: 1px dashed $global-component-container-border-color;
+      pointer-events: none;
+      opacity: 1;
+      transition: opacity $transition-linear;
+    }
+  }
+  .global-component-edit-link{
+    top: $padding;
+    left: $padding;
+    right: $padding;
+  }
+}
+
+.global-component-edit-link{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: 0;
+  display: flex;
+  justify-content: space-between; // flex-start;
+  align-items: stretch;
+}
+.global-component-title{
+  // width: 100%; // ?
+  color: #444;
+  background-color: $global-component-title-background-color;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  padding: 3px;
+  border: 1px solid $global-component-title-border-color;
+  border-right: 0;
+  transition: opacity $transition-linear;
+  .global-component-edit-link:hover &{
+    opacity: 1;
+  }
+}
+.global-component-icon{
+  background-color: $global-component-title-background-color;
+  border: 1px solid $global-component-title-border-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+  &:before{
+    content: "";
+    background-image: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2022.0278%2020.4102%22%3E%3Cg%20fill%3D%22%23808F98%22%3E%3Cpath%20d%3D%22M21.528%203.657h-4.775V.5c0-.276-.224-.5-.5-.5H.5C.224%200%200%20.224%200%20.5v15.753c0%20.276.224.5.5.5h4.774v3.157c0%20.276.224.5.5.5h15.754c.276%200%20.5-.224.5-.5V4.157c0-.276-.224-.5-.5-.5zM1%2015.753V1h14.753v2.657H3.523c-.275%200-.5.224-.5.5s.225.5.5.5h1.75v1.25h-1.75c-.275%200-.5.224-.5.5s.225.5.5.5h1.75v1.25h-1.75c-.275%200-.5.225-.5.5s.225.5.5.5h1.75v1.25h-1.75c-.275%200-.5.225-.5.5s.225.5.5.5h1.75v1.252h-1.75c-.275%200-.5.223-.5.5s.225.5.5.5h1.75v2.093H1zm20.028%203.657H6.274v-4.26l3.69-2.5%203.38%202.63c.09.07.198.106.307.106.115%200%20.228-.04.32-.115l7.058-5.864V19.41zm0-11.304l-7.387%206.138-3.35-2.604c-.17-.134-.406-.142-.586-.02l-3.43%202.323V4.657h14.754v3.45z%22%2F%3E%3Cpath%20d%3D%22M13.65%2011.604c1.307%200%202.37-1.062%202.37-2.37s-1.063-2.368-2.37-2.368c-1.305%200-2.368%201.063-2.368%202.37s1.063%202.368%202.37%202.368zm0-3.738c.756%200%201.37.615%201.37%201.37s-.614%201.368-1.37%201.368c-.754%200-1.368-.614-1.368-1.37s.614-1.368%201.37-1.368z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+  }
+}

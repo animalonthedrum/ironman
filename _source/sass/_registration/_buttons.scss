@@ -1,0 +1,414 @@
+// # Default
+%button {
+  @include font-xsmall;
+  background-color: #fff;
+  background: linear-gradient(#fff, $gray-xlight);
+  border: 1px solid $gray-light;
+  border-radius: 4px;
+  color: $color-content-light;
+  display: inline-block;
+  font-family: $font-default;
+  font-weight: normal;
+  padding: $button-padding-vertical $button-padding-horizontal;
+  text-decoration: none;
+  //text-transform: uppercase;
+
+  // TODO: don't apply :hover styles on touch devices
+  &:hover:not(:disabled),
+  &:active:not(:disabled) {
+    background-color: $gray-xlight;
+    background-image: linear-gradient($gray-xlight, #fff);
+  }
+  &:hover:not(:disabled) {
+    border-color: $gray;
+  }
+  &:active:not(:disabled) {
+    background: $gray-xlight;
+    border-color: $gray-dark;
+    box-shadow: 0 0 .2em rgba(0, 0, 0, .3) inset;
+  }
+  &:focus {
+    border-color: $color-highlight;
+    box-shadow: 0 0 4px 1px $color-highlight;
+    outline: none;
+  }
+  &:disabled {
+    background: #fff;
+    border-color: $gray-light;
+    color: $gray-light;
+  }
+  img {
+    margin: 0; // override default platform img margin-bottom
+    vertical-align: bottom; // baseline causes odd alignment with text
+  }
+}
+@mixin pl-button--primary(){
+  @extend %button;
+  background-color: $color-success;
+  background: linear-gradient($sn-success-color-10, $sn-success-color);
+  border-color: $color-success-dark;
+  color: #fff !important;
+
+  // TODO: don't apply :hover styles on touch devices
+  &:hover:not(:disabled),
+  &:active:not(:disabled) {
+    background-color: $color-success-light;
+    //background-image: linear-gradient($color-success-dark, $color-success);
+          background: linear-gradient($sn-success-color, $sn-success-color-10);
+          border-color: $sn-success-color--22;
+  }
+  &:hover:not(:disabled) {
+    border-color: $color-success-dark;
+  }
+  &:active:not(:disabled) {
+    background: $color-success-dark;
+    border-color: $color-success-dark;
+    box-shadow: 0 0 .3em rgba(0, 0, 0, .3) inset;
+  }
+  &:focus:not(:disabled) {
+    border-color: #fff;
+    box-shadow: 0 0 4px 1px $color-highlight;
+  }
+}
+%fa{
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translate(0,0);
+}
+%facebook {
+  $fb-light: #4964a0;
+  $fb-dark: #365391;
+  @include font-xsmall;
+  color: #fff;
+  background: linear-gradient($fb-light, $fb-dark);
+  border-color: darken($fb-dark, 5%);
+
+  &:hover,
+  &:active {
+    background: linear-gradient($fb-dark, $fb-light) !important;
+    border-color: darken($fb-dark, 5%) !important;
+  }
+  &:before{
+    content:"\f082";
+    @extend %fa; 
+    margin-right: 5px;
+  }
+}
+/*
+
+.pl-button {
+  @extend %button;
+}
+
+
+// ## Modifiers
+.pl-button--primary {
+  @extend %button;
+  background-color: $color-success;
+  background-image: linear-gradient($color-success, $color-success-dark);
+  border-color: $color-success-dark;
+  color: #fff;
+
+  // TODO: don't apply :hover styles on touch devices
+  &:hover:not(:disabled),
+  &:active:not(:disabled) {
+    background-color: $color-success-light;
+    background-image: linear-gradient($color-success-dark, $color-success);
+  }
+  &:hover:not(:disabled) {
+    border-color: $color-success-dark;
+  }
+  &:active:not(:disabled) {
+    background: $color-success-dark;
+    border-color: $color-success-dark;
+    box-shadow: 0 0 .3em rgba(0, 0, 0, .3) inset;
+  }
+  &:focus:not(:disabled) {
+    border-color: #fff;
+    box-shadow: 0 0 4px 1px $color-highlight;
+  }
+}
+
+.pl-button--small {
+  @extend %button;
+  padding: $button-padding-vertical-small $button-padding-horizontal-small;
+}
+
+.pl-button--large {
+  @extend %button;
+  @include font-large;
+  padding: $button-padding-vertical-large $button-padding-horizontal-large;
+}
+
+.pl-button--full {
+  @extend %button;
+  text-align: center;
+  width: 100%;
+}
+
+.pl-button--minimal {
+  background: none;
+  border: 0;
+  color: $color-content-light;
+  display: inline-block;
+  font-family: $font-default;
+  font-weight: $font-semibold;
+  padding: $button-padding-vertical-small $button-padding-horizontal-small;
+  text-decoration: none;
+
+  // TODO: don't apply :hover styles on touch devices
+  &:focus {
+    outline: dotted 1px;
+  }
+  &:hover:not(:disabled) {
+    color: $gray;
+  }
+  &.pl-is-active:not(:disabled),
+  &:active:not(:disabled) {
+    color: $color-content;
+  }
+  &:disabled {
+    color: $gray-light;
+  }
+}
+*/
+
+
+/* Button Styles */
+// 1. Legacy & Platform Buttons (Edit carefully -- or not at all)
+// 2. Theme Overrides
+
+// 1. Legacy & Platform Buttons
+.button-small, .pill-small-left, .pill-small-middle, .pill-small-right {
+  @extend %button;
+  padding: $button-padding-vertical-small $button-padding-horizontal-small;
+}
+.button-medium, .pill-medium-left, .pill-medium-middle, .pill-medium-right {
+  @extend %button;
+}
+.button-large, .pill-large-left, .pill-large-middle, .pill-large-right {
+  @extend %button;
+  @include font-large;
+  padding: $button-padding-vertical-large $button-padding-horizontal-large;
+}
+.button-cancel {
+    background-color: #cc0000;
+    background-position: center top;
+    color: #e5e5e5;
+}
+.button-cancel:hover {
+    background-color: #e50000;
+    background-position: center top;
+    color: #fff;
+}
+.button-cancel:active {
+    background-color: #191919;
+    background-position: center top;
+    color: #fff;
+}
+.button-edit {
+    background-color: #fccd22;
+    background-position: center top;
+    color: #333;
+}
+.button-edit:hover {
+    background-color: #fde045;
+    background-position: center top;
+    color: #1a1a1a;
+}
+.button-edit:active {
+    background-color: #fccd22;
+    background-position: center top;
+    color: #fff;
+}
+.button-construction {
+    background: #fccd22 url("/app_images/cmsTabFooter.gif") repeat-x scroll 0 50%;
+    border: 1px solid #dda301;
+    color: #807540;
+}
+.button-construction:hover {
+    background: #fccd22 url("/app_images/cmsTabFooter.gif") repeat-x scroll 0 50%;
+    color: #594100;
+}
+.button-construction:active {
+    background-color: #fccd22;
+    background-position: center top;
+    color: #594100;
+}
+.button-siteColor {
+    background-color: #0b478d;
+    background-position: center top;
+    color: #e5e5e5;
+}
+.button-siteColor:hover {
+    background-color: #0b478d;
+    background-position: center top;
+    color: #fff;
+}
+.button-siteColor:active {
+    background-color: #0b478d;
+    background-position: center top;
+    color: #fff;
+}
+.button-subtle {
+    background-color: transparent;
+    background-position: center top;
+    border: 1px solid #ccc;
+    color: #777;
+}
+.button-subtle:hover, .button-subtle:active {
+    background-color: transparent;
+    background-position: center top;
+    color: #888;
+}
+.button-subtle:active {
+    background-position: center top;
+}
+.button-commentCount .button-image-right {
+    background: rgba(0, 0, 0, 0) url("/app_images/pageElements/newsAggregator/icon.png?1432043856") no-repeat scroll 0 50%;
+    top: 1px;
+}
+.button-open {
+    background: transparent none repeat scroll 0 0;
+    color: #1a1a1a;
+}
+.button-open:hover {
+    background: transparent none repeat scroll 0 0;
+    color: #262626;
+}
+.button-open:active {
+    background: transparent none repeat scroll 0 0;
+    color: #000;
+}
+.button-open .button-content {
+    text-decoration: underline;
+}
+.button-small.button-disabled, .button-small[disabled], .button-small.button-disabled:hover, .button-small[disabled]:hover, .button-small.button-disabled:active, .button-small[disabled]:active, .button-medium.button-disabled, .button-medium[disabled], .button-medium.button-disabled:hover, .button-medium[disabled]:hover, .button-medium.button-disabled:active, .button-medium[disabled]:active, .button-large.button-disabled, .button-large[disabled], .button-large.button-disabled:hover, .button-large[disabled]:hover, .button-large.button-disabled:active, .button-large[disabled]:active {
+    background: #e5e5e5 linear-gradient(rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0)) repeat scroll 0 0;
+    color: #b3b3b3 !important;
+    cursor: default;
+}
+.button-tool {
+    background-color: #f1f1f1;
+    background-position: center top;
+    border: 1px solid #ccc;
+    color: #333 !important;
+    z-index: 1;
+}
+.button-tool:hover {
+    background-color: #ffffff;
+    background-position: center top;
+    border: 1px solid #999;
+    color: #333 !important;
+    z-index: 2;
+}
+.button-tool:active {
+    background-color: #d8d8d8;
+    background-position: center top;
+    color: #333 !important;
+    z-index: 2;
+}
+.button-tool.pill-medium-middle, .button-tool.pill-medium-right {
+    margin-left: -1px;
+}
+.button-cancel {
+    background-color: #cc0000;
+    background-position: center top;
+    color: #e5e5e5;
+}
+.button-cancel:hover {
+    background-color: #e50000;
+    background-position: center top;
+    color: #fff;
+}
+.button-cancel:active {
+    background-color: #191919;
+    background-position: center top;
+    color: #fff;
+}
+.football-real-time-button-score-live {
+    border: 1px solid rgba(251, 203, 34, 0);
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    width: 248px;
+}
+.football-real-time-button-score-live:hover {
+    background-color: rgb(253, 232, 114);
+    background-position: center top;
+    border: 1px solid rgba(251, 203, 34, 0.5);
+    color: #000;
+}
+.football-real-time-button-quick-score, .football-real-time-button-edit-stats {
+    background-position: center top;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    width: 115px;
+}
+.button-football-offline {
+    padding-bottom: 0.3em;
+}
+#sport-header ~ .layoutContainer .readMore .button-small, #sport-header ~ .layoutContainer .readMore .pill-small-left, #sport-header ~ .layoutContainer .readMore .pill-small-middle, #sport-header ~ .layoutContainer .readMore .pill-small-right, #sport-header ~ .layoutContainer .readMore .button-medium, #sport-header ~ .layoutContainer .readMore .pill-medium-left, #sport-header ~ .layoutContainer .readMore .pill-medium-middle, #sport-header ~ .layoutContainer .readMore .pill-medium-right, #sport-header ~ .layoutContainer .readMore .button-large, #sport-header ~ .layoutContainer .readMore .pill-large-left, #sport-header ~ .layoutContainer .readMore .pill-large-middle, #sport-header ~ .layoutContainer .readMore .pill-large-right {
+    color: #e5e5e5;
+}
+#sport-header ~ .layoutContainer .commentCount .button-small, #sport-header ~ .layoutContainer .commentCount .pill-small-left, #sport-header ~ .layoutContainer .commentCount .pill-small-middle, #sport-header ~ .layoutContainer .commentCount .pill-small-right, #sport-header ~ .layoutContainer .commentCount .button-medium, #sport-header ~ .layoutContainer .commentCount .pill-medium-left, #sport-header ~ .layoutContainer .commentCount .pill-medium-middle, #sport-header ~ .layoutContainer .commentCount .pill-medium-right, #sport-header ~ .layoutContainer .commentCount .button-large, #sport-header ~ .layoutContainer .commentCount .pill-large-left, #sport-header ~ .layoutContainer .commentCount .pill-large-middle, #sport-header ~ .layoutContainer .commentCount .pill-large-right {
+    color: #595959;
+}
+
+// 2. Theme Overrides
+.topNav,
+.siteContainer {
+    [class*="button-"] {
+      @extend %button;
+    }
+}
+.button-add:hover, .button-remove:hover {
+    border:none;
+    border:1px solid #fdea88;
+}
+body#survey_steps{
+  .siteContainer{
+    .formElement{
+      label{
+        &.required{
+          &:before{
+            content: '*';
+            display: inline-block;
+            color: #C60005;
+            margin-right: 5px;
+          }
+          em{
+            display: none;
+          }
+        }
+      }
+    }
+    .surveyButtonWrap{
+      //text-align: right;
+      a.reloadLink{
+        @extend %button;
+        padding: $button-padding-vertical-large $button-padding-horizontal-large;
+        margin-right: 10px;
+        width: auto; 
+        &:before{
+          content: '';
+          background: transparent;
+        }
+      }
+      #processing_link, input, button{
+        white-space: normal;
+        @include pl-button--primary();
+        @include font-large;
+        padding: $button-padding-vertical-large $button-padding-horizontal-large;
+        margin-right: 10px;
+        color: #fff;
+        width: auto; 
+      }
+    }
+  }
+}

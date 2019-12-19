@@ -1,0 +1,47 @@
+// # Error pages
+
+
+// ## Error page container. Fixes flexbug #3 for IE10-11
+.pl-error-page__container {
+  display: flex;
+  flex-direction: column;
+}
+
+
+// ## Error page
+.pl-error-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  [id='ngin-bar']:not(:empty) + * & {
+    min-height: calc(100vh - #{$ngin-bar-height});
+  }
+}
+.pl-error-page__message {
+  flex-grow: 1;
+}
+
+
+// ## Error state
+.pl-error-state {
+  padding: $layout-spacing-large $layout-spacing-large 0;
+  text-align: center;
+}
+.pl-error-state__icon {
+  @include font-xxxlarge;
+}
+%pl-error-state__title,
+.pl-error-state__title {
+  @include font-large;
+  font-weight: $font-regular;
+  margin-bottom: $layout-spacing-small;
+}
+.pl-error-state__title--highlight {
+  @extend %pl-error-state__title;
+  color: $color-highlight;
+}
+.pl-error-state__message {
+  color: $color-content-light;
+  margin-bottom: $layout-spacing-medium;
+}

@@ -1,0 +1,90 @@
+.pl-date-picker {
+  $cell-size: 20px;
+  $table-border-spacing: 2px;
+  $table-horiz-padding: 20px;
+
+  background: #fff;
+  border: 1px solid $color-highlight;
+  border-radius: 2px;
+  margin: 1px 0;
+  text-align: center;
+
+  table {
+    border-collapse: separate;
+    border-spacing: $table-border-spacing;
+    font-size: $font-xsmall;
+    padding: 0 $table-horiz-padding;
+    position: relative;
+    table-layout: fixed;
+    z-index: 0;
+
+    th {
+      font-weight: $font-regular;
+    }
+
+    .pl-date-picker__nav {
+      cursor: pointer;
+      height: 30px;
+    }
+
+    .pl-date-picker__weekdays {
+      color: $color-content-inverse;
+      height: 24px;
+
+      th:first-child {
+        position: relative;
+
+        &::before {
+          background-color: $gray;
+          content: '';
+          height: 100%;
+          left: -($table-horiz-padding + $table-border-spacing);
+          position: absolute;
+          top: 0;
+          width: calc(7 * 100% + (7 - 1) * #{$table-border-spacing} + 2 * #{$table-horiz-padding + $table-border-spacing});
+          z-index: -1;
+        }
+      }
+    }
+
+    .pl-date-picker__days td {
+      border: 1px solid transparent;
+      border-radius: 2px;
+      color: $color-content;
+      cursor: pointer;
+      height: $cell-size;
+      line-height: $cell-size - 2px;
+      width: $cell-size;
+
+      &:not(.pl-inactive) {
+        &:hover {
+          border: 1px solid $color-highlight;
+        }
+      }
+
+      &.pl-selected {
+        background: $color-highlight;
+        border: 1px solid $color-highlight;
+        color: $color-content-inverse;
+      }
+
+      &.pl-inactive {
+        color: $color-content-xlight;
+        cursor: default;
+      }
+    }
+
+    tfoot {
+      color: $color-content-light;
+
+      tr {
+        height: 30px;
+      }
+    }
+  }
+}
+
+sn-datepicker-calendar.tether-element-attached-bottom.tether-out-of-bounds-bottom,
+sn-datepicker-calendar.tether-element-attached-top.tether-out-of-bounds-top {
+  display: none;
+}

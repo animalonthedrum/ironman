@@ -1,0 +1,18 @@
+// Removal/Relocation
+// These should be removed and added to their appropriate locations
+.toolIcon {
+  background-repeat: no-repeat;
+  padding: 5px 0 15px 40px;
+}
+p.tags { font-size: .7em; }
+.subNav,
+.relatedSections {
+  li a { font-size: .75em; }
+}
+.ellipsis {
+  /* Needs a fixed width to work */
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

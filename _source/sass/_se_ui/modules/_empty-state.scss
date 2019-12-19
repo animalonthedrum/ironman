@@ -1,0 +1,19 @@
+// ## Empty state
+// An informational message when there is not content to display, often on list views.
+.pl-empty-state {
+  padding: $layout-spacing-large $layout-spacing-large 0;
+  text-align: center;
+}
+.pl-empty-state__icon {
+  color: $color-content-light;
+  @include font-xxxlarge;
+}
+.pl-empty-state__title {
+  @include font-large;
+  font-weight: $font-regular;
+  margin-bottom: $layout-spacing-small;
+}
+.pl-empty-state__message {
+  color: $color-content-light;
+  margin-bottom: $layout-spacing-medium;
+}

@@ -1,0 +1,451 @@
+// Main Navigation
+// 1. Settings
+// 2. Navigation Item Hooks
+// 3. Main Navigation Styles
+// 4. Dropdown Navigation Styles
+// 5. Main and Dropdown Navigation Hooks
+// 6. Dropdown Navigation Animation
+
+// External Variables
+$site-logo-offset: 200px !default;
+$site-logo-offset-fixed: 200px !default;
+
+// 1. Settings
+// Main Navigation Options
+$main-nav-width-max: $content-area-width !default;
+$main-nav-height: 55px !default;
+$main-nav-height-fixed: 45px !default;
+$main-nav-band-background-color: #efefef !default;
+$main-nav-flex-alignment: flex-start !default;
+$main-nav-item-padding: 10px !default;
+
+$main-nav-cascade-styles: true !default;
+$main-nav-child-indicator: true !default;
+$main-nav-child-indicator-cascade-styles: false !default;
+$main-nav-more-plus-buffer: true !default;
+$main-nav-font-family: null !default;
+$main-nav-font-size: 16px !default;
+$main-nav-text-case: uppercase !default;
+$main-nav-text-align: center !default;
+$main-nav-text-weight: normal !default;
+$main-nav-text-color: black !default;
+$main-nav-text-color-hover: tomato !default;
+$main-nav-text-color-selected: $main-nav-text-color-hover !default;
+$main-nav-text-color-disabled: slategrey !default;
+$main-nav-item-background-color: transparent !default;
+$main-nav-item-background-color-hover: rgba(#DDD, .5) !default;
+$main-nav-item-background-color-selected: $main-nav-item-background-color-hover !default;
+$main-nav-item-background-color-disabled: rgba(lightgray, .5) !default;
+
+
+// Dropdown Navigation Options
+$dropdown-nav-min-width: 200px !default;
+$dropdown-nav-min-height: 35px !default;
+$dropdown-nav-transition-distance: 20px !default;
+$dropdown-nav-item-padding: $main-nav-item-padding !default;
+
+$dropdown-nav-cascade-styles: false !default;
+$dropdown-nav-child-indicator: false !default;
+$dropdown-nav-child-indicator-cascade-styles: false !default;
+$dropdown-nav-container-background-color: #ededed !default;
+$dropdown-nav-container-border-size: 5px !default;
+$dropdown-nav-container-border: $dropdown-nav-container-border-size solid tomato !default;
+$dropdown-nav-text-align: left !default;
+$dropdown-nav-text-case: none !default;
+$dropdown-nav-text-weight: normal !default;
+$dropdown-nav-font-family: null !default;
+$dropdown-nav-font-size: 16px !default;
+$dropdown-nav-line-height: 1.2 !default;
+$dropdown-nav-text-color: $main-nav-text-color !default;
+$dropdown-nav-text-color-hover: $main-nav-text-color-hover !default;
+$dropdown-nav-text-color-selected: $dropdown-nav-text-color-hover !default;
+$dropdown-nav-text-color-disabled: $main-nav-text-color-disabled !default;
+$dropdown-nav-item-background-color: transparent !default;
+$dropdown-nav-item-background-color-hover: $main-nav-item-background-color-hover !default;
+$dropdown-nav-item-background-color-selected: $dropdown-nav-item-background-color-hover !default;
+$dropdown-nav-item-background-color-disabled: $main-nav-item-background-color-disabled !default;
+
+$dropdown-nav-2-container-background-color: null !default;
+$dropdown-nav-2-container-border-size: null !default;
+$dropdown-nav-2-container-border: null !default;
+$dropdown-nav-2-text-align: null !default;
+$dropdown-nav-2-text-case: null !default;
+$dropdown-nav-2-text-weight: null !default;
+$dropdown-nav-2-font-family: null !default;
+$dropdown-nav-2-font-size: null !default;
+$dropdown-nav-2-line-height: null !default;
+$dropdown-nav-2-text-color: null !default;
+$dropdown-nav-2-text-color-hover: null !default;
+$dropdown-nav-2-text-color-selected: null !default;
+$dropdown-nav-2-text-color-disabled: null !default;
+$dropdown-nav-2-item-background-color: null !default;
+$dropdown-nav-2-item-background-color-hover: null !default;
+$dropdown-nav-2-item-background-color-selected: null !default;
+$dropdown-nav-2-item-background-color-disabled: null !default;
+
+
+// 2. Navigation Item Hooks
+// Main Nav States
+@mixin main-nav-item-base(){
+  & .theme-nav-link{
+    color: $main-nav-text-color;
+    background-color: $main-nav-item-background-color;
+    transition: color $transition-linear, background-color $transition-linear;
+    text-align: $main-nav-text-align;
+    text-transform: $main-nav-text-case;
+    font-weight: $main-nav-text-weight;
+    font-size: $main-nav-font-size;
+    font-family: $main-nav-font-family;
+  }
+}
+@mixin main-nav-item-hover(){
+  &:hover .theme-nav-link,
+  &.dropdown-open .theme-nav-link {
+    color: $main-nav-text-color-hover;
+    background-color: $main-nav-item-background-color-hover;
+  }
+}
+@mixin main-nav-item-selected(){
+  &.selected .theme-nav-link {
+    color: $main-nav-text-color-selected;
+    background-color: $main-nav-item-background-color-selected;
+  }
+}
+@mixin main-nav-item-disabled(){
+  &.disabled .theme-nav-link,
+  &.private .theme-nav-link {
+    color: $main-nav-text-color-disabled;
+    background-color: $main-nav-item-background-color-disabled;
+  }
+}
+@mixin main-nav-child-indicator(){
+  @if $main-nav-child-indicator == true {
+    position: relative;
+    &:before{
+      font-family: 'fontawesome';
+      content: "\f105";
+      position: absolute;
+      bottom: (($main-nav-height / 2) - ($main-nav-font-size/2) - 10px) / 2; // mid point
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: block;
+      font-size: 10px;
+      line-height: 1;
+      color:$dropdown-nav-text-color;
+      transition: color $transition-linear, bottom $transition-linear;
+    }
+    &:hover:before,
+    &.dropdown-open:before{
+      color:$main-nav-text-color-hover;
+    }
+    .nav-fixed &:before {
+      bottom: (($main-nav-height-fixed / 2) - ($main-nav-font-size / 2) - 10px) / 2; // mid point
+    }
+  }
+}
+@mixin main-nav-more(){
+  .theme-nav-link{
+    &:after{
+      content: "+";
+      margin-left: .7ch;
+    }
+  }
+}
+
+// Level 1 Dropdown
+@mixin dropdown-nav-item-base(){
+  & .theme-nav-link{
+    color: $dropdown-nav-text-color;
+    background-color: $dropdown-nav-item-background-color;
+    transition: color $transition-linear, background-color $transition-linear;
+    text-align: $dropdown-nav-text-align;
+    text-transform: $dropdown-nav-text-case;
+    font-weight: $dropdown-nav-text-weight;
+    font-size: $dropdown-nav-font-size;
+    font-family: $dropdown-nav-font-family;
+    line-height: $dropdown-nav-line-height;
+  }
+}
+@mixin dropdown-nav-item-hover(){
+  &:hover .theme-nav-link,
+  &.dropdown-open .theme-nav-link {
+    color: $dropdown-nav-text-color-hover;
+    background-color: $dropdown-nav-item-background-color-hover;
+  }
+}
+@mixin dropdown-nav-item-selected(){
+  &.selected .theme-nav-link {
+    color: $dropdown-nav-text-color-selected;
+    background-color: $dropdown-nav-item-background-color-selected;
+  }
+}
+@mixin dropdown-nav-item-disabled(){
+  &.disabled .theme-nav-link,
+  &.private .theme-nav-link {
+    color: $dropdown-nav-text-color-disabled;
+    background-color: $dropdown-nav-item-background-color-disabled;
+  }
+}
+@mixin dropdown-nav-child-indicator(){
+  @if $dropdown-nav-child-indicator == true {
+    $dropdown-nav-indicator-inset: 15px;
+    $dropdown-nav-indicator-font-size: 10px;
+    position: relative;
+    &:before{
+      font-family: 'fontawesome';
+      content: "\f105";
+      position: absolute;
+      top: 50%;
+      right: ($dropdown-nav-indicator-inset/2) - ($dropdown-nav-indicator-font-size/3); // center this on inset
+      transform: translate(-50%, -50%);
+      display: block;
+      font-size: $dropdown-nav-indicator-font-size;
+      line-height: 1;
+      color:$dropdown-nav-text-color;
+      transition: color $transition-linear;
+    }
+    .theme-nav-link{
+      padding-right: $dropdown-nav-indicator-inset;
+    }
+    &:hover:before,
+    &.dropdown-open:before{
+      color: $dropdown-nav-text-color-hover;
+    }
+  }
+}
+
+// Level 2 Dropdown
+@mixin dropdown-nav-2-item-base(){
+  & .theme-nav-link{
+    color: $dropdown-nav-2-text-color;
+    background-color: $dropdown-nav-2-item-background-color;
+    transition: color $transition-linear, background-color $transition-linear;
+    text-align: $dropdown-nav-2-text-align;
+    text-transform: $dropdown-nav-2-text-case;
+    font-weight: $dropdown-nav-2-text-weight;
+    font-size: $dropdown-nav-2-font-size;
+    font-family: $dropdown-nav-2-font-family;
+    line-height: $dropdown-nav-2-line-height;
+  }
+}
+@mixin dropdown-nav-2-item-hover(){
+  &:hover .theme-nav-link,
+  &.dropdown-open .theme-nav-link {
+    color: $dropdown-nav-2-text-color-hover;
+    background-color: $dropdown-nav-2-item-background-color-hover;
+  }
+}
+@mixin dropdown-nav-2-item-selected(){
+  &.selected .theme-nav-link {
+    color: $dropdown-nav-2-text-color-selected;
+    background-color: $dropdown-nav-2-item-background-color-selected;
+  }
+}
+@mixin dropdown-nav-2-item-disabled(){
+  &.disabled .theme-nav-link,
+  &.private .theme-nav-link {
+    color: $dropdown-nav-2-text-color-disabled;
+    background-color: $dropdown-nav-2-item-background-color-disabled;
+  }
+}
+
+// 3. Main Navigation Styles
+.theme-main-nav{
+  position: relative;
+  color: $main-nav-text-color;
+  background-color: $main-nav-band-background-color;
+
+  // Site Logo Adjustments
+  .has-site-logo & .theme-nav{
+    transition: padding $transition-linear, line-height $transition-linear;
+    padding-left: $site-logo-offset;
+  }
+  .nav-fixed .has-site-logo & .theme-nav{
+    padding-left: $site-logo-offset-fixed;
+  }
+  @if $main-nav-more-plus-buffer == true {
+    .has-site-logo & .theme-nav{
+      padding-right: 0;
+    }
+    .nav-fixed .has-site-logo & .theme-nav{
+      padding-right: $site-logo-offset - $site-logo-offset-fixed;
+    }
+  }
+
+  // Shared Main/Dropdown Navigation Styles
+  .theme-nav-item{
+    position: relative;
+    height: 100%; // Maybe place nav height here scoped to main nav
+    @if $main-nav-cascade-styles == true {
+      @include main-nav-item-base;
+      @include main-nav-item-hover;
+      @include main-nav-item-selected;
+      @include main-nav-item-disabled;
+    }
+    @if $main-nav-child-indicator-cascade-styles == true {
+      &.hasChild{
+        @include main-nav-child-indicator;
+      }
+    }
+    &.theme-nav-more{
+      @include main-nav-more;
+    }
+  }
+  .theme-nav-link{
+    width: 100%;
+    display: block; // inline-block; inline ads an extra pixel to this component for some reason :/ - Ben
+  }
+
+  // Main Navigation Styles
+  .theme-nav{
+    max-width: $content-area-width;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: $main-nav-flex-alignment;
+    list-style: none;
+    line-height: $main-nav-height;
+    transition: line-height $transition-linear;
+    .theme-nav-link{
+      white-space: nowrap;
+      padding: 0 $main-nav-item-padding;
+    }
+    .main-nav-is-loading &{
+      flex-flow: row;
+      overflow: hidden;
+    }
+  }
+
+  // 4. Dropdown Navigation Styles
+  .theme-nav-dropdown{
+    > .theme-nav-item{
+      @if $dropdown-nav-cascade-styles == true {
+        @include dropdown-nav-item-base;
+        @include dropdown-nav-item-hover;
+        @include dropdown-nav-item-selected;
+        @include dropdown-nav-item-disabled;
+      }
+      @if $dropdown-nav-child-indicator-cascade-styles == true {
+        &.hasChild{
+          @include dropdown-nav-child-indicator;
+        }
+      }
+    }
+    // Dropdown Level 1 Container Styles
+    &[data-nav-level="2"]{
+      background-color: $dropdown-nav-container-background-color;
+      border-top: $dropdown-nav-container-border;
+    }
+    // Dropdown Level 2 Container Styles
+    &[data-nav-level="3"]{
+      background-color: $dropdown-nav-2-container-background-color;
+      border-top: $dropdown-nav-2-container-border;
+    }
+    // Dropdown Item Styles
+    .theme-nav-link{
+      padding: (($dropdown-nav-min-height - ($dropdown-nav-font-size * $dropdown-nav-line-height)) / 2) $dropdown-nav-item-padding;
+    }
+  }
+
+  // 5. Main and Dropdown Navigation Hooks
+  // Main Navigation
+  [data-nav-level="1"] .theme-nav-item{
+    @if $main-nav-cascade-styles != true {
+      @include main-nav-item-base;
+      @include main-nav-item-hover;
+      @include main-nav-item-selected;
+      @include main-nav-item-disabled;
+    }
+    @if $main-nav-child-indicator-cascade-styles != true {
+      &.hasChild{
+        @include main-nav-child-indicator;
+      }
+    }
+  }
+  // Dropdown Level 1
+  [data-nav-level="2"] .theme-nav-item{
+    @if $dropdown-nav-cascade-styles != true {
+      @include dropdown-nav-item-base;
+      @include dropdown-nav-item-hover;
+      @include dropdown-nav-item-selected;
+      @include dropdown-nav-item-disabled;
+    }
+    @if $dropdown-nav-child-indicator-cascade-styles != true {
+      &.hasChild{
+        @include dropdown-nav-child-indicator;
+      }
+    }
+  }
+  // Dropdown Level 2
+  [data-nav-level="3"] .theme-nav-item{
+    @include dropdown-nav-2-item-base;
+    @include dropdown-nav-2-item-hover;
+    @include dropdown-nav-2-item-selected;
+    @include dropdown-nav-2-item-disabled;
+  }
+}
+
+
+// 6. Dropdown Navigation Animation
+.theme-main-nav{
+  // Dropdown Shared
+  .theme-nav-dropdown{
+    min-width: $dropdown-nav-min-width;
+    transition: opacity $transition-linear, margin $transition-linear;
+    width: 100%;
+    position: absolute;
+    display: none;
+    z-index: 1;
+    // Dropdown Level 1
+    &[data-nav-level="2"]{
+      &.dropdown-opening {
+        margin-top: -$dropdown-nav-transition-distance;
+      }
+      &.dropdown-open {
+        margin-top: 0;
+      }
+    }
+    // Dropdown Level 2
+    &[data-nav-level="3"]{
+      margin-top: -$dropdown-nav-container-border-size;
+      &.dropdown-opening {
+        margin-left: -$dropdown-nav-transition-distance;
+      }
+      &.dropdown-open {
+        margin-left: 0;
+      }
+    }
+    // Dropdown Level 1 & 2 Shared (Here for specificity)
+    &[data-nav-level="2"],
+    &[data-nav-level="3"]{
+      &.dropdown-opening {
+        display: block;
+        opacity: 0;
+      }
+      &.dropdown-open {
+        display: block;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// Global Main Nav
+// Edit mode UI
+.custom-main-nav-extra{
+  @include edit_ui_element($padding: 0px);
+  .edit_mode &{ padding: 0 10px; }
+  &:empty{ display: none; }
+}
+
+// Default Styles
+.theme-main-nav{
+  .custom-main-nav-extra{
+    white-space: nowrap; // prevents items from adjusting total nav height
+    order: 1;
+    margin-left: auto;
+    padding: 0 $main-nav-item-padding;
+  }
+}

@@ -1,0 +1,124 @@
+.subNav{
+
+}
+/* Sub Nav Universal Style */
+.subNav li,
+.relatedSections li,
+.siteUserMenu li {
+  list-style-type: none;
+  display: block;
+  padding: 10px;
+}
+
+.subNav a {
+  display: block;
+  text-decoration: none;
+}
+
+.subNav,
+.relatedSections {
+
+  h4 {
+    display: inline-block;
+    width: 100%;
+    color: #bcbcbc;
+    vertical-align: top;
+    padding: 10px 20px 0px 20px;
+    font: 100 14px/1.5em $fontOne ,sans-serif;
+    margin-bottom: 10px;
+  }
+}
+
+.user_mode {
+
+  .subNav li,
+  .relatedSections li {
+    //transition:padding 200ms, background-color 200ms;
+  }
+
+  .subNav li:hover,
+  .relatedSections li:hover,
+  #parent_nodes > li:last-child {
+    //background: #ccc;
+    //padding: 0 15px;
+  }
+
+  .subNav li,
+  .relatedSections li {
+    padding: 0 10px;
+  }
+}
+
+.edit_mode {
+  
+  .subNav li:hover,
+  #parent_nodes > li:last-child {
+    text-decoration: underline;
+    //padding: 0 10px;
+  }
+
+  .subNav {
+    .lock {
+      background-image: url($asset_path_for+"/app_images/lockedIcon.gif");
+    }
+  }
+
+  /* Drag or Lock */
+  .subNav .drag,
+  .subNav .working,
+  .subNav .lock,
+  #sequenceMenu .drag,
+  #sequenceMenu .working {
+    padding: 10px;
+    background-color: #fccd22; /* construction yellow */
+    background-position: right center;
+    background-repeat: no-repeat;
+  }
+
+  /* Subnav CMS */
+  .cmsNavButton a {
+    background: url($asset_path_for+"/app_images/buildStripe.gif");
+    font-weight: bold;
+    padding: 10px;
+  }
+
+  .subNav .drag,
+  #sequenceMenu .drag {
+    cursor: move;
+    background-image: url($asset_path_for+"/app_images/dragIcon.gif");
+  }
+
+  .subNav .working,
+  #sequenceMenu .working {
+    background-image: url( $asset_path_for+"/app_images/dragIcon_locked.gif");
+  }
+
+  .subNav .cmsNavButton,
+  .subNav .cmsNavButton:hover {
+    padding: 0;
+    text-indent: 10px;
+  }
+}
+
+/* Site User Menu */
+.siteUserMenu {
+  background: #666;
+  font-size: 11px;
+
+  h4 {
+    color: #fff;
+    background: url($asset_path_for+"/logo_images/stamp_logo.png") no-repeat 3px 5px;
+    padding-left: 60px;
+    height: 26px;
+    line-height: 30px;
+    font-weight: bold;
+    font-size: 12px;
+  }
+
+  a,
+  a:hover{
+    display: block;
+    padding: 5px;
+    color: #fff;
+  }
+}

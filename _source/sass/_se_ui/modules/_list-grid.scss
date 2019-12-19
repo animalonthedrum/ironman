@@ -1,0 +1,82 @@
+.pl-list-grid {
+  font-size: $font-small;
+  user-select: none;
+}
+
+.pl-list-grid__header {
+  color: $color-content-light;
+  font-size: $font-large;
+  font-weight: $font-regular;
+  margin-bottom: $layout-spacing-medium;
+  text-align: left;
+}
+
+.pl-list-grid__items {
+  line-height: 2;
+  list-style: none;
+  min-height: $font-small * 2 + $layout-spacing-medium * 2;
+  position: relative;
+
+  &:not(:first-child) {
+    margin-top: $layout-spacing-medium; // Limits the spacing to when it's preceded by something (e.g. header)
+  }
+
+  #{'.dndPlaceholder'} {
+    background-color: $gray-xlight;
+    display: block;
+    min-height: $font-small * 2 + $layout-spacing-medium * 2;
+  }
+}
+
+.pl-list-grid__item,
+%pl-list-grid__item {
+  background-color: #fff;
+  border: 1px solid $gray-light;
+  border-radius: 2px;
+  color: $color-content-light;
+  margin-top: -1px; // collapse borders
+  padding: $layout-spacing-medium $layout-spacing-large;
+  position: relative;
+
+  .svg-grip-vert {
+    height: 1.3195rem; // 18px
+    margin: -.2857rem -.4285rem; // -4px -6px, accounts for the empty space in the SVG
+    width: 1.3195rem; // 18px
+  }
+
+  .pl-button--minimal {
+    padding: 0;
+  }
+
+  &#{'.dndDraggingSource'} {
+    display: none;
+  }
+}
+
+.pl-list-grid__item--draggable {
+  @extend %pl-list-grid__item;
+  cursor: move;
+
+  &:hover {
+    border-color: $gray;
+    z-index: $z-grouped-field--hover; // put bottom border above following item
+  }
+
+  &#{'.dndDragging'} {
+    border-color: $gray;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .2);
+  }
+
+  &.pl-is-selected,
+  &.pl-is-selected:hover {
+    background-color: $color-highlight;
+    border-color: $color-highlight;
+    color: #fff;
+  }
+
+  &.pl-is-disabled {
+    background-color: #fff;
+    border-color: $gray-light;
+    color: $gray-light;
+  }
+}

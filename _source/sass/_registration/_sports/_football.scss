@@ -1,0 +1,481 @@
+/*///////////////////////
+////// SCOREBOARD ///////
+///////////////////////*/
+
+/* FIELD POSITION */
+body.football #GameShowScoreboard li.down { background: url($asset_path_for+"/app_images/scoreboard/li-down.png") no-repeat 50% 50%; width: 18px; }
+body.football #GameShowScoreboard li.togo { background: url($asset_path_for+"/app_images/scoreboard/li-togo.png") no-repeat 50% 50%; width: 30px; }
+body.football #GameShowScoreboard li.ballon { background: url($asset_path_for+"/app_images/scoreboard/li-ballon.png") no-repeat 50% 50%; margin-right: 5px; width: 30px; }
+body.football #GameShowScoreboard li.dd-start { background: url($asset_path_for+"/app_images/scoreboard/dd-start.png") no-repeat 50% 50%; width: 20px; }
+body.football #GameShowScoreboard li.dd-end { background: url($asset_path_for+"/app_images/scoreboard/dd-end.png") no-repeat 50% 50%; width: 22px; }
+
+/* POSSESSION */
+body.football #GameShowScoreboard .away_team .possession.active { background-position: right -61px; }
+body.football #GameShowScoreboard .home_team .possession.active { background-position: left -61px; }
+
+/* TIME OUTS */
+body.football #GameShowScoreboard .timeoutsAway { background: url($asset_path_for+"/app_images/scoreboard/bg-timeouts-away.png") no-repeat 50% 50%; display: block; height: 58px; left: 150px; width: 148px; }
+body.football #GameShowScoreboard .timeoutsHome { background: url($asset_path_for+"/app_images/scoreboard/bg-timeouts-home.png") no-repeat 50% 50%; display: block; height: 58px; right: 150px; width: 148px; }
+body.football #GameShowScoreboard .timeoutsAway .timeouts-remaining { background: url($asset_path_for+"/app_images/scoreboard/timeouts.png") no-repeat 0 -1px; display: block; height: 50px; left: 22px; position: relative; top: 11px; width: 100px; }
+body.football #GameShowScoreboard .timeoutsHome .timeouts-remaining { background: url($asset_path_for+"/app_images/scoreboard/timeouts.png") no-repeat -100px -1px; display: block; height: 50px; right: -25px; position: relative; top: 11px; width: 100px; }
+body.football #GameShowScoreboard .timeoutsAway .timeouts-remaining.zero { background: url($asset_path_for+"/app_images/scoreboard/timeouts.png") no-repeat 0 -1px; }
+body.football #GameShowScoreboard .timeoutsHome .timeouts-remaining.zero { background: url($asset_path_for+"/app_images/scoreboard/timeouts.png") no-repeat -100px -1px; }
+body.football #GameShowScoreboard .timeoutsAway .timeouts-remaining.one { background: url($asset_path_for+"/app_images/scoreboard/timeouts.png") no-repeat 0 -51px; }
+body.football #GameShowScoreboard .timeoutsHome .timeouts-remaining.one { background: url($asset_path_for+"/app_images/scoreboard/timeouts.png") no-repeat -100px -51px; }
+body.football #GameShowScoreboard .timeoutsAway .timeouts-remaining.two { background: url($asset_path_for+"/app_images/scoreboard/timeouts.png") no-repeat 0 -101px; }
+body.football #GameShowScoreboard .timeoutsHome .timeouts-remaining.two { background: url($asset_path_for+"/app_images/scoreboard/timeouts.png") no-repeat -100px -101px; }
+body.football #GameShowScoreboard .timeoutsAway .timeouts-remaining.three { background: url($asset_path_for+"/app_images/scoreboard/timeouts.png") no-repeat 0 -150px; }
+body.football #GameShowScoreboard .timeoutsHome .timeouts-remaining.three { background: url($asset_path_for+"/app_images/scoreboard/timeouts.png") no-repeat -100px -150px; }
+
+/*///////////////////////
+///// PLAY BY PLAY //////
+///////////////////////*/
+
+#GameShowContent ul.play_by_play-filters {
+  background: rgba(0,0,0,.25);
+  border-radius: 5px 5px 5px 5px;
+  overflow: hidden;
+}
+#GameShowContent ul.play_by_play-start_period {
+  background: #ccc; /* Old browsers */
+  background: linear-gradient(to bottom, rgb(204,204,204) 0%,rgb(229,229,229) 100%); /* W3C */
+  border-radius: 5px 5px 0px 0px;
+  color: #666;
+  font-size: 10px;
+  margin-top: 5px;
+  overflow: hidden;
+  padding: 5px;
+  text-transform: uppercase;
+}
+.play_by_play-carrot { background: url($asset_path_for+"/app_images/game_show_3/carrot-period-start.png") no-repeat 50% top; clear: left; display: block; height: 5px; margin: 0 auto; width: 100%; }
+#GameShowContent ul.play_by_play-filters li { display: block; float: left; height: 3em; line-height: 3em; padding: 0 0 0 10px; }
+#GameShowContent ul.play_by_play-filters li.single_player { float: right; padding-right: 10px; }
+#GameShowContent table.play_by_play { width: 100%; }
+#GameShowContent table.play_by_play th {
+  background: #ccc;
+  color: #333;
+  padding: 10px 10px 10px 0;
+  text-transform: uppercase;
+  vertical-align: middle;
+  text-align: left;
+}
+#GameShowContent table.play_by_play td {
+  border-bottom: solid 1px #ccc;
+  font-size: 10px;
+  padding: 5px 2px;
+  vertical-align: top;
+}
+#GameShowContent table.play_by_play tr.possessionStart td { padding: 0; }
+#GameShowContent table.play_by_play tr.columnHeaders th {
+  font-size: 9px;
+  height: 20px;
+  line-height: 20px;
+  padding: 0 2px;
+}
+table.play_by_play .play-icon { width:42px; height:30px; }
+table.play_by_play .play-downAndDistance,
+table.play_by_play .play-ballOn,
+table.play_by_play .play-gameClock { width: 55px; }
+table.play_by_play .play-playDetails { width: auto; }
+
+table.play_by_play tr.touchdown .play-icon { background: url($asset_path_for+"/app_images/game_show_3/play_icon-td.png") no-repeat 50% 50%; }
+table.play_by_play tr.made_field_goal .play-icon { background: url($asset_path_for+"/app_images/game_show_3/play_icon-fg.png") no-repeat 50% 50%; }
+table.play_by_play tr.conversion_success .play-icon { background: url($asset_path_for+"/app_images/game_show_3/play_icon-2p.png") no-repeat 50% 50%; }
+table.play_by_play tr.safety .play-icon { background: url($asset_path_for+"/app_images/game_show_3/play_icon-sf.png") no-repeat 50% 50%; }
+table.play_by_play tr.extra_point_made .play-icon { background: url($asset_path_for+"/app_images/game_show_3/play_icon-xp.png") no-repeat 50% 50%; }
+
+#GameShowContent ul.play_by_play-drive-header {
+  margin: 10px 0 0 0;
+  overflow: hidden;
+}
+
+#GameShowContent ul.play_by_play-drive-header li {
+  padding: 0 10px;
+  display: block;
+  float: left;
+  font-weight: bold;
+  height: 44px;
+  line-height: 44px;
+  text-transform: uppercase;
+}
+#GameShowContent ul.play_by_play-drive-header li.drive-start,
+#GameShowContent ul.play_by_play-drive-header li.drive-summary  {
+  background-image: url($asset_path_for+"/app_images/game_show_3/play_by_play-arrow.png");
+  background-repeat: no-repeat;
+  background-position: left 50%;
+  text-indent: 4px;
+}
+
+/*///////////////////////
+///// FIELD OF PLAY /////
+///////////////////////*/
+
+body.football #FOP {
+  padding:50px 16px 0;
+  margin:-50px 0 0;
+  height:425px;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  position:relative;
+  overflow:hidden;
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.1) 10%,rgba(0,0,0,0.2) 32%,rgba(0,0,0,0) 100%); /* W3C */
+  z-index: 100;
+  clear: both;
+}
+body.football #FOP .field {
+  padding:0 8.2%;
+  height:400px;
+  background:#060;
+  border:6px solid #FFF;
+  margin:0;
+  position:relative;
+  overflow:visible;
+  box-shadow: rgba(0, 0, 0, 0.699219) 0px 6px 8px -4px;
+  transition: all 1000ms ease-in-out;
+}
+body.football #FOP .in_bounds { position:relative; height:100%; width:100%; overflow:visible; }
+body.football #FOP .line_of_scrimmage,
+body.football #FOP .first_down_line { position:absolute; top:0; left:-1000px; width:3px; height:100%; background:#4BF; z-index:3; margin-left:-1px; }
+body.football #FOP .first_down_line { background:#FC0; }
+body.football #FOP .grass {
+  width:100%;
+  height:100%;
+  display:block;
+  margin:0;
+}
+/* Yard Lines */
+body.football #FOP ul.yardlines {
+  margin:0;
+  padding:0;
+  position:absolute;
+  top:0;
+  left:0;
+  height:100%;
+  width:100%;
+  list-style:none;
+}
+body.football #FOP ul.yardlines li {
+  opacity:.7;
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:1px;
+  height:100%;
+  z-index:2;
+}
+body.football #FOP ul.yardlines li._5yd { border-left:1px solid #FFF; }
+body.football #FOP ul.yardlines li:nth-child(10n+6) {
+  border-left:1px solid #FFF;
+  background:rgba(0,0,0,.2);
+  width:5%;
+  z-index:1;
+}
+body.football #FOP ul.yardlines li._5yd span {
+  border-top:1px solid #FFF;
+  border-bottom:1px solid #FFF;
+  color:#FFF;
+  font:bold 16px "Arial Black",sans-serif;
+  letter-spacing:5px;
+  display:block;
+  position:absolute;
+  top:40%;
+  bottom:40%;
+  height:20%;
+  margin-left:-2px;
+  width:3px;
+  white-space:nowrap;
+  overflow:visible;
+}
+body.football #FOP ul.yardlines li._5yd span span { border:none; top:auto; bottom:-170%; height:auto; margin-left:0; text-indent:-12px; }
+body.football #FOP ul.yardlines li._5yd span span + span {
+  top:-170%;
+  bottom:auto;
+  transform:rotate(180deg);
+}
+body.football #FOP ul.yardlines li._1yd,
+body.football #FOP ul.yardlines li._1yd span { background:none; height:20%; top:40%; margin-top:-2px; border-top:3px solid #FFF; border-bottom:3px solid #FFF; }
+body.football #FOP ul.yardlines li._1yd span { width:1px; height:auto; position:absolute; top:-200%; bottom:-200%; margin:-1px 0 1px; }
+body.football #FOP ul.yardlines li.first span span { text-indent:2px; border:none; }
+body.football #FOP ul.yardlines li.first span span + span { text-indent:-12px; }
+body.football #FOP ul.yardlines li.last { margin-left:-1px; } /* G */
+body.football #FOP ul.yardlines li.last span { left:auto; right:0; border:none; text-indent:-15px; }
+body.football #FOP ul.yardlines li.last span span + span { text-indent:5px; }
+/* End Zone */
+body.football #FOP .endzone {
+  display:block;
+  width:8.333%;
+  height:100%;
+  position:absolute;
+  right:0;
+  top:0;
+  overflow:hidden;
+}
+body.football #FOP .endzone img {
+  display:block;
+  width:100%;
+  height:100%;
+}
+body.football #FOP .endzone span {
+  font:bold 30px "Arial Black",Verdana,sans-serif;
+  white-space:nowrap;
+  position:absolute;
+  /*top:50%;*/
+  top:0;
+  left:50%;
+  /*margin:-25px 0 0 -200px;*/
+  margin:0 0 0 -25px;
+  line-height:50px;
+  letter-spacing:1px;
+  color:#FFF;
+  width:400px;
+  text-align:center;
+  text-transform:uppercase;
+  transform:rotate(90deg) translate(175px, 175px);
+}
+body.football #FOP .endzone:first-child {
+  left:0;
+  right:auto;
+}
+body.football #FOP .endzone:first-child span {
+  transform:rotate(-90deg) translate(-175px, -175px);
+}
+/*/////// Play String //////////*/
+body.football #FOP .playStringContainer {
+  position:absolute;
+  top:0;
+  left:50%;
+  width:230px;
+  padding:0 50px 20px;
+  height:70px;
+  line-height:60px;
+  margin-left:-165px;
+  opacity:.6;
+  z-index:5;
+  background:url($asset_path_for+"/app_images/field_of_play/football/field_of_play_nav.png") 0 -150px no-repeat;
+  transition: opacity 300ms ease-in-out;
+}
+
+body.football #FOP .playStringContainer:hover,
+body.football #FOP.view_3d .playStringContainer { opacity:1; }
+body.football #FOP .playString {
+  cursor:default;
+  color:#DDD;
+  width:100%;
+  line-height:1.2em;
+  display:inline-block; zoom:1; *display:inline;
+  vertical-align:middle;
+  padding:5px 0;
+}
+
+/*////////// PLAY NAVIGATION BUTTONS //////////*/
+body.football #FOP #PlayNavigationButtons {
+  z-index:5;
+  position: absolute;
+  bottom:25px;
+  left:50%;
+  width:400px;
+  margin-left:-200px;
+  opacity:.6;
+  text-align:center;
+  background: linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 50%,rgba(0,0,0,0) 100%); /* W3C */
+  transition: all 300ms linear;
+}
+body.football #FOP #PlayNavigationButtons:hover {
+  opacity:1;
+}
+body.football #FOP #PlayNavigationButtons div {
+  position:relative;
+  cursor:pointer;
+  display:inline-block;
+  zoom:1; *display:inline;
+  width: 60px;
+  height: 0;
+  margin:0 -8px;
+  background:url($asset_path_for+"/app_images/field_of_play/football/field_of_play_nav.png") 0 1000px no-repeat;
+  vertical-align:middle;
+  overflow:hidden;
+}
+body.football #FOP #PlayNavigationButtons .prevDrive { padding-top:50px; background-position: 0 -10px; }
+body.football #FOP #PlayNavigationButtons .nextDrive { padding-top:50px;background-position: -240px -10px; }
+body.football #FOP #PlayNavigationButtons .prevPlay { padding-top:60px; background-position: -60px -5px; z-index:2; }
+body.football #FOP #PlayNavigationButtons .nextPlay { padding-top:60px; background-position: -180px -5px; z-index:2; }
+body.football #FOP #PlayNavigationButtons .latestPlay { padding-top:70px; background-position: -120px 0; margin:0 -12px; z-index:3; }
+body.football #FOP #PlayNavigationButtons .prevDrive:active { background-position: 0 -80px; }
+body.football #FOP #PlayNavigationButtons .nextDrive:active { background-position: -240px -80px; }
+body.football #FOP #PlayNavigationButtons .prevPlay:active { background-position: -60px -75px; }
+body.football #FOP #PlayNavigationButtons .nextPlay:active { background-position: -180px -75px; }
+body.football #FOP #PlayNavigationButtons .latestPlay:active { background-position: -120px -70px; }
+body.football #FOP #FOPbuttons {
+  position:absolute;
+  top:70px;
+  right:20px;
+  opacity:.4;
+  z-index:5;
+  transition: opacity 300ms ease-in-out;
+}
+body.football #FOP #FOPbuttons div {
+  cursor:pointer;
+  width:50px;
+  height:0;
+  padding-top:35px;
+  overflow:hidden;
+  background:url($asset_path_for+"/app_images/field_of_play/football/field_of_play_nav.png") 0 1000px no-repeat;
+}
+body.football #FOP #FOPbuttons:hover { opacity:1; }
+body.football #FOP #FOPbuttons .viewToggle { background-position:-300px -2px; }
+body.football #FOP #FOPbuttons .viewToggle:active { background-position:-300px -36px; }
+body.football #FOP #FieldOfPlay.view_3d #FOPbuttons .viewToggle { background-position:-300px -70px; }
+body.football #FOP #FieldOfPlay.view_3d #FOPbuttons .viewToggle:active { background-position:-300px -104px; }
+
+/*/////////// DRIVES ///////////*/
+body.football #FOP #DrivesContainer {
+  z-index:4;
+  height:400px;
+  width:100%;
+  top:0;
+  left:0;
+  background-color: rgba(0,0,0,.2);
+  position:absolute;
+  overflow:hidden;
+}
+body.football #FOP #Drives {
+  height:100%;
+  top:400px;
+  position: relative;
+  overflow:visible;
+}
+
+/*////////// INDIVIDUAL PLAY LENGTHS //////////*/
+
+@for $i from 0 through 100 {
+  body.football #FOP .yds#{$i} {
+    width: $i * 1%;
+  }
+}
+
+/*////////// TEAM COLORS //////////*/
+
+.homeTeam,
+.awayTeam {
+  background-color: #999;
+}
+
+/*////////// DRIVE BARS aka GROUP OF PLAYS //////////*/
+
+body.football #FOP .driveContainer {
+  float:left;
+  padding:10px 8.2%;
+  width:83.6%;
+  overflow:hidden;
+  margin:3px 0;
+}
+
+body.football #FOP .play {
+ position:relative;
+ height:15px;
+ margin:3px 0;
+ overflow:visible;
+ display: none;
+}
+
+body.football #FOP .bar { width:100%; height:100%; }
+
+body.football #FOP .driveBar {
+ position:relative;
+ height:15px;
+ background:url($asset_path_for+"/app_images/utils/black-30.png");
+ background:rgba(0,0,0,.3);
+ padding:9999px 30px;
+ margin:-9999px -30px;
+ cursor:pointer;
+}
+body.football #FOP .current .driveBar {
+  cursor:default;
+  height:0;
+  margin-bottom: -10002px;
+}
+body.football #FOP .current .driveBar * { display:none; }
+body.football #FOP .current .driveBar .teamlogo { display:block; }
+
+body.football #FOP .driveBar .bar,
+body.football #FOP .play .bar {
+  box-shadow: rgba(0, 0, 0, 0.292969) 0px 1px 6px, rgba(255, 255, 255, 0.5) 0px -2px 10px -6px inset;
+  cursor:pointer;
+}
+body.football #FOP .play.current .bar {
+  background-image: url($asset_path_for+"/app_images/field_of_play/football/play_bar.png");
+  background-position:center center; /* first two rules are for IE 7-9 */
+  background-image: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%,rgba(255,255,255,0.2) 50%,rgba(0,0,0,0.2) 51%,rgba(0,0,0,0) 100%); /* W3C */
+  box-shadow: rgba(255,255,255, 0.6) 0px 2px 10px, rgba(255, 255, 255, 0.5) 0px -2px 10px 2px inset;
+  transition: all 300ms linear;
+}
+
+body.football #FOP div.play div.icon_right {
+  width:12px;
+  height:15px;
+  position:absolute;
+  top:0;
+  background: url($asset_path_for+"/app_images/field_of_play/drivebar/arrow-right.png") no-repeat right top;
+  left:100%;
+}
+
+body.football #FOP div.driveBar div.icon_right {
+  width:12px;
+  height:15px;
+  position:absolute;
+  background: url($asset_path_for+"/app_images/field_of_play/drivebar/arrow-right.png") no-repeat;
+  right:15px;
+}
+
+body.football #FOP div.play div.icon_left {
+  width:12px;
+  height:15px;
+  position:absolute;
+  background: url($asset_path_for+"/app_images/field_of_play/drivebar/arrow-left.png") no-repeat right top;
+  left:-15px;
+}
+
+body.football #FOP div.driveBar div.icon_left {
+  width:12px;
+  height:15px;
+  position:absolute;
+  background: url($asset_path_for+"/app_images/field_of_play/drivebar/arrow-left.png") no-repeat;
+  left:18px;
+}
+
+body.football #FOP .teamlogo {
+  width:20px;
+  height:15px;
+  position:absolute;
+  top:9999px;
+}
+
+body.football #FOP .teamlogo.awayTeam {
+  left:5px;
+}
+
+body.football #FOP .teamlogo.homeTeam {
+  right:5px;
+}
+
+body.football #FOP .driveContainer.current.expanded div.play,
+body.football #FOP .driveContainer.current.expanded {
+  display: block;
+}
+
+/*////////// PERSPECTIVE ////////////*/
+html.csstransforms3d body.football #FOP.view_3d .field {
+  /* right now, only webkit supports 3d */
+  transform: perspective(600) rotateX(35deg) translate3d(0,-102px,-80px);
+}
+/* We need to temporarily remove 3d transforms when calculating positioning for scrolling */
+html.csstransforms3d body.football #FOP .noTransform {
+  transform: none !important;
+}
+
+html.csstransforms3d body.football #FOP .noTransition {
+  transition: none !important;
+}

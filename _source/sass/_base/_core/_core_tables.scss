@@ -1,0 +1,119 @@
+// CORE TABLES
+
+@mixin table {
+  border-spacing: 0; // Reset
+  border-collapse: initial; // Reset
+  margin-top: $core-table-cell-border-width; // This is needed for the responsive table wrap, I believe...
+  width: 100%;
+}
+@mixin table-td {
+  height: $core-table-body-min-height;
+  padding: $core-table-cell-padding-vertical $core-table-cell-padding-horizontal;
+}
+@mixin table-td-text{
+  font-family: $core-table-body-font-family;
+  font-size: $core-table-body-font-size;
+  line-height: $core-table-body-line-height;
+  font-weight: $core-table-body-font-weight;
+  color: $core-table-body-font-color;
+  text-align: center;
+}
+@mixin table-th {
+  height: $core-table-header-min-height;
+  padding: $core-table-header-padding-vertical $core-table-header-padding-horizontal;
+  background-color: $core-table-header-background-color;
+  white-space: nowrap;
+}
+@mixin table-th-text {
+  font-family: $core-table-header-font-family;
+  font-size: $core-table-header-font-size;
+  line-height: $core-table-header-line-height;
+  font-weight: $core-table-header-font-weight;
+  color: $core-table-header-font-color;
+}
+@mixin table-th-highlight {
+  // &.ASC,
+  // &.DESC,
+  // &.highlighted,
+  // &.sorttable_sorted,
+  // &.sorttable_sorted_reverse {
+  &[class*="sorttable"] {
+    background-color: $core-table-header-hightlight-color;
+  }
+}
+@mixin table-td-backgrounds {
+  tr:nth-child(odd) td{
+    background-color: $core-table-body-background-color-odd;
+    &.highlight {
+      background-color: $core-table-body-hightlight-color-odd;
+    }
+  }
+  tr:nth-child(even) td{
+    background-color: $core-table-body-background-color-even;
+    &.highlight {
+      background-color: $core-table-body-hightlight-color-even;
+    }
+  }
+}
+@mixin table-th-sortable {
+  &.ajax_sort {
+    padding-right: $core-table-sort-icon-offset;
+    position: relative;
+    cursor: pointer;
+    transition: color $transition-linear;
+    &:hover {
+      color: $core-table-sort-hover-color;
+    }
+    &:after {
+      content: $core-table-sort-icon-default;
+      min-width: $core-table-sort-icon-offset;
+      font-family: FontAwesome;
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &.ASC,
+    &.sorttable_sorted {
+      &:after {
+        content: $core-table-sort-icon-up;
+      }
+    }
+    &.DESC,
+    &.sorttable_sorted_reverse {
+      &:after {
+        content: $core-table-sort-icon-down;
+      }
+    }
+    .sorted_img {
+      display: none;
+    }
+  }
+}
+
+
+.dataTable,
+.statTable,
+.stat_table {
+  @include table;
+  @include table-td-backgrounds; // might need to scope this to tbody, but it should be fine
+  th {
+    @include table-th;
+    @include table-th-text;
+    @include table-th-highlight;
+  }
+  td {
+    @include table-td;
+    @include table-td-text;
+  }
+}
+
+// Data Tables
+.dataTable {
+  th {
+    @include table-th-sortable;
+  }
+}

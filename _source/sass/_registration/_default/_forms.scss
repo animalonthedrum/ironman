@@ -1,0 +1,16 @@
+// Forms
+
+.pageElement input[type="text"],
+.pageElement input[type="password"] {
+  width: 100%;
+  max-width: 480px;
+  @include text-field-style;
+}
+
+.pageElement textarea {
+  @include text-field-style;
+}
+
+.pageElement select {
+  @include dropdown-style;
+}

@@ -1,0 +1,176 @@
+/* Typgography */
+// 1. Base
+// 2. Headers
+// 3. Lists
+// 4. Inline mods
+// 5. Block mods
+// 6. Anchors
+// 7. Tables
+// 8. Sibling rules
+// 9. Removal/Relocation
+
+
+// 1. Base 
+html, body {
+  font-family: $fontTwo;
+  font-size: ($base-font-size) * 1px;
+  line-height: $base-line-height;
+  font-weight: $base-font-weight;
+  color: $bodyCopyColorTwo;
+}
+body{
+  font-size: 14px;
+  text-rendering: optimizeLegibility; // for WebKit. FF is on by default. IE? probably doesn't support it.
+}
+p {
+  font-size: 1em;
+  margin-bottom: 1rem;
+}
+
+// 2. Headers 
+h1, h2, h3, h4, h5, h6{ 
+  font-family: $fontOne;
+  font-weight: normal;
+  line-height: 1.125; 
+  color: #000;
+}
+h1{font-size: em(45);}
+h2{font-size: em(24);}
+h3{font-size: em(20);}
+h4{font-size: em(16);}
+h5{font-size: em(14);}
+h6{font-size: em(12);}
+
+// 3. Lists 
+ul, ol {
+  // margin-left: 1.75em; //Removed from global scope for theme 2. Should become standard going forward.
+  // margin-bottom: 1em; //Removed from global scope for theme 2. Should become standard going forward.
+}
+ul{list-style-type: disc;}
+@mixin list-unstyled {
+  margin-left: 0;
+  list-style: none;
+}
+
+// 4. Inline mods 
+b, strong { font-weight: bold; }
+i, em { font-style: italic; }
+small { font-size: .75em; }
+mark { background-color: yellow; }
+s, strike, del { text-decoration: line-through; }
+u { text-decoration: underline; }
+code{
+  padding: 2px 4px;
+  font-size: 90%;
+  color: #c7254e;
+  background-color: #f9f2f4;
+  border-radius: 4px;
+}
+
+// 5. Block mods 
+blockquote {
+  font-family: $fontOne;
+  font-style: italic;
+  font-weight: 600;
+  font-size: em(27);
+  line-height: 1.3333333333;
+  float: right;
+  color: $link-color;
+  width: 50%;
+  padding: 0 0 1em 1em;
+  &:before{
+    content: "“";
+    display: inline-block;
+    font-weight: 900;
+    color: #CCC;
+  }
+  &:after{
+    content: "”";
+    display: inline-block;
+    font-weight: 900;
+    color: #CCC;
+  }
+  p{display: inline;} // Revisit when liquid
+}
+code, kbd, pre, samp { font-family: Menlo,Monaco,Consolas,"Courier New",monospace; }
+pre {
+  display: block;
+  padding: $base-padding-sm;
+  margin: 0 0 1rem 0;
+  font-size: 90%;
+  color: #333;
+  word-break: break-all;
+  word-wrap: break-word;
+  white-space: pre-wrap; /* css-3 */
+  white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+  white-space: -pre-wrap; /* Opera 4-6 */
+  white-space: -o-pre-wrap; /* Opera 7 */
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+hr {
+  @include line-pattern(#AAA,transparent);
+  height: 3px;
+  margin: 1rem 0;
+  border: none;
+  &.hrElement{
+    margin:1rem 0;
+  }
+}
+
+// 6. Anchors
+a {
+  color: $link-color;
+  text-decoration: none;
+  transition: color $transition-standard;
+  &:hover { color: $link-color-darken-10; }
+}
+
+.pageElement a { font-weight: 700; }
+
+// 7. Tables
+table{
+  font-size: em(12);
+}
+
+// 8. Sibling rules
+.text, .previewText, .newsText{
+  >{
+    p, h1, h2, h3, h4, h5, h6, ol, ul, blockquote, pre{
+      &:last-child{margin-bottom: 0;}
+    }
+  }
+  ul, ol{
+    margin-left: 1.75em;
+    margin-bottom: 1em;
+    li{
+      > ul, > ol{
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+
+/* -------------------------------------------------------------------- */
+// 9. Removal/Relocation
+// These should be removed from _typography and added to their appropriate locations
+.toolIcon {
+  background-repeat: no-repeat;
+  padding: 5px 0 15px 40px;
+}
+p.tags { font-size: .7em; }
+/*
+.subNav,
+.relatedSections {
+  li a { font-size: .75em; }
+}
+*/
+.ellipsis {
+  /* Needs a fixed width to work */
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

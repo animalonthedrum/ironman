@@ -1,0 +1,11 @@
+#ngin-bar,
+.has-se-bar #ngin-bar {
+  position: relative; // override sticky from platform css
+  z-index: 401;
+}
+
+.has-se-bar {
+  &.has-mobile-nav:not(.slide-nav-open) .theme-nav-style-slide {
+    top: 0 !important;
+  }
+}

@@ -1,0 +1,45 @@
+#survey_steps {
+  .vevent {
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+  .dateImage {
+    width: 75px;
+    float: left;
+    margin-right: 10px;
+    list-style-type: none;
+    text-align: center;
+
+    .month {
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 14px;
+      background-color: $link_color;
+      color: #fff;
+    }
+    .date {
+      font-size: 48px;
+      line-height: 1;
+      background-color: #eee;
+      font-weight: 700;
+    }
+  }
+  .summary {
+    font-size: 18px;
+  }
+  .status {
+    font-weight: bold;
+  }
+  .details {
+    list-style: none;
+  }
+  .description {
+    font-size: 12px;
+  }
+  .surveyButtonWrap {
+    margin: 0;
+  }
+}
+.secureCheckoutMessage {
+  margin-bottom: 1.5rem;
+}

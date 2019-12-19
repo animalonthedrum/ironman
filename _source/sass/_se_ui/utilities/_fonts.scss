@@ -1,0 +1,33 @@
+// # Fonts
+
+
+// ## Size
+// Mixin that sets font-size with the correct line-height
+@mixin font-xsmall {
+  font-size: $font-xsmall;
+  line-height: $font-leading-small;
+}
+@mixin font-small {
+  font-size: $font-small;
+  line-height: $font-leading-body;
+}
+@mixin font-medium {
+  font-size: $font-medium;
+  line-height: $font-leading-subheading;
+}
+@mixin font-large {
+  font-size: $font-large;
+  line-height: $font-leading-title;
+}
+@mixin font-xlarge {
+  font-size: $font-xlarge;
+  line-height: $font-leading-headline;
+}
+@mixin font-xxlarge {
+  font-size: $font-xxlarge;
+  line-height: $font-leading-display;
+}
+@mixin font-xxxlarge {
+  font-size: $font-xxxlarge;
+  line-height: $font-leading-display-large;
+}

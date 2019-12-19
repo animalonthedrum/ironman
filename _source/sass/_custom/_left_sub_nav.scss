@@ -1,0 +1,85 @@
+.left-sub-nav {
+    .leftNav {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 100%;
+        overflow-x:hidden;
+        h3 {
+            font-family: $font-primary;
+            font-weight: 600;
+            line-height: 1.5;
+            font-size: 16px;
+            color: $color-secondary;
+            border-bottom: 1px solid $color-gray;
+            padding-bottom: 10px;
+            padding-top: 15px;
+            &.parentPage {
+                a {
+                    border-bottom: 0;
+                    font-family: $font-primary;
+                    font-weight: 600;
+                    line-height: 1.5;
+                    font-size: 16px;
+                    color: $color-secondary;
+                    padding-top: 0px;
+                    padding-bottom: 10px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    transition: color $transition-standard;
+                    &:hover {
+                        color: $color-hover-primary;
+                    }
+                }
+            }
+        }
+        a {
+            font-family: $font-primary;
+            font-weight: 600;
+            line-height: 1.5;
+            font-size: 16px;
+            color: $color-gray-md;
+            display: flex;
+            align-items: center;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            border-bottom: 1px solid $color-gray;
+            width: 100%;
+            transition: padding-left $transition-linear, color $transition-linear;
+            @media only screen and (min-width:1025px) {
+                &:hover {
+                    color: $color-hover-primary;
+                    padding-left: 30px;
+                    &:after {
+                        transform: translateX(-20px);
+                    }
+                }
+            }
+            &:hover {
+                color: $color-hover-primary;
+            }
+     
+            &:after {
+                content:'\f0da';
+                font-family: 'fontawesome';
+                font-size: inherit;
+                color: $color-primary;
+                display: block;
+                flex: 1 1 auto;
+                text-align: right;
+                transition: transform $transition-linear;
+            }
+            &.true {
+                color: $color-hover-primary;
+                padding-left: 30px;
+                &:after {
+                    transform: translateX(-20px);
+                }
+            }
+        }
+    }
+
+}
+

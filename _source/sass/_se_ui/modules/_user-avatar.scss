@@ -1,0 +1,74 @@
+// # User Avatar
+
+%pl-user-avatar,
+.pl-user-avatar {
+  overflow: hidden;
+  text-align: center;
+}
+
+.pl-user-avatar__image,
+.pl-user-avatar__image--custom {
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+  display: static;
+  height: 110px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  width: 110px;
+}
+
+.pl-user-avatar__image {
+  background-image: url('#{$shared-image-path}/avatar.svg');
+}
+
+.pl-user-avatar__edit-actions {
+  background: $color-content-xlight;
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+
+  button {
+    background: none;
+    border: 0;
+    display: block;
+    margin: 0 auto;
+    opacity: .5;
+    padding: .1em;
+
+    &:hover {
+      color: #fff;
+      opacity: 1;
+    }
+    &:focus {
+      outline: 1px dotted;
+    }
+  }
+
+  svg {
+    fill: #fff;
+    height: 1.3rem;
+    width: 1.3rem;
+  }
+}
+
+// ### sizes
+
+.pl-user-avatar--medium {
+  @extend %pl-user-avatar;
+  .pl-user-avatar__image,
+  .pl-user-avatar__image--custom {
+    height: 75px;
+    width: 75px;
+  }
+}
+
+.pl-user-avatar--small {
+  @extend %pl-user-avatar;
+  .pl-user-avatar__image,
+  .pl-user-avatar__image--custom {
+    height: 40px;
+    width: 40px;
+  }
+}

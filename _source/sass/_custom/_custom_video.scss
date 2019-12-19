@@ -1,0 +1,244 @@
+.hero-home {
+    margin-bottom: 0;
+    position: relative;
+    background-image:url('..images/IRONMAN_logo.svg');
+    background-size: contain;
+    @include mobile {
+        margin-bottom: 0;
+    }
+    .column {
+        padding-left: 0;
+        padding-right: 0;
+        @include mobile {
+            height: 199px!important;
+        }
+    }
+    .home-video {
+        margin-top: 0;
+        margin-bottom: 0;
+        width:100%;
+        height:100%;
+        max-height: 100vh;
+        overflow: hidden;
+        position: relative;
+        .has-se-bar & {
+            max-height: calc(100vh - 60px );
+        }
+        @include mobile {
+          display: none;
+        }
+ 
+        .pageElement {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        .codeElement {
+            &:after {
+                content:'';
+                background-image: linear-gradient(135deg, $color-secondary 0%, black 100%);
+                height: 100%;
+                width: 100%;
+                display: block;
+                position: absolute;
+                opacity: 0.3;
+                top: 0;
+                left: 0;
+            }
+        }
+        video {
+            object-fit: cover;
+            width:100%;
+            height:100vh;
+            position: relative;
+        }
+     
+    }
+    .video-overlay-text {
+        .user_mode & {
+            .pageElement {
+                position:absolute;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                margin-top: 0;
+                margin-bottom:0;
+                z-index: 2;
+                left:0;
+                top:0;
+                background-size:0 0;
+                background-repeat: no-repeat;
+                background-position: center center;
+
+                @include mobile {
+                    height: 200px;
+                    background-size: 100% 100%;
+
+                }
+                .leftTextImage, .originalTextImage {
+                    img {
+                        display: none;
+                    }
+                }
+            }
+            h3 span {
+                color: $color-white;
+                font-family: $font-primary;
+                font-weight: 700;
+                font-size: 82px;
+                display: flex;
+                align-items: flex-start;
+                line-height: inherit;
+                margin-bottom: 50px;
+                opacity: 1;
+                visibility: hidden;
+                @include mobile {
+                    font-size: 24px;
+                    margin-bottom:0;
+                }
+                @include tablet-sm {
+                    font-size:42px;
+                    margin-bottom:0;
+                }
+                @include tablet-sm {
+                    font-size:54px;
+                    margin-bottom:0;
+                }
+                @media only screen and (min-width:$breakpoint-lg-tablet) and (max-width:1300px){
+                    font-size:64px;
+                    margin-bottom: 0;
+                }
+                &:after {
+                    content:'™';
+                    font-family: inherit;
+                    font-weight: 400;
+                    font-size: 32px;
+                    line-height: 2;
+                    display: inline;
+                    color: inherit;
+                    @include mobile {
+                        font-size: 12px;
+                    }
+                    @include tablet-sm {
+                        font-size:18px;
+                    }
+                    @include tablet-lg {
+                        font-size:20px;
+                    }
+                    @media only screen and (min-width:$breakpoint-lg-tablet) and (max-width:1300px){
+                        font-size:22px;
+                    }
+                }
+    
+            }
+            .text {
+                a {
+                    @include global-link-container;
+                    @include global-link-style;
+                    @include global-link-text;
+                    @include global-link-icon-character;
+                    @include global-link-icon-style;
+                    min-width: 175px;
+                    font-weight: 400;
+                    font-size: 16px;
+                    transition: color $transition-linear, background-color $transition-linear;
+                    visibility: hidden;
+                }
+            }
+        }
+    
+  
+    }
+    .scrollDownIndicator {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 0;
+        .loaderPulsar {
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            z-index: 1;
+            background-color: $color-primary;
+            bottom: 40px;
+            right: calc(50% - 4px);
+            // box-shadow: 0 0 10px 20px rgba($color-primary, 0.3);
+            border-radius: 50%;
+            box-shadow: 0 0 0 rgba($color-primary, 0.4);
+            animation: pulse 2s infinite;
+        }
+        .loaderLine {
+            display: block;
+            width: 1px;
+            height: 80px;
+            position: absolute;
+            z-index: 1;
+            background-color: $color-primary;
+            bottom: -40px;
+            right: 50%;
+            transform-origin: top center;
+        }
+    }
+    // &:before {
+    //     content:'';
+    //     display: block;
+    //     width: 10px;
+    //     height: 10px;
+    //     position: absolute;
+    //     z-index: 1;
+    //     background-color: $color-primary;
+    //     bottom: 40px;
+    //     right: calc(50% - 4px);
+    //     box-shadow: 0 0 10px 20px rgba($color-primary, 0.3);
+    //     border-radius: 50%;
+    //     animation-name: pulser;
+    //     animation-direction: forwards;
+    //     animation-duration: 2s;
+    //     animation-iteration-count: 20;
+    //     @include touch-device {
+    //         display: none;
+    //     }
+    // }
+    
+    // &:after {
+    //     content:'';
+    //     display: block;
+    //     width: 1px;
+    //     height: 80px;
+    //     position: absolute;
+    //     z-index: 1;
+    //     background-color: $color-primary;
+    //     bottom: -40px;
+    //     right: 50%;
+    //     @include touch-device {
+    //         display: none;
+    //     }
+    // }
+}
+
+@-webkit-keyframes pulse {
+    0% {
+      -webkit-box-shadow: 0 0 0 0 rgba($color-primary, 0.4);
+    }
+    70% {
+        -webkit-box-shadow: 0 0 0 20px rgba($color-primary, 0);
+    }
+    100% {
+        -webkit-box-shadow: 0 0 0 0 rgba($color-primary, 0);
+    }
+  }
+  @keyframes pulse {
+    0% {
+      -moz-box-shadow: 0 0 0 0 rgba($color-primary, 0.4);
+      box-shadow: 0 0 0 0 rgba($color-primary, 0.4);
+    }
+    70% {
+        -moz-box-shadow: 0 0 0 20px rgba($color-primary, 0);
+        box-shadow: 0 0 0 20px rgba($color-primary, 0);
+    }
+    100% {
+        -moz-box-shadow: 0 0 0 0 rgba($color-primary, 0);
+        box-shadow: 0 0 0 0 rgba($color-primary, 0);
+    }
+  }

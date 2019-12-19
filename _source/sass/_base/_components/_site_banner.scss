@@ -1,0 +1,112 @@
+// Page Banner
+$site-banner-full-width: true !default;
+$site-banner-full-width-text: false !default;
+
+$site-banner-padding: 15px !default;
+$site-banner-fixed-min-height: 100px !default;
+$site-banner-font-size: 20px !default;
+$site-banner-font-size-min: 20px !default;
+$site-banner-font-size-max: 72px !default;
+$site-banner-text-color: white !default;
+$site-banner-font-family: null !default;
+$site-banner-line-height: 1 !default;
+$site-banner-font-weight: normal !default;
+$site-banner-text-case: null !default;
+$site-banner-text-align: center !default;
+
+$site-banner-headline-text-color: inherit !default;
+$site-banner-headline-font-size: null !default;
+$site-banner-headline-font-family: null !default;
+$site-banner-headline-line-height: null !default;
+$site-banner-headline-font-weight: null !default;
+$site-banner-headline-text-case: null !default;
+$site-banner-headline-text-align: null !default;
+$site-banner-title-text-color: inherit !default;
+$site-banner-title-font-size: inherit !default;
+$site-banner-title-font-family: null !default;
+$site-banner-title-line-height: inherit !default;
+$site-banner-title-font-weight: inherit !default;
+$site-banner-title-text-case: null !default;
+$site-banner-title-text-align: null !default;
+$site-banner-tagline-text-color: inherit !default;
+$site-banner-tagline-font-size: null !default;
+$site-banner-tagline-font-family: null !default;
+$site-banner-tagline-line-height: null !default;
+$site-banner-tagline-font-weight: null !default;
+$site-banner-tagline-text-case: null !default;
+$site-banner-tagline-text-align: null !default;
+
+
+.site-banner-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-size: cover;
+  min-height: $site-banner-fixed-min-height !important;
+  @if $site-banner-full-width != true {
+    @include content-area-width;
+  }
+  @include site-banner-container;
+
+  .site-banner-text-wrapper {
+    z-index: 2;
+    @if $site-banner-full-width-text !=true {
+      @include content-area-width;
+    } @else {
+      width: 100%;
+    }
+    @include content-container-padding(2);
+    padding-top: $site-banner-padding;
+    padding-bottom: $site-banner-padding;
+    color: $site-banner-text-color;
+    font-family: $site-banner-font-family;
+    line-height: $site-banner-line-height;
+    font-weight: $site-banner-font-weight;
+    text-transform: $site-banner-text-case;
+    text-align: $site-banner-text-align;
+    font-size: $site-banner-font-size;
+    @include responsive-font(9vw, $site-banner-font-size-min, $site-banner-font-size-max);
+    h2{
+      font-size: $site-banner-headline-font-size;
+      color: $site-banner-headline-text-color !important;
+      font-family: $site-banner-headline-font-family;
+      line-height: $site-banner-headline-line-height;
+      font-weight: $site-banner-headline-font-weight;
+      text-transform: $site-banner-headline-text-case;
+      text-align: $site-banner-headline-text-align;
+    }
+    h1{
+      font-size: $site-banner-title-font-size;
+      color: $site-banner-title-text-color !important;
+      font-family: $site-banner-title-font-family;
+      line-height: $site-banner-title-line-height;
+      font-weight: $site-banner-title-font-weight;
+      text-transform: $site-banner-title-text-case;
+      text-align: $site-banner-title-text-align;
+      @include mobile {
+        font-size: 22px;
+        line-height: 1;
+      }
+      @include tablet {
+        font-size: 42px;
+      }
+      
+    }
+    h3{
+      font-size: $site-banner-tagline-font-size;
+      color: $site-banner-tagline-text-color !important;
+      font-family: $site-banner-tagline-font-family;
+      line-height: $site-banner-tagline-line-height;
+      font-weight: $site-banner-tagline-font-weight;
+      text-transform: $site-banner-tagline-text-case;
+      text-align: $site-banner-tagline-text-align;
+      @include mobile {
+        font-size: 12px;
+        line-height: 1;
+      }
+      @include tablet {
+        font-size: 16px;
+      }
+    }
+  }
+}

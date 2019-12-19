@@ -1,0 +1,248 @@
+// DESKTOP STYLES
+
+#accountNav {
+  position: absolute;
+  padding: 0 calc(50% - 500px);
+  width: 100%;
+  z-index: $account-nav-z-index;
+  top: 0;
+  left: 0;
+  height: $account-nav-height-desktop;
+  line-height: 1;
+  text-align: left;
+  list-style: none;
+  overflow: hidden;
+  white-space: nowrap;
+  background: $account-nav-background;
+  text-align: right;
+
+  html.has-mobile-nav & { padding: 0 16px; }
+  html.page-manager-visible & { padding-left: calc(50% - 500px + #{$page-manager-width}); }
+  html.has-mobile-nav.page-manager-visible & { padding-left: $page-manager-width + 16px; }
+
+  // overrides for non v4 reg layout
+  #survey_steps & {
+    position: relative;
+    padding: 0 16px;
+  }
+
+  > li {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: $account-nav-height-desktop;
+    height: $account-nav-height-desktop;
+    text-align: left;
+
+    // user dropdown button
+    &.home {
+
+      // drodown arrow
+      span.right {
+        margin-left: .3em;
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        transform: translate(0, 0);
+
+        &:before { content: "\f107"; }
+      }
+    }
+
+
+    /* Icons (like messages) */
+    a img { vertical-align: middle; }
+  }
+
+  // admin nav item visual style
+  a {
+    display: block;
+    height: 100%;
+    color: $account-nav-color !important;
+    font-size: 14px;
+    font-weight: 300;
+    text-decoration: none;
+    margin: 0;
+    padding: 0 8px;
+  }
+
+  .nginLogo {
+    //float: left;
+    margin-left: 24px;
+    position: absolute;
+    left: 0px;
+
+    a {
+      width: 120px;
+      background: url($asset-path-for+"/logo_images/logo.svg") right center no-repeat;
+      text-indent: -20000px;
+      background-size: 100%;
+    }
+  }
+
+  // small links like "create account"
+  .secondary a {
+    font-weight: normal;
+    font-size: 10px;
+    color: #999;
+
+    &:hover { color: #ccc; }
+  }
+
+  // site logo link
+  .currentSite {
+
+    a {
+      display: block;
+      float: left;
+
+      // site icon link
+      &:first-child {
+        width: 20px;
+        //background: url($logoGraphicTiny) right center no-repeat;
+      }
+    }
+  }
+
+  // theme & site pickers -- override inline style :(
+  .local-dev-tool { float: right; line-height: $account-nav-height-desktop !important; }
+  .local-dev-tool ~ .nginLogo { display: none; }
+
+}
+
+/* Notifications Menus */
+.dashboard_nav .count,
+#accountNav .count {
+  background: #c00;
+  border: 1px inset rgba(201, 201, 201, 0.5);
+  color: #eee;
+  float: right;
+  font: bold 10px $fontOne;
+  min-width: 1.5em;
+  padding: 0 2px;
+  text-align: center;
+  text-shadow: none;
+}
+
+#accountNav .count {
+  float: none;
+  position: relative;
+  margin-left: -10px;
+  top: -6px;
+}
+
+#user_tools_menu_callout .count { margin-top: 5px; }
+
+/* Drop Down Menu */
+#accountNav #user_tools_menu_callout,
+#user_sites ul,
+#tst_options ul,
+#help_and_updates ul { display: none; }
+#user_sites_menu { max-height: 500px; overflow: auto; }
+
+#user_sites a {
+  text-indent: -999em;
+  background: url( $asset-path-for+"/app_images/link_icons.png") 8px -3231px no-repeat;
+  width: $account-nav-icon-width;
+}
+
+#tst_options a {
+  text-indent: -999em;
+  background: url( $asset-path-for+"/app_images/link_icons.png") 8px -2308px no-repeat;
+  width: $account-nav-icon-width;
+}
+
+// HELP MENU (not sure where/how this displays)
+
+#help_and_updates a.new_help_and_updates:after,
+#help_and_updates_menu a.new_help_and_updates:after {
+  color: white;
+  padding: 0 2px 0 2px;
+  font-size: 8px;
+  content: 'NEW';
+  background: green;
+  border-radius: 2px;
+  vertical-align: top;
+  line-height: 12px;
+}
+
+#help_and_updates a.new_help_and_updates {
+  position: relative;
+
+  &:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+#help_and_updates_menu {
+  img {
+    width: 12px;
+    height: 12px;
+  }
+
+  a.new_help_and_updates:after {
+    position: relative;
+    left: 3px;
+    display: inline;
+  }
+}
+// Inline-Manual
+#help_link a {
+  display: flex;
+  align-items: center;
+}
+#help_link .svg-help {
+  display: inline-block;
+  fill: currentColor;
+  height: 1.75em;
+  vertical-align: -.5em;
+}
+
+// MOBILE STYLES (these are not really slide nav styles, but a specific version for mobile... maybe split them out?)
+
+html.has-mobile-nav {
+
+  // background for when "hide user bar" site setting is enabled
+  body:before {
+    content: "";
+    position: absolute;
+    background-color: $account-nav-background;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $account-nav-height-mobile;
+  }
+
+  #accountNav {
+    height: $account-nav-height-mobile;
+
+    > li {
+      height: $account-nav-height-mobile;
+      line-height: $account-nav-height-mobile;
+    }
+  }
+
+  .nginLogo { display: none; }
+}
+
+html.collapsed-mobile-nav {
+
+  #accountNav {
+    > *:not(#login):not(#logout) { display: none; }
+  }
+
+  #login,
+  #logout {
+    float: right;
+
+    a {
+      border: none;
+      height: $account-nav-height-mobile;
+      line-height: $account-nav-height-mobile;
+    }
+  }
+}

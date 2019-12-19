@@ -1,0 +1,175 @@
+/* Aggregator Elements */
+// 1. Aggregator Element
+// 2. Audit Items
+// THIS FILE NEEDS TO BE AUDITED WHEN/AS AGGREGATORS ARE COMPLETED
+
+// Aggregator Element
+.aggregatorElement{
+	h6{
+		font-size: 12px;
+		line-height: 12px;
+		text-align: left;
+		margin: 4px 0;
+		text-transform: uppercase;
+		letter-spacing: .1em;
+	}
+	.newsImage{
+		img{
+			position: relative;
+		}
+	}
+	.boxscore{
+		margin: 3px 0;
+	}
+	.gameArea{
+		.details, .vevent .summary{
+			padding-left: 0;
+		}
+	}
+	.vevent{
+		.statTable{
+			background: #FFF;
+		}	
+	}
+	.newsImageCaption{
+		display: none;
+	}
+}
+.aggregatorElement .paid{
+	background: url($asset_path_for+"/app_images/paidStamp.gif") no-repeat center right; 
+}
+
+// 2. AUDIT THESE ITEMS --------------------
+
+// News Preview? (Should be looked at)
+.newsPreviewThumb{
+	margin: 0 10px 10px 0;
+	float: left;
+	clear: left;
+}
+.newsPreviewText {
+    display: none;
+}
+#gameNewsAggregator{
+	border: none;
+	.teaser, .commentsAndMore {
+		display: none;
+	}
+}
+
+// Layout Container Aggreggator Modifications ()
+.threeColumn502525 .column2 .newsImage,
+.threeColumn502525 .column3 .newsImage,
+.threeColumn255025 .column1 .newsImage,
+.threeColumn255025 .column3 .newsImage,
+.threeColumn252550 .column1 .newsImage,
+.threeColumn252550 .column2 .newsImage,
+.threeColumn333333 .column3 .newsImage,
+.twoColumn6633 .column2 .newsImage,
+.twoColumn3366 .column1 .newsImage,
+.threeColumn333333 .column1 .newsImage,
+.threeColumn333333 .column2 .newsImage{
+    width: 100%;
+    float: none;
+    margin: 0 0 10px 0;
+}
+.twoColumn5050 .newsImage{
+    width: 50%;
+}
+.threeColumn502525 .column2 .newsImage img,
+.threeColumn502525 .column3 .newsImage img,
+.threeColumn255025 .column1 .newsImage img,
+.threeColumn255025 .column3 .newsImage img,
+.threeColumn252550 .column1 .newsImage img,
+.threeColumn252550 .column2 .newsImage img,
+.threeColumn333333 .column3 .newsImage img,
+.twoColumn6633 .column2 .newsImage img,
+.twoColumn3366 .column1 .newsImage img,
+.threeColumn333333 .column1 .newsImage img,
+.threeColumn333333 .column2 .newsImage img,
+.twoColumn5050 .newsImage img{
+    width: 100%;
+}
+.threeColumn502525 .column2 .eventPreview .notToday,
+.threeColumn502525 .column3 .eventPreview .notToday,
+.threeColumn255025 .column1 .eventPreview .notToday,
+.threeColumn255025 .column3 .eventPreview .notToday,
+.threeColumn252550 .column1 .eventPreview .notToday,
+.threeColumn252550 .column2 .eventPreview .notToday,
+.threeColumn333333 .column3 .eventPreview .notToday,
+.twoColumn6633 .column2 .eventPreview .notToday,
+.twoColumn3366 .column1 .eventPreview .notToday,
+.threeColumn333333 .column1 .eventPreview .notToday,
+.threeColumn333333 .column2 .eventPreview .notToday{
+    display: none;
+}
+.gameArea .item strong{
+	margin-right: 4px;
+	font-size: 10px;
+	padding: 0 2px;
+	color: #FFF;
+}
+.more{
+	font-size: 10px;
+	display: block;
+	text-align: right;
+	font-style: italic;
+	font-weight: bold;
+}
+
+// Pitch Tracker
+.regulations{
+	margin-top: 5px;
+	font-size: 10px;
+	color: #666;
+}
+.regulations li{
+	margin-left: 30px;
+}
+.ineligible{
+	color: #cc0000;
+	font-weight: bold;
+}
+.eligible{
+	color: #009933;
+	font-weight: bold;	
+}
+
+// Standings Agg 
+.standingsAgg{
+    text-align: left;
+}
+.standingsAgg h4{
+    margin: 5px 5px 0;
+}
+.standingsAgg .statTable{
+    font-size: 10px;
+    width: auto;
+    margin: 5px;
+}
+.standingsAgg .statTable td, .standingsAgg .statTable th{
+    border: none;
+    width: 7%;
+}
+.standingsAgg .statTable .standingsTeamName{
+	text-align: left;
+	width: 40%;
+}
+.standingsAgg .vevent{
+    padding: 5px;
+}
+.standingsAgg .vevent .statTable{
+    margin: 0;
+}
+.standingsResultsLinks a{
+    display: block;
+    margin-left: 5px;
+}
+
+// Transaction Help
+.failed{
+	background: pink;
+}
+.failed a{
+	color: red;
+}

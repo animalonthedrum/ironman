@@ -1,0 +1,136 @@
+// # Option
+// Platform styled radio buttons and checkboxes
+
+$input-size: 1rem; //14px
+$input-border-size: 1px;
+$input-spacing: .5714rem; // 8px / 14px
+
+.pl-option,
+%pl-option {
+  display: block;
+
+  & + & {
+    margin-top: .5714rem; // 8px / 14px
+  }
+}
+
+.pl-option--descriptive {
+  @extend %pl-option;
+
+  $input-offset: $input-size + $input-spacing;
+  padding-left: $input-offset;
+
+  .pl-option__label {
+    margin-left: -$input-offset;
+  }
+
+  .pl-option__help-text {
+    @include font-small;
+    color: $color-content-light;
+    margin-top: .5714rem; // 8px / 14px
+    padding-left: $input-border-size * 2;
+  }
+}
+
+.pl-option--horizontal {
+  display: inline-block;
+  margin-bottom: .2857em; // 4px / 14px
+  margin-right: 1.1429em; // 16px / 14px
+
+  &:last-child {
+    margin-bottom: 0;
+    margin-right: 0;
+  }
+}
+
+.pl-option__input {
+  left: -9999px;
+  position: absolute;
+}
+
+%pl-option__label {
+  color: $color-content-light;
+
+  // Checked state
+  :checked + & {
+    color: $color-content;
+  }
+
+  // Hover state
+  :not([disabled]) + &:hover {
+    color: $color-content;
+  }
+
+  // Focus state
+  :focus + &:not(:hover) {
+    outline: dotted 1px;
+    z-index: $z-option--focus;
+  }
+
+  // Disabled state
+  [disabled] + & {
+    border-color: $color-content-xxlight;
+    color: $color-content-xlight;
+    cursor: default;
+  }
+
+  &::before {
+    background-color: #fff;
+    border: $input-border-size solid $gray;
+    content: '';
+    display: inline-block;
+    flex-shrink: 0;
+    height: $input-size;
+    margin-right: $input-spacing;
+    vertical-align: -12%;
+    width: $input-size;
+
+    [type='checkbox'] + & {
+      border-radius: 2px;
+    }
+
+    [type='radio'] + & {
+      border-radius: 50%;
+    }
+
+    :checked + & {
+      background-position: center;
+      background-repeat: no-repeat;
+      border-color: $color-highlight;
+    }
+
+    :checked[type='checkbox'] + & {
+      background-image: url('data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2011%208%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M9.6.293S4.626%205.52%204.512%205.405L2.1%202.993.793%204.3%204.5%208.007%2010.907%201.6%209.6.293z%22%20fill%3D%22%2313769C%22%2F%3E%3C%2Fsvg%3E');
+    }
+
+    :checked[type='radio'] + & {
+      background-image: url('data:image/svg+xml,%3Csvg%20width%3D%228%22%20height%3D%228%22%20viewBox%3D%220%200%208%208%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Ccircle%20cx%3D%224%22%20cy%3D%224%22%20r%3D%224%22%20fill%3D%22%2313769C%22%2F%3E%3C%2Fsvg%3E');
+    }
+  }
+}
+
+.pl-option__label {
+  @extend %pl-option__label;
+  @include font-medium;
+}
+
+.pl-option--readonly {
+  @extend %pl-option;
+
+  color: $color-content-xlight;
+
+  &.pl-checked {
+    color: $color-content;
+
+    &::after {
+      background-image: url('data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2011%208%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M9.6.293S4.626%205.52%204.512%205.405L2.1%202.993.793%204.3%204.5%208.007%2010.907%201.6%209.6.293z%22%20fill%3D%22%2313AA37%22%2F%3E%3C%2Fsvg%3E');
+      background-position: center;
+      background-repeat: no-repeat;
+      content: '';
+      display: inline-block;
+      height: $input-size;
+      margin-left: $input-spacing;
+      width: $input-size;
+    }
+  }
+}

@@ -1,0 +1,34 @@
+// Site Background
+// 1. Settings
+// 2. Styles
+
+// External Variables (Un-comment these if you are having trouble with missing variables)
+// $desktop-nav-height: $nav-title-bar-height + $main-nav-height + $sub-nav-height !default;
+// $desktop-nav-height-fixed: $nav-title-bar-height-fixed + $main-nav-height-fixed + $sub-nav-height-fixed !default;
+// $desktop-nav-height-no-subnav: $nav-title-bar-height + $main-nav-height !default;
+// $desktop-nav-height-no-subnav-fixed: $nav-title-bar-height-fixed + $main-nav-height-fixed !default;
+// $mobile-nav-height: 90px !default;
+// $page-manager-width: 60px !default;
+
+// 1. Settings
+$site-background-image-full-height: false !default;
+
+// 2. Styles
+// Other background styles are rendered inline (based on user settings)
+.site-background {
+  @if $site-background-image-full-height != true {
+    transition: top $transition-linear;
+    .has-main-nav & { top: $desktop-nav-height-no-subnav; } // added selector for specificity over inline styles
+    .nav-fixed &{ top: $desktop-nav-height-no-subnav-fixed; }
+    .has-sub-nav &{ top: $desktop-nav-height; }
+    .has-sub-nav.nav-fixed &{ top: $desktop-nav-height-fixed; }
+    @if $sub-nav-hide-on-home == true {
+      .has-sub-nav .home &{ top: $desktop-nav-height-no-subnav; }
+      .has-sub-nav.nav-fixed .home &{ top: $desktop-nav-height-no-subnav-fixed; }
+    }
+    .has-mobile-nav &{ top: $mobile-nav-height; }
+  }
+  .page-manager-visible &{
+    left: $page-manager-width;
+  }
+}

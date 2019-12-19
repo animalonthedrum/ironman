@@ -1,0 +1,382 @@
+/* Node Picker
+-------------------------------------------------------------------- */
+.nodePickerSlideBox{
+  clear: both;
+  height: 480px;
+  font-size: .875em;
+  line-height:1.5em;
+  overflow: auto;
+  background: #EEE;
+  padding: 1em;
+  white-space: nowrap;
+  border-bottom: 1em solid #EEE;
+  border-top: 1px solid #AAA;
+  position: relative;
+
+	#lightbox & {
+    border: none;
+    border-bottom: 1em solid #EEE;
+    border-top: 1px solid #AAA;
+    background: #EEE;
+  }
+}
+.nodePickerSiteBox {
+  padding-bottom:1em;
+}
+#lightbox .nodePickerSlideBox,
+.nodePickerSlideBox {
+  .unlimitedHierarchy {
+    background: none;
+    margin: 0;
+    width: auto;
+    ul {
+      margin-left: .75em;
+      border-left: 1px solid #AAA;
+      padding-bottom: 1em;
+    }
+    li {
+      display:block;
+      padding: 0 0 0 5px;
+      clear: both;
+      list-style: none;
+      background: none;
+      li {
+        margin-left: 2em;
+        padding: 0;
+      }
+      div {
+        padding: 5px;
+        background: none;
+      }
+      input[type=checkbox] {
+        margin: 0 .5em 0 0;
+      }
+    }
+    .lastLi {
+      background: none;
+      > ul {
+        padding-bottom: 0;
+        margin-bottom: 1em;
+      }
+    }
+  }
+}
+
+.nodePicker{
+  padding: 10px 10px 0 25px;
+}
+
+.nodePicker ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0 0 0 30px;
+}
+
+.nodePicker li{
+  display: block;
+  list-style-type: none;
+  border-top: 1px solid #FFF;
+  line-height: 18px;
+  font-size: 11px;
+  font-weight: bold;
+  color: #666;
+  clear: both;
+  _height: 18px; /* IE 6 hack */
+}
+
+.accessTree li{
+  color: #333;
+  border-top: 1px solid #FCCD22;
+  padding: 2px 0;
+}
+
+.nodePicker a:link, .nodePicker a:visited{
+  font-size: 10px;
+  text-decoration: none;
+}
+
+.nodePicker a:hover{
+  text-decoration: underline;
+}
+
+.nodePicker label{
+  font-weight: bold;
+  margin: 0 3px;
+}
+
+.nodePicker .selectLink{
+  float: left;
+}
+
+
+
+.nodePickerContainer .tab,
+#nodePickerContainer_news_aggregator_lb .tab{
+  position:relative;
+  width: auto;
+  margin: 0px 1em -1em 1em;
+  float: right;
+  transform: translateY(-200%);
+  line-height: 1;
+  a{
+    color: #FFF;
+    background: $color-secondary;
+    font-size: .625em;
+    line-height: 1;
+    font-weight: 400;
+    text-decoration: none;
+    padding: .5em .8em;
+    margin: 0;
+    border-radius: 4px;
+    display: inline-block;
+    transition: .2s 0s ease-in-out;
+    &.upArrow:after{content: "\f077";}
+    &.downArrow:after{content: "\f078";}
+    &:after{
+      font-family: 'Fontawesome';
+      display: inline-block;
+      position: relative;
+      margin-left: .5em;
+    }
+    &:hover{
+      color: #DDD;
+    }
+  }
+}
+#main_calendar_form{
+  #tabShow_main{
+    margin: 0 1em;
+    transform: translateY(0);
+    padding: 0;
+    width: auto;
+    background: transparent;
+  }
+  .nodePickerContainer{
+    margin: 15px 0;
+    float: none;
+  }
+}
+.nodePickerContainer:after {
+    content: " ";
+    display: table;
+    clear: both;
+}
+
+@media only screen and (min-width: 1025px){
+  .col-md-3, .col-md-4, .pe25, .pe33{
+    .nodePickerContainer .tab,
+    #nodePickerContainer_news_aggregator_lb .tab{
+      transform: translateY(0px);
+      margin: -.75em 0 0 0;
+      padding: 0px 1em 1em 1em;
+      width: 100%;
+      text-align: left;
+      background: #EEE;
+      &#tabHide_main{margin: 0px;}
+    }
+  }
+}
+@media only screen and (max-width: 380px){
+  .nodePickerContainer .tab,
+  #nodePickerContainer_news_aggregator_lb .tab{
+    transform: translateY(0px);
+    margin: -.75em 0 0 0;
+    padding: 0px 1em 1em 1em;
+    width: 100%;
+    text-align: left;
+    background: #EEE;
+    &#tabHide_main{margin: 0px;}
+  }
+  #main_calendar_form{
+    .tab#tabHide_main{
+      text-align: right;
+    }
+  }
+}
+
+
+
+/* Node Picker Form Controls
+-------------------------------------------------------------------- */
+.loading {
+	float: right;
+	margin: 0 4px 0 0;
+	text-align: right;
+	width: 16px;
+}
+.nodePicker-formControls {
+	margin: -1.85em 0 0 0;
+}
+
+.nodePicker-button {
+  background: #444;
+  font-size: 0.625em;
+  font-weight: 400;
+  padding: .5em .8em;
+  margin: 0 .5em .45em 0;
+  border-radius: 4px;
+  display: inline-block;
+  line-height: 1;
+  color: #FFF;
+  transition: .2s 0s ease-in-out;
+
+  &:hover{
+    text-decoration: none;
+    color: #DDD;
+  }
+}
+
+#form_values_match_option {
+  float: right;
+  margin: -4px 0 0 0;
+}
+.nodePickerContainer .tab a, #nodePickerContainer_news_aggregator_lb .tab a{}
+
+
+/* Single Select Picker
+-------------------------------------------------------------------- */
+
+.singleSelectBodyHeader{
+  text-align: center;
+  padding: 1px 10px;
+}
+
+.singleSelectBodyHeader a{
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 120%;
+}
+
+.singleSelectBodyHeader span{
+  text-indent: -2000px;
+}
+
+.singleSelectBodyHeader .disabled{
+  color: #666;
+}
+
+.previousSingleSelect{
+  float: left;
+  width: 5%;
+}
+
+.singleSelectBodyHeader #displayBodyHeader{
+  float: left;
+  margin: 0;
+  padding: 0;
+  width: 89.5%;
+  display: block;
+  border-left: solid 1px #FFF;
+  border-right: solid 1px #FFF;
+  background-position: -10px -2px;
+}
+
+.singleSelectBodyHeader #displayBodyHeader a{
+  padding: 5px 0;
+  display: block;
+  text-decoration: none;
+}
+
+.nextSingleSelect{
+  float: right;
+  width: 5%;
+}
+
+.npSingleSelect{
+  z-index: 200;
+  position: absolute;
+  left: 168px;
+}
+
+.pagePush{
+  position: relative;
+  z-index: 0;
+  left: 0;
+}
+
+#siteContainer3 .npSingleSelect     { width: 592px; }
+#siteContainer2 .npSingleSelect     { width: 762px; }
+#siteContainer3 .pageElementAdmin .npSingleSelect, #siteContainer2 .pageElementAdmin .npSingleSelect{ width: auto; }
+.npSingleSelect .nodePickerSlideBox { padding-bottom: 10px; border-bottom: solid 1px #666; }
+
+
+/* Selected Nodes
+-------------------------------------------------------------------- */
+.selectedNodes {
+  min-height: 6em;
+  padding: 1em;
+  background-color: $color-gray-lt;
+
+  h3 {
+    font-size: .75em;
+    padding: 0;
+    margin: 0;
+    color: #333;
+    line-height: 1.3;
+    padding: .5em 0;
+  }
+}
+.selectedNodeChoices_main, .selectedNodeChoices_lb {
+    margin: 1em 0 3em 0;
+}
+.pageElementAdmin .selectedNodes {
+  border-top: none;
+}
+#focusContainer #selectedNodeChoices {
+  padding-left: 25px;
+  margin-top: 0;
+}
+body .selectedNodes p,
+#lightboxBody .selectedNodes p {
+  color: #666;
+  line-height: 20px;
+  margin: 0;
+  font-style: italic;
+}
+.nodePicker-preselectedTags {
+  display: none;
+}
+.tag {
+  background: $color-gray;
+  color: $color-secondary;
+  font-size: 12px;
+  font-weight: 400;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin: 0 .5em .5em 0;
+  border-radius: 0;
+  display: inline-block;
+  line-height: 1;
+  transition: .2s 0s ease-in-out;
+
+  &:hover {
+    text-decoration: none;
+    color: $link-color;
+  }
+}
+
+
+/* Tags & Tag Groups
+-------------------------------------------------------------------- */
+dl.tagGroup    { border-bottom: 1px dotted #f2f2f2; line-height: 1.75em; margin: 0; padding: 5px; }
+dl.tagGroup dt { display: block; float: left; margin: 2px 5px 0 0; text-align: center; width: 15px; }
+dl.tagGroup dd { margin: 0 0 0 20px; }
+
+#lightboxBody dl.tagGroup { border-bottom: 1px dotted #fde686; }
+#lightboxBody dl.tagGroup .tag { background: #fcf0ab; background-image: linear-gradient(#fcf0ab, #fde686); border: 1px solid #fde686;  border-radius: 3px; }
+#lightboxBody .listItem { margin:30px; padding:20px; background:#FFF; border: 1px solid #999; }
+#lightboxBody .listItem h2 { margin: 0 0 0.5em; }
+
+
+/* Cross-Site Node Picker
+-------------------------------------------------------------------- */
+.nodePicker-site                          { border-bottom: 1px dotted #999; margin: 10px 0 0; padding: 0 0 10px; }
+// #nodePicker-site-<%= @site.id %>-lb,
+// #nodePicker-site-<%= @site.id %>-main     { border-bottom: 1px solid  #999; }
+.nodePicker-site:last-child               { border: none; }
+.selectedNodes .nodePicker-site-name      { line-height: 16px; margin: 0 0 5px; }
+.selectedNodes .nodePicker-site-name a    { color: #333; float: none; font-weight: bold; font-size: 12px; }
+.selectedNodes .nodePicker-site-name img  { display: block; float: left; margin: 0 4px 0 0; height: 16px; width: 16px; }
+.nodePicker-crossSite                     { background: #e5e5e5; padding: 5px 10px; }

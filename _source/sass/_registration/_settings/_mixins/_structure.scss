@@ -1,0 +1,68 @@
+@mixin flex-box($dir, $inline:false) {
+  box-sizing: border-box;
+
+  @if $inline {
+    display: -ms-inline-flexbox;
+    display: -webkit-inline-flex;
+    display: inline-flex;
+  } @else {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+  }
+
+  -webkit-flex-direction: $dir;
+  -ms-flex-direction: $dir;
+  flex-direction: $dir;
+
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+   align-items: center;
+
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+
+  @if $dir == "row" {
+    > * { height: 100%; }
+  } @else {
+    > * { width: 100%; }
+  }
+}
+@mixin inline-flex-box($dir) {
+  @include flex-box($dir, true)
+}
+
+@mixin flex($flex:1, $shrink:0, $basis:auto) {
+  box-sizing: border-box;
+  -webkit-flex: $flex $shrink $basis;
+  -ms-flex: $flex $shrink $basis;
+  flex: $flex $shrink $basis;
+}
+
+
+// Mixins to add vendor prefixes for individual flex related styles
+
+@mixin display-flex {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@mixin flex-basis($basis:auto) {
+  -webkit-flex-basis: $basis;
+  -ms-flex-preferred-size: $basis;
+  flex-basis: $basis;
+}
+
+@mixin flex-grow($grow:1) {
+  -webkit-flex-grow: $grow;
+  -ms-flex-positive: $grow;
+  flex-grow: $grow;
+}
+
+@mixin flex-wrap($wrap:wrap) {
+  -webkit-flex-wrap: $wrap;
+  -ms-flex-wrap: $wrap;
+  flex-wrap: $wrap;
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.6.1 (26313) - http://www.bohemiancoding.com/sketch -->
+    <title>four-circle</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="four-circle" fill="#000000">
+            <path d="M8,2 C4.688,2 2,4.688 2,8 C2,11.312 4.688,14 8,14 C11.312,14 14,11.312 14,8 C14,4.688 11.312,2 8,2 L8,2 Z M9.94343758,9.48046875 L9.17390633,9.48046875 L9.17390633,10.7265625 L8.27937508,10.7265625 L8.27937508,9.48046875 L5.67000008,9.48046875 L5.67000008,8.7734375 L8.27937508,5 L9.17390633,5 L9.17390633,8.71875 L9.94343758,8.71875 L9.94343758,9.48046875 Z M8.28390646,8.71875 L8.28390646,7.28515625 C8.28390646,6.77473703 8.29692716,6.35677246 8.32296896,6.03125 L8.29171896,6.03125 C8.21880193,6.20312586 8.10421974,6.41145711 7.94796896,6.65625 L6.53000021,8.71875 L8.28390646,8.71875 Z"></path>
+        </g>
+    </g>
+</svg>

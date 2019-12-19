@@ -1,0 +1,35 @@
+// # Close
+// "x" close button for alerts and overlays
+
+
+// ## Base close button styles
+$close-icon-size: 1.215rem; // 17px / 14px;
+.pl-close,
+%pl-close {
+  background: transparent;
+  border: 0;
+  color: currentColor;
+  height: 0;
+  overflow: hidden;
+  padding: $close-icon-size 0 0;
+  position: relative;
+  width: $close-icon-size;
+  // use ::before and ::after to create an "x"
+  &::before,
+  &::after {
+    background-color: currentColor; // "x" uses color of button's context
+    content: '';
+    height: 2px;
+    left: 0;
+    margin-top: -1px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+  }
+  &::before {
+    transform: rotate(45deg) scaley(.8); // scaley() to make lines thinner
+  }
+  &::after {
+    transform: rotate(-45deg) scaley(.8);
+  }
+}

@@ -1,0 +1,473 @@
+.race-info-band {
+    .user_mode & {
+        display: none;
+    }
+}
+@media only screen and (min-width:1025px){
+    .regButtonMobile {
+        display: none;
+    }
+}
+
+.race-band {
+    .edit_mode & {
+        display: none;
+    }
+    background-color: $color-white;
+    min-height: 125px;
+    box-shadow: 1px 1px 10px 0 rgba(black, .5);
+    display: flex;
+    max-width: 100%;
+    justify-content: center;
+    margin-bottom: 50px;
+    @media only screen and (max-width:1380px){
+        flex-wrap: wrap;
+    }
+    @include touch-device {
+        display: none;
+        height:0;
+        opacity: 0;
+        flex-wrap: wrap;
+        justify-content: center;
+        box-shadow: none;
+        transition: height $transition-standard, opacity $transition-linear;
+        &.active {
+            display: flex;
+            height: 100%;
+            opacity: 1;
+        }
+    }
+    .race-page-info-icons {
+        display: flex;
+        flex-wrap: wrap;
+        flex:1 1 auto;
+        padding-right: 50px;
+        padding-left: 50px;
+        justify-content: center;
+        .page-manager-visible & {
+            padding-left:10px;
+            padding-right:10px;
+        }
+
+        @include touch-device {
+            height: 100%;
+            padding-right:0;
+            padding-left: 0;
+            width: calc(100% - 30px);
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+        @media only screen and (max-width:320px){
+                width: 100%;
+                margin-left: 0;
+                margin-right: 0;     
+        }
+
+        >div {
+            flex: 1 1 auto;
+            flex-grow: auto;
+            display: flex;
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            align-items: center;
+            height: 100%;
+            @include touch-device {
+                width: 50%;
+                border: 1px solid $color-gray-lt;
+            }
+
+            p {
+                font-family: $font-secondary;
+                font-size: 12px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+                height: 100%;
+                margin-bottom: 0;
+                color: $color-gray-md;
+                line-height: 1.5;
+
+                @include tablet {
+                    font-size: 11px;
+
+                    .page-manager-visible & {
+                        font-size: 10px;
+                    }
+                }
+
+            }
+
+            b {
+                text-transform: uppercase;
+                font-size: 20px;
+                font-weight: 700;
+                line-height: 1;
+                color: $color-secondary;
+                @include touch-device {
+                    font-size: 16px;
+                }
+                @include tablet {
+                    font-size: 13px;
+
+                    .page-manager-visible & {
+                        font-size: 11px;
+                    }
+                }
+            }
+
+            &:before {
+                content: "";
+                background-size: cover;
+                background-repeat: no-repeat;
+                display: block;
+                height: 35px;
+                width: 35px;
+                margin-right: 10px;
+
+                @include tablet {
+                    height: 30px;
+                    width: 30px;
+                }
+            }
+        }
+    }
+
+    .linkElement {
+        flex: 1 1 auto;
+        max-width: 200px;
+        @media only screen and (max-width:1380px){
+            width: 100%;
+            max-width: 100%;
+        }
+        @include touch-device {
+            width:100%;
+            height:125px;
+            margin-top:30px;
+            max-width: 100%;
+        }
+
+        h4 {
+            height: 100%;
+
+            a {
+                height: 100%;
+                background-color: $color-primary;
+                transition: background-color $transition-linear;
+                &:hover {
+                    background-color: $color-hover-primary;
+                }
+
+                &:after {
+                    color: $color-white;
+                }
+            }
+        }
+    }
+}
+.race-details-toggle {
+    display:none;
+    width: 100%;
+    height: 50px;
+    background-color: $color-white;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $global-ui-border-color;
+    @include touch-device {
+        display: flex;
+    }
+    span {
+        font-family: $font-primary;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 2;
+        &:after {
+            content: '\f107';
+            display: inline-block;
+            font-family: 'fontawesome';
+            font-size: inherit;
+            color: $color-primary;
+            transition: transform $transition-standard;
+            margin-left: 10px;
+        }
+    }
+    &.open {
+        span {
+            &:after {
+                transform: rotate(180deg);
+            }
+        }
+    }
+}
+
+
+.languageDropdown {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+    margin-left: 50px;
+    list-style: none;
+    @include touch-device {
+        margin-left:0;
+        margin-right: 0;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        width:100%;
+    }
+    @media only screen and (max-width:1180px){
+        padding-top: 15px;
+    }
+
+    span {
+        font-family: $font-primary;
+        font-size: 14px;
+        font-weight: 400;
+        color: $color-gray-md;
+        height: 45px;
+        width: 150px;
+        border: 1px solid $color-gray-md;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:after {
+            content: '\f107';
+            display: inline-block;
+            font-family: 'fontawesome';
+            font-size: inherit;
+            color: inherit;
+            transition: transform $transition-standard;
+            margin-left: 20px;
+        }
+    }
+
+
+    ul {
+        display: block;
+        height: 0;
+        opacity: 0;
+        list-style: none;
+        width: 0;
+        max-height: 300px;
+        overflow: scroll;
+        position: absolute;
+        // top: calc(100% - 40px);
+        top:100%;
+        left: 0;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 30px;
+        padding-right: 30px;
+        background-color: $color-off-white;
+        border: 1px solid $color-gray;
+        box-shadow: $box-shadow-active;
+        z-index: -1;
+        transition: height .6s ease-in, opacity $transition-standard, width .6s ease-in;
+        @include touch-device {
+            top:100%;
+            width: 100%;
+            position: initial;
+            padding-bottom:0;
+            padding-top:0;
+            text-align: center;
+        }
+        @media only screen and (max-width:1180px){
+            top:100%;
+        }
+    }
+
+    &.active {
+        span {
+            &:after {
+                transform: rotate(180deg);
+            }
+        }
+
+        ul {
+            display: block;
+            opacity: 1;
+            height: auto;
+            width: 100%;
+            min-width: 275px;
+            z-index: 10;
+            @include touch-device {
+                padding-top: 20px;
+                padding-bottom: 20px;
+            }
+
+            &:hover {
+                cursor: pointer;
+            }
+
+            li {
+                font-family: $font-primary;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 2;
+                color: $color-gray-md;
+                transition: color $transition-standard;
+                text-indent: 0;
+
+                &:hover {
+                    color: $color-primary;
+                    cursor: pointer;
+                }
+
+                &.selected {
+                    color: $color-primary;
+                }
+            }
+        }
+    }
+}
+
+
+//LANGUAGE 
+
+.user_mode.racePage {
+    .layoutContainer[class*="lng-"] {
+        display: none;
+        &.activeLanguage {
+            display: block;
+        }
+    }
+}
+
+.edit_mode.racePage {
+    .layoutContainer[class*="lng-"] {
+        &:before {
+            display:flex;
+            max-width: 100%;
+            justify-content: flex-start;
+            font-family: $font-secondary;
+            font-size: 18px;
+            font-weight: bold;
+            color: $color-secondary;
+            background-color: #C3C3C3;
+            border: dashed 1px solid #DDA301;
+            padding-top: 5px;
+            padding-bottom:5px;
+            padding-left:5px;
+            padding-right:5px;
+            text-transform: uppercase;
+            
+        }
+    }
+    .layoutContainer{
+        &.lng-euskera {
+            &:before {
+                content:'Basque (Euskera)';
+            }
+        }
+        &.lng-catalan {
+            &:before {
+                content:'Català (Catalan)';
+            }
+        }
+        &.lng-chinese {
+            &:before {
+                content:'Chinese';
+            }
+        }
+        &.lng-danish {
+            &:before {
+                content:'Danish';
+            }
+        }
+        &.lng-deutsch {
+            &:before {
+                content:'Deutsch';
+            }
+        }
+        &.lng-estonian {
+            &:before {
+                content:'Eesti (Estonian)';
+            }
+        }
+        &.lng-english {
+            &:before {
+                content:'English';
+            }
+        }
+        &.lng-español   {
+            &:before {
+                content:'Español';
+            }
+        }
+        &.lng-français   {
+            &:before {
+                content:'Français';
+            }
+        }
+        &.lng-german   {
+            &:before {
+                content:'German';
+            }
+        }
+        &.lng-italiano {
+            &:before {
+                content:'Italiano ';
+            }
+        }
+        &.lng-japanese {
+            &:before {
+                content:'日本語 (Japanese)';
+            }
+        }
+        &.lng-korean {
+            &:before {
+                content:'한국어 (Korean)';
+            }
+        }
+        &.lng-portuguese {
+            &:before {
+                content:'Portuguese';
+            }
+        }
+        &.lng-russian {
+            &:before {
+                content:'русский (Russian)';
+            }
+        }
+        &.lng-slovenian {
+            &:before {
+                content:'Slovenian';
+            }
+        }
+        &.lng-swedish {
+            &:before {
+                content:'Svenska (Swedish)';
+            }
+        }
+        &.lng-tawainesemandarin {
+            &:before {
+                content:'國語 (Tawainese Mandarin)';
+            }
+        }
+        &.lng-thai {
+            &:before {
+                content:'Thai';
+            }
+        }
+        &.lng-vietnamese {
+            &:before {
+                content:'Tiếng Việt (Vietnamese)';
+            }
+        }
+        &.lng-croatian {
+            &:before {
+                content:'Croatian';
+            }
+        }
+        &.lng-dutch {
+            &:before {
+                content:'Dutch';
+            }
+        }
+
+    }
+}

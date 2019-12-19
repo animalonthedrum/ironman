@@ -1,0 +1,53 @@
+/* Survey Link Element */
+// 1. General Styling
+// 2. Accomdidation for Small Screens and Mobile Views
+
+// 1. General Styling
+.pageElement.surveyLinkElement{
+  background:transparent;
+  background-image:none;
+  text-align:center;
+  a{
+    display:block;
+    width:100%;
+    padding:10px;
+    color:#fff;
+    font-size:rem(16);
+    font-weight:600;
+    text-decoration:none;
+    background:$link-color;
+    border-bottom: 3px solid $link-color-darken-20;
+    margin-bottom: 5px;
+    text-transform:uppercase;
+    font-family:$fontOne;
+    transition: background $transition-standard;
+    &:hover{
+      background:$link-color-darken-20;
+    }
+    span{
+      display:inline-block;
+      color:#fff;
+      text-decoration:none;
+      &:after{
+        content:"\f061";
+        display:inline-block;
+        margin-left:6px;
+        height:1rem;
+        line-height:1rem;
+        font-size:rem(13);
+        font-family: FontAwesome;
+        color:$accent-color;
+        cursor: pointer;
+        transform: translate(0,-1px);
+        transition: color $transition-standard;
+      }
+    }
+    small{
+      font-size:rem(16);
+      font-weight:300;
+    }
+  }
+}
+.pageElement.surveyLinkElement a:hover > span:after{
+    color:#fff;
+}

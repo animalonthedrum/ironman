@@ -1,0 +1,21 @@
+// # Confirmation
+// Display results of a form submission or other action
+
+.pl-confirmation {
+  @extend %content-spacing;
+  text-align: center;
+}
+
+.pl-confirmation__image {
+  background: $gray-xlight;
+  border-radius: 1000px;
+  display: table; // Collapse width of this element to its contents (the img)
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

@@ -1,0 +1,123 @@
+$game-slider-height: 63px;
+$game-slider-month-width: 17px;
+
+%games-slider-hover {
+  background: $link-color;
+  box-shadow:
+    0 2px $link-color inset,
+    0 -2px $link-color inset;
+  text-decoration: none;
+  * { color: #fff; }
+}
+
+.games-slider {
+  background-color: #eee;
+  font-family: $fontOne;
+  margin: 5px 0 15px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  ul {
+    color: #666;
+    display: table;
+    font-size: 10px;
+    list-style: none;
+    text-align: center;
+  }
+
+  li {
+    display: table-cell;
+
+    &:first-child a { border-left-width: 2px; }
+    &:last-child a { border-right-width: 2px; }
+    &.selected a { @extend %games-slider-hover; }
+  }
+
+  a {
+    background: #fff;
+    box-shadow:
+      0 2px #b5b5b5 inset,
+      0 -2px #b5b5b5 inset;
+    border-color: #b5b5b5;
+    border-style: solid;
+    border-width: 0 1px;
+    box-sizing: border-box;
+    color: #666;
+    display: block;
+    height: $game-slider-height;
+    padding: 9px 0 0;
+    position: relative;
+    transition:
+      background .25s,
+      border .25s,
+      box-shadow .25s,
+      color .25s;
+    vertical-align: middle;
+    width: 50px;
+
+    &:hover { @extend %games-slider-hover; }
+  }
+}
+
+.games-slider-inner { display: table; }
+
+
+.games-slider-group {
+  display: table-cell;
+  overflow: hidden;
+  padding-left: $game-slider-month-width;
+  position: relative;
+}
+
+.games-slider-month {
+  background: #666;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 10px;
+  height: $game-slider-month-width;
+  line-height: $game-slider-month-width - 1px;
+  padding: 1px 0 1px 6px;
+  position: absolute;
+  text-transform: uppercase;
+  transform:
+    rotatez(-90deg)
+    translate(-100%, -100%);
+  transform-origin: 0 0;
+  white-space: nowrap;
+  width: $game-slider-height;
+}
+
+.games-slider-date {
+  display: block;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1em;
+  padding: 4px 0;
+}
+
+.games-slider-day,
+.games-slider-count,
+.games-slider-time,
+.games-slider-outcome {
+  display: block;
+  font-family: $fontTwo;
+  font-weight: 400;
+  line-height: .7em;
+}
+
+.games-slider-day {
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.games-slider-count,
+.games-slider-time {
+  font-size: 10px;
+  color: #999;
+}
+
+.games-slider-outcome {
+  font-size: 10px;
+  color: $link-color;
+  text-transform: uppercase;
+}

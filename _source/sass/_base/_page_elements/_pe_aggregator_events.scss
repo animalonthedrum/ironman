@@ -1,0 +1,415 @@
+$agg-event-element-entry-title-font: $font-primary;
+$agg-event-element-entry-title-size: 18px;
+$agg-event-element-entry-title-weight: 600;
+$agg-event-element-entry-title-line-height: 1.25;
+$agg-event-element-entry-title-color: $color-black;
+$agg-event-element-entry-title-color-hover: $color-primary;
+$agg-event-element-entry-title-case: none;
+
+$agg-event-element-entry-meta-font: $font-primary;
+$agg-event-element-entry-meta-size: 12px;
+$agg-event-element-entry-meta-weight: 400;
+$agg-event-element-entry-meta-line-height: 1.5;
+$agg-event-element-entry-meta-color: $color-gray-dk;
+$agg-event-element-entry-meta-case: none;
+$agg-event-element-entry-meta-padding: 5px 0px 0px 0px;
+
+$agg-event-element-entry-body-font: $font-primary;
+$agg-event-element-entry-body-size: 18px;
+$agg-event-element-entry-body-weight: 400;
+$agg-event-element-entry-body-line-height: 1.5;
+$agg-event-element-entry-body-color: $color-gray-dk;
+$agg-event-element-entry-body-case: none;
+$agg-event-element-entry-body-padding: 5px 0px 0px 0px;
+
+$agg-event-element-entry-tag-font: $font-primary;
+$agg-event-element-entry-tag-size: 12px;
+$agg-event-element-entry-tag-weight: 600;
+$agg-event-element-entry-tag-line-height: null;
+$agg-event-element-entry-tag-case: null;
+$agg-event-element-entry-tag-color: $color-primary;
+$agg-event-element-entry-tag-color-hover: $color-primary;
+$agg-event-element-entry-tag-padding: 10px 0px 0px 0px;
+
+$agg-event-element-entry-preview-background-color: $color-secondary;
+$agg-event-element-entry-preview-width: 80px;
+$agg-event-element-entry-preview-height: 80px;
+$agg-event-element-entry-preview-margin: 0 10px 10px 0;
+$agg-event-element-entry-preview-float: true;
+
+$agg-event-element-entry-preview-month-font-size: 18px;
+$agg-event-element-entry-preview-month-line-height: 1;
+$agg-event-element-entry-preview-month-text-color: white;
+$agg-event-element-entry-preview-month-text-weight: 900;
+$agg-event-element-entry-preview-month-case: uppercase;
+$agg-event-element-entry-preview-month-font-family: $font-primary;
+
+$agg-event-element-entry-preview-date-font-size: 36px;
+$agg-event-element-entry-preview-date-line-height: 1;
+$agg-event-element-entry-preview-date-text-color: white;
+$agg-event-element-entry-preview-date-text-weight: 900;
+$agg-event-element-entry-preview-date-font-family: $font-primary;
+
+$agg-event-element-entry-padding-y: 20px;
+
+
+// RESETS
+.eventAggregatorElement {
+  ul {
+    list-style: none;
+    li:empty {
+      display: none;
+    }
+  }
+  abbr{ text-decoration: none; }
+}
+
+
+// List
+.eventAggregatorElement {
+  .vevent {
+    border-bottom: $global-ui-border-size solid $global-ui-border-color;
+    padding: $agg-event-element-entry-padding-y 0px;
+  }
+  .aggHeader+.vevent{
+    margin-top: 15px;
+    border-top: $global-ui-border-size solid $global-ui-border-color;
+  }
+}
+
+// Entry
+.eventAggregatorElement{
+  // Entry Title
+  .vevent > h5 a{
+    font-family: $agg-event-element-entry-title-font;
+    font-size: $agg-event-element-entry-title-size;
+    font-weight: $agg-event-element-entry-title-weight;
+    line-height: $agg-event-element-entry-title-line-height;
+    text-transform: $agg-event-element-entry-title-case;
+    color: $agg-event-element-entry-title-color;
+    transition: color $transition-linear;
+    &:hover {
+      color: $agg-event-element-entry-title-color-hover;
+    }
+  }
+  
+  // Entry Meta
+  .vevent .time,
+  .vevent .location{
+    font-family: $agg-event-element-entry-meta-font;
+    font-size: $agg-event-element-entry-meta-size;
+    font-weight: $agg-event-element-entry-meta-weight;
+    line-height: $agg-event-element-entry-meta-line-height;
+    text-transform: $agg-event-element-entry-meta-case;
+    color: $agg-event-element-entry-meta-color;
+    padding: $agg-event-element-entry-meta-padding;
+  }
+
+  // Entry Body
+  .vevent .description{
+    &:empty{ display: none; }
+    font-family: $agg-event-element-entry-body-font;
+    font-size: $agg-event-element-entry-body-size;
+    font-weight: $agg-event-element-entry-body-weight;
+    line-height: $agg-event-element-entry-body-line-height;
+    text-transform: $agg-event-element-entry-body-case;
+    color: $agg-event-element-entry-body-color;
+    padding: $agg-event-element-entry-body-padding;
+  }
+
+  // Entry Tag
+  .vevent .tags{
+    padding: $agg-event-element-entry-tag-padding;
+    font-family: $agg-event-element-entry-tag-font;
+    font-size: $agg-event-element-entry-tag-size;
+    font-weight: $agg-event-element-entry-tag-weight;
+    line-height: $agg-event-element-entry-tag-line-height;
+
+    a{
+      font-family: $agg-event-element-entry-tag-font;
+      font-size: $agg-event-element-entry-tag-size;
+      font-weight: $agg-event-element-entry-tag-weight;
+      line-height: $agg-event-element-entry-tag-line-height;
+      text-transform: $agg-event-element-entry-tag-case;
+      color: $agg-event-element-entry-tag-color;
+      transition: color $transition-linear;
+      &:hover {
+        color: $agg-event-element-entry-tag-color-hover;
+      }
+    }
+  }
+
+  // Entry Date
+  .vevent .dateImage {
+    background-color: $agg-event-element-entry-preview-background-color;
+    margin: $agg-event-element-entry-preview-margin;
+    width: 100%;
+    max-width: $agg-event-element-entry-preview-width;
+    min-height: $agg-event-element-entry-preview-height;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    @if $agg-event-element-entry-preview-float == true{ float: left; }
+
+    .month{
+      font-size: $agg-event-element-entry-preview-month-font-size;
+      line-height: $agg-event-element-entry-preview-month-line-height;
+      color: $agg-event-element-entry-preview-month-text-color;
+      font-family: $agg-event-element-entry-preview-month-font-family;
+      font-weight: $agg-event-element-entry-preview-month-text-weight;
+      text-transform: $agg-event-element-entry-preview-month-case;
+      text-align: center;
+    }
+    .date{
+      font-size: $agg-event-element-entry-preview-date-font-size;
+      line-height: $agg-event-element-entry-preview-date-line-height;
+      color: $agg-event-element-entry-preview-date-text-color;
+      font-family: $agg-event-element-entry-preview-date-font-family;
+      font-weight: $agg-event-element-entry-preview-date-text-weight;
+      text-align: center;
+    }
+  }
+}
+
+
+
+// 2. List Views
+.eventAggregatorElement {
+  .vevent {
+    position: relative;
+  }
+  .formElement {
+    padding: 10px 0; // This should be better defined in global form styles (or removed from there to be styled per element)
+    [id$="_start_date_day"],
+    [id$="_end_date_day"] {
+      width: 8em;
+    }
+  }
+}
+
+// 3. List Views - Media Queries
+@include page-element-break(330) {
+  .eventAggregatorElement {
+    .dateImage {
+      float: none;
+    }
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 999px) {
+  .layout-25-25-50,
+  .layout-50-25-25 {
+    .col-md-6,
+    .col-md-3 {
+      .eventAggregatorElement {
+        .dateImage {
+          float: left;
+        }
+      }
+    }
+  }
+  .layout-25-50-25 {
+    .col-md-6,
+    .col-md-3 {
+      .eventAggregatorElement {
+        .dateImage {
+          float: left;
+        }
+      }
+    }
+  }
+}
+
+// 4. Five Day View
+.eventPreview {
+  text-align: left;
+  width: 100%;
+  table-layout: fixed;
+  th {
+    @include table-th;
+    @include table-th-text;
+    word-break: break-word;
+    a {
+      color:#FFF;
+      font-weight: 600;
+    }
+  }
+  td {
+    font-size: 12px;
+    padding: 10px;
+    background: #eee;
+    vertical-align: top;
+    word-break: break-word;
+    &:before {
+      content: attr(data-week-view-date)'';
+      display: none;
+      width: 100%;
+      position: relative;
+      box-sizing: border-box;
+      padding: 7px 12px;
+      border-bottom: $table-cell-spacing solid #FFF;
+      background: $link_color;
+      color: #fff;
+      text-transform: uppercase;
+      font-family: $font-primary;
+      font-size: 1em;
+      line-height: 1.1;
+      font-weight: 600;
+    }
+  }
+  td,
+  th {
+    border: $table-cell-spacing solid #FFF;
+    &:first-child {
+      border-left: 0;
+    }
+    &:last-child {
+      border-right: 0;
+    }
+  }
+  .event + .event {
+    padding-top: 10px;
+  }
+  .noentry {
+    word-break:normal;
+  }
+}
+
+// 5. Five Day View - Media Queries
+@include page-element-break(430) {
+  .eventPreview {
+    border-top: $table-cell-spacing solid #FFF;
+    &,
+    tbody,
+    tr,
+    td {
+      display: block;
+    }
+    thead {
+      display: none;
+    }
+    td {
+      border: 0;
+      padding: 0;
+      margin-bottom: $table-cell-spacing;
+      word-break: word-break;
+      &:before {
+        display: block;
+      }
+    }
+    .event {
+      padding: 10px;
+      & + .event {
+        padding-top: 0;
+      }
+    }
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 999px) {
+  .layout-25-25-50,
+  .layout-50-25-25 {
+    .col-md-6 {
+      .eventPreview {
+        display: table;
+        border-top: 0;
+        thead {
+          display: table-header-group;
+        }
+        tbody {
+          display: table-row-group;
+        }
+        tr {
+          display: table-row;
+        }
+        td,
+        th {
+          display: table-cell;
+        }
+        td {
+          padding: 10px;
+          margin-bottom: none;
+          word-break: word-break;
+          &:before {
+            display: none;
+          }
+        }
+        .event {
+          padding: 0;
+        }
+      }
+    }
+  }
+  .layout-25-50-25 {
+    .col-md-6 {
+      .eventPreview {
+        border-top: $table-cell-spacing solid #FFF;
+        &,
+        tbody,
+        tr,
+        td {
+          display: block;
+        }
+        thead {
+          display: none;
+        }
+        td {
+          border: 0;
+          padding: 0;
+          margin-bottom: $table-cell-spacing;
+          word-break: word-break;
+          &:before {
+            display: block;
+          }
+        }
+        .event {
+          padding: 10px;
+          & + .event {
+            padding-top: 0;
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (min-width: 891px) and (max-width: 999px) {
+  .layout-25-25-50,
+  .layout-50-25-25 {
+    .col-md-3 {
+      .eventPreview {
+        display: table;
+        border-top: 0;
+        thead {
+          display: table-header-group;
+        }
+        tbody {
+          display: table-row-group;
+        }
+        tr {
+          display: table-row;
+        }
+        td,
+        th {
+          display: table-cell;
+        }
+        td {
+          padding: 10px;
+          margin-bottom: none;
+          word-break: word-break;
+          border: $table-cell-spacing solid #FFF;
+          &:first-child {
+            border-left: 0;
+          }
+          &:last-child {
+            border-right: 0;
+          }
+          &:before {
+            display: none;
+          }
+        }
+        .event {
+          padding: 0;
+        }
+      }
+    }
+  }
+}

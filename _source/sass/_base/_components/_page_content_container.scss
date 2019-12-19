@@ -1,0 +1,55 @@
+// Page Content Container
+// This component controls the background behind the site's main content.
+
+$content-container-margin: 30px !default;
+
+
+.siteContainer {
+  min-height: calc(100vh - #{$desktop-nav-height + $account-nav-height-desktop});
+  // padding: $content-container-margin 0;
+  padding: 0;
+  @if $enable-full-width-layout != true {
+    @include content-area-width;
+    @include content-area-container-style;
+  }
+}
+@if $enable-full-width-layout == true {
+  #panelTwo{
+    &:before{
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: -1;
+      @include content-area-width;
+      @include content-area-container-style;
+    }
+  }
+  @if $include-page-title-in-content-area-background == true {
+    #yieldContent{
+      position: relative;
+      .sportsPage &{ @include content-container-padding-vert(2); }
+    }
+    #panelTwo{
+      .user_mode &{ @include content-container-padding-vert; }
+      .sportsPage &{ padding: 0; }
+    }
+  } @else {
+    #panelTwo{
+      position: relative;
+      .user_mode & { @include content-container-padding-vert; }
+    }
+    .sportsPage{
+      #yieldContent{
+        position: relative;
+        @include content-container-padding-vert(2);
+      }
+      #panelTwo{
+        position: unset;
+        padding: 0;
+      }
+    }
+  }
+}

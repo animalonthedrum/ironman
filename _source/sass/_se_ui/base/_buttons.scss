@@ -1,0 +1,133 @@
+// # Buttons
+// Button elements, submit inputs, and button-styled links
+
+
+// ## Variables
+$button-padding-vertical:         .4286rem;  // 6px / 14px
+$button-padding-vertical-small:   .2857rem;  // 4px / 14px
+$button-padding-vertical-large:   .2857rem;  // 4px / 14px
+$button-padding-horizontal:       .8571rem;  // 12px / 14px
+$button-padding-horizontal-small: .8571rem;  // 12px / 14px
+$button-padding-horizontal-large: 1.7143rem; // 12px / 14px
+
+
+// # Default
+%button {
+  @include font-xsmall;
+  background-color: #fff;
+  background-image: linear-gradient(#fff, $gray-xlight);
+  border: 1px solid $gray-light;
+  border-radius: 4px;
+  color: $color-content-light;
+  display: inline-block;
+  font-family: $font-default;
+  font-weight: $font-semibold;
+  padding: $button-padding-vertical $button-padding-horizontal;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  // TODO: don't apply :hover styles on touch devices
+  &:hover:not(:disabled),
+  &:active:not(:disabled) {
+    background-color: $gray-xlight;
+    background-image: linear-gradient($gray-xlight, #fff);
+  }
+  &:hover:not(:disabled) {
+    border-color: $gray;
+  }
+  &:active:not(:disabled) {
+    background: $gray-xlight;
+    border-color: $gray-dark;
+    box-shadow: 0 0 .2em rgba(0, 0, 0, .3) inset;
+  }
+  &:focus {
+    border-color: $color-highlight;
+    box-shadow: 0 0 4px 1px $color-highlight;
+    outline: none;
+  }
+  &:disabled {
+    background: #fff;
+    border-color: $gray-light;
+    color: $gray-light;
+  }
+  img {
+    margin: 0; // override default platform img margin-bottom
+    vertical-align: bottom; // baseline causes odd alignment with text
+  }
+}
+
+.pl-button {
+  @extend %button;
+}
+
+
+// ## Modifiers
+.pl-button--primary {
+  @extend %button;
+  background-color: $color-success;
+  background-image: linear-gradient($color-success, $color-success-dark);
+  border-color: $color-success-dark;
+  color: #fff;
+
+  // TODO: don't apply :hover styles on touch devices
+  &:hover:not(:disabled),
+  &:active:not(:disabled) {
+    background-color: $color-success-light;
+    background-image: linear-gradient($color-success-dark, $color-success);
+  }
+  &:hover:not(:disabled) {
+    border-color: $color-success-dark;
+  }
+  &:active:not(:disabled) {
+    background: $color-success-dark;
+    border-color: $color-success-dark;
+    box-shadow: 0 0 .3em rgba(0, 0, 0, .3) inset;
+  }
+  &:focus:not(:disabled) {
+    border-color: #fff;
+    box-shadow: 0 0 4px 1px $color-highlight;
+  }
+}
+
+.pl-button--small {
+  @extend %button;
+  padding: $button-padding-vertical-small $button-padding-horizontal-small;
+}
+
+.pl-button--large {
+  @extend %button;
+  @include font-large;
+  padding: $button-padding-vertical-large $button-padding-horizontal-large;
+}
+
+.pl-button--full {
+  @extend %button;
+  text-align: center;
+  width: 100%;
+}
+
+.pl-button--minimal {
+  background: none;
+  border: 0;
+  color: $color-content-light;
+  display: inline-block;
+  font-family: $font-default;
+  font-weight: $font-semibold;
+  padding: $button-padding-vertical-small $button-padding-horizontal-small;
+  text-decoration: none;
+
+  // TODO: don't apply :hover styles on touch devices
+  &:focus {
+    outline: dotted 1px;
+  }
+  &:hover:not(:disabled) {
+    color: $gray;
+  }
+  &.pl-is-active:not(:disabled),
+  &:active:not(:disabled) {
+    color: $color-content;
+  }
+  &:disabled {
+    color: $gray-light;
+  }
+}

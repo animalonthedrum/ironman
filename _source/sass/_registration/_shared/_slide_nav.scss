@@ -1,0 +1,401 @@
+// From Theme (This will be addressed in other PR)
+// TEMP FIXES FOR BROKEN NAV
+.theme-nav-style-slide > * {
+  width: 100%;
+}
+
+$slide-nav-width: 250px !default;
+$slide-nav-tablet-width: 400px !default;
+$slide-nav-font-size: 16px !default;
+$slide-nav-background: rgba(0,0,0,0.75) !default;
+$slide-nav-background-collapsed: rgba(0,0,0,0.9) !default;
+
+$slide-nav-content-spacing: 10px !default;
+$slide-nav-content-background: $link_color !default;
+
+$slide-nav-toggle-background: transparent !default;
+$slide-nav-toggle-color: #FFF !default;
+$slide-nav-toggle-background-collapsed: $account-nav-background !default;
+$slide-nav-toggle-color-collapsed: $account-nav-color !default;
+
+$slide-nav-title-color: #eaeaea !default;
+$slide-nav-title-background: $link_color !default;
+$slide-nav-title-border: 1px solid rgba(255,255,255,0.1) !default;
+$slide-nav-title-height: 44px !default;
+
+$slide-nav-back-icon: "\f053" !default;
+$slide-nav-back-color: #FFF !default;
+$slide-nav-back-background: $link_color !default;
+$slide-nav-back-background-hover: $link_color !default;
+$slide-nav-back-border: 1px solid rgba(255,255,255,0.05) !default; // seems to double up when transparent
+
+$slide-nav-forward-icon: "\f054" !default;
+$slide-nav-forward-color: #FFF !default;
+$slide-nav-forward-background: transparent !default;
+$slide-nav-forward-background-hover: $link_color !default;
+$slide-nav-forward-border: 1px solid rgba(255,255,255,0.05) !default; // seems to double up when transparent
+
+$slide-nav-menu-background: transparent !default;
+
+$slide-nav-item-color: #FFF !default;
+$slide-nav-item-color-disabled: #999 !default;
+$slide-nav-item-background: transparent !default;
+$slide-nav-item-background-hover: $link_color !default;
+$slide-nav-item-background-selected: rgba(255,255,255,0.15) !default;
+$slide-nav-item-background-disabled: transparent !default;
+$slide-nav-item-background-disabled-hover: $link_color !default;
+$slide-nav-item-background-disabled-selected: rgba(255,255,255,0.1) !default;
+$slide-nav-item-border: 1px solid rgba(255,255,255,0.1) !default;
+$slide-nav-item-height: 44px !default;
+
+// SEARCH BOX
+$slide-nav-search-height: 30px !default;
+$slide-nav-search-spacing: 10px !default;
+$slide-nav-search-border-width: 1px !default;
+$slide-nav-search-input-font-size: 16px !default;
+$slide-nav-search-input-color: #666 !default;
+$slide-nav-search-input-border-color: rgba(255,255,255,0.1) !default;
+$slide-nav-search-input-background: rgba(255,255,255,0.8) !default;
+$slide-nav-search-input-background-focus: rgba(255,255,255,1) !default;
+$slide-nav-search-submit-color: #fff !default;
+$slide-nav-search-submit-border-color: rgba(255,255,255,0.1) !default;
+$slide-nav-search-submit-background: $link-color-darken-10 !default;
+$slide-nav-search-submit-background-focus: $link-color-darken-20 !default;
+$slide-nav-search-submit-font-size: 12px !default;
+$slide-nav-search-submit-width: 70px !default;
+
+html.collapsed-mobile-nav {
+
+  // Make sure the absolutely positioned top nav container starts at the top
+  // when the nav is collapsed and there is custom page head html.
+  #topNav {
+    position: absolute;
+    top: 0;
+  }
+
+  .nav-fixed .theme-mobile-nav { display: none !important; }
+
+  .theme-nav-style-slide {
+    font-size: $slide-nav-font-size;
+    left: auto;
+    right: 100%;
+    width: 100%;
+    background: $slide-nav-background-collapsed;
+    transition: right 200ms ease-in-out;
+  }
+
+  // max width when collapsed at tablet and above
+  @media (min-width: 769px) {
+    .theme-nav-style-slide { width: $slide-nav-tablet-width; }
+
+    &.slide-nav-open {
+      .theme-nav-style-slide { right: calc(100vw - #{$slide-nav-tablet-width}) !important; }
+      &.page-manager-visible .theme-nav-style-slide { right: calc(100vw - #{$slide-nav-tablet-width} - #{$page-manager-width}) !important; }
+    }
+  }
+
+  .theme-slide-nav-overlay {
+    display: none;
+    position: absolute;
+    top: 0;
+    width: 9999px;
+    background: #FFF;
+    height: 100%;
+    left: 100%;
+    opacity: 0;
+    transition: opacity $transition-linear;
+  }
+
+  .theme-slide-nav-toggle { display: block; }
+
+  &.slide-nav-open {
+    overflow: hidden; // hide scroll bar
+
+    // make space for the menu toggle unless there is pre-rendered content
+    *:not(.theme-slide-nav-content) + .theme-nav-title .theme-nav-title-text {
+      padding-right: $slide-nav-title-height;
+    }
+
+    .theme-nav-style-slide { right: 0; }
+    .theme-slide-nav-overlay {
+      display: block;
+      opacity: .5;
+    }
+
+
+    // If a search box is the first content, add spacing to all search boxes to
+    // allow space for the hamburger icon and keep them aligned with each other.
+    .theme-search-box:first-child {
+      &, ~ .theme-search-box { padding-right: $slide-nav-title-height; }
+    }
+  }
+
+  &:not(.slide-nav-open) {
+
+    .theme-nav-style-slide { position: absolute; }
+
+    .theme-slide-nav-toggle {
+      display: block;
+      right: -$slide-nav-title-height;
+      background: $slide-nav-toggle-background-collapsed;
+      color: $slide-nav-toggle-color-collapsed;
+    }
+  }
+}
+
+/// these styles are slide nav specific (can be shared)
+
+.theme-nav-style-slide {
+  position: fixed;
+  width: $slide-nav-width;
+  @include flex-box(column);
+  height: 100vh;
+  border-collapse: collapse;
+  top: 0;
+  left: 0;
+  background: $slide-nav-background;
+
+  .page-manager-visible & { left: $page-manager-width; }
+
+  a:hover { text-decoration: none; }
+
+  // HEADER CONTENT
+
+  .theme-slide-nav-content {
+    @include flex(0);
+    background: $slide-nav-content-background;
+  }
+
+  // SEARCH
+
+  $slide-nav-search-line-height: $slide-nav-search-height - $slide-nav-search-border-width * 2;
+
+  .theme-search-box {
+    display: block;
+    overflow: hidden;
+    padding: $slide-nav-content-spacing;
+
+    &:not(:first-child) { border-top: $slide-nav-title-border; }
+  }
+
+  .theme-search-input,
+  .theme-search-submit,
+  .theme-search-clear {
+    float: left;
+    height: $slide-nav-search-height;
+    transition: background $transition-linear;
+  }
+
+  .theme-search-input,
+  .theme-search-clear { font-size: $slide-nav-search-input-font-size; }
+
+  .theme-search-input {
+    width: calc(100% - #{$slide-nav-search-submit-width});
+    line-height: $slide-nav-search-line-height;
+    background: $slide-nav-search-input-background;
+    border: $slide-nav-search-border-width solid $slide-nav-search-input-border-color;
+    border-right: none;
+    padding: 0 ($slide-nav-search-line-height) 0 $slide-nav-search-spacing;
+
+    &::-ms-clear { display: none; }
+    &:focus {
+      outline: none;
+      background: $slide-nav-search-input-background-focus;
+    }
+  }
+
+  .theme-search-submit {
+    cursor: pointer;
+    width: $slide-nav-search-submit-width;
+    line-height: $slide-nav-search-line-height;
+    color: $slide-nav-search-submit-color;
+    text-align: center;
+    font-size: $slide-nav-search-submit-font-size;
+    border: $slide-nav-search-border-width solid $slide-nav-search-submit-border-color;
+    padding: 0 $slide-nav-search-spacing;
+    background: $slide-nav-search-submit-background;
+
+    &:focus,
+    &:hover { background: $slide-nav-search-submit-background-focus; }
+  }
+
+  .theme-search-clear {
+    float: left;
+    text-decoration: none;
+    text-align: center;
+    margin-left: 0 - $slide-nav-search-height - $slide-nav-search-border-width;
+    margin-right: $slide-nav-search-border-width;
+    width: $slide-nav-search-height;
+    line-height: $slide-nav-search-height;
+
+    &:before {
+      content: "✕";
+      color: #9ca8af;
+      font-family: FontAwesome;
+      font-size: $slide-nav-search-input-font-size;
+    }
+  }
+
+  /////
+
+  .theme-slide-nav-toggle {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    font-size: $slide-nav-font-size * 1.25;
+    line-height: $slide-nav-title-height;
+    height: $slide-nav-title-height;
+    width: $slide-nav-title-height;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    background: $slide-nav-toggle-background;
+    color: $slide-nav-toggle-color;
+
+    &:before {
+      font-family: "FontAwesome";
+      content: "\f0c9";
+    }
+
+    &:hover { color: #eee; }
+  }
+
+  .theme-nav-title {
+    @include flex(0);
+    text-transform: uppercase;
+    display: table;
+    table-layout: fixed;
+    text-align: center;
+    height: $slide-nav-title-height;
+    background: $slide-nav-title-background;
+    border: $slide-nav-title-border;
+    overflow: hidden;
+  }
+
+  .theme-nav-title-text {
+    display: table-cell;
+    vertical-align: middle;
+    color: $slide-nav-title-color;
+    font-weight: 400;
+    text-align: left;
+    padding: 12px 20px;
+    line-height: 1.25;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .theme-nav-back,
+  .theme-nav-forward {
+    font-family: FontAwesome;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    font-size: $slide-nav-font-size * 0.625;
+    cursor: pointer;
+    transition: all $transition-linear;
+  }
+
+  .theme-nav-back {
+    color: $slide-nav-back-color;
+    border-right: $slide-nav-back-border;
+    background: $slide-nav-back-background;
+    width: $slide-nav-title-height;
+
+    &:before { content: $slide-nav-back-icon; }
+    &:hover { background: $slide-nav-back-background-hover; }
+  }
+
+  .theme-nav-forward {
+    color: $slide-nav-back-color;
+    border-left: $slide-nav-forward-border;
+    background: $slide-nav-forward-background;
+    width: $slide-nav-item-height;
+
+    &:before { content: $slide-nav-forward-icon; }
+    &:hover { background: $slide-nav-forward-background-hover; }
+  }
+
+  .disabled > .theme-nav-forward:hover { background: darken(#CCC, 5); }
+
+  // .menu div in #topNav
+  .theme-nav-menus {
+    @include flex(1,1,100%);
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .theme-nav-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 100%;
+    width: 100%;
+    padding: 0;
+    list-style-type: none;
+    background: $slide-nav-menu-background;
+    transition: all 200ms ease-in-out;
+    padding-bottom: 72px; // Add extra spacing for ios chrome collapse.
+  }
+
+  .theme-nav-parent-in,
+  .theme-nav-parent-out { left: -10%; opacity: 0; }
+  .theme-nav-children-in,
+  .theme-nav-children-out { left: 100%; }
+  .theme-nav-parent-out,
+  .theme-nav-children-out {
+    max-height: 100%;
+    overflow: hidden;
+  }
+
+  .theme-nav-item {
+    width: 100%;
+    display: table;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border: $slide-nav-item-border;
+    border-top: none;
+    padding: 0;
+    height: $slide-nav-item-height;
+
+    &.paywalled {
+      img {
+        display: inline-block;
+        padding-right: 5px;
+        max-width: 40px;
+        max-height: 20px;
+      }
+    }
+
+    &.selected > .theme-nav-link { background: $slide-nav-item-background-selected; }
+    > .theme-nav-link:hover { background: $slide-nav-item-background-hover; }
+
+    &.disabled > * {
+      color: $slide-nav-item-color-disabled;
+      background: $slide-nav-item-background-disabled;
+    }
+    &.private {
+      display: none!important;
+    }
+
+    &.disabled.selected > .theme-nav-link { background: $slide-nav-item-background-disabled-selected; }
+    &.disabled > *:hover { background: $slide-nav-item-background-disabled-hover; }
+
+  }
+
+  .theme-nav-link {
+    cursor: pointer;
+    display: table-cell;
+    text-align: left;
+    padding: 12px 20px;
+    line-height: 1.25;
+    color: $slide-nav-item-color;
+    transition: all $transition-linear;
+
+    &:hover { background: $slide-nav-item-background-hover; }
+  }
+
+}

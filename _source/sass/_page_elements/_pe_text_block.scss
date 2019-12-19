@@ -1,0 +1,158 @@
+// Text Block Specific Styles
+.pageEl .textBlockElement {
+  table {
+    border-style: solid;
+    border-color: #999;
+
+    caption {
+      text-align: center;
+      font-size: 14px;
+      padding: 5px;
+      font-weight: bold;
+    }
+
+    td,
+    th {
+      padding: 2px 12px;
+    }
+
+    &:not([border]) {
+      border-style: none;
+      border-spacing: 2px;
+      border-collapse: separate;
+
+      th {
+        @include table-th;
+        @include table-th-text;
+      }
+
+      td {
+        @include table-td;
+        font-size: 12px;
+        background: #eee;
+      }
+    }
+
+    &[align="center"] {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  img {
+    width: auto;
+    max-width: 100%;
+    display: block;
+    margin: auto;
+  }
+
+  .leftTextImage,
+  .originalTextImage,
+  .rightTextImage {
+
+    br {
+      display: none;
+    }
+
+    .cutline {
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
+
+  p {
+    img {
+      height: auto !important;
+      max-width: 100%;
+    }
+  }
+}
+
+.text-photo-card {
+
+  .textBlockElement {
+    display: flex;
+    flex-flow: column;
+    background: white;
+    padding: $content-container-margin;
+
+    .leftTextImage, .rightTextImage {
+      height:0;
+      padding-left: 0;
+      padding-right: 0;
+      padding-top: 0;
+      padding-bottom: 100%;
+      margin-left: 0;
+      margin-right: 0;
+      margin-top: 0;
+      margin-bottom: 0;
+      overflow: hidden;
+      img{
+        height: auto;
+        width: 100%;
+      }
+    }
+    .text {
+      text-align: center;
+      & > h3 {
+        text-align: center!important;
+        text-transform: none;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+      a:last-of-type {
+        font-family: $font-secondary;
+        font-size: 14px;
+        font-weight: 400;
+
+        &:after {
+          content:'\f0da';
+          font-family: "FontAwesome";
+          margin-left: 10px;
+          display: inline-block;
+        }
+        &:hover{
+          color: $color-hover-primary;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+}
+
+@media only screen and (min-width: 1100px) {
+
+  .text-photo-card {
+
+    .textBlockElement {
+      flex-flow: row nowrap;
+      align-items: center;
+
+      .leftTextImage, .rightTextImage {
+        min-width: 300px;
+        max-width: 300px;
+        padding-bottom: 300px;
+      }
+      .leftTextImage {
+        margin-right: 35px;
+      }
+      .rightTextImage {
+        order: 1;
+        margin-left: 35px;
+      }
+      .text {
+        text-align: left;
+        padding-left: 30px;
+        padding-right: 30px;
+
+        & > h3 {
+          font-size: 28px;
+          text-align: left!important;
+        }
+      }
+    }
+  }
+
+}
+

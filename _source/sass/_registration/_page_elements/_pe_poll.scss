@@ -1,0 +1,97 @@
+/* Poll Element Styles */
+
+// All Styles
+.pollElement {
+	h3 {
+		span{
+  		@include special-header;
+		}
+	}
+	ul li {
+		list-style-type: none;
+		padding: 8px 8px 8px 10px;
+		margin:0;
+		&:first-child{
+  		padding:15px 8px 8px 10px;
+		}
+		&:nth-last-child(2){
+  		padding:8px 8px 15px 10px;
+		}
+	}
+	label,
+	h5 {
+		font-size:rem(14);
+		font-weight: 400;
+		color:$bodyCopyColorTwo;
+	}
+	h5 {
+		text-transform:none;
+	}
+	label {
+		padding-left: 10px;
+		vertical-align: middle;
+	}
+	ul li.pollTotal {
+  	padding:15px 8px 8px 10px;
+		border-top: $borderWidth solid $borderColor;
+		h5{
+  		font-weight:600;
+		}
+	}
+	ul li.voteButton {
+  	position:relative;
+		display: block;
+		text-align: center;
+		border-bottom: none;
+		padding:0;
+		max-width:320px;
+		&:after{
+      content:"\f061";
+      position:absolute;
+      top:50%;
+      left:50%;
+      margin:-11px 0 0 18px;
+      display:inline-block;
+      font-size:rem(13);
+      font-family: FontAwesome;
+      color:$accent-color;
+      cursor: pointer;
+      transition: color $transition-standard;
+    }
+    &:hover{
+      &:after{
+        color:#fff;
+      }
+    }
+	}
+	ul li.voteButton input[type='submit'] {
+		width: 100%;
+		padding: 10px;
+		color: #fff;
+		font-family:$fontOne;
+		font-size:rem(16);
+    font-weight: 700;
+    background: $link-color;
+    border-top:0;
+    border-left:0;
+    border-right:0;
+    border-bottom:3px solid $link-color-darken-20;
+    text-transform:uppercase;
+    text-indent:-20px;
+    -webkit-border-radius:0;
+    -webkit-appearance: none;
+    cursor: pointer;
+    transition: all $transition-standard;
+    &:focus,
+    &:hover{
+      background: $link-color-darken-20;
+		  outline:0;
+	  }
+	}
+}
+.barBackground p {
+  white-space: nowrap;
+  margin-bottom:0;
+  font-size:rem(18);
+  color:$bodyCopyColorOne;
+}

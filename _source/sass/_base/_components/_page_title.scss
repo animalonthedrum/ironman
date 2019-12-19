@@ -1,0 +1,52 @@
+// Page Title (display Body Header)
+$page-title-full-width: false !default;
+$page-title-full-width-text: false !default;
+$page-title-container-background: $content-area-background !default;
+$page-title-text-color: #333 !default;
+$page-title-font-size: 30px !default;
+$page-title-text-case: none !default;
+$page-title-font-weight: normal !default;
+$page-title-text-align: null !default;
+
+#displayBodyHeader{
+  background-color: $page-title-container-background;
+  @if $page-title-full-width != true { @include content-area-width; }
+  @include page-title-container;
+  span{
+    display: block;
+    color: $page-title-text-color;
+    font-size: $page-title-font-size;
+    text-transform: $page-title-text-case;
+    font-weight: $page-title-font-weight;
+    text-align: $page-title-text-align;
+    @if $page-title-full-width-text != true and $page-title-full-width == true { @include content-area-width; }
+    @include page-element-padding;
+    @include content-container-padding(2);
+    @include page-title-text;
+  }
+  &.displayBodyHeader-image{
+    padding-top: 0px !important;
+    @include page-title-image-container;
+    @include page-title-text;
+    @include mobile {
+      height: 95px!important;
+    }
+    @include tablet {
+      height: 200px!important;
+    }
+  }
+}
+.site-banner-wrapper {
+  padding-top: 0px !important;
+  @include page-title-image-container;
+  @include page-title-text;
+  @include mobile {
+    height: 95px!important;
+  }
+  @include tablet {
+    height: 200px!important;
+  }
+  
+}
+
+

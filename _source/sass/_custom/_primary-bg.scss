@@ -1,0 +1,18 @@
+.primary-color-background {
+    background-color: $color-primary;
+    background-image: url('../images/primary-bg-image.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-top: 75px;
+    padding-bottom: 75px;
+    @include touch-device {
+        padding-top: 75px;
+        padding-bottom: 50px;
+        margin-bottom: 0px;
+    }
+}
+
+.section-start {
+    // padding-top: 115px;
+}

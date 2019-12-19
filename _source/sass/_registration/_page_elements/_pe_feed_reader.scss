@@ -1,0 +1,53 @@
+/* Feed Reader */
+
+// Feed reader
+.feeder{
+  > h3{
+    @include special-header;
+    @include word-wrap();
+  }
+  > div:nth-of-type(1){
+    > div{
+      @include list-item();
+      > ul li:last-child{
+        > p:last-child{
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+  .even, .odd{
+    > ul{
+      list-style-type: none;
+      ul{
+        list-style-type: disc;
+        padding-left: .5em;
+        margin-bottom: 1em;
+      }
+      ol{
+        margin-bottom: 1em;       
+      }
+      ul li, ol li{
+        margin-left: 1em;
+      }
+    }
+  }
+  blockquote{
+    float: none;
+    color: $bodyCopyColorTwo;
+    font-size: initial;
+    width: initial;
+    padding: 0 1em;
+    border-left: 2px solid #EEE;
+    margin: 1em;
+    &:before, &:after{display: none;}
+  }
+  img{
+    max-width: 100%;
+  }
+  table{
+    max-width: 100%;
+    overflow-x: scroll;
+    display: block;
+  }
+}

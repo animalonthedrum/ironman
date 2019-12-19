@@ -1,0 +1,29 @@
+.pl-spinner-button {
+  position: relative;
+
+  spinner {
+    display: none;
+    left: 50%;
+    margin: -.7em; // spinner is 1.4em in size
+    position: absolute;
+    top: 50%;
+  }
+
+  &.pl-is-spinning {
+    > :not(spinner) {
+      opacity: 0;
+    }
+    spinner {
+      display: block;
+    }
+  }
+
+  // TODO: Remove once all apps are fully converted to pl theme. SN themed buttons
+  // use line height instead of padding, so the vertical positioning is different.
+  &.sn-button {
+    spinner {
+      margin-top: 0;
+      top: 0;
+    }
+  }
+}

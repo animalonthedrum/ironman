@@ -1,0 +1,438 @@
+
+
+/* - - - - - - - - - - - - - - - - - - - - -
+
+Title : Lightbox CSS
+Author : Kevin Hale
+URL : http://particletree.com/features/lightbox-gone-wild/
+Created : January 13, 2006
+Modified : January 18, 2008 (TST Version)
+
+- - - - - - - - - - - - - - - - - - - - - */
+
+/*
+#lightbox{
+  display:none;
+  position: absolute;
+  top:50%;
+  left:50%;
+  z-index:9999;
+  width:700px;
+  margin:-220px 0 0 -350px;
+  text-align:left;
+}
+*/
+#lightbox{
+  z-index:9999;
+  display: none;
+}
+
+#lbLoadMessage{
+  //width: 700px;
+  text-align: center;
+}
+
+#lbLoadMessage p{
+  //margin-top: 175px;
+}
+
+#lightbox[id]{
+  position:fixed;
+}
+
+#overlay{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:9998;
+  background-color:#000;
+}
+#overlay[id]{
+  position:fixed;
+}
+
+#overlay.loading {
+  background: #000 url($asset-path-for+'/app_images/loader2.gif') 50% 50% no-repeat;
+  color: #fff;
+}
+#overlay.loading p {
+  padding: 45% 0;
+  text-align: center;
+}
+
+#lightbox.done #lbLoadMessage{
+  display:none;
+}
+#lightbox.done #lbContent{
+  display:block;
+}
+#lightbox.loading #lbContent{
+  display:none;
+}
+#lightbox.loading #lbLoadMessage{
+  display:block;
+}
+
+/*  NGIN Lightbox CSS
+-------------------------------------------------------------------- */
+
+#lightboxHeader{
+  height: 20px;
+  border-bottom: solid 1px #DDA301;
+}
+
+#lightboxHeader h1{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 90%;
+  font-size: 11px;
+  line-height: 20px;
+  text-transform: uppercase;
+  text-align: center;
+  color: #333;
+  background-image: url($asset-path-for+'/app_images/lbTopLeft.gif');
+  background-repeat: no-repeat;
+}
+
+#lightboxHeader a{
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 10%;
+  font-size: 11px;
+  line-height: 20px;
+  border-left: solid 1px #DDA301;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  background-image: url($asset-path-for+'/app_images/lbTopRight.gif');
+  background-position: top right;
+  background-repeat: no-repeat;
+}
+
+#lightboxHeader a:hover{
+  color: #000;
+}
+
+#lightboxPreview{
+  max-height: 125px;
+  background: #FFFFD7;
+  border-bottom: solid 1px #DDA301;
+  padding: 10px;
+  overflow: auto;
+}
+
+.elementMenuOption {
+  text-align: left;
+}
+
+#lightboxBody{
+  //height: 400px;
+  //width: 680px;
+  padding: 0 10px 10px;
+  background: #fef7d0;
+  color: #333;
+  display: block;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.submitLightbox{
+  border: solid 1px #fccd22;
+  background-color: #feec8f;
+  clear: both;
+  padding: 10px;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 12px;
+  line-height: 140%;
+}
+.submitLightbox .embedded_link{
+  font-size:80%;
+  margin-top:.3em;
+}
+
+.lbHighlight {
+  border: solid 1px #feec8f;
+  background-color: #fdf4bc;
+  border-radius: 4px;
+}
+
+#lightboxBody .elementMenuOption{
+  border-bottom: solid 1px #fccd22;
+}
+
+#lightbox #waiting_text, #lightbox .waiting_text{
+  color: #DDA301;
+}
+
+#lightbox .helperLightbox #waiting_text{
+  color: #666;
+}
+
+#lightboxSubmit .previous{
+  float: left;
+}
+
+#lightboxSubmit .next{
+  float: right;
+}
+
+#lightboxFooter{
+  position: absolute;
+  //top: 430px;
+ // width: 700px;
+  height: 14px;
+  border-top: solid 1px #DDA301;
+  background-image: url($asset-path-for+'/app_images/lbBottomRight.gif');
+  background-position: bottom right;
+  background-repeat: no-repeat;
+}
+
+#lightboxFooter #lightboxFeedback{
+  position: relative;
+  width: 95%;
+  font-size: 10px;
+  height: 13px;
+  background-image: url($asset-path-for+'/app_images/lbBottomLeft.gif');
+  background-position: bottom left;
+  background-repeat: no-repeat;
+}
+
+.helperLightbox #lightboxBody .formElement {
+  background: #e0e0e0;
+}
+
+
+/*  Recurring Events Display
+-------------------------------------------------------------------- */
+
+#human_readable_recur_string {
+  background: #feec8f;
+  padding: 5px;
+  font-style: italic;
+  font-size: 14px;
+  font-weight: 900;
+  border: 1px solid #fccd22;
+  color: #333;
+  display: block;
+  width: 84%;
+  line-height: 120%;
+}
+
+/*  Feed Links
+-------------------------------------------------------------------- */
+
+.feedLink{
+  width: 99%;
+  height: 50px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+/*  User Mode Modifications
+-------------------------------------------------------------------- */
+
+.helperLightbox #lightboxHeader{
+  border-bottom: solid 1px #999;
+}
+.helperLightbox #lightboxHeader h1{
+  background-image: url($asset-path-for+'/app_images/lbTopLeftUserMode.gif');
+}
+
+.helperLightbox #lightboxHeader a{
+  background-image: url($asset-path-for+'/app_images/lbTopRightUserMode.gif');
+  border-left: solid 1px #999;
+}
+
+.helperLightbox #lightboxBody .elementMenuOption{
+  border-bottom: solid 1px #999;
+}
+
+.helperLightbox #lightboxFooter{
+  border-top: solid 1px #999;
+  background-image: url($asset-path-for+'/app_images/lbBottomRightUserMode.gif');
+}
+
+.helperLightbox #lightboxFooter #lightboxFeedback{
+  background-image: url($asset-path-for+'/app_images/lbBottomLeftUserMode.gif');
+}
+
+.helperLightbox #lightboxBody{
+  background: #EFEFEF;
+}
+
+.helperLightbox .submitLightbox{
+  border: solid 1px #999;
+  background: #CCC;
+}
+
+.lightboxHelp{
+    color: #777;
+    font-size: 11px;
+    font-style: italic;
+  padding-top: 3px;
+}
+
+.siteLightboxBanner{
+  display: block;
+  margin: 0 auto 5px;
+}
+
+/*  Edit Survey Entry
+-------------------------------------------------------------------- */
+
+#lightboxBody .formElement{
+  margin: 5px 0;
+  background-color: #FEEC8F;
+  border-top: none;
+}
+
+#lightboxBody #profiles_table{
+    background-color: #FEEC8F;
+}
+
+#lightboxBody #profiles_table td, #lightboxBody #profiles_table th{
+    border: solid 1px #FEF7D0;
+}
+
+/* User Search
+-------------------------------------------------------------------- */
+#profiles_table{
+  clear: none;
+}
+
+#lightboxBody .user_search, #lightboxBody .spinner{
+    float: left;
+    margin-right: 5px;
+}
+
+#lightboxBody #profiles_table{
+    border: none;
+}
+
+#lightboxBody .personaSelect{
+  margin:20px 20px 0;
+}
+
+/* Buttons
+-------------------------------------------------------------------- */
+/* basics */
+.button-add,      .button-add:hover     { color: #393; }
+.button-remove,   .button-remove:hover  { color: #900; }
+.button-add,      .button-remove        { background: #fffbe8; border: 1px solid #fdea88; border-radius: 4px; cursor: pointer; padding: 0 3px; text-decoration: none; }
+.button-add img,  .button-remove img    { background: url($asset-path-for+'/app_images/uiAddRemove.png') 9px 0; cursor: pointer; height: 9px; width: 9px; }
+.button-add span, .button-remove span   { font-size: 10px; }
+
+/* specifics */
+.button-add img     { background-position: 0 0; }
+.button-remove      { margin: 0 0 0 5px; }
+
+/* link states */
+.button-add:hover,
+.button-remove:hover      { background: #fff; }
+.button-add:hover img     { background-position: 0 -9px; }
+.button-add:active img    { background-position: 0 -18px; }
+.button-remove:hover img  { background-position: 9px -9px; }
+.button-remove:active img { background-position: 9px -18px; }
+
+/* Lists
+-------------------------------------------------------------------- */
+#scroll_content ul.pad { margin: 1em 1.5em; }
+
+/* Checkboxes
+-------------------------------------------------------------------- */
+.fcForm .checkboxes    { margin: 0 auto; }
+.fcForm .checkboxes tr { border-bottom: 1px dotted #feec8f; }
+.fcForm .checkboxes th { color: #7f7b68; font-size: 10px; font-style: normal; font-weight: normal; padding: 5px 10px 5px 0; width: auto; text-align: left; }
+.fcForm .checkboxes td { padding: 5px; }
+.fcForm .checkboxes b  { color: #000; font-size: 12px; }
+
+/* Sliders
+-------------------------------------------------------------------- */
+.lbSlider-input         { float: left; text-align: right; width: 35px; }
+.lbSlider-track         { background: url($asset-path-for+'/app_images/sliderControls.png'); float: left; height: 5px; margin: 5px 10px 0; position: relative; width: 350px; }
+.lbSlider-handle        { background: url($asset-path-for+'/app_images/sliderControls.png') 0 -5px; cursor: move; height: 20px; position: absolute; top: -8px; width: 20px; }
+.lbSlider-handle:hover  { background-position: -20px -5px; cursor: move; }
+.lbSlider-handle:active { background-position: -40px -5px; cursor: move; }
+
+/* Sliders
+-------------------------------------------------------------------- */
+#pageNode-columns                     { /*line-height:18px;*/ margin:4px 0 0; }
+#pageNode-columns img,
+#pageNode-columns input               { float: left; margin: 0 4px 0 0; }
+#lightboxBody #pageNode-columns p     { margin: 0 0 8px; }
+
+/* Tabbed Element Form
+-------------------------------------------------------------------- */
+.tabElementForm .layout_tab:first-child .button-move-up { display: none; }
+.tabElementForm .layout_tab:last-child .button-move-down { display: none; }
+.tabElementForm .layout_tab .button-move-up, .tabElementForm .layout_tab .button-move-down {
+  background: #fffbe8;
+  border: 1px solid #fdea88;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0 3px;
+  text-decoration: none;
+  font-size: 10px;
+  color: #5F6566;
+}
+.tabElementForm .layout_tab .button-move-up:hover, .tabElementForm .layout_tab .button-move-down:hover {
+  background: #fff;
+}
+.tabElementForm .layout_tab .button-move-up:active, .tabElementForm .layout_tab .button-move-down:active {
+  background: #ffe98c;
+}
+.tabElementForm .layout_tab .button-move-up img, .tabElementForm .layout_tab .button-move-down img {
+  position: relative;
+  height: 14px;
+  width: 14px;
+  top: 2px;
+}
+.tabElementForm .layout_tab .button-move-up span, .tabElementForm .layout_tab .button-move-down span {
+  position: relative;
+  top: -2px;
+  line-height: 0;
+}
+
+// RSS Feed Styling
+.helperLightbox{
+  #lightboxHeader{
+    border-bottom: solid 1px #999;
+    display: block;
+    width: 100%;
+    height: auto;
+    background: #DDD;
+    padding: 4px 0;
+    h1{
+      position: relative;
+      font-size: 11px;
+      line-height: 1;
+      text-align: center;
+      width: 85%;
+      color: #333;
+      background: none;
+    }
+    a{
+      background: transparent;
+      border-left: solid 1px #999;
+    }
+  }
+  #lightboxBody h4{
+    border-top-color: #999;
+  }
+  #lightboxFooter {
+    background: #DDD;
+    position: relative;
+    height: auto;
+    #lightboxFeedback{
+      background: #DDD;
+    }
+  }
+  .feedLink{
+    max-width:100%;
+  }
+}

@@ -1,0 +1,56 @@
+#siteHeader,
+#tstRegistrationHeader,
+#profilePanelOne { position: relative; }
+
+#siteHeader #adminNav,
+#tstRegistrationHeader #adminNav {
+  bottom: 0;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  width: auto;
+}
+
+#siteHeader #adminNav a {
+  display: block;
+  width: 138px;
+  margin: 0 10px 10px 0;
+  float: right;
+}
+
+#tstRegistrationHeader #adminNav {
+  ul {
+    list-style-type: none;
+
+    li {
+      display: block;
+      float: right;
+
+      a {
+        overflow: hidden;
+        display: block;
+        padding-top: 34px;
+        height: 0;
+        background-position: 0px 34px;
+        margin: 0 5px 5px 0;
+      }
+    }
+  }
+
+  .admin_nav_user_mode a,
+  .admin_nav_edit_mode a { width: 51px; }
+
+  .admin_nav_user_mode a {
+    background-image: url($asset-path-for+"/app_images/reg_user_mode.gif");
+  }
+
+  .admin_nav_edit_mode a {
+    background-image: url($asset-path-for+"/app_images/reg_edit_mode.gif");
+  }
+  .admin_nav_preview_mode a {
+    width: 76px;
+    background-image: url($asset-path-for+"/app_images/reg_preview_mode.gif");
+  }
+
+  .selected a { background-position: 0 0; }
+}

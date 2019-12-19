@@ -1,0 +1,230 @@
+// # Typography
+// Default styles for headings, body copy, lists, etc.
+
+
+// ## Spacing between elements
+// @include mixin in external stylesheets that reference this one
+@mixin content-spacing {
+  margin-bottom: .8571em; // 12px / 14px
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+// @extend placeholder in this theme
+%content-spacing {
+  @include content-spacing;
+}
+
+
+// ## Headings
+%heading {
+  font-weight: $font-regular;
+  margin: 1em 0 .25em;
+
+  &:first-child {
+    margin-top: 0;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+h6,
+.pl-heading--xxsmall {
+  @extend %heading;
+  @include font-xsmall;
+  color: $color-content-light;
+}
+h5,
+.pl-heading--xsmall {
+  @extend %heading;
+  @include font-small;
+  color: $color-content-light;
+}
+h4,
+.pl-heading--small {
+  @extend %heading;
+  @include font-medium;
+  color: $color-content-light;
+}
+h3,
+.pl-heading--medium {
+  @extend %heading;
+  @include font-medium;
+}
+h2,
+.pl-heading--large {
+  @extend %heading;
+  @include font-large;
+}
+h1,
+.pl-heading--xlarge {
+  @extend %heading;
+  @include font-xlarge;
+}
+.pl-heading--xxlarge {
+  @extend %heading;
+  @include font-xxxlarge;
+}
+
+
+// ## Paragraphs
+p {
+  @extend %content-spacing;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+}
+
+
+// ## Formatting
+blockquote {
+  @extend %content-spacing;
+  border-left: solid .2857rem $color-content-xxlight; // 4px / 14px
+  color: $color-content-light;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+}
+
+small {
+  font-size: $font-xsmall;
+}
+
+mark {
+  background-color: $color-highlight-light;
+}
+
+code,
+kbd,
+samp,
+pre {
+  background-color: $color-content-xxxlight;
+  padding: .1429rem .2857rem; // 2px / 14px, 4px / 14px
+}
+
+pre {
+  padding: .8571rem; // 12px / 14px
+}
+
+
+// ## Images
+// Should probably be moved outside of this partial
+img {
+  max-width: 100%;
+}
+
+
+// ## Lists
+ol,
+ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+.pl-list {
+  @include content-spacing;
+  padding-left: 1.5em;
+
+  li {
+    margin-top: .2857em; // 4px / 14px
+  }
+}
+ul.pl-list {
+  list-style: disc;
+}
+ol.pl-list {
+  list-style: decimal;
+}
+
+
+// ## Horizontal rule
+hr {
+  border: 0;
+  border-top: solid 1px $color-content-xxlight;
+  margin-bottom: 1.4286rem; // 20px / 14px
+  margin-top: 1.4286rem; // 20px / 14px
+}
+
+
+// ## Alignment classes
+.pl-text--left {
+  text-align: left;
+}
+.pl-text--right {
+  text-align: right;
+}
+.pl-text--center {
+  text-align: center;
+}
+
+
+// ## Color classes
+@each $label, $color in (highlight: $color-highlight, alert: $color-alert, warn: $color-warn, success: $color-success) {
+  .pl-color--#{$label} {
+    color: $color !important;
+    fill: $color !important;
+  }
+}
+
+
+// ## Lead (a.k.a lede)
+.pl-lead {
+  @include font-large;
+}
+
+
+// ## Link
+// Text link styles
+%pl-link,
+.pl-link {
+  color: $color-highlight;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+.pl-link--file-input {
+  @extend %pl-link;
+
+  input[type='file'] {
+    left: -999in;
+    position: absolute;
+  }
+}
+
+// ## CSS Multi-Column Control
+@mixin pl-column-break-before {
+  -webkit-column-break-before: always; // autoprefixer gets this wrong
+  break-before: column;
+}
+@mixin pl-column-break-after {
+  -webkit-column-break-after: always; // autoprefixer gets this wrong
+  break-after: column;
+}
+@mixin pl-column-break-none {
+  break-inside: avoid;
+}
+
+.pl-column-break-before {
+  @include pl-column-break-before;
+}
+.pl-column-break-after {
+  @include pl-column-break-after;
+}
+.pl-column-break-none {
+  @include pl-column-break-none;
+}
+
+.pl-ellipsis {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

@@ -1,0 +1,147 @@
+/* Custom Theme Styles */
+// 1. Base Styles
+// 2. Responsive Grid Structure
+
+
+// 1. Base Styles
+html {
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-color: transparent;
+}
+
+// 2. Responsive Grid Structure
+@media only screen and (max-width: 767px) {
+  .oneColumn .column1,
+  .layoutContainer .oneColumn .column1 {
+    width: 100%;
+  }
+
+  .twoColumn2575 .column2,
+  .twoColumn7525 .column1 {
+    width: 100%;
+  }
+
+  .twoColumn6633 .column1,
+  .twoColumn3366 .column2,
+  .layoutContainer .twoColumn6633 .column1,
+  .layoutContainer .twoColumn3366 .column2 {
+    width: 100%;
+  }
+
+  .twoColumn5050 .column1,
+  .twoColumn5050 .column2,
+  .threeColumn502525 .column1,
+  .threeColumn255025 .column2,
+  .threeColumn252550 .column3,
+  .layoutContainer .twoColumn5050 .column1,
+  .layoutContainer .twoColumn5050 .column2,
+  .layoutContainer .threeColumn502525 .column1,
+  .layoutContainer .threeColumn255025 .column2,
+  .layoutContainer .threeColumn252550 .column3 {
+    width: 100%;
+  }
+
+  .twoColumn6633 .column2,
+  .twoColumn3366 .column1,
+  .threeColumn333333 .column1,
+  .threeColumn333333 .column2,
+  .threeColumn333333 .column3,
+  .layoutContainer .twoColumn6633 .column2,
+  .layoutContainer .twoColumn3366 .column1,
+  .layoutContainer .threeColumn333333 .column1,
+  .layoutContainer .threeColumn333333 .column2,
+  .layoutContainer .threeColumn333333 .column3 {
+    width: 100%;
+  }
+
+  .twoColumn2575 .column1,
+  .twoColumn7525 .column2,
+  .threeColumn502525 .column2,
+  .threeColumn502525 .column3,
+  .threeColumn255025 .column1,
+  .threeColumn255025 .column3,
+  .threeColumn252550 .column1,
+  .threeColumn252550 .column2,
+  .fourColumn25252525 .column1,
+  .fourColumn25252525 .column2,
+  .fourColumn25252525 .column3,
+  .fourColumn25252525 .column4,
+  .layoutContainer .threeColumn502525 .column2,
+  .layoutContainer .threeColumn502525 .column3,
+  .layoutContainer .threeColumn255025 .column1,
+  .layoutContainer .threeColumn255025 .column3,
+  .layoutContainer .threeColumn252550 .column1,
+  .layoutContainer .threeColumn252550 .column2,
+  .layoutContainer .fourColumn25252525 .column1,
+  .layoutContainer .fourColumn25252525 .column2,
+  .layoutContainer .fourColumn25252525 .column1,
+  .layoutContainer .fourColumn25252525 .column2 {
+    width: 100%;
+  }
+
+  .width25,
+  .width33,
+  .width50,
+  .width66,
+  .width75,
+  .width100 {
+    width: 100%;
+  }
+
+  .col{
+    &-xs,
+    &-sm,
+    &-md,
+    &-lg{
+      &-1,
+      &-2,
+      &-3,
+      &-4,
+      &-5,
+      &-6,
+      &-7,
+      &-8,
+      &-9,
+      &-10,
+      &-11,
+      &-12{
+        padding-left: ($bootstrap-padding-sm * 1px);
+        padding-right: ($bootstrap-padding-sm * 1px);
+      }
+    }
+  }
+}
+
+// As soon as layout container starts to squish,
+// make small columns bigger until they become full
+// width for mobile (768px)
+@media (min-width: 768px) and (max-width: 999px) {
+  .layout-50-25-25,
+  .layout-25-25-50 {
+    .col-md-3 {
+      width: 50%;
+    }
+
+    .col-md-6 {
+      width: 100%;
+    }
+  }
+
+  .layout-25-50-25 {
+    .col-md-3,
+    .col-md-6 {
+      width: 33.3333%;
+    }
+  }
+}
