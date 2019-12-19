@@ -5,7 +5,7 @@
 
   const createDiv = function () {
     $(".race-results column").append('<div class="race-result-list"></div>');
-    runCustomSearch(".race-results", "1yLtxUETnuF3UZLmypYkAK6Vj4PE9Fo_BT-WsA4oE_YU", "AIzaSyC9s2sNhwUZOUXJfnyt-cD4k4nUyY-3HBs", "Race-Catalog"); //production
+    runCustomSearch(".race-results", "SHEETID", "KEY", "Race-Catalog"); //production
     // runCustomSearch(".race-result-list","1yLtxUETnuF3UZLmypYkAK6Vj4PE9Fo_BT-WsA4oE_YU","AIzaSyC9s2sNhwUZOUXJfnyt-cD4k4nUyY-3HBs","Test-Catalog"); //testing
   };
 
