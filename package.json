@@ -37,7 +37,7 @@
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.0",
     "imagemin-pngquant": "^5.1.0",
-    "moment": "^2.22.1",
+    "moment": "^2.29.4",
     "run-sequence": "^2.2.1",
     "uglify-js": "^3.3.22"
   },
